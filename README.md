@@ -22,6 +22,13 @@ Não é um site de slides. É uma plataforma de aula com conteúdo escrito, dez 
 4. **Framer na prática** — tour da ferramenta, Stack e sizing, componentes e variantes, movimento, CMS e publicação
 5. **Projeto Giz Pay** — diagnóstico, briefing, wireframe, design system, copy e build
 
+### Roteiro em papel
+
+Além do site, o repositório traz a versão escrita da aula, para quem prefere ler, imprimir ou apresentar:
+
+- [`docs/aula-ui-ux-framer-figma.md`](docs/aula-ui-ux-framer-figma.md) — script falado de ~90 minutos, em blocos, com FALA, NOTA e EXERCÍCIO
+- [`docs/checklist-gizpay-redesign.md`](docs/checklist-gizpay-redesign.md) — checklist do redesign em markdown
+
 ### Demonstrações interativas
 
 Escala de espaçamento de 8pt, gerador de escala tipográfica, verificador de contraste WCAG, comparador de hierarquia visual, playground de Flexbox/Stack, modos Fill/Fit/Fixed, preview responsivo, variantes e estados de componente, laboratório de CTA e anatomia de uma landing page.
