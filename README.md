@@ -12,7 +12,9 @@ Não é um site de slides. É uma plataforma de aula com conteúdo escrito, dez 
 | `/aula/[slug]` | As 25 aulas, com objetivos, conteúdo, demos e resumo |
 | `/projeto` | Diagnóstico do site atual, prioridades e checklist de execução |
 | `/auditoria` | Auditoria detalhada do gizpay.com.br — achados, notas e P0–P2 |
-| `/prototipo` | Protótipo navegável da nova home da Giz Pay |
+| `/wireframes` | Spec frame a frame para montar no Figma |
+| **`/site`** | **Site Giz Pay 2.0 — preview local para testes (GitHub clone)** |
+| `/prototipo` | Mesmo site + barra do curso Estúdio Giz |
 | `/recursos` | Escalas de referência, atalhos do Framer, glossário e QA de lançamento |
 
 ### As cinco trilhas
@@ -29,7 +31,8 @@ Além do site, o repositório traz a versão escrita da aula, para quem prefere 
 
 - [`docs/aula-ui-ux-framer-figma.md`](docs/aula-ui-ux-framer-figma.md) — script falado de ~90 minutos, em blocos, com FALA, NOTA e EXERCÍCIO
 - [`docs/auditoria-gizpay.md`](docs/auditoria-gizpay.md) — resumo exportável da auditoria do site atual
-- [`docs/checklist-gizpay-redesign.md`](docs/checklist-gizpay-redesign.md) — checklist do redesign em markdown
+- [`docs/wireframes-gizpay.md`](docs/wireframes-gizpay.md) — wireframes frame a frame para o Figma
+- [`docs/SITE-LOCAL.md`](docs/SITE-LOCAL.md) — clone GitHub e testes em `/site`
 
 ### Demonstrações interativas
 
@@ -43,6 +46,9 @@ npm run dev
 ```
 
 A aplicação sobe em [http://localhost:43117](http://localhost:43117).
+
+**Preview do site repaginado (testes locais):** [http://localhost:43117/site](http://localhost:43117/site)  
+Guia completo: [`docs/SITE-LOCAL.md`](docs/SITE-LOCAL.md)
 
 Outros comandos:
 

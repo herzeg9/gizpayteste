@@ -330,13 +330,13 @@ export default function AuditoriaPage() {
             </ol>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button asChild>
-                <Link href="/projeto">
-                  Plano de execução
+                <Link href="/wireframes">
+                  Abrir spec wireframes
                   <ArrowRight className="size-4" />
                 </Link>
               </Button>
               <Button asChild variant="outline">
-                <Link href="/prototipo">Comparar com protótipo</Link>
+                <Link href="/site">Testar site local</Link>
               </Button>
             </div>
           </section>

@@ -18,6 +18,8 @@ import {
 const links = [
   { href: "/", label: "Curso" },
   { href: "/auditoria", label: "Auditoria" },
+  { href: "/wireframes", label: "Wireframes" },
+  { href: "/site", label: "Site local" },
   { href: "/projeto", label: "Projeto Giz Pay" },
   { href: "/prototipo", label: "Protótipo" },
   { href: "/recursos", label: "Recursos" },
