@@ -39,11 +39,11 @@ const LINHAS = [
 
 type Modo = "giz" | "intermediario";
 
-export function ComparativoInterativo() {
+export function ComparativoInterativo({ className = "mt-12" }: { className?: string }) {
   const [modo, setModo] = useState<Modo>("giz");
 
   return (
-    <div className="mt-12">
+    <div className={className}>
       <div
         className="inline-flex rounded-[12px] border p-1"
         style={{ borderColor: giz.borderLight, background: giz.lightAlt }}

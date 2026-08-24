@@ -7,7 +7,8 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { Reveal } from "@/components/reveal";
-import { ComparativoInterativo } from "@/components/gizpay-site/comparativo-interativo";
+import { ComparativoScroll } from "@/components/gizpay-site/comparativo-scroll";
+import { DepoimentoScroll } from "@/components/gizpay-site/depoimento-scroll";
 import { CalculadoraScroll } from "@/components/gizpay-site/calculadora-scroll";
 import { ComoFuncionaScroll } from "@/components/gizpay-site/como-funciona-scroll";
 import { HeroScroll } from "@/components/gizpay-site/hero-scroll";
@@ -68,64 +69,9 @@ export function GizPaySite({ showCourseBanner = false }: { showCourseBanner?: bo
 
       <CalculadoraScroll />
 
-      {/* 07 · DEPOIMENTO */}
-      <section style={{ background: giz.light, color: giz.fgLight }}>
-        <div className="mx-auto w-full max-w-[900px] px-5 py-20 sm:px-6 sm:py-24">
-          <Reveal>
-            <figure className="grid gap-7">
-              <blockquote
-                className="font-display text-[26px] font-medium leading-[1.4] sm:text-[34px]"
-                style={{ color: giz.fgLight }}
-              >
-                “Parei de antecipar recebível no banco. O dinheiro entra no dia
-                em que o responsável paga, e eu enxergo isso no painel.”
-              </blockquote>
-              <figcaption
-                className="flex flex-wrap items-center gap-x-6 gap-y-3 border-t pt-6"
-                style={{ borderColor: giz.borderLight }}
-              >
-                <div>
-                  <p className="text-[15px] font-medium">Renata Albuquerque</p>
-                  <p className="text-sm" style={{ color: giz.mutedLight }}>
-                    Diretora financeira · Colégio Aurora · 620 alunos
-                  </p>
-                </div>
-                <dl className="ml-auto flex gap-8">
-                  {[
-                    ["Inadimplência", "11% → 4%"],
-                    ["Fechamento do mês", "3 dias → 40 min"],
-                  ].map(([label, valor]) => (
-                    <div key={label}>
-                      <dt className="text-xs" style={{ color: giz.mutedLight }}>
-                        {label}
-                      </dt>
-                      <dd className="font-mono text-sm tabular-nums">{valor}</dd>
-                    </div>
-                  ))}
-                </dl>
-              </figcaption>
-            </figure>
-          </Reveal>
-        </div>
-      </section>
+      <DepoimentoScroll />
 
-      {/* 08 · COMPARATIVO */}
-      <section id="comparativo" style={{ background: giz.lightAlt, color: giz.fgLight }}>
-        <div className="mx-auto w-full max-w-[1200px] px-5 py-20 sm:px-6 sm:py-24">
-          <Reveal>
-            <CabecalhoSecao
-              overline="Comparativo"
-              titulo="Giz Pay e o intermediário tradicional, critério por critério."
-              subtitulo="Os mesmos pontos que a direção usa para decidir — sem escondê-los atrás de um clique."
-              tom="claro"
-            />
-          </Reveal>
-
-          <Reveal delay={80}>
-            <ComparativoInterativo />
-          </Reveal>
-        </div>
-      </section>
+      <ComparativoScroll />
 
       {/* 09 · MÓDULOS */}
       <section id="modulos" style={{ background: giz.light, color: giz.fgLight }}>
