@@ -1,0 +1,145 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-mono-code);
+  --font-heading: var(--font-fraunces);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-brand: var(--brand);
+  --color-brand-soft: var(--brand-soft);
+  --color-amber-glow: var(--amber-glow);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+/*
+  Tema único (escuro) da plataforma de aula. Os tokens seguem o mesmo modelo
+  que ensinamos no Módulo 9: cor semântica, nunca cor literal.
+*/
+:root {
+  --background: oklch(0.168 0.019 168);
+  --foreground: oklch(0.968 0.008 150);
+  --card: oklch(0.212 0.021 168);
+  --card-foreground: oklch(0.968 0.008 150);
+  --popover: oklch(0.198 0.021 168);
+  --popover-foreground: oklch(0.968 0.008 150);
+  --primary: oklch(0.855 0.183 148);
+  --primary-foreground: oklch(0.18 0.04 160);
+  --secondary: oklch(0.268 0.024 168);
+  --secondary-foreground: oklch(0.955 0.01 150);
+  --muted: oklch(0.258 0.022 168);
+  --muted-foreground: oklch(0.735 0.024 160);
+  --accent: oklch(0.295 0.032 166);
+  --accent-foreground: oklch(0.968 0.008 150);
+  --destructive: oklch(0.652 0.192 24);
+  --border: oklch(0.968 0.008 150 / 12%);
+  --input: oklch(0.968 0.008 150 / 16%);
+  --ring: oklch(0.855 0.183 148 / 60%);
+  --radius: 0.75rem;
+
+  --brand: oklch(0.855 0.183 148);
+  --brand-soft: oklch(0.855 0.183 148 / 12%);
+  --amber-glow: oklch(0.83 0.15 78);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    -webkit-font-smoothing: antialiased;
+  }
+  html {
+    @apply font-sans;
+    scroll-behavior: smooth;
+  }
+  ::selection {
+    background: var(--brand);
+    color: var(--primary-foreground);
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-fraunces), Georgia, serif;
+    font-variation-settings: "opsz" 96;
+  }
+
+  .text-balance-tight {
+    text-wrap: balance;
+  }
+
+  /* Malha de fundo: reforça a ideia de grid que o curso ensina. */
+  .grid-backdrop {
+    background-image:
+      linear-gradient(to right, oklch(0.968 0.008 150 / 4%) 1px, transparent 1px),
+      linear-gradient(to bottom, oklch(0.968 0.008 150 / 4%) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+
+  .glow-brand {
+    box-shadow: 0 0 0 1px oklch(0.855 0.183 148 / 22%), 0 24px 70px -30px oklch(0.855 0.183 148 / 45%);
+  }
+
+  .scrollbar-slim {
+    scrollbar-width: thin;
+    scrollbar-color: oklch(0.968 0.008 150 / 18%) transparent;
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.reveal {
+  opacity: 0;
+}
+
+.reveal[data-visible="true"] {
+  animation: rise-in 0.62s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal,
+  .reveal[data-visible="true"] {
+    opacity: 1;
+    animation: none;
+  }
+}
