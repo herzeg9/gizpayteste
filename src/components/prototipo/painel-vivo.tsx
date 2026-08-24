@@ -45,7 +45,7 @@ export function PainelVivo() {
 
   return (
     <div
-      className="w-full overflow-hidden rounded-[24px] border p-5 shadow-[0_40px_120px_-50px_rgba(74,222,128,0.4)]"
+      className="w-full overflow-hidden rounded-[32px] border p-5 sm:p-6"
       style={{ background: giz.surface, borderColor: giz.borderDark }}
     >
       <div className="flex items-center justify-between">

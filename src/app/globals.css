@@ -125,6 +125,20 @@
   }
 }
 
+@keyframes float-gentle {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.hero-float-card {
+  animation: float-gentle 5s ease-in-out infinite;
+}
+
 .reveal[data-reveal-ready]:not([data-visible="true"]) {
   opacity: 0;
 }
@@ -136,6 +150,10 @@
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .hero-float-card {
+    animation: none;
   }
   .reveal,
   .reveal[data-reveal-ready]:not([data-visible="true"]),
