@@ -8,11 +8,11 @@ import {
 } from "lucide-react";
 import { Reveal } from "@/components/reveal";
 import { ComparativoInterativo } from "@/components/gizpay-site/comparativo-interativo";
+import { CalculadoraScroll } from "@/components/gizpay-site/calculadora-scroll";
 import { ComoFuncionaScroll } from "@/components/gizpay-site/como-funciona-scroll";
 import { HeroScroll } from "@/components/gizpay-site/hero-scroll";
 import { ProblemaScroll } from "@/components/gizpay-site/problema-scroll";
 import { ProvaSocialScroll } from "@/components/gizpay-site/prova-social-scroll";
-import { Calculadora } from "@/components/prototipo/calculadora";
 import { Faq } from "@/components/prototipo/faq";
 import { Formulario } from "@/components/prototipo/formulario";
 import { PortalResponsavel } from "@/components/prototipo/portal-responsavel";
@@ -66,33 +66,7 @@ export function GizPaySite({ showCourseBanner = false }: { showCourseBanner?: bo
 
       <ComoFuncionaScroll />
 
-      {/* 06 · CALCULADORA */}
-      <section
-        id="calculadora"
-        className="relative overflow-hidden"
-        style={{ background: giz.deep }}
-      >
-        <div
-          aria-hidden
-          className="pointer-events-none absolute left-1/2 top-0 size-[600px] -translate-x-1/2 rounded-full blur-[140px]"
-          style={{ background: "rgba(74,222,128,0.12)" }}
-        />
-        <div className="relative mx-auto w-full max-w-[1200px] px-5 py-20 sm:px-6 sm:py-28">
-          <Reveal>
-            <CabecalhoSecao
-              overline="Calculadora de economia"
-              titulo="Quanto a intermediação custa à sua escola por ano?"
-              subtitulo="Ajuste os três números da sua escola. O resultado é o que uma taxa percentual retira do seu faturamento a cada ano."
-              tom="escuro"
-            />
-          </Reveal>
-          <Reveal delay={80}>
-            <div className="mt-12">
-              <Calculadora />
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      <CalculadoraScroll />
 
       {/* 07 · DEPOIMENTO */}
       <section style={{ background: giz.light, color: giz.fgLight }}>
