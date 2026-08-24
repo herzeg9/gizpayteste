@@ -15,6 +15,13 @@ export function segment(progress: number, start: number, end: number) {
   return easeOutCubic(clamp((progress - start) / (end - start), 0, 1));
 }
 
+/** Alturas de scroll — mais vh = mais tempo para ler antes da transição. */
+export const SCROLL_HEIGHT = {
+  hero: "min(320vh, 3800px)",
+  prova: "min(260vh, 3000px)",
+  problema: "min(260vh, 3000px)",
+} as const;
+
 /** Progresso de scroll dentro de uma seção alta com conteúdo sticky. */
 export function useScrollSection(
   sectionRef: RefObject<HTMLElement | null>,

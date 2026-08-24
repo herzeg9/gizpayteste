@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { giz } from "@/components/prototipo/tokens";
-import { segment, useScrollSection } from "@/components/gizpay-site/use-scroll-section";
+import { segment, SCROLL_HEIGHT, useScrollSection } from "@/components/gizpay-site/use-scroll-section";
 
 const ESCOLAS = [
   "Colégio Aurora",
@@ -96,7 +96,7 @@ export function ProvaSocialScroll() {
       style={{
         borderColor: giz.borderDark,
         background: giz.surface,
-        height: "min(180vh, 2000px)",
+        height: SCROLL_HEIGHT.prova,
       }}
     >
       <div className="sticky top-0 flex h-[100dvh] items-center overflow-hidden">

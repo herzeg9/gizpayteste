@@ -9,6 +9,7 @@ import {
 import { Reveal } from "@/components/reveal";
 import { ComparativoInterativo } from "@/components/gizpay-site/comparativo-interativo";
 import { HeroScroll } from "@/components/gizpay-site/hero-scroll";
+import { ProblemaScroll } from "@/components/gizpay-site/problema-scroll";
 import { ProvaSocialScroll } from "@/components/gizpay-site/prova-social-scroll";
 import { Calculadora } from "@/components/prototipo/calculadora";
 import { ComoFunciona } from "@/components/prototipo/como-funciona";
@@ -16,33 +17,6 @@ import { Faq } from "@/components/prototipo/faq";
 import { Formulario } from "@/components/prototipo/formulario";
 import { PortalResponsavel } from "@/components/prototipo/portal-responsavel";
 import { giz } from "@/components/prototipo/tokens";
-
-const DORES = [
-  {
-    titulo: "Repasse com atraso",
-    texto:
-      "Os pais pagam hoje. A escola recebe em 15, 30 ou 60 dias — e ainda com a taxa cheia já descontada.",
-    metrica: "até 60 dias",
-  },
-  {
-    titulo: "Taxa sobre o faturamento",
-    texto:
-      "De 2% a 6% de tudo o que a escola fatura, todo mês, independentemente do trabalho que o fornecedor teve.",
-    metrica: "2% a 6%",
-  },
-  {
-    titulo: "Cobrança manual",
-    texto:
-      "A secretaria emitindo boleto no banco, ligando para cobrar e controlando inadimplência em planilha.",
-    metrica: "~6h por mês",
-  },
-  {
-    titulo: "Nenhuma visibilidade",
-    texto:
-      "A direção só descobre o que entrou, o que atrasou e quem deve quando o relatório do mês fecha.",
-    metrica: "1x por mês",
-  },
-];
 
 const MODULOS = [
   {
@@ -88,49 +62,7 @@ export function GizPaySite({ showCourseBanner = false }: { showCourseBanner?: bo
 
       <ProvaSocialScroll />
 
-      {/* 04 · PROBLEMA */}
-      <section style={{ background: giz.light, color: giz.fgLight }}>
-        <div className="mx-auto w-full max-w-[1200px] px-5 py-20 sm:px-6 sm:py-24">
-          <Reveal>
-            <CabecalhoSecao
-              overline="O problema"
-              titulo="Sua escola trabalha o mês inteiro. Quem lucra é o intermediário."
-              subtitulo="Os intermediários tradicionais retêm o caixa da escola, cobram um percentual sobre tudo o que ela fatura e devolvem o dinheiro semanas depois."
-              tom="claro"
-            />
-          </Reveal>
-
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {DORES.map((dor, i) => (
-              <Reveal key={dor.titulo} delay={i * 60}>
-                <article
-                  className="grid h-full content-start gap-3 rounded-[16px] border bg-white p-6"
-                  style={{ borderColor: giz.borderLight }}
-                >
-                  <span
-                    className="font-mono text-xs tabular-nums"
-                    style={{ color: giz.mutedLight }}
-                  >
-                    {dor.metrica}
-                  </span>
-                  <h3
-                    className="text-[17px] font-semibold leading-snug"
-                    style={{ color: giz.fgLight }}
-                  >
-                    {dor.titulo}
-                  </h3>
-                  <p
-                    className="text-[14.5px] leading-[1.65]"
-                    style={{ color: giz.mutedLight }}
-                  >
-                    {dor.texto}
-                  </p>
-                </article>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ProblemaScroll />
 
       {/* 05 · COMO FUNCIONA */}
       <section id="como-funciona" style={{ background: giz.lightAlt, color: giz.fgLight }}>

@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { PainelVivo } from "@/components/prototipo/painel-vivo";
 import { giz } from "@/components/prototipo/tokens";
-import { segment, useScrollSection } from "@/components/gizpay-site/use-scroll-section";
+import { segment, SCROLL_HEIGHT, useScrollSection } from "@/components/gizpay-site/use-scroll-section";
 
 /** Cards laterais — fora do painel, sem sobreposição. */
 const SIDE_METRICS = [
@@ -207,7 +207,7 @@ export function HeroScroll() {
       className="relative border-b"
       style={{
         borderColor: giz.borderDark,
-        height: "min(220vh, 2400px)",
+        height: SCROLL_HEIGHT.hero,
       }}
     >
       <div
