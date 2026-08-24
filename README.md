@@ -11,6 +11,7 @@ Não é um site de slides. É uma plataforma de aula com conteúdo escrito, dez 
 | `/` | Página inicial com as cinco trilhas e o progresso do aluno |
 | `/aula/[slug]` | As 25 aulas, com objetivos, conteúdo, demos e resumo |
 | `/projeto` | Diagnóstico do site atual, prioridades e checklist de execução |
+| `/auditoria` | Auditoria detalhada do gizpay.com.br — achados, notas e P0–P2 |
 | `/prototipo` | Protótipo navegável da nova home da Giz Pay |
 | `/recursos` | Escalas de referência, atalhos do Framer, glossário e QA de lançamento |
 
@@ -27,6 +28,7 @@ Não é um site de slides. É uma plataforma de aula com conteúdo escrito, dez 
 Além do site, o repositório traz a versão escrita da aula, para quem prefere ler, imprimir ou apresentar:
 
 - [`docs/aula-ui-ux-framer-figma.md`](docs/aula-ui-ux-framer-figma.md) — script falado de ~90 minutos, em blocos, com FALA, NOTA e EXERCÍCIO
+- [`docs/auditoria-gizpay.md`](docs/auditoria-gizpay.md) — resumo exportável da auditoria do site atual
 - [`docs/checklist-gizpay-redesign.md`](docs/checklist-gizpay-redesign.md) — checklist do redesign em markdown
 
 ### Demonstrações interativas
@@ -67,6 +69,7 @@ Não há variáveis de ambiente nem serviços externos: o progresso do aluno e a
 src/
 ├─ app/
 │  ├─ (curso)/          # site do curso: home, aulas, projeto, recursos
+│  ├─ auditoria/        # auditoria interativa do gizpay.com.br
 │  ├─ prototipo/        # protótipo da Giz Pay, com identidade visual própria
 │  ├─ globals.css       # design system do curso
 │  └─ layout.tsx
@@ -79,6 +82,7 @@ src/
 │  ├─ types.ts          # modelo de conteúdo (Track, Lesson, Block)
 │  └─ track-*.ts        # o conteúdo das cinco trilhas
 └─ lib/
+   └─ audit.ts          # dados da auditoria gizpay.com.br
 ```
 
 O conteúdo é dado tipado, não JSX. Cada aula é uma lista de blocos (`p`, `callout`, `table`, `code`, `compare`, `demo`, `exercise`…) renderizada por `components/blocks.tsx`. Para escrever uma aula nova, basta acrescentar um objeto `Lesson` ao arquivo da trilha correspondente.

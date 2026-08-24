@@ -142,6 +142,9 @@ export default function ProjetoPage() {
               </Link>
             </Button>
             <Button asChild variant="outline">
+              <Link href="/auditoria">Auditoria completa</Link>
+            </Button>
+            <Button asChild variant="outline">
               <Link href="/prototipo">Ver o protótipo pronto</Link>
             </Button>
             <Button asChild variant="ghost">
