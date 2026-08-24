@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { giz } from "./tokens";
 
-const PASSOS = [
+export const PASSOS = [
   {
     n: "01",
     titulo: "Cadastro dos alunos",
@@ -54,9 +54,17 @@ const PASSOS = [
   },
 ];
 
-export function ComoFunciona() {
-  const [ativo, setAtivo] = useState(0);
-  const passo = PASSOS[ativo];
+export function ComoFunciona({
+  activeStep,
+  onStepChange,
+}: {
+  activeStep?: number;
+  onStepChange?: (index: number) => void;
+} = {}) {
+  const [internal, setInternal] = useState(0);
+  const ativo = activeStep ?? internal;
+  const setAtivo = onStepChange ?? setInternal;
+  const passo = PASSOS[ativo]!;
 
   return (
     <div className="grid gap-6">

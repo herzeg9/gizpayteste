@@ -8,11 +8,11 @@ import {
 } from "lucide-react";
 import { Reveal } from "@/components/reveal";
 import { ComparativoInterativo } from "@/components/gizpay-site/comparativo-interativo";
+import { ComoFuncionaScroll } from "@/components/gizpay-site/como-funciona-scroll";
 import { HeroScroll } from "@/components/gizpay-site/hero-scroll";
 import { ProblemaScroll } from "@/components/gizpay-site/problema-scroll";
 import { ProvaSocialScroll } from "@/components/gizpay-site/prova-social-scroll";
 import { Calculadora } from "@/components/prototipo/calculadora";
-import { ComoFunciona } from "@/components/prototipo/como-funciona";
 import { Faq } from "@/components/prototipo/faq";
 import { Formulario } from "@/components/prototipo/formulario";
 import { PortalResponsavel } from "@/components/prototipo/portal-responsavel";
@@ -64,24 +64,7 @@ export function GizPaySite({ showCourseBanner = false }: { showCourseBanner?: bo
 
       <ProblemaScroll />
 
-      {/* 05 · COMO FUNCIONA */}
-      <section id="como-funciona" style={{ background: giz.lightAlt, color: giz.fgLight }}>
-        <div className="mx-auto w-full max-w-[1200px] px-5 py-20 sm:px-6 sm:py-24">
-          <Reveal>
-            <CabecalhoSecao
-              overline="Como funciona"
-              titulo="Da matrícula ao caixa em quatro passos — e nenhum deles é manual."
-              subtitulo="Você cadastra uma vez; o resto acontece sozinho. Clique em cada etapa para ver o que o sistema faz."
-              tom="claro"
-            />
-          </Reveal>
-          <Reveal delay={80}>
-            <div className="mt-12">
-              <ComoFunciona />
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      <ComoFuncionaScroll />
 
       {/* 06 · CALCULADORA */}
       <section

@@ -20,6 +20,7 @@ export const SCROLL_HEIGHT = {
   hero: "min(320vh, 3800px)",
   prova: "min(260vh, 3000px)",
   problema: "min(260vh, 3000px)",
+  comoFunciona: "min(300vh, 3400px)",
 } as const;
 
 /** Progresso de scroll dentro de uma seção alta com conteúdo sticky. */
