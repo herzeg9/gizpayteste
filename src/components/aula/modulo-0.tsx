@@ -8,7 +8,19 @@ export function Modulo0() {
       titulo="Antes de começar: a ferramenta certa"
       descricao="Um alinhamento rápido sobre a ferramenta que vamos usar e como tirar o máximo desta aula."
     >
-      <Callout tone="warn" title="Frame.io não é Framer — e isso importa">
+      <Callout tone="info" title="Figma + Framer — o fluxo completo">
+        <p>
+          Use o <strong>Figma</strong> para wireframe, design system e protótipo clicável. Use a{" "}
+          <strong>Framer</strong> (framer.com) para publicar o site interativo com animações,
+          formulários e domínio. O script completo (~90 min) está em{" "}
+          <a href="/aula/figma-framer" className="font-medium text-primary underline">
+            /aula/figma-framer
+          </a>
+          .
+        </p>
+      </Callout>
+
+      <Callout tone="warn" title="Frame.io não é Framer">
         <p>
           Você mencionou o <strong>Frame.io</strong>, mas ele é uma plataforma da Adobe para{" "}
           <em>revisão e aprovação de vídeos</em> (equipes de audiovisual comentam sobre cortes,

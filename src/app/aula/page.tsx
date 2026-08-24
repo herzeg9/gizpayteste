@@ -57,20 +57,29 @@ export default function AulaPage() {
               UI/UX, desenvolvimento web e front-end — do zero ao repaginamento da GizPay.
             </h1>
             <p className="mb-8 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-              Tudo o que você precisa saber para projetar e publicar um site profissional na
-              Framer: os fundamentos de design, como a web funciona, a ferramenta na prática e um
-              projeto guiado de ponta a ponta — cujo resultado você pode navegar na{" "}
+              Tudo o que você precisa saber para projetar e publicar um site profissional com{" "}
+              <strong>Figma</strong> e <strong>Framer</strong>: fundamentos de design, como a web
+              funciona, a ferramenta na prática e um projeto guiado de ponta a ponta — cujo
+              resultado você pode navegar na{" "}
               <Link href="/" className="font-medium text-primary underline underline-offset-4">
                 página inicial deste projeto
               </Link>
               .
             </p>
-            <Button size="lg" asChild>
-              <a href="#modulo-0">
-                Começar pelo módulo 0
-                <ArrowRight data-slot="icon" />
-              </a>
-            </Button>
+            <div className="flex flex-wrap gap-3">
+              <Button size="lg" asChild>
+                <Link href="/aula/figma-framer">
+                  Script completo Figma + Framer
+                  <ArrowRight data-slot="icon" />
+                </Link>
+              </Button>
+              <Button size="lg" variant="outline" asChild>
+                <a href="#modulo-0">
+                  Módulos curtos (7×)
+                  <ArrowRight data-slot="icon" />
+                </a>
+              </Button>
+            </div>
           </div>
         </div>
 
