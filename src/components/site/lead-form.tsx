@@ -18,7 +18,24 @@ import { ChalkMark, Section, SectionHeader } from "./section";
 
 export function LeadForm() {
   const [sent, setSent] = useState(false);
+  const [error, setError] = useState("");
   const [nome, setNome] = useState("");
+  const [escola, setEscola] = useState("");
+  const [email, setEmail] = useState("");
+  const [whatsapp, setWhatsapp] = useState("");
+
+  function submit() {
+    if (!nome.trim() || !escola.trim() || !email.trim() || !whatsapp.trim()) {
+      setError("Preencha nome, escola, e-mail e WhatsApp para a gente retornar.");
+      return;
+    }
+    if (!email.includes("@")) {
+      setError("Esse e-mail não parece válido.");
+      return;
+    }
+    setError("");
+    setSent(true);
+  }
 
   return (
     <Section id="demonstracao" className="bg-ink text-ink-foreground">
@@ -78,9 +95,13 @@ export function LeadForm() {
             ) : (
               <form
                 className="flex flex-col gap-4"
+                action="#"
+                method="post"
+                noValidate
                 onSubmit={(e) => {
                   e.preventDefault();
-                  setSent(true);
+                  e.stopPropagation();
+                  submit();
                 }}
               >
                 <div className="grid gap-4 sm:grid-cols-2">
@@ -104,6 +125,8 @@ export function LeadForm() {
                       required
                       autoComplete="organization"
                       placeholder="Colégio Exemplo"
+                      value={escola}
+                      onChange={(e) => setEscola(e.target.value)}
                     />
                   </div>
                 </div>
@@ -117,6 +140,8 @@ export function LeadForm() {
                       required
                       autoComplete="email"
                       placeholder="voce@escola.com.br"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                     />
                   </div>
                   <div className="flex flex-col gap-2">
@@ -128,6 +153,8 @@ export function LeadForm() {
                       required
                       autoComplete="tel"
                       placeholder="(11) 99999-9999"
+                      value={whatsapp}
+                      onChange={(e) => setWhatsapp(e.target.value)}
                     />
                   </div>
                 </div>
@@ -145,7 +172,12 @@ export function LeadForm() {
                     </SelectContent>
                   </Select>
                 </div>
-                <Button type="submit" size="lg" className="mt-2 w-full">
+                {error ? (
+                  <p className="text-sm text-destructive" role="alert">
+                    {error}
+                  </p>
+                ) : null}
+                <Button type="button" size="lg" className="mt-2 w-full" onClick={submit}>
                   Agendar demonstração gratuita
                 </Button>
                 <p className="text-center text-xs text-muted-foreground">
