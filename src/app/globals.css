@@ -1,0 +1,126 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Papel + giz: fundo claro e quente, tinta verde-escura de quadro */
+  --background: oklch(0.978 0.007 85);
+  --foreground: oklch(0.245 0.028 170);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.245 0.028 170);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.245 0.028 170);
+  /* Verde-quadro: cor da marca */
+  --primary: oklch(0.42 0.083 168);
+  --primary-foreground: oklch(0.985 0.008 90);
+  --secondary: oklch(0.945 0.018 165);
+  --secondary-foreground: oklch(0.32 0.05 168);
+  --muted: oklch(0.955 0.008 90);
+  --muted-foreground: oklch(0.5 0.02 168);
+  /* Âmbar-giz: cor de destaque para CTAs e marcações */
+  --accent: oklch(0.83 0.128 78);
+  --accent-foreground: oklch(0.3 0.05 80);
+  --destructive: oklch(0.577 0.215 27.3);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(0.905 0.012 100);
+  --input: oklch(0.905 0.012 100);
+  --ring: oklch(0.42 0.083 168);
+  --radius: 0.75rem;
+
+  --chart-1: oklch(0.42 0.083 168);
+  --chart-2: oklch(0.83 0.128 78);
+  --chart-3: oklch(0.65 0.06 168);
+  --chart-4: oklch(0.55 0.1 30);
+  --chart-5: oklch(0.75 0.03 168);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  /* Tinta escura para bandas de contraste (rodapé, CTA final) */
+  --color-ink: oklch(0.24 0.032 170);
+  --color-ink-foreground: oklch(0.96 0.01 90);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  --animate-marquee: marquee 32s linear infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: oklch(0.83 0.128 78 / 0.45);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Sublinhado "risco de giz" usado em palavras-chave dos títulos */
+.chalk-underline {
+  position: relative;
+  white-space: nowrap;
+}
+.chalk-underline > svg {
+  position: absolute;
+  left: -2%;
+  bottom: -0.18em;
+  width: 104%;
+  height: 0.32em;
+  overflow: visible;
+}
+
+/* Textura pontilhada sutil de fundo (papel milimetrado) */
+.dotted-bg {
+  background-image: radial-gradient(
+    oklch(0.42 0.083 168 / 0.1) 1px,
+    transparent 1px
+  );
+  background-size: 22px 22px;
+}
