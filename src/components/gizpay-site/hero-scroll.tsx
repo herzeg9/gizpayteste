@@ -1,56 +1,32 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { PainelVivo } from "@/components/prototipo/painel-vivo";
 import { giz } from "@/components/prototipo/tokens";
+import { segment, useScrollSection } from "@/components/gizpay-site/use-scroll-section";
 
-const FLOATING_CARDS = [
+/** Cards laterais — fora do painel, sem sobreposição. */
+const SIDE_METRICS = [
   {
     label: "Pix confirmado",
     value: "R$ 1.240",
     sub: "Maria Clara · 7º ano",
-    className: "left-[-8%] top-[4%] xl:left-[-6%]",
-    drift: { x: -24, y: 18 },
-    delay: 0,
+    side: "left" as const,
   },
   {
     label: "Recebido hoje",
     value: "R$ 18.430",
     sub: "Colégio Aurora",
-    className: "right-[-8%] top-[10%] xl:right-[-5%]",
-    drift: { x: 24, y: 14 },
-    delay: 0.08,
+    side: "right" as const,
   },
-  {
-    label: "Baixa automática",
-    value: "12 seg",
-    sub: "João Pedro · Pix",
-    className: "bottom-[8%] left-[-10%] xl:left-[-7%]",
-    drift: { x: -20, y: 22 },
-    delay: 0.16,
-  },
-  {
-    label: "Inadimplência",
-    value: "4,2%",
-    sub: "↓ 11% este semestre",
-    className: "bottom-[6%] right-[-8%] xl:right-[-5%]",
-    drift: { x: 22, y: 20 },
-    delay: 0.24,
-  },
-] as const;
+];
 
-function clamp(value: number, min: number, max: number) {
-  return Math.min(max, Math.max(min, value));
-}
-
-function easeOutCubic(t: number) {
-  return 1 - (1 - t) ** 3;
-}
-
-function segment(progress: number, start: number, end: number) {
-  return easeOutCubic(clamp((progress - start) / (end - start), 0, 1));
-}
+/** Faixa compacta abaixo do painel — 2 métricas, não flutuam em cima. */
+const STRIP_METRICS = [
+  { label: "Baixa automática", value: "12 seg" },
+  { label: "Inadimplência média", value: "4,2%" },
+];
 
 function HeroCopy() {
   return (
@@ -102,110 +78,109 @@ function HeroCopy() {
   );
 }
 
-function FloatingCards({
+function SideMetricCard({
+  label,
+  value,
+  sub,
+  side,
   progress,
-  reducedMotion,
 }: {
+  label: string;
+  value: string;
+  sub: string;
+  side: "left" | "right";
   progress: number;
-  reducedMotion: boolean;
 }) {
-  return (
-    <div aria-hidden className="pointer-events-none absolute inset-0 hidden lg:block">
-      {FLOATING_CARDS.map((card) => {
-        const cardProgress = reducedMotion
-          ? 1
-          : segment(progress, 0.28 + card.delay, 0.82 + card.delay);
-        const opacity = cardProgress;
-        const driftX = (1 - cardProgress) * card.drift.x;
-        const driftY = (1 - cardProgress) * card.drift.y;
-        const scale = 0.9 + cardProgress * 0.1;
+  const inProgress = segment(progress, 0.35, 0.78);
+  const offset = (1 - inProgress) * (side === "left" ? -28 : 28);
 
-        return (
-          <div
-            key={card.label}
-            className={`absolute w-[210px] rounded-[24px] border p-4 backdrop-blur-md xl:w-[230px] ${card.className}`}
-            style={{
-              opacity,
-              transform: `translate(${driftX}px, ${driftY}px) scale(${scale})`,
-              background: "rgba(20,59,49,0.78)",
-              borderColor: "rgba(242,247,243,0.14)",
-              willChange: reducedMotion ? undefined : "transform, opacity",
-            }}
-          >
-            <p
-              className="text-[10px] font-medium uppercase tracking-[0.12em]"
-              style={{ color: giz.mutedDark }}
-            >
-              {card.label}
-            </p>
-            <p
-              className="mt-1 font-mono text-[22px] font-medium tabular-nums leading-none"
-              style={{ color: giz.primary }}
-            >
-              {card.value}
-            </p>
-            <p className="mt-2 text-[12px]" style={{ color: giz.fgDark }}>
-              {card.sub}
-            </p>
-          </div>
-        );
-      })}
+  return (
+    <div
+      className="hidden w-[168px] shrink-0 rounded-[20px] border px-4 py-3.5 xl:block"
+      style={{
+        opacity: inProgress,
+        transform: `translateX(${offset}px)`,
+        background: "rgba(20,59,49,0.65)",
+        borderColor: "rgba(242,247,243,0.12)",
+        willChange: "transform, opacity",
+      }}
+    >
+      <p
+        className="text-[9px] font-medium uppercase tracking-[0.14em]"
+        style={{ color: giz.mutedDark }}
+      >
+        {label}
+      </p>
+      <p
+        className="mt-1 font-mono text-[20px] font-medium tabular-nums leading-none"
+        style={{ color: giz.primary }}
+      >
+        {value}
+      </p>
+      <p className="mt-1.5 text-[11px] leading-snug" style={{ color: giz.mutedDark }}>
+        {sub}
+      </p>
     </div>
   );
 }
 
-/**
- * Hero com transição por scroll: título some, painel + cards flutuantes entram.
- */
+function BoardLayer({ progress }: { progress: number }) {
+  const boardIn = segment(progress, 0.12, 0.72);
+  const stripIn = segment(progress, 0.48, 0.88);
+
+  return (
+    <div
+      className="w-full max-w-[920px]"
+      style={{
+        opacity: boardIn,
+        transform: `translateY(${(1 - boardIn) * 88}px) scale(${0.88 + boardIn * 0.12})`,
+        willChange: "transform, opacity",
+      }}
+    >
+      <div className="flex items-start justify-center gap-5 xl:gap-8">
+        <SideMetricCard {...SIDE_METRICS[0]} side="left" progress={progress} />
+        <div className="w-full min-w-0 max-w-[620px]">
+          <PainelVivo />
+        </div>
+        <SideMetricCard {...SIDE_METRICS[1]} side="right" progress={progress} />
+      </div>
+
+      <div
+        className="mx-auto mt-4 grid max-w-[620px] grid-cols-2 gap-3"
+        style={{ opacity: stripIn, transform: `translateY(${(1 - stripIn) * 12}px)` }}
+      >
+        {STRIP_METRICS.map((item) => (
+          <div
+            key={item.label}
+            className="rounded-full border px-4 py-2.5 text-center"
+            style={{
+              borderColor: giz.borderDark,
+              background: "rgba(20,59,49,0.45)",
+            }}
+          >
+            <p
+              className="text-[9px] font-medium uppercase tracking-[0.12em]"
+              style={{ color: giz.mutedDark }}
+            >
+              {item.label}
+            </p>
+            <p
+              className="mt-0.5 font-mono text-[15px] font-medium tabular-nums"
+              style={{ color: giz.fgDark }}
+            >
+              {item.value}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/** Hero: título some ao rolar; painel + métricas laterais entram sem sobreposição. */
 export function HeroScroll() {
   const sectionRef = useRef<HTMLElement>(null);
-  const [progress, setProgress] = useState(0);
-  const [reducedMotion, setReducedMotion] = useState(false);
-  const [ready, setReady] = useState(false);
-
-  useEffect(() => {
-    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const applyMotion = () => {
-      setReducedMotion(media.matches);
-      setReady(true);
-      if (media.matches) setProgress(1);
-    };
-
-    applyMotion();
-    media.addEventListener("change", applyMotion);
-
-    if (media.matches) {
-      return () => media.removeEventListener("change", applyMotion);
-    }
-
-    let frame = 0;
-
-    const update = () => {
-      const section = sectionRef.current;
-      if (!section) return;
-
-      const rect = section.getBoundingClientRect();
-      const scrollRange = section.offsetHeight - window.innerHeight;
-      const scrolled = clamp(-rect.top, 0, scrollRange);
-      setProgress(scrollRange > 0 ? scrolled / scrollRange : 0);
-    };
-
-    const onScroll = () => {
-      cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(update);
-    };
-
-    update();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-
-    return () => {
-      cancelAnimationFrame(frame);
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-      media.removeEventListener("change", applyMotion);
-    };
-  }, []);
+  const { progress, reducedMotion, ready } = useScrollSection(sectionRef);
 
   if (ready && reducedMotion) {
     return (
@@ -214,23 +189,17 @@ export function HeroScroll() {
         style={{ borderColor: giz.borderDark }}
       >
         <HeroCopy />
-        <div className="relative mx-auto mt-14 max-w-[680px]">
-          <FloatingCards progress={1} reducedMotion />
-          <PainelVivo />
+        <div className="mx-auto mt-14 max-w-[920px]">
+          <BoardLayer progress={1} />
         </div>
       </section>
     );
   }
 
   const titleOut = segment(progress, 0, 0.42);
-  const boardIn = segment(progress, 0.12, 0.72);
   const hintOut = 1 - segment(progress, 0, 0.2);
-
   const titleOpacity = 1 - titleOut;
   const titleY = -titleOut * 72;
-  const boardOpacity = boardIn;
-  const boardY = (1 - boardIn) * 88;
-  const boardScale = 0.86 + boardIn * 0.14;
 
   return (
     <section
@@ -245,11 +214,6 @@ export function HeroScroll() {
         aria-hidden
         className="pointer-events-none absolute -top-40 left-1/2 size-[680px] -translate-x-1/2 rounded-full blur-[140px]"
         style={{ background: "rgba(74,222,128,0.14)" }}
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute bottom-0 right-[-10%] size-[420px] rounded-full blur-[120px]"
-        style={{ background: "rgba(74,222,128,0.08)" }}
       />
 
       <div className="sticky top-0 h-[100dvh] overflow-hidden">
@@ -266,18 +230,8 @@ export function HeroScroll() {
             <HeroCopy />
           </div>
 
-          <div
-            className="relative z-10 w-full max-w-[980px]"
-            style={{
-              opacity: boardOpacity,
-              transform: `translateY(${boardY}px) scale(${boardScale})`,
-              willChange: "transform, opacity",
-            }}
-          >
-            <div className="relative mx-auto w-full max-w-[680px]">
-              <FloatingCards progress={progress} reducedMotion={false} />
-              <PainelVivo />
-            </div>
+          <div className="relative z-10 flex w-full justify-center">
+            <BoardLayer progress={progress} />
           </div>
 
           <div

@@ -9,6 +9,7 @@ import {
 import { Reveal } from "@/components/reveal";
 import { ComparativoInterativo } from "@/components/gizpay-site/comparativo-interativo";
 import { HeroScroll } from "@/components/gizpay-site/hero-scroll";
+import { ProvaSocialScroll } from "@/components/gizpay-site/prova-social-scroll";
 import { Calculadora } from "@/components/prototipo/calculadora";
 import { ComoFunciona } from "@/components/prototipo/como-funciona";
 import { Faq } from "@/components/prototipo/faq";
@@ -85,67 +86,7 @@ export function GizPaySite({ showCourseBanner = false }: { showCourseBanner?: bo
 
       <HeroScroll />
 
-      {/* 03 · PROVA */}
-      <section
-        className="border-b"
-        style={{ borderColor: giz.borderDark, background: giz.surface }}
-      >
-        <div className="mx-auto w-full max-w-[1200px] px-5 py-12 sm:px-6">
-          <Reveal>
-            <p
-              className="text-[11px] uppercase tracking-[0.16em]"
-              style={{ color: giz.mutedDark }}
-            >
-              Escolas que já usam
-            </p>
-            <div className="mt-5 flex flex-wrap items-center gap-x-8 gap-y-3">
-              {[
-                "Colégio Aurora",
-                "Instituto Vale Verde",
-                "Escola Monte Azul",
-                "Colégio São Roque",
-              ].map((nome) => (
-                <span
-                  key={nome}
-                  className="font-display text-lg font-semibold tracking-tight opacity-45"
-                  style={{ color: giz.fgDark }}
-                >
-                  {nome}
-                </span>
-              ))}
-            </div>
-
-            <dl className="mt-10 grid gap-8 sm:grid-cols-3">
-              {[
-                ["R$ 12,4 mi", "processados em 2026"],
-                ["38 escolas", "ativas na plataforma"],
-                ["4,2%", "inadimplência média das escolas ativas"],
-              ].map(([valor, label]) => (
-                <div key={label}>
-                  <dt
-                    className="font-mono text-[32px] font-medium tabular-nums"
-                    style={{ color: giz.primary }}
-                  >
-                    {valor}
-                  </dt>
-                  <dd
-                    className="mt-1 text-sm leading-snug"
-                    style={{ color: giz.mutedDark }}
-                  >
-                    {label}
-                  </dd>
-                </div>
-              ))}
-            </dl>
-
-            <p className="mt-6 text-[11px]" style={{ color: giz.mutedDark }}>
-              Números ilustrativos para fins de protótipo. Em produção, cada
-              métrica publicada precisa da base de cálculo declarada — veja a
-              aula 5.1.
-            </p>
-          </Reveal>
-        </div>
-      </section>
+      <ProvaSocialScroll />
 
       {/* 04 · PROBLEMA */}
       <section style={{ background: giz.light, color: giz.fgLight }}>
