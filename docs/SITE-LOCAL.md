@@ -20,6 +20,15 @@ Abra no navegador:
 | http://localhost:43117/wireframes | Spec dos frames para montar no Figma |
 | http://localhost:43117/auditoria | Auditoria do gizpay.com.br atual |
 
+Se algo aparecer em branco no `npm run dev`, use o build de produção (mais estável):
+
+```bash
+npm run build
+npm run start
+```
+
+Depois acesse novamente **http://localhost:43117/site**.
+
 ## Scripts
 
 ```bash
