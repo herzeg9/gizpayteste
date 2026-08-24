@@ -16,10 +16,10 @@ import {
 } from "@/components/ui/sheet";
 
 const links = [
-  { href: "/", label: "Curso" },
+  { href: "/curso", label: "Curso" },
   { href: "/auditoria", label: "Auditoria" },
   { href: "/wireframes", label: "Wireframes" },
-  { href: "/site", label: "Site local" },
+  { href: "/", label: "Site Giz Pay" },
   { href: "/projeto", label: "Projeto Giz Pay" },
   { href: "/prototipo", label: "Protótipo" },
   { href: "/recursos", label: "Recursos" },
@@ -37,7 +37,11 @@ export function SiteHeader() {
   }, []);
 
   const isActive = (href: string) =>
-    href === "/" ? pathname === "/" : pathname.startsWith(href);
+    href === "/curso"
+      ? pathname === "/curso" || pathname.startsWith("/aula")
+      : href === "/"
+        ? pathname === "/"
+        : pathname.startsWith(href);
 
   return (
     <header
@@ -49,7 +53,7 @@ export function SiteHeader() {
       )}
     >
       <div className="mx-auto flex h-16 w-full max-w-[1200px] items-center justify-between gap-4 px-5 sm:px-6">
-        <Link href="/" className="flex items-center gap-2.5">
+        <Link href="/curso" className="flex items-center gap-2.5">
           <span
             aria-hidden
             className="grid size-8 place-items-center rounded-[10px] bg-primary font-display text-[17px] font-semibold text-primary-foreground"

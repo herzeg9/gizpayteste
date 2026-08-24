@@ -13,7 +13,7 @@ import {
 export const metadata: Metadata = {
   title: "Wireframes · Giz Pay Redesign",
   description:
-    "Especificação frame a frame para montar os wireframes no Figma — alinhada ao site local em /site.",
+    "Especificação frame a frame para montar os wireframes no Figma — alinhada ao site repaginado na raiz (/).",
 };
 
 export default function WireframesPage() {
@@ -30,14 +30,14 @@ export default function WireframesPage() {
           <p className="mt-5 text-lg leading-[1.65] text-muted-foreground">
             14 frames na ordem da homepage. Mobile primeiro (390px), depois desktop
             (1440px). Cada frame corresponde a uma seção do site local em{" "}
-            <Link href="/site" className="font-medium text-primary underline">
-              /site
+            <Link href="/" className="font-medium text-primary underline">
+              /
             </Link>
             .
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
             <Button asChild>
-              <Link href="/site">
+              <Link href="/">
                 Abrir site local
                 <ArrowRight className="size-4" />
               </Link>
@@ -157,11 +157,11 @@ export default function WireframesPage() {
           <ol className="mt-4 list-decimal space-y-2 pl-5 text-sm text-muted-foreground">
             <li>Duplicar frames para high-fidelity na página 🎨 Design</li>
             <li>Protótipo clicável no Figma (links de nav + CTAs)</li>
-            <li>Recriar interações no Framer ou validar em /site neste repo</li>
+            <li>Recriar interações no Framer ou validar na raiz (/) neste repo</li>
             <li>Commit + push para GitHub — clone local para testes da equipe</li>
           </ol>
           <Button asChild className="mt-6">
-            <Link href="/site">Testar implementação local</Link>
+            <Link href="/">Testar implementação</Link>
           </Button>
         </section>
       </Reveal>

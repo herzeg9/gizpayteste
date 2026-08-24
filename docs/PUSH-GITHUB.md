@@ -32,11 +32,12 @@ Se você baixou o projeto pelo Cursor, abra o terminal local na pasta e rode os 
 1. [vercel.com](https://vercel.com) → **Add New Project** → importe `herzeg9/gizpayteste`.
 2. Framework: **Next.js** (detectado automaticamente).
 3. Deploy.
-4. Site repaginado: `https://seu-projeto.vercel.app/site`
+4. Site repaginado: `https://seu-projeto.vercel.app/` (raiz — não precisa de `/site`)
 
 ## Conteúdo do repositório
 
-- `/site` — homepage Giz Pay para testes
+- `/` — homepage Giz Pay repaginada
+- `/curso` — curso Estúdio Giz
 - `/auditoria` — diagnóstico do site atual
 - `/wireframes` — spec para Figma
 - Curso completo Estúdio Giz (aulas, protótipo, demos)

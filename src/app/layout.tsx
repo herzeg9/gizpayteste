@@ -22,11 +22,11 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Estúdio Giz — UI/UX, front-end e Framer na prática",
-    template: "%s · Estúdio Giz",
+    default: "Giz Pay — Gestão financeira escolar sem intermediários",
+    template: "%s · Giz Pay",
   },
   description:
-    "Curso-roteiro em português sobre fundamentos de UI/UX, como a web funciona e o fluxo de trabalho no Framer, aplicado ao repaginamento completo do site da Giz Pay.",
+    "Cobrança automática por Pix, boleto e cartão, liquidação direto no CNPJ da escola.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

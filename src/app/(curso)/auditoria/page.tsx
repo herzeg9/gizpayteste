@@ -336,7 +336,7 @@ export default function AuditoriaPage() {
                 </Link>
               </Button>
               <Button asChild variant="outline">
-                <Link href="/site">Testar site local</Link>
+                <Link href="/">Testar site repaginado</Link>
               </Button>
             </div>
           </section>

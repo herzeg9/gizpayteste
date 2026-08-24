@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { ArrowRight, BookOpen, MousePointerClick, Rocket } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { TrackList } from "@/components/track-list";
@@ -23,7 +24,13 @@ const PILLARS = [
   },
 ];
 
-export default function HomePage() {
+export const metadata: Metadata = {
+  title: "Estúdio Giz — UI/UX, front-end e Framer na prática",
+  description:
+    "Curso-roteiro em português sobre fundamentos de UI/UX, como a web funciona e o fluxo de trabalho no Framer, aplicado ao repaginamento completo do site da Giz Pay.",
+};
+
+export default function CursoHomePage() {
   return (
     <>
       <section className="relative overflow-hidden border-b border-border">

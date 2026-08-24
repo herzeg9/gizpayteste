@@ -8,12 +8,13 @@ Não é um site de slides. É uma plataforma de aula com conteúdo escrito, dez 
 
 | Rota | O que é |
 | --- | --- |
-| `/` | Página inicial com as cinco trilhas e o progresso do aluno |
+| `/` | **Site Giz Pay 2.0 — homepage repaginada (produção / Vercel)** |
+| `/curso` | Página inicial do curso Estúdio Giz |
 | `/aula/[slug]` | As 25 aulas, com objetivos, conteúdo, demos e resumo |
 | `/projeto` | Diagnóstico do site atual, prioridades e checklist de execução |
 | `/auditoria` | Auditoria detalhada do gizpay.com.br — achados, notas e P0–P2 |
 | `/wireframes` | Spec frame a frame para montar no Figma |
-| **`/site`** | **Site Giz Pay 2.0 — preview local para testes (GitHub clone)** |
+| **`/site`** | Redireciona para `/` (compatibilidade) |
 | `/prototipo` | Mesmo site + barra do curso Estúdio Giz |
 | `/recursos` | Escalas de referência, atalhos do Framer, glossário e QA de lançamento |
 
@@ -47,7 +48,7 @@ npm run dev
 
 A aplicação sobe em [http://localhost:43117](http://localhost:43117).
 
-**Preview do site repaginado (testes locais):** [http://localhost:43117/site](http://localhost:43117/site)  
+**Preview do site repaginado:** [http://localhost:43117/](http://localhost:43117/) (antes em `/site`)
 Guia completo: [`docs/SITE-LOCAL.md`](docs/SITE-LOCAL.md)
 
 Outros comandos:

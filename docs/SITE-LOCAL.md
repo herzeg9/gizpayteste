@@ -15,7 +15,8 @@ Abra no navegador:
 
 | URL | O que é |
 |-----|---------|
-| **http://localhost:43117/site** | Site Giz Pay 2.0 — preview limpo (recomendado para testes) |
+| **http://localhost:43117/** | Site Giz Pay 2.0 — homepage repaginada (mesmo que na Vercel) |
+| http://localhost:43117/site | Redireciona para `/` |
 | http://localhost:43117/prototipo | Mesmo site + barra do curso Estúdio Giz |
 | http://localhost:43117/wireframes | Spec dos frames para montar no Figma |
 | http://localhost:43117/auditoria | Auditoria do gizpay.com.br atual |
@@ -27,7 +28,7 @@ npm run build
 npm run start
 ```
 
-Depois acesse novamente **http://localhost:43117/site**.
+Depois acesse novamente **http://localhost:43117/**.
 
 ## Scripts
 
@@ -55,7 +56,7 @@ Auditoria (/auditoria)
     ↓
 Wireframes no Figma (/wireframes + docs/wireframes-gizpay.md)
     ↓
-Validação local (/site) — este repo
+Validação local (/) — este repo
     ↓
 Framer ou produção
 ```
@@ -82,7 +83,7 @@ git commit -m "feat: atualiza seção calculadora"
 git push origin main
 ```
 
-Quem clonar o repo repete `npm install && npm run dev` e acessa `/site`.
+Quem clonar o repo repete `npm install && npm run dev` e acessa a raiz `/`.
 
 ## Aviso
 
