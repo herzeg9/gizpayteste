@@ -5,8 +5,7 @@ import { cn } from "@/lib/utils";
 
 /**
  * Entrada por rolagem: opacidade + 14px de deslocamento, 0,62s, ease out.
- * É a mesma receita ensinada na aula 4.4 — e respeita prefers-reduced-motion
- * via CSS, em globals.css.
+ * Conteúdo visível no SSR e antes da hidratação; animação só após JS ativo.
  */
 export function Reveal({
   children,
@@ -18,11 +17,21 @@ export function Reveal({
   className?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
+  const [ready, setReady] = useState(false);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const node = ref.current;
     if (!node) return;
+
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced) {
+      setVisible(true);
+      setReady(true);
+      return;
+    }
+
+    setReady(true);
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -41,8 +50,9 @@ export function Reveal({
   return (
     <div
       ref={ref}
-      className={cn("reveal", className)}
+      className={cn(ready && "reveal", className)}
       data-visible={visible || undefined}
+      data-reveal-ready={ready || undefined}
       style={{ animationDelay: delay ? `${delay}ms` : undefined }}
     >
       {children}

@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-@import "shadcn/tailwind.css";
+@import "../styles/shadcn-ui.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -125,11 +125,11 @@
   }
 }
 
-.reveal {
+.reveal[data-reveal-ready]:not([data-visible="true"]) {
   opacity: 0;
 }
 
-.reveal[data-visible="true"] {
+.reveal[data-reveal-ready][data-visible="true"] {
   animation: rise-in 0.62s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
@@ -138,7 +138,8 @@
     scroll-behavior: auto;
   }
   .reveal,
-  .reveal[data-visible="true"] {
+  .reveal[data-reveal-ready]:not([data-visible="true"]),
+  .reveal[data-reveal-ready][data-visible="true"] {
     opacity: 1;
     animation: none;
   }
