@@ -139,6 +139,22 @@
   animation: float-gentle 5s ease-in-out infinite;
 }
 
+@keyframes scroll-hint {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.35;
+  }
+  50% {
+    transform: translateY(8px);
+    opacity: 1;
+  }
+}
+
+.hero-scroll-hint {
+  animation: scroll-hint 1.8s ease-in-out infinite;
+}
+
 .reveal[data-reveal-ready]:not([data-visible="true"]) {
   opacity: 0;
 }
@@ -153,6 +169,10 @@
   }
 
   .hero-float-card {
+    animation: none;
+  }
+
+  .hero-scroll-hint {
     animation: none;
   }
   .reveal,

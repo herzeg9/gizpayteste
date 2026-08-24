@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 import { Reveal } from "@/components/reveal";
 import { ComparativoInterativo } from "@/components/gizpay-site/comparativo-interativo";
-import { PainelVivo } from "@/components/prototipo/painel-vivo";
+import { HeroScroll } from "@/components/gizpay-site/hero-scroll";
 import { Calculadora } from "@/components/prototipo/calculadora";
 import { ComoFunciona } from "@/components/prototipo/como-funciona";
 import { Faq } from "@/components/prototipo/faq";
@@ -77,154 +77,13 @@ const SEGURANCA = [
   ["Trilha de auditoria", "Cada alteração registrada com autor, data e hora"],
 ];
 
-/** Mini-cards flutuantes — estilo Payoneer, conteúdo Giz Pay. */
-const HERO_FLOATING_CARDS = [
-  {
-    label: "Pix confirmado",
-    value: "R$ 1.240",
-    sub: "Maria Clara · 7º ano",
-    className: "left-[2%] top-[6%] xl:left-[4%]",
-    delay: "0s",
-  },
-  {
-    label: "Recebido hoje",
-    value: "R$ 18.430",
-    sub: "Colégio Aurora",
-    className: "right-[0%] top-[14%] xl:right-[2%]",
-    delay: "0.8s",
-  },
-  {
-    label: "Baixa automática",
-    value: "12 seg",
-    sub: "João Pedro · Pix",
-    className: "bottom-[32%] left-[-2%] xl:left-[0%]",
-    delay: "1.6s",
-  },
-  {
-    label: "Inadimplência",
-    value: "4,2%",
-    sub: "↓ 11% este semestre",
-    className: "bottom-[26%] right-[0%] xl:right-[3%]",
-    delay: "2.4s",
-  },
-] as const;
-
 export function GizPaySite({ showCourseBanner = false }: { showCourseBanner?: boolean }) {
   return (
     <div style={{ background: giz.deep, color: giz.fgDark }}>
       {showCourseBanner ? <BarraProtótipo /> : null}
       <Navegacao />
 
-      {/* 02 · HERO — estilo Payoneer (tentativa 1) */}
-      <section
-        className="relative overflow-hidden border-b"
-        style={{ borderColor: giz.borderDark }}
-      >
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -top-40 left-1/2 size-[680px] -translate-x-1/2 rounded-full blur-[140px]"
-          style={{ background: "rgba(74,222,128,0.14)" }}
-        />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -bottom-20 right-[-10%] size-[420px] rounded-full blur-[120px]"
-          style={{ background: "rgba(74,222,128,0.08)" }}
-        />
-
-        <div className="relative mx-auto w-full max-w-[1200px] px-5 py-20 sm:px-6 sm:py-28 lg:py-36">
-          <div className="relative mx-auto min-h-[520px] max-w-[980px] lg:min-h-[580px]">
-            {/* Cards flutuantes — desktop */}
-            <div
-              aria-hidden
-              className="pointer-events-none absolute inset-0 hidden lg:block"
-            >
-              {HERO_FLOATING_CARDS.map((card) => (
-                <div
-                  key={card.label}
-                  className={`hero-float-card absolute w-[210px] rounded-[24px] border p-4 backdrop-blur-md xl:w-[230px] ${card.className}`}
-                  style={{
-                    animationDelay: card.delay,
-                    background: "rgba(20,59,49,0.72)",
-                    borderColor: "rgba(242,247,243,0.12)",
-                  }}
-                >
-                  <p
-                    className="text-[10px] font-medium uppercase tracking-[0.12em]"
-                    style={{ color: giz.mutedDark }}
-                  >
-                    {card.label}
-                  </p>
-                  <p
-                    className="mt-1 font-mono text-[22px] font-medium tabular-nums leading-none"
-                    style={{ color: giz.primary }}
-                  >
-                    {card.value}
-                  </p>
-                  <p className="mt-2 text-[12px]" style={{ color: giz.fgDark }}>
-                    {card.sub}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            <Reveal>
-              <div className="relative z-10 mx-auto grid max-w-[820px] gap-7 text-center">
-                <span
-                  className="mx-auto w-fit rounded-full border px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em]"
-                  style={{
-                    borderColor: giz.borderDark,
-                    color: giz.primary,
-                    background: "rgba(74,222,128,0.08)",
-                  }}
-                >
-                  Plataforma financeira para escolas
-                </span>
-                <h1
-                  className="mx-auto max-w-[13ch] font-display text-[44px] font-semibold leading-[1.02] tracking-[-0.02em] sm:text-[64px] lg:text-[76px]"
-                  style={{ color: giz.fgDark }}
-                >
-                  O dinheiro da sua escola, no controle de quem ensina.
-                </h1>
-                <p
-                  className="mx-auto max-w-[46ch] text-[17px] leading-[1.68] sm:text-[19px]"
-                  style={{ color: giz.mutedDark }}
-                >
-                  Cobrança automática por Pix, boleto e cartão, com liquidação
-                  direto no CNPJ da escola. Sem intermediário segurando o seu
-                  caixa por 30 dias.
-                </p>
-                <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
-                  <a
-                    href="#agendar"
-                    className="inline-flex min-w-[220px] items-center justify-center rounded-full px-7 py-3.5 text-[15px] font-medium transition-transform active:scale-[0.98]"
-                    style={{ background: giz.primary, color: giz.fgLight }}
-                  >
-                    Agendar demonstração
-                  </a>
-                  <a
-                    href="#calculadora"
-                    className="inline-flex min-w-[220px] items-center justify-center gap-1.5 rounded-full border px-7 py-3.5 text-[15px] font-medium transition-colors hover:bg-white/5"
-                    style={{ borderColor: giz.borderDark, color: giz.fgDark }}
-                  >
-                    Calcular economia
-                    <ArrowUpRight className="size-4 opacity-70" />
-                  </a>
-                </div>
-                <p className="text-[13px]" style={{ color: giz.mutedDark }}>
-                  Implantação e migração da base inclusas · suporte humano por
-                  WhatsApp
-                </p>
-              </div>
-            </Reveal>
-
-            <Reveal delay={140}>
-              <div className="relative z-10 mx-auto mt-14 max-w-[640px] sm:mt-16 lg:mt-20">
-                <PainelVivo />
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
+      <HeroScroll />
 
       {/* 03 · PROVA */}
       <section
