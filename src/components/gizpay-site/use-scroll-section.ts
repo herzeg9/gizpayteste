@@ -21,7 +21,7 @@ export const SCROLL_HEIGHT = {
   prova: "min(260vh, 3000px)",
   problema: "min(260vh, 3000px)",
   comoFunciona: "min(300vh, 3400px)",
-  calculadora: "min(280vh, 3200px)",
+  calculadoraIntro: "min(150vh, 1700px)",
 } as const;
 
 /** Progresso de scroll dentro de uma seção alta com conteúdo sticky. */

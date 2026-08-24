@@ -111,7 +111,7 @@ function useValorAnimado(alvo: number) {
   return valor;
 }
 
-export function Calculadora({ resultHighlight = 1 }: { resultHighlight?: number }) {
+export function Calculadora() {
   const [alunos, setAlunos] = useState(450);
   const [mensalidade, setMensalidade] = useState(950);
   const [taxa, setTaxa] = useState(3.5);
@@ -164,15 +164,8 @@ export function Calculadora({ resultHighlight = 1 }: { resultHighlight?: number 
       </div>
 
       <div
-        className="grid content-center gap-4 rounded-[24px] border p-7 transition-shadow duration-500"
-        style={{
-          background: giz.surface,
-          borderColor: giz.borderDark,
-          boxShadow:
-            resultHighlight > 0.5
-              ? `0 0 0 1px rgba(74,222,128,${0.12 + resultHighlight * 0.2}), 0 24px 60px -20px rgba(74,222,128,${resultHighlight * 0.15})`
-              : undefined,
-        }}
+        className="grid content-center gap-4 rounded-[24px] border p-7"
+        style={{ background: giz.surface, borderColor: giz.borderDark }}
       >
         <p className="text-sm" style={{ color: giz.mutedDark }}>
           O intermediário leva do seu caixa, por ano
@@ -192,11 +185,7 @@ export function Calculadora({ resultHighlight = 1 }: { resultHighlight?: number 
         <a
           href="#agendar"
           className="mt-2 w-fit rounded-full px-6 py-3.5 text-sm font-medium transition-transform active:scale-[0.98]"
-          style={{
-            background: giz.primary,
-            color: giz.fgLight,
-            opacity: 0.4 + resultHighlight * 0.6,
-          }}
+          style={{ background: giz.primary, color: giz.fgLight }}
         >
           Quero ver esse número na minha escola
         </a>

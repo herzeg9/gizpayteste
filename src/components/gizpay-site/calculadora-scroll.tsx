@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import { Reveal } from "@/components/reveal";
 import { Calculadora } from "@/components/prototipo/calculadora";
 import { giz } from "@/components/prototipo/tokens";
 import {
@@ -58,33 +59,27 @@ function CalculadoraStatic() {
 }
 
 /**
- * Calculadora — título some; sliders + resultado entram em grid limpo.
- * Interação livre após aparecer (sem sobrepor elementos).
+ * Intro some com scroll; calculadora fica no fluxo normal da página
+ * (não presa no sticky — não sobe ao continuar rolando).
  */
 export function CalculadoraScroll() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const { progress, reducedMotion, ready } = useScrollSection(sectionRef);
-
-  const titleOut = segment(progress, 0, 0.28);
-  const contentIn = segment(progress, 0.2, 0.48);
-  const resultHighlight = segment(progress, 0.42, 0.75);
+  const transitionRef = useRef<HTMLDivElement>(null);
+  const { progress, reducedMotion, ready } = useScrollSection(transitionRef);
 
   if (ready && reducedMotion) {
     return <CalculadoraStatic />;
   }
 
+  const titleOut = segment(progress, 0, 0.88);
+  const hintOut = 1 - segment(progress, 0, 0.25);
   const titleOpacity = 1 - titleOut;
-  const titleY = -titleOut * 40;
+  const titleY = -titleOut * 48;
 
   return (
     <section
       id="calculadora"
-      ref={sectionRef}
       className="relative overflow-hidden"
-      style={{
-        background: giz.deep,
-        height: SCROLL_HEIGHT.calculadora,
-      }}
+      style={{ background: giz.deep }}
     >
       <div
         aria-hidden
@@ -92,10 +87,14 @@ export function CalculadoraScroll() {
         style={{ background: "rgba(74,222,128,0.12)" }}
       />
 
-      <div className="sticky top-0 flex h-[100dvh] items-center overflow-hidden">
-        <div className="relative mx-auto w-full max-w-[1200px] px-5 sm:px-6">
+      {/* Faixa de scroll só para o título introdutório */}
+      <div
+        ref={transitionRef}
+        style={{ height: SCROLL_HEIGHT.calculadoraIntro }}
+      >
+        <div className="sticky top-0 flex h-[100dvh] items-center justify-center px-5 sm:px-6">
           <div
-            className="absolute inset-0 z-20 flex items-center justify-center"
+            className="relative w-full max-w-[720px] text-center"
             style={{
               opacity: titleOpacity,
               transform: `translateY(${titleY}px)`,
@@ -107,22 +106,36 @@ export function CalculadoraScroll() {
           </div>
 
           <div
-            className="relative z-10 flex min-h-[min(480px,78vh)] flex-col justify-center"
-            style={{
-              opacity: contentIn,
-              transform: `translateY(${(1 - contentIn) * 32}px)`,
-              pointerEvents: contentIn < 0.15 ? "none" : "auto",
-            }}
+            className="pointer-events-none absolute inset-x-0 bottom-8 flex flex-col items-center gap-2"
+            style={{ opacity: hintOut }}
           >
-            <p
-              className="mb-6 text-center text-[11px] font-semibold uppercase tracking-[0.16em]"
-              style={{ color: giz.primary, opacity: segment(progress, 0.25, 0.4) }}
+            <span
+              className="text-[11px] uppercase tracking-[0.18em]"
+              style={{ color: giz.mutedDark }}
             >
-              Ajuste os valores da sua escola
-            </p>
-            <Calculadora resultHighlight={resultHighlight} />
+              Role para usar a calculadora
+            </span>
+            <span
+              className="hero-scroll-hint block h-8 w-px"
+              style={{ background: giz.mutedDark }}
+            />
           </div>
         </div>
+      </div>
+
+      {/* Calculadora no fluxo normal — permanece na tela enquanto o usuário interage */}
+      <div className="relative mx-auto w-full max-w-[1200px] scroll-mt-20 px-5 pb-24 pt-4 sm:px-6 sm:pb-28">
+        <Reveal>
+          <p
+            className="mb-8 text-center text-[11px] font-semibold uppercase tracking-[0.16em]"
+            style={{ color: giz.primary }}
+          >
+            Ajuste os valores da sua escola
+          </p>
+        </Reveal>
+        <Reveal delay={80}>
+          <Calculadora />
+        </Reveal>
       </div>
     </section>
   );
