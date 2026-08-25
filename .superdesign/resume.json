@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "targets": {
+    "/": {
+      "targetKind": "existing-ui",
+      "projectId": "b8b47841-984c-4075-b56c-d4ea69ec73f8",
+      "baselineDraftId": "374cead5-7a4e-4e1e-99e0-ce197aaa9edf",
+      "activeDraftId": "374cead5-7a4e-4e1e-99e0-ce197aaa9edf",
+      "designSystemPath": ".superdesign/design-system.md",
+      "referenceIds": ["97d16b79-9c11-4d5c-8a1c-faa1e127b72b"],
+      "contextFiles": [
+        ".superdesign/design-system.md",
+        ".superdesign/website/base-lp19.vercel.app/design.md",
+        "src/components/prototipo/tokens.ts",
+        "src/components/gizpay-site/gizpay-site.tsx"
+      ],
+      "fingerprints": {
+        ".superdesign/design-system.md": "8ffe57c6eec716845e1888932dd58d785a94d58c985883264a523642cd309221",
+        "src/components/prototipo/tokens.ts": "7792092699bf50ad73cf49c0e40f894b6b173d1aef170876c83ca6f319fed322",
+        "src/components/gizpay-site/gizpay-site.tsx": "d7f69c4bd769dfab832a8e7dab2342b27378cb457c567427f3b4b1365f2e6648"
+      },
+      "drafts": {
+        "374cead5-7a4e-4e1e-99e0-ce197aaa9edf": {
+          "title": "Giz Pay — Escola em Controle",
+          "visualDirection": "baseline reproduction",
+          "currentVersion": 1
+        },
+        "b1d29e09-ad85-48d4-9105-f59fa6152bfe": {
+          "title": "Giz Pay — Repaginação Inspirada em StayFlow",
+          "visualDirection": "StayFlow layout: numbered sections, hero beam, pill CTAs",
+          "parentDraftId": "374cead5-7a4e-4e1e-99e0-ce197aaa9edf",
+          "currentVersion": 1
+        },
+        "efb76299-b2a9-47e2-b7c7-b1ca2db06f6d": {
+          "title": "Giz Pay — Editorial Redesign",
+          "visualDirection": "editorial Fraunces hero, bento grid, vertical timeline",
+          "parentDraftId": "374cead5-7a4e-4e1e-99e0-ce197aaa9edf",
+          "currentVersion": 1
+        }
+      },
+      "updatedAt": "2026-08-25T17:40:00.000Z"
+    }
+  }
+}
