@@ -95,7 +95,7 @@ The hero dashboard should **look like a real Giz Pay panel** — no "Exemplo de 
 | 4 | como-funciona | Como funciona | Passos 1–4 implantação |
 | 5 | calculadora | Calculadora | Estime economia anual |
 | 6 | depoimento | — | Depoimento de cliente |
-| 7 | comparativo | Comparativo | Giz Pay vs planilha/intermediário |
+| 7 | comparativo | Comparativo | Intermediários x Giz Pay |
 | 8 | modulos | Módulos | Uma plataforma completa, não um boleto avulso. |
 | 9 | — | Portal do responsável | A família resolve sozinha. A secretaria ganha tempo. |
 | 10 | seguranca | Segurança e conformidade | Dado de aluno é dado sensível. Tratamos como tal. |
