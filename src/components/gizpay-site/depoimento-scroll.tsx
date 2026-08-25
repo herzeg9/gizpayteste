@@ -52,10 +52,13 @@ function DepoimentoConteudo({
           transform: `translateY(${(1 - metricsIn) * 12}px)`,
         }}
       >
-        <div>
+        <div className="grid gap-0.5 text-center sm:text-left">
           <p className="text-[15px] font-medium">Renata Albuquerque</p>
           <p className="text-sm" style={{ color: giz.mutedLight }}>
-            Diretora financeira · Colégio Aurora · 620 alunos
+            Diretora
+          </p>
+          <p className="text-sm" style={{ color: giz.mutedLight }}>
+            Colégio Aurora
           </p>
         </div>
         <dl className="flex gap-8 sm:ml-auto">
