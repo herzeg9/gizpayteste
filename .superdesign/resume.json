@@ -26,10 +26,10 @@
           "currentVersion": 1
         },
         "b1d29e09-ad85-48d4-9105-f59fa6152bfe": {
-          "title": "Giz Pay — Repaginação Completa Inspirada em StayFlow",
-          "visualDirection": "StayFlow layout refined v2: full sections, hero mock, form",
+          "title": "Giz Pay — Hero Refinement",
+          "visualDirection": "StayFlow v3: privacy-safe product demo preview in hero",
           "parentDraftId": "374cead5-7a4e-4e1e-99e0-ce197aaa9edf",
-          "currentVersion": 2
+          "currentVersion": 3
         },
         "efb76299-b2a9-47e2-b7c7-b1ca2db06f6d": {
           "title": "Giz Pay — Editorial Redesign",

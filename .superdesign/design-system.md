@@ -76,9 +76,18 @@ Apply these **patterns** with Giz Pay colors and copy. Do NOT copy StayFlow's pa
 
 Scroll-driven animations from the current site may be simplified to static sections in the design draft unless explicitly requested.
 
----
+### Hero product preview (privacy-safe)
 
-## Homepage information architecture (vital sections — preserve all)
+The hero visual is **NOT** a "live dashboard". It is an **illustrative product demo** for prospects:
+
+- Badge: `Simulação ilustrativa · dados fictícios` or `Exemplo de interface`
+- Generic school label only: `Colégio Exemplo`
+- Show **aggregate** metrics (Em dia / Em aberto / Atrasado %), never real student names or specific payment amounts that imply PII
+- Flow strip: Pix pago → Baixa automática (~12s) → Liquidado no CNPJ
+- Caption: "Na demonstração, mostramos o painel com os números da sua escola."
+- **Never** use "Live", real school names, or identifiable responsável/aluno data in marketing mocks
+
+---
 
 | # | Section ID | Overline | Headline (PT-BR) |
 |---|------------|----------|------------------|
