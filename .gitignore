@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# superdesign (cache temporário; init/ pode ser commitado se quiser)
+.superdesign/tmp/
