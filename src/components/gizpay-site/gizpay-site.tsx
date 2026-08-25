@@ -93,8 +93,12 @@ export function GizPaySite({ showCourseBanner = false }: { showCourseBanner?: bo
                   style={{ borderColor: giz.borderLight }}
                 >
                   <span
-                    className="grid size-9 place-items-center rounded-[10px] font-mono text-[11px] font-medium"
-                    style={{ background: giz.deep, color: giz.primary }}
+                    className="grid size-9 place-items-center rounded-[10px] border font-mono text-[11px] font-medium"
+                    style={{
+                      background: giz.light,
+                      borderColor: giz.borderLight,
+                      color: "#3E8E63",
+                    }}
                   >
                     {modulo.sigla}
                   </span>
