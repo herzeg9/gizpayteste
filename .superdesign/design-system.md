@@ -78,14 +78,11 @@ Scroll-driven animations from the current site may be simplified to static secti
 
 ### Hero product preview (privacy-safe)
 
-The hero visual is **NOT** a "live dashboard". It is an **illustrative product demo** for prospects:
+The hero dashboard should **look like a real Giz Pay panel** — no "Exemplo de interface", "Simulação", or "Live" badges.
 
-- Badge: `Simulação ilustrativa · dados fictícios` or `Exemplo de interface`
-- Generic school label only: `Colégio Exemplo`
-- Show **aggregate** metrics (Em dia / Em aberto / Atrasado %), never real student names or specific payment amounts that imply PII
-- Flow strip: Pix pago → Baixa automática (~12s) → Liquidado no CNPJ
-- Caption: "Na demonstração, mostramos o painel com os números da sua escola."
-- **Never** use "Live", real school names, or identifiable responsável/aluno data in marketing mocks
+- Realistic layout: `app.gizpay.com.br/painel`, aggregate metrics, anonymized payment rows (`••••`)
+- **Single disclaimer only:** small `dados fictícios` text in the **bottom corner** of the mock (muted, 10px)
+- No student PII; school name may be fictional (e.g. Colégio Aurora)
 
 ---
 
