@@ -26,10 +26,10 @@
           "currentVersion": 1
         },
         "b1d29e09-ad85-48d4-9105-f59fa6152bfe": {
-          "title": "Giz Pay — Hero Refinement",
-          "visualDirection": "StayFlow v4: real-looking dashboard, dados fictícios corner only",
+          "title": "Giz Pay — Animated Live Dashboard",
+          "visualDirection": "StayFlow v5: animated payment toasts right, counter increments",
           "parentDraftId": "374cead5-7a4e-4e1e-99e0-ce197aaa9edf",
-          "currentVersion": 4
+          "currentVersion": 5
         },
         "efb76299-b2a9-47e2-b7c7-b1ca2db06f6d": {
           "title": "Giz Pay — Editorial Redesign",

@@ -80,9 +80,9 @@ Scroll-driven animations from the current site may be simplified to static secti
 
 The hero dashboard should **look like a real Giz Pay panel** — no "Exemplo de interface", "Simulação", or "Live" badges.
 
-- Realistic layout: `app.gizpay.com.br/painel`, aggregate metrics, anonymized payment rows (`••••`)
-- **Single disclaimer only:** small `dados fictícios` text in the **bottom corner** of the mock (muted, 10px)
-- No student PII; school name may be fictional (e.g. Colégio Aurora)
+- Realistic layout: `app.gizpay.com.br/painel`, aggregate metrics, anonymized payment rows
+- **Right column:** animated payment toasts cycling every ~3s (slide-in, stack, fade older); main counter increments with green `+ R$` flash
+- **Single disclaimer only:** `dados fictícios` in bottom corner of mock
 
 ---
 
