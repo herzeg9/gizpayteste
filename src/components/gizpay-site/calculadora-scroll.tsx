@@ -126,17 +126,13 @@ export function CalculadoraScroll() {
         id="calculadora"
         className="relative mx-auto w-full max-w-[1200px] scroll-mt-24 px-5 pb-24 pt-4 sm:px-6 sm:pb-28"
       >
-        <Reveal>
-          <p
-            className="mb-8 text-center text-[11px] font-semibold uppercase tracking-[0.16em]"
-            style={{ color: giz.primary }}
-          >
-            Ajuste os valores da sua escola
-          </p>
-        </Reveal>
-        <Reveal delay={80}>
-          <Calculadora />
-        </Reveal>
+        <p
+          className="mb-8 text-center text-[11px] font-semibold uppercase tracking-[0.16em]"
+          style={{ color: giz.primary }}
+        >
+          Ajuste os valores da sua escola
+        </p>
+        <Calculadora />
       </div>
     </section>
   );

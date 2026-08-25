@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Slider as SliderPrimitive } from "radix-ui";
 import { brl, giz } from "./tokens";
 
 type ControleProps = {
@@ -37,7 +36,6 @@ function Controle({
         </span>
       </span>
 
-      {/* Caixa de rolamento — trilho visível para o thumb não flutuar */}
       <div
         className="rounded-[12px] border px-4 py-4"
         style={{
@@ -45,32 +43,20 @@ function Controle({
           background: giz.raised,
         }}
       >
-        <SliderPrimitive.Root
-          value={[valor]}
-          onValueChange={([next]) => onChange(next)}
+        <input
+          type="range"
           min={min}
           max={max}
           step={step}
+          value={valor}
           aria-label={label}
-          className="relative flex h-10 w-full touch-none items-center select-none"
-        >
-          <SliderPrimitive.Track
-            className="relative h-2.5 w-full grow overflow-hidden rounded-full"
-            style={{ background: "rgba(242, 247, 243, 0.12)" }}
-          >
-            <SliderPrimitive.Range
-              className="absolute h-full rounded-full"
-              style={{ background: giz.primary }}
-            />
-          </SliderPrimitive.Track>
-          <SliderPrimitive.Thumb
-            className="block size-5 shrink-0 rounded-full border-2 shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4ADE80]/50"
-            style={{
-              background: giz.primary,
-              borderColor: giz.fgDark,
-            }}
-          />
-        </SliderPrimitive.Root>
+          onChange={(e) => onChange(Number(e.target.value))}
+          onInput={(e) => onChange(Number(e.currentTarget.value))}
+          className="calc-range block h-2.5 w-full cursor-pointer appearance-none rounded-full"
+          style={{
+            background: `linear-gradient(to right, ${giz.primary} 0%, ${giz.primary} ${((valor - min) / (max - min)) * 100}%, rgba(242,247,243,0.12) ${((valor - min) / (max - min)) * 100}%, rgba(242,247,243,0.12) 100%)`,
+          }}
+        />
       </div>
     </div>
   );
