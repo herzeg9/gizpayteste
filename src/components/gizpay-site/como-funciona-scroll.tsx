@@ -39,6 +39,7 @@ function ComoFuncionaStatic() {
   return (
     <section
       id="como-funciona"
+      className="scroll-mt-[72px]"
       style={{ background: giz.lightAlt, color: giz.fgLight }}
     >
       <div className="mx-auto w-full max-w-[1200px] px-5 py-20 sm:px-6 sm:py-24">
@@ -86,6 +87,7 @@ export function ComoFuncionaScroll() {
     <section
       id="como-funciona"
       ref={sectionRef}
+      className="scroll-mt-[72px]"
       style={{
         background: giz.lightAlt,
         color: giz.fgLight,

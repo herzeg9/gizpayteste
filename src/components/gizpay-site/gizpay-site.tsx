@@ -18,6 +18,7 @@ import { Faq } from "@/components/prototipo/faq";
 import { Formulario } from "@/components/prototipo/formulario";
 import { PortalResponsavel } from "@/components/prototipo/portal-responsavel";
 import { giz } from "@/components/prototipo/tokens";
+import { SmoothScrollAnchors } from "@/components/gizpay-site/smooth-scroll-anchors";
 
 const MODULOS = [
   {
@@ -56,6 +57,7 @@ const SEGURANCA = [
 export function GizPaySite({ showCourseBanner = false }: { showCourseBanner?: boolean }) {
   return (
     <div style={{ background: giz.deep, color: giz.fgDark }}>
+      <SmoothScrollAnchors />
       {showCourseBanner ? <BarraProtótipo /> : null}
       <Navegacao />
 
@@ -74,7 +76,11 @@ export function GizPaySite({ showCourseBanner = false }: { showCourseBanner?: bo
       <ComparativoScroll />
 
       {/* 09 · MÓDULOS */}
-      <section id="modulos" style={{ background: giz.light, color: giz.fgLight }}>
+      <section
+        id="modulos"
+        className="scroll-mt-[72px]"
+        style={{ background: giz.light, color: giz.fgLight }}
+      >
         <div className="mx-auto w-full max-w-[1200px] px-5 py-20 sm:px-6 sm:py-24">
           <Reveal>
             <CabecalhoSecao
@@ -166,7 +172,7 @@ export function GizPaySite({ showCourseBanner = false }: { showCourseBanner?: bo
       {/* 11 · SEGURANÇA */}
       <section
         id="seguranca"
-        className="border-t"
+        className="scroll-mt-[72px] border-t"
         style={{ background: giz.surface, borderColor: giz.borderDark }}
       >
         <div className="mx-auto w-full max-w-[1200px] px-5 py-20 sm:px-6 sm:py-24">
@@ -223,7 +229,7 @@ export function GizPaySite({ showCourseBanner = false }: { showCourseBanner?: bo
       {/* 13 · CONVERSÃO */}
       <section
         id="agendar"
-        className="border-t"
+        className="scroll-mt-[72px] border-t"
         style={{ background: giz.deep, borderColor: giz.borderDark }}
       >
         <div className="mx-auto grid w-full max-w-[1200px] gap-12 px-5 py-20 sm:px-6 sm:py-24 lg:grid-cols-[1fr_1fr] lg:gap-20">

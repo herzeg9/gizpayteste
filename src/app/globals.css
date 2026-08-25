@@ -78,7 +78,6 @@
   }
   html {
     @apply font-sans;
-    scroll-behavior: smooth;
   }
   ::selection {
     background: var(--brand);
@@ -111,6 +110,10 @@
   .scrollbar-slim {
     scrollbar-width: thin;
     scrollbar-color: oklch(0.968 0.008 150 / 18%) transparent;
+  }
+
+  .scroll-section-target {
+    scroll-margin-top: 72px;
   }
 }
 
