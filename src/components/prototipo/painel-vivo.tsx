@@ -22,6 +22,12 @@ export function PainelVivo() {
   const [pulso, setPulso] = useState(false);
 
   useEffect(() => {
+    if (!pulso) return;
+    const timer = window.setTimeout(() => setPulso(false), 550);
+    return () => window.clearTimeout(timer);
+  }, [pulso]);
+
+  useEffect(() => {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (media.matches) return;
 
@@ -32,7 +38,6 @@ export function PainelVivo() {
         return proximo;
       });
       setPulso(true);
-      window.setTimeout(() => setPulso(false), 700);
     }, 3200);
 
     return () => window.clearInterval(timer);
@@ -66,15 +71,14 @@ export function PainelVivo() {
         </span>
       </div>
 
-      <div className="mt-5">
+      <div className="mt-5 min-h-[4.5rem]">
         <p className="text-[11px]" style={{ color: giz.mutedDark }}>
           Colégio Exemplo · recebido no mês
         </p>
         <p
-          className="mt-1 font-mono text-[34px] font-medium tabular-nums transition-transform duration-500 sm:text-[40px]"
+          className="mt-1 font-mono text-[34px] font-medium tabular-nums leading-none transition-colors duration-500 sm:text-[40px]"
           style={{
-            color: giz.fgDark,
-            transform: pulso ? "scale(1.03)" : "scale(1)",
+            color: pulso ? giz.primary : giz.fgDark,
           }}
         >
           {brl(recebido)}
@@ -108,11 +112,11 @@ export function PainelVivo() {
         ))}
       </div>
 
-      <div className="mt-4 grid gap-2">
+      <div className="mt-4 grid h-[11.5rem] gap-2 overflow-hidden">
         {visiveis.map((item) => (
           <div
             key={`${item.iniciais}-${item.offset}`}
-            className="flex items-center gap-3 rounded-[10px] border px-3 py-2.5 transition-all duration-500"
+            className="flex items-center gap-3 rounded-[10px] border px-3 py-2.5 transition-[opacity,border-color,background-color] duration-500"
             style={{
               borderColor: item.offset === 0 ? giz.primary + "55" : giz.borderDark,
               background: item.offset === 0 ? "rgba(74,222,128,0.08)" : "transparent",
