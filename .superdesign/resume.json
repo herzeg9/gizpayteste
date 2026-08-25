@@ -5,7 +5,7 @@
       "targetKind": "existing-ui",
       "projectId": "b8b47841-984c-4075-b56c-d4ea69ec73f8",
       "baselineDraftId": "374cead5-7a4e-4e1e-99e0-ce197aaa9edf",
-      "activeDraftId": "374cead5-7a4e-4e1e-99e0-ce197aaa9edf",
+      "activeDraftId": "b1d29e09-ad85-48d4-9105-f59fa6152bfe",
       "designSystemPath": ".superdesign/design-system.md",
       "referenceIds": ["97d16b79-9c11-4d5c-8a1c-faa1e127b72b"],
       "contextFiles": [
@@ -26,10 +26,10 @@
           "currentVersion": 1
         },
         "b1d29e09-ad85-48d4-9105-f59fa6152bfe": {
-          "title": "Giz Pay — Repaginação Inspirada em StayFlow",
-          "visualDirection": "StayFlow layout: numbered sections, hero beam, pill CTAs",
+          "title": "Giz Pay — Repaginação Completa Inspirada em StayFlow",
+          "visualDirection": "StayFlow layout refined v2: full sections, hero mock, form",
           "parentDraftId": "374cead5-7a4e-4e1e-99e0-ce197aaa9edf",
-          "currentVersion": 1
+          "currentVersion": 2
         },
         "efb76299-b2a9-47e2-b7c7-b1ca2db06f6d": {
           "title": "Giz Pay — Editorial Redesign",
@@ -38,7 +38,7 @@
           "currentVersion": 1
         }
       },
-      "updatedAt": "2026-08-25T17:40:00.000Z"
+      "updatedAt": "2026-08-25T17:50:00.000Z"
     }
   }
 }
