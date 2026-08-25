@@ -1,0 +1,342 @@
+{
+  "meta": {
+    "url": "https://base-lp19.vercel.app/",
+    "title": "StayFlow | Hero",
+    "description": "Hero section com vídeo em tela cheia para página de vendas.",
+    "language": "pt-BR",
+    "viewport": "width=device-width, initial-scale=1.0",
+    "themeColor": null,
+    "ogImage": null,
+    "ogTitle": "StayFlow | Hero",
+    "ogDescription": "Hero section com vídeo em tela cheia para página de vendas."
+  },
+  "theme": {
+    "mode": "dark",
+    "bodyBackground": "#050b00",
+    "isDark": true,
+    "confidence": 0.9
+  },
+  "brand": {
+    "name": "StayFlow",
+    "favicon": {
+      "href": null,
+      "type": null
+    }
+  },
+  "colors": {
+    "dominant": [
+      {
+        "hex": "#f7faf7",
+        "ratio": 0.38
+      },
+      {
+        "hex": "#f6f6f6",
+        "ratio": 0.184
+      },
+      {
+        "hex": "#000000",
+        "ratio": 0.173
+      },
+      {
+        "hex": "#f4f7f4",
+        "ratio": 0.071
+      },
+      {
+        "hex": "#ffffff",
+        "ratio": 0.063
+      },
+      {
+        "hex": "#65da00",
+        "ratio": 0.061
+      },
+      {
+        "hex": "#808699",
+        "ratio": 0.011
+      },
+      {
+        "hex": "#d3d5e5",
+        "ratio": 0.011
+      },
+      {
+        "hex": "#5bc401",
+        "ratio": 0.01
+      },
+      {
+        "hex": "#9de3bc",
+        "ratio": 0.009
+      },
+      {
+        "hex": "#f4f8f4",
+        "ratio": 0.007
+      },
+      {
+        "hex": "#050b00",
+        "ratio": 0.005
+      },
+      {
+        "hex": "#fafafa",
+        "ratio": 0.005
+      },
+      {
+        "hex": "#0d1610",
+        "ratio": 0.002
+      },
+      {
+        "hex": "#111814",
+        "ratio": 0.002
+      },
+      {
+        "hex": "#c2c2c2",
+        "ratio": 0.001
+      },
+      {
+        "hex": "#0d1a12",
+        "ratio": 0.001
+      },
+      {
+        "hex": "#131a18",
+        "ratio": 0.001
+      },
+      {
+        "hex": "#363a3d",
+        "ratio": 0.001
+      },
+      {
+        "hex": "#d6ffc4",
+        "ratio": 0.001
+      },
+      {
+        "hex": "#8bff47",
+        "ratio": 0.001
+      },
+      {
+        "hex": "#0a0e0c",
+        "ratio": 0
+      },
+      {
+        "hex": "#121816",
+        "ratio": 0
+      },
+      {
+        "hex": "#1a3021",
+        "ratio": 0
+      },
+      {
+        "hex": "#0b120e",
+        "ratio": 0
+      }
+    ],
+    "palette": [
+      {
+        "hex": "#050b00",
+        "role": "background",
+        "source": "computed"
+      },
+      {
+        "hex": "#f7faf7",
+        "role": "foreground",
+        "source": "computed"
+      },
+      {
+        "hex": "#65da00",
+        "role": "primary",
+        "source": "heuristic"
+      },
+      {
+        "hex": "#d6ffc4",
+        "role": "secondary",
+        "source": "heuristic"
+      },
+      {
+        "hex": "#8bff47",
+        "role": "accent",
+        "source": "heuristic"
+      },
+      {
+        "hex": "#c2c2c2",
+        "role": "neutral",
+        "source": "heuristic"
+      }
+    ],
+    "cssVariables": {
+      "--color-light-button-bg": "#ffffff",
+      "--color-secondary-hover": "#184537",
+      "--color-surface": "#102d23",
+      "--color-accent": "#9de3bc",
+      "--color-text-soft": "#f7faf7",
+      "--color-surface-border": "#9de3bc",
+      "--color-secondary": "#123429",
+      "--color-primary-hover": "#65da00",
+      "--color-glow-soft": "#5bc401",
+      "--color-text": "#f7faf7",
+      "--color-accent-strong": "#65da00",
+      "--shadow-button": "#123429",
+      "--color-light-button-border": "#d4d4d4",
+      "--color-primary": "#5bc401",
+      "--color-glow-faint": "#9de3bc",
+      "--shadow-strong": "#000000",
+      "--color-light-button-text": "#171717"
+    },
+    "gradients": [
+      {
+        "css": "radial-gradient(circle at 24% 42%, rgba(91, 196, 1, 0.16), rgba(0, 0, 0, 0) 24%)",
+        "sampleColors": [
+          "#5bc401",
+          "#000000"
+        ]
+      },
+      {
+        "css": "radial-gradient(circle at 72% 36%, rgba(157, 227, 188, 0.08), rgba(0, 0, 0, 0) 18%)",
+        "sampleColors": [
+          "#9de3bc",
+          "#000000"
+        ]
+      },
+      {
+        "css": "linear-gradient(90deg, rgba(91, 196, 1, 0.92), rgba(157, 227, 188, 0.34))",
+        "sampleColors": [
+          "#5bc401",
+          "#9de3bc"
+        ]
+      },
+      {
+        "css": "radial-gradient(36% 34% at 50% 48%, rgba(214, 255, 196, 0.16), rgba(139, 255, 71, 0.1) 34%, rgba(91, 196, 1, 0.05) 56%, rgba(0, 0, 0, 0) 100%)",
+        "sampleColors": [
+          "#d6ffc4",
+          "#8bff47",
+          "#5bc401",
+          "#000000"
+        ]
+      },
+      {
+        "css": "radial-gradient(54% 58% at 50% 56%, rgba(91, 196, 1, 0.12), rgba(91, 196, 1, 0.04) 46%, rgba(0, 0, 0, 0) 76%)",
+        "sampleColors": [
+          "#5bc401",
+          "#000000"
+        ]
+      },
+      {
+        "css": "linear-gradient(160deg, rgba(255, 255, 255, 0.02) 5%, rgba(255, 255, 255, 0.016) 99%)",
+        "sampleColors": [
+          "#ffffff"
+        ]
+      },
+      {
+        "css": "radial-gradient(25% 25%, rgb(194, 194, 194), rgb(101, 218, 0))",
+        "sampleColors": [
+          "#c2c2c2",
+          "#65da00"
+        ]
+      },
+      {
+        "css": "radial-gradient(circle, rgba(91, 196, 1, 0.14), rgba(91, 196, 1, 0) 58%)",
+        "sampleColors": [
+          "#5bc401"
+        ]
+      },
+      {
+        "css": "linear-gradient(160deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02))",
+        "sampleColors": [
+          "#ffffff"
+        ]
+      },
+      {
+        "css": "linear-gradient(rgb(5, 11, 0) 0%, rgb(5, 11, 0) 100%)",
+        "sampleColors": [
+          "#050b00"
+        ]
+      }
+    ]
+  },
+  "logo": {
+    "status": "unconfirmed",
+    "reason": "no_candidates",
+    "best": null,
+    "candidates": []
+  },
+  "fonts": {
+    "computed": [
+      {
+        "family": "\"Times New Roman\"",
+        "weights": [
+          "400"
+        ],
+        "source": "web"
+      },
+      {
+        "family": "\"Instrument Serif\", serif",
+        "weights": [
+          "400",
+          "500"
+        ],
+        "source": "web"
+      },
+      {
+        "family": "Inter, sans-serif",
+        "weights": [
+          "400"
+        ],
+        "source": "web"
+      },
+      {
+        "family": "Cabin, sans-serif",
+        "weights": [
+          "500"
+        ],
+        "source": "web"
+      },
+      {
+        "family": "Manrope, sans-serif",
+        "weights": [
+          "600",
+          "400",
+          "500"
+        ],
+        "source": "web"
+      },
+      {
+        "family": "\"Inter Tight\", sans-serif",
+        "weights": [
+          "500",
+          "400",
+          "300"
+        ],
+        "source": "web"
+      },
+      {
+        "family": "Arial",
+        "weights": [
+          "400"
+        ],
+        "source": "web"
+      }
+    ],
+    "baseSizePx": 10
+  },
+  "confidence": {
+    "colorExtraction": 0.9,
+    "logoDetection": 0.2,
+    "fontDetection": 0.8
+  },
+  "screenshot": {
+    "url": "https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/hmac-uploads/brand/42af93a0-35d6-4d8e-abd3-a04dc2cfeec0/screenshot.png",
+    "width": 1920,
+    "height": 1080,
+    "sizeBytes": 1385425,
+    "uploadedAt": "2026-08-25T17:33:53.895Z"
+  },
+  "assets": {
+    "bf218c55-cb99-406a-99e7-245eaacb7915": {
+      "url": "https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/hmac-uploads/brand/42af93a0-35d6-4d8e-abd3-a04dc2cfeec0/assets/bf218c55-cb99-406a-99e7-245eaacb7915.png",
+      "name": "t1.png",
+      "type": "image",
+      "description": "",
+      "metadata": {
+        "size": "186.77 KB",
+        "mimeType": "image/png",
+        "sizeBytes": 191253,
+        "uploadedAt": "2026-08-25T17:33:54.399Z"
+      }
+    }
+  }
+}

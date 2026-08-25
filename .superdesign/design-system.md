@@ -58,6 +58,8 @@ Use **ONLY** these tokens. Do not introduce purple gradients, pink accents, or d
 
 ## Layout inspiration (from base-lp19 — structure only)
 
+Reference extraction: `.superdesign/website/base-lp19.vercel.app/design.md` (StayFlow / "Phosphor grove" — use **layout patterns only**, not its Instrument Serif palette or `#050B00` background).
+
 Apply these **patterns** with Giz Pay colors and copy. Do NOT copy StayFlow's palette or sales-training content.
 
 1. **Sticky nav** — logo left, anchor links center, pill CTA right ("Agendar demo")
