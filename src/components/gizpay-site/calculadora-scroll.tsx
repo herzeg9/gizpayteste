@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef } from "react";
-import { Reveal } from "@/components/reveal";
 import { Calculadora } from "@/components/prototipo/calculadora";
 import { giz } from "@/components/prototipo/tokens";
 import {
