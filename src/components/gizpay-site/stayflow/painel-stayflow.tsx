@@ -14,7 +14,7 @@ const FAKE_PAYMENTS = [
 
 type Toast = (typeof FAKE_PAYMENTS)[number] & { id: number };
 
-export function PainelStayflow() {
+export function PainelStayflow({ embedded = false }: { embedded?: boolean }) {
   const [revenue, setRevenue] = useState(428910);
   const [toasts, setToasts] = useState<Toast[]>([]);
   const [pulse, setPulse] = useState(false);
@@ -54,8 +54,8 @@ export function PainelStayflow() {
     return () => window.clearInterval(timer);
   }, []);
 
-  return (
-    <div className="glass-card relative overflow-hidden p-4 shadow-2xl md:p-8">
+  const content = (
+    <>
       <div className="mb-8 flex items-center justify-between border-b border-white/5 pb-4">
         <div className="flex gap-2">
           <div className="size-3 rounded-full bg-red-500/50" />
@@ -185,6 +185,14 @@ export function PainelStayflow() {
           </span>
         </div>
       </div>
+    </>
+  );
+
+  if (embedded) return content;
+
+  return (
+    <div className="glass-card relative overflow-hidden p-4 shadow-2xl md:p-8">
+      {content}
     </div>
   );
 }
