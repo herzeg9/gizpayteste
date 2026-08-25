@@ -39,7 +39,6 @@ function CabecalhoIntro() {
 function CalculadoraStatic() {
   return (
     <section
-      id="calculadora"
       className="relative overflow-hidden"
       style={{ background: giz.deep }}
     >
@@ -50,7 +49,7 @@ function CalculadoraStatic() {
       />
       <div className="relative mx-auto w-full max-w-[1200px] px-5 py-20 sm:px-6 sm:py-28">
         <CabecalhoIntro />
-        <div className="mt-12">
+        <div id="calculadora" className="mt-12 scroll-mt-24">
           <Calculadora />
         </div>
       </div>
@@ -77,7 +76,6 @@ export function CalculadoraScroll() {
 
   return (
     <section
-      id="calculadora"
       className="relative overflow-hidden"
       style={{ background: giz.deep }}
     >
@@ -124,7 +122,10 @@ export function CalculadoraScroll() {
       </div>
 
       {/* Calculadora no fluxo normal — permanece na tela enquanto o usuário interage */}
-      <div className="relative mx-auto w-full max-w-[1200px] scroll-mt-20 px-5 pb-24 pt-4 sm:px-6 sm:pb-28">
+      <div
+        id="calculadora"
+        className="relative mx-auto w-full max-w-[1200px] scroll-mt-24 px-5 pb-24 pt-4 sm:px-6 sm:pb-28"
+      >
         <Reveal>
           <p
             className="mb-8 text-center text-[11px] font-semibold uppercase tracking-[0.16em]"

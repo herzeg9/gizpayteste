@@ -26,10 +26,10 @@
           "currentVersion": 1
         },
         "b1d29e09-ad85-48d4-9105-f59fa6152bfe": {
-          "title": "Giz Pay — Animated Live Dashboard",
-          "visualDirection": "StayFlow v5: animated payment toasts right, counter increments",
+          "title": "Giz Pay — Calculadora Interativa",
+          "visualDirection": "StayFlow v6: working calculator JS + animated dashboard",
           "parentDraftId": "374cead5-7a4e-4e1e-99e0-ce197aaa9edf",
-          "currentVersion": 5
+          "currentVersion": 6
         },
         "efb76299-b2a9-47e2-b7c7-b1ca2db06f6d": {
           "title": "Giz Pay — Editorial Redesign",
