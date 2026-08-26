@@ -23,6 +23,8 @@ Função (verbatim):
 
 Se o usuário não definir nicho/bairro/quantidade, usar os padrões em [nichos-e-fontes.md](nichos-e-fontes.md) e declarar o recorte no início da resposta.
 
+Antes da rodada, se a fundação nunca foi checada nesta sessão: skill `fundacao-pipeline` (Places se houver chave; senão busca web).
+
 ## Fluxo
 
 Copie e marque:

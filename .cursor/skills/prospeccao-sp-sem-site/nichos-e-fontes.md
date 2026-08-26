@@ -34,6 +34,20 @@ Rodar **1–3** por vez, nunca a cidade inteira.
 
 Para visual + ticket, Pinheiros / Vila Madalena / Vila Mariana / Moema / Tatuapé funcionam bem. Para volume de “sem site”, Mooca, Lapa, Santana, Saúde, Santo Amaro.
 
+## Fonte 1 — Places API New (se houver `GOOGLE_PLACES_API_KEY`)
+
+Mais preciso que busca web: o campo `websiteUri` vazio (ou Instagram/iFood) = candidato.
+
+```
+POST https://places.googleapis.com/v1/places:searchText
+X-Goog-Api-Key: $GOOGLE_PLACES_API_KEY
+X-Goog-FieldMask: places.id,places.displayName,places.formattedAddress,places.websiteUri,places.nationalPhoneNumber,places.internationalPhoneNumber,places.rating,places.userRatingCount,places.googleMapsUri,places.regularOpeningHours,places.businessStatus,places.photos
+```
+
+Body: `{ "textQuery": "{nicho} {bairro} São Paulo", "languageCode": "pt-BR", "regionCode": "BR", "maxResultCount": 20 }`.
+
+Para cada place, `websiteUri` ausente / `instagram.com` / `linktr.ee` / `ifood.com.br` / `facebook.com` → segue. Depois Place Details se faltar telefone ou horário. Sem a chave, cair nas queries abaixo.
+
 ## Queries de descoberta
 
 Trocar `{nicho}` e `{bairro}`. Rodar 4–6 queries, não 20.

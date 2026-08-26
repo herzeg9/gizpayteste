@@ -43,22 +43,22 @@ npx create-next-app@latest sites/<slug> --typescript --tailwind --app --eslint -
 
 Hostname com hífen. O pedido `NOMEDONEGOCIO_PRODUCT` vira `{slug}-product`.
 
-```bash
-vercel whoami
-# se falhar: vercel login  →  parar se não autenticar
+**Preferir MCP Vercel** se o namespace não estiver `needsAuth`: ferramenta `deploy_to_vercel` com `name: "{slug}-product"`, `target: "production"`, `files` = árvore de `sites/<slug>/` (sem `node_modules`). Conferir a URL com `get_project` / `list_deployments`.
 
+**Senão, CLI** (Cloud Agent: `VERCEL_TOKEN`; Desktop: `vercel login`):
+
+```bash
+npx --yes vercel@latest whoami
 cd sites/<slug>
-vercel project add <slug>-product
-vercel link --yes --project <slug>-product
-vercel deploy --prod --yes
+npx --yes vercel@latest project add <slug>-product
+npx --yes vercel@latest link --yes --project <slug>-product
+npx --yes vercel@latest deploy --prod --yes
 ```
 
 - `--prod` aqui é a production **desse** projeto novo, não da Giz Pay.
-- **Proibido** rodar `vercel deploy --prod` na raiz do git.
-- Sem `vercel link --repo` neste passo (evita amarrar o standby ao projeto do curso).
-- Não adicionar domínio customizado do cliente.
-- Token: `VERCEL_TOKEN` no ambiente, nunca na linha de comando.
-
-Se o MCP Vercel estiver autenticado, pode criar/inspecionar o projeto por lá; o deploy continua pela CLI no diretório `sites/<slug>`.
+- **Proibido** `vercel deploy --prod` na raiz do git.
+- Sem `vercel link --repo` neste passo.
+- Sem domínio customizado do cliente.
+- Token só via env `VERCEL_TOKEN`, nunca `--token` na linha.
 
 Depois do deploy: colar a URL no dossiê e na tabela de `prospeccao/leads/index.md`. Conferir a home com `vercel curl / --deployment <url>` ou fetch da URL pública.

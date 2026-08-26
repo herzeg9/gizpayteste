@@ -22,6 +22,8 @@ Função (verbatim):
 
 Se não houver lead escolhido, pegar o de maior score em `prospeccao/leads/index.md` ou o nome que o usuário passou. Sem `brief.md`, rodar antes a skill de prospecção **nesse nome**.
 
+Preflight: skill `fundacao-pipeline`. Sem Superdesign auth, parar no dossiê+inputs. Sem Vercel MCP e sem `VERCEL_TOKEN`, entregar o app em `sites/<slug>/` e **não** inventar URL.
+
 ## Fluxo
 
 ```
