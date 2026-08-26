@@ -5,7 +5,9 @@ description: Encontra estabelecimentos de pequeno e médio porte na cidade de S�
 
 # Prospecção SP — negócios sem site (ou site básico)
 
-Esta skill **não envia mensagem ao cliente**. Ela pesquisa, qualifica e entrega um pacote de briefing. O site e a oferta comercial são passos posteriores.
+Esta skill **não envia mensagem ao cliente**. Ela pesquisa, qualifica e entrega um pacote de briefing.
+
+**Próximo passo:** essência, dossiê, lista de inputs, Superdesign e URL de standby — skill `dossie-site-standby`.
 
 Função (verbatim):
 
@@ -151,3 +153,5 @@ Exemplo preenchido: [examples.md](examples.md).
 ## Quando o usuário já trouxe um nome
 
 Pular descoberta. Qualificar o site daquele negócio, coletar o brief e dizer se vale a oferta.
+
+Se o pedido já incluir dossiê, site ou Vercel, ao terminar o `brief.md` seguir a skill `dossie-site-standby`.

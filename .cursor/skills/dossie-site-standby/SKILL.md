@@ -1,0 +1,114 @@
+---
+name: dossie-site-standby
+description: A partir de um lead ou nome de negócio, captura a essência (padaria, loja de roupas, móveis etc.), monta um dossiê (usando o site atual como base de informação e modelo, se existir), lista tudo que precisa entrar no site, gera o visual no Superdesign, implementa o site e publica na Vercel numa URL de standby `{slug}-product`. Use quando o usuário pedir dossiê, essência do negócio, lista de inputs, site standby, proposta hospedada, Superdesign + Vercel, ou para ir do briefing ao site no ar.
+---
+
+# Dossiê → inputs → Superdesign → site standby
+
+Esta skill começa **depois** do briefing (`prospeccao-sp-sem-site`). Não prospecta lista nova e **não envia mensagem ao cliente**.
+
+Função (verbatim):
+
+> Captar a essência do negócio (loja de roupas, padaria, loja de móveis etc.). Fazer um dossiê com todas as informações (caso já exista um site, usá-lo como base de informação e modelo). Após isso, montar uma lista com todas as coisas que vamos precisar inputar no site. Feito isso, automatizar com o Superdesign, criar o site e hospedar no Vercel com uma URL de standby (algo como NOMEDONEGOCIO_PRODUCT).
+
+## Princípios
+
+1. **Essência ≠ ficha cadastral.** O dossiê diz o que o lugar *é* (ritual, materiais, tom, para quem, o que não é). Fatos vêm no mesmo arquivo, com fonte.
+2. **Site atual = base, não clone.** Se existir site (mesmo básico), ele alimenta fatos + modelo visual (*inspired-by*). O standby **melhora** IA e conversão; não copia pixel a pixel nem texto de concorrente.
+3. **Input com status.** Cada item: `temos` | `placeholder` | `falta`. Placeholder aparece marcado no site. `falta` bloqueante não é inventado como fato.
+4. **Um negócio por vez** em Superdesign + deploy. Dossiê/inputs podem reutilizar um `brief.md` já gravado.
+5. **Projeto Vercel novo.** Nunca `vercel --prod` na raiz deste repo (Giz Pay / Estúdio Giz). Standby = projeto `{slug}-product`.
+6. **URL kebab-case.** Pedido do usuário: `NOMEDONEGOCIO_PRODUCT`. Hostname não aceita `_`. Usar `https://{slug}-product.vercel.app`.
+
+Se não houver lead escolhido, pegar o de maior score em `prospeccao/leads/index.md` ou o nome que o usuário passou. Sem `brief.md`, rodar antes a skill de prospecção **nesse nome**.
+
+## Fluxo
+
+```
+- [ ] 1. Essência (vertical + 6–10 frases)
+- [ ] 2. Dossiê (fatos + site atual como modelo)
+- [ ] 3. Lista de inputs
+- [ ] 4. Superdesign (projeto isolado do Giz Pay)
+- [ ] 5. Implementar sites/<slug>/ (só se o pedido incluir site/deploy, ou o usuário aprovar o canvas)
+- [ ] 6. Vercel projeto {slug}-product
+```
+
+Parar cedo conforme o pedido:
+
+| Pedido | Entrega |
+|---|---|
+| essência / dossiê | `dossie.md` |
+| inputs / o que vai no site | + `inputs.md` |
+| Superdesign / visual | + canvas (não implementa ainda) |
+| site / standby / Vercel / URL | implementa + publica |
+
+Pedido que descreve a linha inteira até a URL = autorização para os 6 passos **daquele** negócio.
+
+Templates: [dossie-template.md](dossie-template.md), [inputs-template.md](inputs-template.md). Verticais: [verticais.md](verticais.md). Deploy: [superdesign-e-vercel.md](superdesign-e-vercel.md).
+
+### 1. Essência
+
+Ler o `brief.md` e [verticais.md](verticais.md). Responder, com fonte ou `(inferência)`:
+
+- Vertical (uma): padaria, moda, móveis, salão, restaurante, oficina, pet, clínica, outro
+- Uma frase de posicionamento
+- Ritual do cliente (entra, pede, espera, leva)
+- Materiais / atmosfera (o que se vê e se toca)
+- Tom de voz (palavras deles, se houver)
+- O que isto **não** é (ex.: padaria de bairro, não rede de shopping)
+- CTA natural (WhatsApp, encomenda, visitar, orçamento)
+
+### 2. Dossiê
+
+Gravar `prospeccao/leads/<slug>/dossie.md`.
+
+Se houver site próprio (mesmo básico):
+
+1. Fetch das páginas públicas; extrair copy, serviços, horário, fotos, IA.
+2. Superdesign `extract-website` — `--design-md --brand --content-structure` (ver [superdesign-e-vercel.md](superdesign-e-vercel.md)).
+3. Modo visual: **inspired-by** o site atual (default). Clone fiel só se o usuário pedir.
+
+Se não houver site: Instagram/Maps/iFood como fonte; 1 concorrente do bairro só como referência de *estrutura*, nunca de texto.
+
+Campos sem fonte: `não encontrado`. Placeholder de copy só na etapa 3, rotulado.
+
+### 3. Lista de inputs
+
+Gravar `prospeccao/leads/<slug>/inputs.md` a partir de [inputs-template.md](inputs-template.md) + páginas da vertical.
+
+Tudo que o site vai precisar: marca, fotos, textos, dados (NAP, horário, cardápio), prova social, CTA, legal.
+
+Não avançar para Superdesign com `falta` em: nome, vertical, bairro, e pelo menos um contato (WhatsApp, telefone ou Instagram).
+
+### 4. Superdesign
+
+Seguir a skill Superdesign, com estes cortes (este repo **é** o curso Giz Pay — não desenhar isso):
+
+- Alvo = **produto novo do cliente**, SOP Brand New Project.
+- **Não** usar `.superdesign/init/` nem `.superdesign/design-system.md` do Giz Pay.
+- Escrever `prospeccao/leads/<slug>/design-system.md` e passar esse arquivo em `--context-file`.
+- `create-project --title "{Nome fantasia}"`.
+- Um `-p` só no `create-design-draft`: essência + páginas da vertical + CTA + faixa “Proposta Estúdio Giz — não é o site oficial”.
+- Se houver site extraído: DNA no design-system (inspired-by). Fotos públicas: upload `--purpose reference` ou `content` e `--reference-id`.
+- Mostrar o `canvas:` ao usuário.
+
+Implementar código só depois do canvas **ou** se o pedido desta mensagem já incluir site/standby/Vercel.
+
+### 5–6. Código e Vercel
+
+Ler [superdesign-e-vercel.md](superdesign-e-vercel.md). Resumo:
+
+- App Next.js **em** `sites/<slug>/` (não na raiz).
+- Conteúdo a partir de `inputs.md` (um `content.ts`).
+- Faixa fixa de proposta; placeholders visíveis; WhatsApp se existir; NAP no rodapé.
+- `vercel project add {slug}-product` + link **dentro** de `sites/<slug>` + `vercel deploy --prod --yes`.
+- Confirmar `vercel whoami` antes. Sem login → parar e dizer.
+- Gravar a URL no `dossie.md` e em `prospeccao/leads/index.md`.
+
+## Recusar
+
+- Não publicar no projeto Vercel deste repositório.
+- Não apontar domínio real do cliente.
+- Não copiar blocos de texto de concorrente.
+- Não tratar foto sem origem pública como marca oficial.
+- Não fingir deploy se a CLI falhar.
