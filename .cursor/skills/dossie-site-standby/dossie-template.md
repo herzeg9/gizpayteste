@@ -9,6 +9,7 @@ Copiar para `prospeccao/leads/<slug>/dossie.md`.
 - **Vertical:**
 - **Standby:** `https://{slug}-product.vercel.app` (preencher depois do deploy)
 - **Brief:** `prospeccao/leads/<slug>/brief.md`
+- **Coleta:** `prospeccao/leads/<slug>/coleta.json`
 
 ## Essência
 - Posicionamento (1 frase):
@@ -44,4 +45,6 @@ Copiar para `prospeccao/leads/<slug>/dossie.md`.
 
 ## Fontes
 - URLs · data
+- Arquivo máquina: `coleta.json` + `fatos-dossie.json`
+- Lacunas (não resolver no Superdesign)
 ```

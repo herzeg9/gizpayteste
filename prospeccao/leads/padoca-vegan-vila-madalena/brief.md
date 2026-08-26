@@ -68,8 +68,9 @@
 |---|---|---|---|
 | Endereço | Rua Harmonia, 1275 — Sumarezinho / Vila Madalena | https://www.happycow.net/reviews/padoca-vegan-sao-paulo-91756 | 2026-08-26 |
 | Instagram | @padocavegan | https://linktr.ee/padocavegan | 2026-08-26 |
-| Telefone | (11) 2503-5930 | https://www.happycow.net/reviews/padoca-vegan-sao-paulo-91756 | 2026-08-26 |
-| Horário | 7h–20h todos os dias vs. fecha segunda — lacuna | https://www.happycow.net/reviews/padoca-vegan-sao-paulo-91756 | 2026-08-26 |
+| Telefone | (11) 2503-5930 | https://restaurantguru.com.br/Padoca-Vegan-Sao-Paulo | 2026-08-26 |
+| Horário | 7h–20h todos os dias (Restaurant Guru) vs. fecha segunda (HappyCow) — lacuna | https://restaurantguru.com.br/Padoca-Vegan-Sao-Paulo | 2026-08-26 |
+| Google | 4,6 · 1.313 (bloco Google no RG); 1.613 votos são do RG | https://restaurantguru.com.br/Padoca-Vegan-Sao-Paulo | 2026-08-26 |
 | Site / ausência | site básico: Linktree + delivery.padocavegan.com | https://linktr.ee/padocavegan | 2026-08-26 |
 | Delivery | app oficial Sumarezinho | https://delivery.padocavegan.com/padocavegan/padocavegan | 2026-08-26 |
 
@@ -77,7 +78,7 @@
 - https://linktr.ee/padocavegan
 - https://delivery.padocavegan.com/padocavegan/padocavegan
 - https://www.happycow.net/reviews/padoca-vegan-sao-paulo-91756
-- Restaurant Guru (Google 4,6 / 1313)
+- https://restaurantguru.com.br/Padoca-Vegan-Sao-Paulo (Google 4,6 / 1313; grade 7h–20h)
 - Data da coleta: 2026-08-26
 - Arquivo máquina: `coleta.json`
 - Lacunas: abre ou não na segunda; cardápio de salão vs. delivery; fotos oficiais

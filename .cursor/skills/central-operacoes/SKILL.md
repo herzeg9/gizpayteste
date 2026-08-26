@@ -31,7 +31,7 @@ Teste:
 - [ ] Recorte declarado (nicho + 1–3 bairros)
 - [ ] 5–8 briefs em prospeccao/leads/ + `coleta.json` (evidências) + index.md
 - [ ] Um lead escolhido (maior score, ou o nome do usuário)
-- [ ] dossie.md + inputs.md (temos|placeholder|falta)
+- [ ] dossie.md + inputs.md (temos|placeholder|falta) + design-system.md + roteiro-iteracao.md
 - [ ] Canvas Superdesign isolado (ou dossiê→código se auth faltar — declarar)
 - [ ] App em sites/<slug>/ (não na raiz)
 - [ ] https://{slug}-product.vercel.app no ar
@@ -67,7 +67,7 @@ Teste:
 |---|---|---|
 | Feito (ouro) | Joya Boulangerie | Primeira pseudo-automação completa |
 | Feito | Kio Bakehouse | Segunda rodada; Superdesign + Vercel neste chat |
-| 1 | Padoca Vegan | Site básico; testa o ramo “melhorar o que existe” |
+| 1 | Padoca Vegan | Etapa 2 pronta (dossiê + roteiro); canvas quando pedir |
 | 2 | Iza / Villa Grano / De Lá do Pão / Rodésia | Mesma rodada Vila Madalena |
 | Novo recorte | Só se o usuário nomear nicho+bairro (ex. salões Pinheiros) | Skill de prospecção do zero |
 

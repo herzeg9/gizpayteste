@@ -3,7 +3,7 @@
 Quadro da central: [`../CENTRAL.md`](../CENTRAL.md). Orquestração: skill `central-operacoes`.
 
 1. `brief.md` + `coleta.json` — skill `prospeccao-sp-sem-site` (evidências com URL + data)
-2. `dossie.md` + `inputs.md` — skill `dossie-site-standby`
+2. `dossie.md` + `inputs.md` + `design-system.md` + `roteiro-iteracao.md` — skill `dossie-site-standby`
 3. Superdesign (canvas) → `sites/<slug>/` → Vercel `https://<slug>-product.vercel.app`
 
 Recorte da rodada 2026-08-26: **padaria artesanal · Vila Madalena** (padrão da skill; Places API ausente).

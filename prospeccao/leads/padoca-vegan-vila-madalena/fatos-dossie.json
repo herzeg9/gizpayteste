@@ -1,0 +1,141 @@
+{
+  "versao": 1,
+  "slug": "padoca-vegan-vila-madalena",
+  "nome": "Padoca Vegan",
+  "bairro": "Vila Madalena",
+  "geradoEm": "2026-08-26T22:12:28.504Z",
+  "campos": {
+    "nome": [
+      {
+        "valor": "Padoca Vegan",
+        "url": "https://linktr.ee/padocavegan",
+        "data": "2026-08-26"
+      }
+    ],
+    "endereco": [
+      {
+        "valor": "Rua Harmonia, 1275 — Sumarezinho / Vila Madalena, São Paulo, SP, 05435-001",
+        "url": "https://www.happycow.net/reviews/padoca-vegan-sao-paulo-91756",
+        "data": "2026-08-26"
+      },
+      {
+        "valor": "Rua Harmonia, 1275, 05435-001 São Paulo (estação Vila Madalena)",
+        "url": "https://restaurantguru.com.br/Padoca-Vegan-Sao-Paulo",
+        "data": "2026-08-26"
+      }
+    ],
+    "instagram": [
+      {
+        "valor": "@padocavegan",
+        "url": "https://linktr.ee/padocavegan",
+        "data": "2026-08-26"
+      },
+      {
+        "valor": "@padocavegan (RG: verificado pelo proprietário)",
+        "url": "https://restaurantguru.com.br/Padoca-Vegan-Sao-Paulo",
+        "data": "2026-08-26"
+      }
+    ],
+    "telefone": [
+      {
+        "valor": "(11) 2503-5930",
+        "url": "https://www.happycow.net/reviews/padoca-vegan-sao-paulo-91756",
+        "data": "2026-08-26"
+      },
+      {
+        "valor": "(11) 2503-5930 tel:+551125035930",
+        "url": "https://restaurantguru.com.br/Padoca-Vegan-Sao-Paulo",
+        "data": "2026-08-26"
+      }
+    ],
+    "whatsapp": [],
+    "horario": [
+      {
+        "valor": "7h–20h todos os dias (Restaurant Guru); HappyCow diz fecha segunda — lacuna",
+        "url": "https://www.happycow.net/reviews/padoca-vegan-sao-paulo-91756",
+        "data": "2026-08-26"
+      },
+      {
+        "valor": "seg–dom 07:00–20:00 (RG); HappyCow fecha segunda — lacuna",
+        "url": "https://restaurantguru.com.br/Padoca-Vegan-Sao-Paulo",
+        "data": "2026-08-26"
+      }
+    ],
+    "site_ou_ausencia": [
+      {
+        "valor": "site básico: Linktree + app delivery.padocavegan.com",
+        "url": "https://linktr.ee/padocavegan",
+        "data": "2026-08-26"
+      }
+    ],
+    "google_nota": [
+      {
+        "valor": "4,6 · 1.313 avaliações",
+        "url": "https://www.happycow.net/reviews/padoca-vegan-sao-paulo-91756",
+        "data": "2026-08-26"
+      },
+      {
+        "valor": "Google 4,6/5 · 1.313 avaliações; RG 1613 votos próprios (não misturar)",
+        "url": "https://restaurantguru.com.br/Padoca-Vegan-Sao-Paulo",
+        "data": "2026-08-26"
+      }
+    ],
+    "contato_publico": [
+      {
+        "valor": "@padocavegan + delivery oficial",
+        "url": "https://linktr.ee/padocavegan",
+        "data": "2026-08-26"
+      }
+    ]
+  },
+  "lacunas": [
+    "abre na segunda?",
+    "cardápio salão vs delivery",
+    "fotos oficiais"
+  ],
+  "paginas": [
+    {
+      "url": "https://linktr.ee/padocavegan",
+      "status": 200,
+      "title": "padocavegan Official: Instagram, Facebook | Linktree",
+      "veredito": "sem_site"
+    },
+    {
+      "url": "https://delivery.padocavegan.com/padocavegan/padocavegan",
+      "status": 200,
+      "title": "Padoca Vegan - Delivery OFICIAL - Sumarezinho, São Paulo - SP",
+      "veredito": "tem_dominio"
+    },
+    {
+      "url": "https://www.happycow.net/reviews/padoca-vegan-sao-paulo-91756",
+      "status": 200,
+      "title": "",
+      "veredito": "sem_site"
+    },
+    {
+      "url": "https://delivery.padocavegan.com/",
+      "status": 200,
+      "title": "Padoca Vegan - Delivery OFICIAL - Sumarezinho, São Paulo - SP",
+      "veredito": "tem_dominio"
+    },
+    {
+      "url": "https://www.instagram.com/padocavegan/",
+      "status": 200,
+      "title": "Instagram",
+      "veredito": "sem_site"
+    },
+    {
+      "url": "https://restaurantguru.com.br/Padoca-Vegan-Sao-Paulo",
+      "status": 200,
+      "title": "Padoca Vegan, São Paulo - Menu do restaurante, preços e opiniões",
+      "veredito": "sem_site"
+    }
+  ],
+  "dns": [
+    {
+      "ok": true,
+      "host": "padocavegan.com",
+      "address": "3.33.251.168"
+    }
+  ]
+}

@@ -17,7 +17,7 @@ nicho + bairro
 
 Outreach (WhatsApp, e-mail, Amplemarket) **não entra**.
 
-Etapa 1 (busca + coleta): protocolo em `.cursor/skills/prospeccao-sp-sem-site/coleta-protocolo.md`. Sem Places, o coletor só imprime `queriesWeb` — nomes vêm da busca, não do script. Cada lead precisa de `coleta.json` + tabela Evidências no `brief.md`.
+Etapa 2 (dossiê + inputs + roteiro Superdesign): protocolo em `.cursor/skills/dossie-site-standby/dossie-protocolo.md`. Gate: `montar-dossie.mjs`. Sem `roteiro-iteracao.md` + `design-system.md` do lead, não gerar canvas.
 
 ## Fundação (atualizar a cada sessão)
 
@@ -47,13 +47,13 @@ Kio: preflight OK → dossiê/inputs → Superdesign (5 créditos) → `sites/ki
 
 Ver tabela completa em [`leads/index.md`](leads/index.md).
 
-1. **Padoca Vegan** — próximo: primeiro teste de *site básico* (não ausência total).
+1. **Padoca Vegan** — etapa 2 pronta (`dossie.md` + `inputs.md` + `design-system.md` + `roteiro-iteracao.md`). Canvas/Vercel quando pedir.
 2. Iza / Villa Grano / De Lá do Pão / Rodésia
 3. Recorte novo se o usuário nomear
 
 ## Como pedir nesta conversa
 
-- `teste` / `próxima rodada` → Padoca Vegan, linha completa até URL.
+- `teste` / `próxima rodada` → Padoca Vegan, Superdesign (roteiro já escrito) até URL.
 - `rodada {nicho} {bairro}` → prospecção nova, depois um standby.
 - `só dossiê {nome}` → para no `inputs.md`.
 

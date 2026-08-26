@@ -20,19 +20,28 @@ Função (verbatim):
 5. **Projeto Vercel novo.** Nunca `vercel --prod` na raiz deste repo (Giz Pay / Estúdio Giz). Standby = projeto `{slug}-product`.
 6. **URL kebab-case.** Pedido do usuário: `NOMEDONEGOCIO_PRODUCT`. Hostname não aceita `_`. Usar `https://{slug}-product.vercel.app`.
 
-Se não houver lead escolhido, pegar o de maior score em `prospeccao/leads/index.md` ou o nome que o usuário passou. Sem `brief.md`, rodar antes a skill de prospecção **nesse nome**.
+Se não houver lead escolhido, pegar o de maior score em `prospeccao/leads/index.md` ou o nome que o usuário passou. Sem `brief.md` + `coleta.json` com `prontoParaDossie`, rodar antes a skill de prospecção **nesse nome**.
+
+Protocolo: [dossie-protocolo.md](dossie-protocolo.md). Templates: [dossie-template.md](dossie-template.md), [inputs-template.md](inputs-template.md), [design-system-template.md](design-system-template.md), [roteiro-iteracao-template.md](roteiro-iteracao-template.md). Verticais: [verticais.md](verticais.md). Deploy: [superdesign-e-vercel.md](superdesign-e-vercel.md).
+
+```bash
+node .cursor/skills/dossie-site-standby/scripts/montar-dossie.mjs gate --slug <slug>
+node .cursor/skills/dossie-site-standby/scripts/montar-dossie.mjs fatos --slug <slug>
+```
 
 Preflight: skill `fundacao-pipeline`. Sem Superdesign auth, parar no dossiê+inputs. Sem Vercel MCP e sem `VERCEL_TOKEN`, entregar o app em `sites/<slug>/` e **não** inventar URL.
 
 ## Fluxo
 
 ```
+- [ ] 0. Gate (coleta.json + montar-dossie.mjs gate)
 - [ ] 1. Essência (vertical + 6–10 frases)
-- [ ] 2. Dossiê (fatos + site atual como modelo)
-- [ ] 3. Lista de inputs
-- [ ] 4. Superdesign (projeto isolado do Giz Pay)
-- [ ] 5. Implementar sites/<slug>/ (só se o pedido incluir site/deploy, ou o usuário aprovar o canvas)
-- [ ] 6. Vercel projeto {slug}-product
+- [ ] 2. Dossiê (fatos da coleta + site atual como modelo)
+- [ ] 3. Lista de inputs (temos|placeholder|falta)
+- [ ] 4. design-system.md + roteiro-iteracao.md
+- [ ] 5. Superdesign (projeto isolado do Giz Pay) — só com roteiro no --context-file
+- [ ] 6. Implementar sites/<slug>/ (só se o pedido incluir site/deploy, ou o usuário aprovar o canvas)
+- [ ] 7. Vercel projeto {slug}-product
 ```
 
 Parar cedo conforme o pedido:
@@ -41,16 +50,14 @@ Parar cedo conforme o pedido:
 |---|---|
 | essência / dossiê | `dossie.md` |
 | inputs / o que vai no site | + `inputs.md` |
-| Superdesign / visual | + canvas (não implementa ainda) |
+| Superdesign / visual | + `roteiro-iteracao.md` + canvas (não implementa ainda) |
 | site / standby / Vercel / URL | implementa + publica |
 
-Pedido que descreve a linha inteira até a URL = autorização para os 6 passos **daquele** negócio.
-
-Templates: [dossie-template.md](dossie-template.md), [inputs-template.md](inputs-template.md). Verticais: [verticais.md](verticais.md). Deploy: [superdesign-e-vercel.md](superdesign-e-vercel.md).
+Pedido que descreve a linha inteira até a URL = autorização para os passos **daquele** negócio (gate → URL).
 
 ### 1. Essência
 
-Ler o `brief.md` e [verticais.md](verticais.md). Responder, com fonte ou `(inferência)`:
+Ler `coleta.json`, o `brief.md` e [verticais.md](verticais.md). Responder, com fonte ou `(inferência)`:
 
 - Vertical (uma): padaria, moda, móveis, salão, restaurante, oficina, pet, clínica, outro
 - Uma frase de posicionamento
@@ -62,12 +69,12 @@ Ler o `brief.md` e [verticais.md](verticais.md). Responder, com fonte ou `(infer
 
 ### 2. Dossiê
 
-Gravar `prospeccao/leads/<slug>/dossie.md`.
+Gravar `prospeccao/leads/<slug>/dossie.md` a partir da coleta (`montar-dossie.mjs fatos` gera `fatos-dossie.json`). Cada fato do dossiê aponta para a mesma URL da tabela Evidências. Horários que divergem: os dois + lacuna.
 
 Se houver site próprio (mesmo básico):
 
 1. Fetch das páginas públicas; extrair copy, serviços, horário, fotos, IA.
-2. Superdesign `extract-website` — `--design-md --brand --content-structure` (ver [superdesign-e-vercel.md](superdesign-e-vercel.md)).
+2. Superdesign `extract-website` — `--design-md --brand --content-structure` (ver [superdesign-e-vercel.md](superdesign-e-vercel.md)). **Pular** se a URL for app de pedido / Linktree / checkout; nesses casos o DNA vai no design-system como “o que descartar”.
 3. Modo visual: **inspired-by** o site atual (default). Clone fiel só se o usuário pedir.
 
 Se não houver site: Instagram/Maps/iFood como fonte; 1 concorrente do bairro só como referência de *estrutura*, nunca de texto.
@@ -82,21 +89,30 @@ Tudo que o site vai precisar: marca, fotos, textos, dados (NAP, horário, cardá
 
 Não avançar para Superdesign com `falta` em: nome, vertical, bairro, e pelo menos um contato (WhatsApp, telefone ou Instagram).
 
-### 4. Superdesign
+### 4. Design system + roteiro (antes do canvas)
+
+Gravar no lead, nesta ordem:
+
+1. `design-system.md` — paleta **distinta** de Joya e Kio; fecho “Use ONLY the fonts, colors…”.
+2. `roteiro-iteracao.md` — script completo da rodada ([roteiro-iteracao-template.md](roteiro-iteracao-template.md)): o que é, o que não é, CTA, fatos `temos`, lacunas, placeholders.
+
+`montar-dossie.mjs gate` precisa sair `prontoParaSuperdesign: true`.
+
+### 5. Superdesign
 
 Seguir a skill Superdesign, com estes cortes (este repo **é** o curso Giz Pay — não desenhar isso):
 
 - Alvo = **produto novo do cliente**, SOP Brand New Project.
 - **Não** usar `.superdesign/init/` nem `.superdesign/design-system.md` do Giz Pay.
-- Escrever `prospeccao/leads/<slug>/design-system.md` e passar esse arquivo em `--context-file`.
-- `create-project --title "{Nome fantasia}"`.
+- Escrever `prospeccao/leads/<slug>/design-system.md` e `roteiro-iteracao.md`. Passar **os dois** em `--context-file`. `--user-request` = pedido humano literal.
+- `create-project --title "{Nome fantasia}" --no-open` no Cloud.
 - Um `-p` só no `create-design-draft`: essência + páginas da vertical + CTA + faixa “Proposta Estúdio Giz — não é o site oficial”.
 - Se houver site extraído: DNA no design-system (inspired-by). Fotos públicas: upload `--purpose reference` ou `content` e `--reference-id`.
 - Mostrar o `canvas:` ao usuário.
 
 Implementar código só depois do canvas **ou** se o pedido desta mensagem já incluir site/standby/Vercel.
 
-### 5–6. Código e Vercel
+### 6–7. Código e Vercel
 
 Ler [superdesign-e-vercel.md](superdesign-e-vercel.md). Resumo:
 

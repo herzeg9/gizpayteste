@@ -70,6 +70,51 @@
         "url": "https://www.happycow.net/reviews/padoca-vegan-sao-paulo-91756",
         "host": "happycow.net"
       }
+    },
+    {
+      "ok": true,
+      "url": "https://delivery.padocavegan.com/",
+      "finalUrl": "https://delivery.padocavegan.com/padocavegan/padocavegan",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "title": "Padoca Vegan - Delivery OFICIAL - Sumarezinho, São Paulo - SP",
+      "snippet": "Padoca Vegan - Delivery OFICIAL - Sumarezinho, São Paulo - SP --> search menu account_circle Entre ou cadastre-se keyboard_arrow_right Área de entrega Área de entrega Contato Contato Sobre nós Sobre nós Termos e Políticas search arrow_back search cancel Categorias Categorias expand_more search search cancel account_circle Entre ou cadastre-se keyboard_arrow_right Área de entrega Área de entrega Co",
+      "site": {
+        "veredito": "tem_dominio",
+        "motivo": "dominio_proprio_a_qualificar",
+        "url": "https://delivery.padocavegan.com/padocavegan/padocavegan",
+        "host": "delivery.padocavegan.com"
+      }
+    },
+    {
+      "ok": true,
+      "url": "https://www.instagram.com/padocavegan/",
+      "finalUrl": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fpadocavegan%2F&is_from_rle",
+      "status": 200,
+      "contentType": "text/html; charset=\"utf-8\"",
+      "title": "Instagram",
+      "snippet": "Instagram Veja momentos do dia a dia dos seus amigos próximos . Entrar no Instagram Número de celular, nome de usuário ou email Senha Entrar Esqueceu a senha? Entrar com o Facebook Criar nova conta Meta Sobre Blog Carreiras Ajuda API Privacidade Privacidade da Saúde do Consumidor Termos Localizações Popular Instagram Lite Meta AI Threads Upload de contatos e não usuários Meta Verified Português (B",
+      "site": {
+        "veredito": "sem_site",
+        "motivo": "aggregator:instagram.com",
+        "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fpadocavegan%2F&is_from_rle",
+        "host": "instagram.com"
+      }
+    },
+    {
+      "ok": true,
+      "url": "https://restaurantguru.com.br/Padoca-Vegan-Sao-Paulo",
+      "finalUrl": "https://restaurantguru.com.br/Padoca-Vegan-Sao-Paulo",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "title": "Padoca Vegan, São Paulo - Menu do restaurante, preços e opiniões",
+      "snippet": "Padoca Vegan, São Paulo - Menu do restaurante, preços e opiniões Para negócios Pesquisar São Paulo Onde: Encontrar: pt English Español Русский Entrar Brasil / São Paulo / Padoca Vegan Padoca Vegan Adicionar a lista de desejos Adicionar para comparar Compartilhar 1613 votos #2343 de 6660 cafés em São Paulo Fecha em breve: 20:00 Atualizado há 19 dias Todas as fotos e vídeos Vídeos Comida Sobremesas ",
+      "site": {
+        "veredito": "sem_site",
+        "motivo": "aggregator:restaurantguru.com.br",
+        "url": "https://restaurantguru.com.br/Padoca-Vegan-Sao-Paulo",
+        "host": "restaurantguru.com.br"
+      }
     }
   ],
   "dns": [
@@ -128,6 +173,36 @@
       "valor": "4,6 · 1.313 avaliações",
       "url": "https://www.happycow.net/reviews/padoca-vegan-sao-paulo-91756",
       "data": "2026-08-26"
+    },
+    {
+      "campo": "endereco",
+      "valor": "Rua Harmonia, 1275, 05435-001 São Paulo (estação Vila Madalena)",
+      "url": "https://restaurantguru.com.br/Padoca-Vegan-Sao-Paulo",
+      "data": "2026-08-26"
+    },
+    {
+      "campo": "telefone",
+      "valor": "(11) 2503-5930 tel:+551125035930",
+      "url": "https://restaurantguru.com.br/Padoca-Vegan-Sao-Paulo",
+      "data": "2026-08-26"
+    },
+    {
+      "campo": "horario",
+      "valor": "seg–dom 07:00–20:00 (RG); HappyCow fecha segunda — lacuna",
+      "url": "https://restaurantguru.com.br/Padoca-Vegan-Sao-Paulo",
+      "data": "2026-08-26"
+    },
+    {
+      "campo": "google_nota",
+      "valor": "Google 4,6/5 · 1.313 avaliações; RG 1613 votos próprios (não misturar)",
+      "url": "https://restaurantguru.com.br/Padoca-Vegan-Sao-Paulo",
+      "data": "2026-08-26"
+    },
+    {
+      "campo": "instagram",
+      "valor": "@padocavegan (RG: verificado pelo proprietário)",
+      "url": "https://restaurantguru.com.br/Padoca-Vegan-Sao-Paulo",
+      "data": "2026-08-26"
     }
   ],
   "lacunas": [
@@ -135,5 +210,5 @@
     "cardápio salão vs delivery",
     "fotos oficiais"
   ],
-  "atualizadoEm": "2026-08-26T21:59:37.144Z"
+  "atualizadoEm": "2026-08-26T22:12:28.483Z"
 }

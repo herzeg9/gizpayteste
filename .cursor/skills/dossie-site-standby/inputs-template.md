@@ -5,7 +5,7 @@ Cada linha: **temos** (colar valor + fonte) · **placeholder** (texto/imagem inv
 ```markdown
 # Inputs — {Nome fantasia}
 
-**Bloqueantes:** nome, vertical, bairro, 1 contato. Sem isso, não vai ao Superdesign.
+**Bloqueantes:** nome, vertical, bairro, 1 contato. Sem isso, não vai ao Superdesign. Gate: `montar-dossie.mjs gate --slug <slug>`.
 
 ## Marca
 | Item | Status | Valor / nota |

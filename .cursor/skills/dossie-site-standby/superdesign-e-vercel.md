@@ -15,7 +15,7 @@ Este repositório é o curso **Estúdio Giz / Giz Pay**. Site de cliente é outr
    Ler `.superdesign/website/<domínio>/`. Dobrar o DNA **só** no `design-system.md` do lead (modo inspired-by). A extração na pasta `.superdesign/website/` pode ficar; o `design-system.md` da raiz não.
 5. Projeto: `npx --yes @superdesign/cli@latest create-project --title "<Nome fantasia>"`  
    Headless/CI: acrescentar `--no-open`.
-6. Draft (um `-p` só). Sempre `--context-file prospeccao/leads/<slug>/design-system.md` e o fecho de fidelidade do Superdesign (“Use ONLY the fonts, colors…”). Roteiro completo da iteração: mais um `--context-file prospeccao/leads/<slug>/roteiro-iteracao.md` + `--user-request` com o pedido humano literal (teto 16 KB). Isso **é** a comunicação com a IA do Superdesign — não há chat MCP paralelo. `iterate-design-draft --mode replace` para refinar; `--mode branch` para alternativas.
+6. Draft (um `-p` só). Sempre `--context-file prospeccao/leads/<slug>/design-system.md` **e** `--context-file prospeccao/leads/<slug>/roteiro-iteracao.md`, mais o fecho de fidelidade (“Use ONLY the fonts, colors…”). `--user-request` = pedido humano literal (teto 16 KB). Sem esses dois arquivos, **não** gerar. `iterate-design-draft --mode replace` para refinar; `--mode branch` para alternativas. Headless: `create-project --no-open`.
 7. Fotos: `upload-asset` no projeto; `--reference-id` nos drafts. Logo real → `--purpose brand`. Prints do site/Instagram → `--purpose reference`. Foto que deve aparecer no layout → `--purpose content`.
 8. Passar o `canvas:` ao usuário. Mais páginas: `execute-flow-pages` a partir do draft da home, lista da vertical.
 9. Implementar no código depois do canvas **ou** se o pedido já pediu standby/Vercel.

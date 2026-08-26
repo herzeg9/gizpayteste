@@ -10,7 +10,7 @@ Nenhum MCP extra nesta VM acha padaria. Catálogo atual: **Vercel** (ready), **A
 | **`coletar.mjs`** | 1 — classify, fetch, DNS, CNPJ, evidências | Sim |
 | WebSearch + WebFetch + Computer Use | 1 — Maps/IG/imprensa quando Places falta | Sim, já na sessão |
 | BrasilAPI HTTP | 1 — CNPJ só se o número já for público | Sim, sem MCP |
-| Plugin **Superdesign** (CLI, não MCP) | 3 — canvas / iterate | Sim; autenticado |
+| Plugin **Superdesign** (CLI, não MCP) | 3 — canvas / iterate; roteiro via `--context-file` | Sim; autenticado. Etapa 2 **escreve** o roteiro. |
 | **Vercel MCP** | 5 — `{slug}-product`, logs | Sim; **não** prospecta |
 | Amplemarket | Outreach B2B | **Não conectar** |
 | Firecrawl / Maps não oficial | — | Não adicionar |
