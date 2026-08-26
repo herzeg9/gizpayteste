@@ -28,12 +28,22 @@ export const site = {
 } as const;
 
 export const copy = {
+  wordmark: "Joya",
+  kicker: "Vila Madalena, São Paulo",
+  navCta: "Reservar",
   headline: {
-    text: "O pão da casa, o dia inteiro na Vila Madalena",
+    line1: "O pão da casa,",
+    line2: "o dia inteiro.",
     placeholder: true,
   },
   subheadline: {
-    text: "Boulangerie de chef: croissant de manhã, cesta de pães à noite. Reserva no WhatsApp.",
+    text: "Boulangerie de chef: croissant de manhã, cesta de pães à noite. Um convite para aproveitar uma manhã tranquila ou um jantar para compartilhar.",
+    placeholder: true,
+  },
+  heroImage: {
+    src: "/hero-placeholder.jpg",
+    alt: "Pães e viennoiserie",
+    credit: "Unsplash — placeholder, não é foto da casa",
     placeholder: true,
   },
   about: {

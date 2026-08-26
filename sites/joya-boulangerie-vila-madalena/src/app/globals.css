@@ -16,8 +16,12 @@
   --color-wood: var(--wood);
   --color-charcoal: var(--charcoal);
   --color-flake: var(--flake);
+  --color-gold: var(--flake);
   --font-sans: var(--font-sans);
   --font-display: var(--font-display);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
 }
 
 html {
