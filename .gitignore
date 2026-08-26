@@ -42,3 +42,9 @@ next-env.d.ts
 
 # superdesign (cache temporário; init/ pode ser commitado se quiser)
 .superdesign/tmp/
+
+# sites standby (um Next.js por cliente)
+sites/*/node_modules
+sites/*/.next
+sites/*/out
+sites/*/.vercel
