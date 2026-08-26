@@ -4,6 +4,7 @@
 
 | Skill | Quando |
 |---|---|
+| `central-operacoes` | Hub: testes de automação, fila, preflight de sessão |
 | `prospeccao-sp-sem-site` | Achar PME em SP sem site / site básico |
 | `dossie-site-standby` | Essência → dossiê → inputs → Superdesign → Vercel |
 | `fundacao-pipeline` | Preflight e conexões |
