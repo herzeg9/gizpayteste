@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { usePrefersReducedMotion } from "@/lib/client-hooks";
 import { brl, giz } from "./tokens";
 
 type ControleProps = {
@@ -64,26 +65,24 @@ function Controle({
 
 /** Número que anima até o novo valor — aula 4.4, movimento a serviço da conversão. */
 function useValorAnimado(alvo: number) {
-  const [valor, setValor] = useState(alvo);
+  const reduced = usePrefersReducedMotion();
+  const [animado, setAnimado] = useState(alvo);
   const quadro = useRef<number | null>(null);
+  const valorRef = useRef(alvo);
 
   useEffect(() => {
-    if (
-      typeof window !== "undefined" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    ) {
-      setValor(alvo);
-      return;
-    }
+    if (reduced) return;
 
     const inicio = performance.now();
-    const de = valor;
+    const de = valorRef.current;
     const duracao = 420;
 
     const passo = (agora: number) => {
       const t = Math.min(1, (agora - inicio) / duracao);
       const eased = 1 - Math.pow(1 - t, 3);
-      setValor(de + (alvo - de) * eased);
+      const atual = de + (alvo - de) * eased;
+      valorRef.current = atual;
+      setAnimado(atual);
       if (t < 1) quadro.current = requestAnimationFrame(passo);
     };
 
@@ -91,10 +90,9 @@ function useValorAnimado(alvo: number) {
     return () => {
       if (quadro.current) cancelAnimationFrame(quadro.current);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [alvo]);
+  }, [alvo, reduced]);
 
-  return valor;
+  return reduced ? alvo : animado;
 }
 
 export function Calculadora() {
