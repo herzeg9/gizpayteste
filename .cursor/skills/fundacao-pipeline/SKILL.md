@@ -5,6 +5,8 @@ description: Audita e exige a fundação do pipeline Estúdio Giz (prospecção 
 
 # Fundação do pipeline
 
+Hub: skill `central-operacoes` + `prospeccao/CENTRAL.md`. Esta skill só audita conexões.
+
 Rodar o preflight **antes** de prospectar, desenhar ou publicar. Sem as peças obrigatórias, não fingir o passo.
 
 ```bash
@@ -17,9 +19,9 @@ Mapa completo: [stack.md](stack.md).
 
 | Peça | Papel | Estado típico nesta sessão |
 |---|---|---|
-| Plugin + MCP **Vercel** | `list_projects`, `deploy_to_vercel`, logs, URL | Plugin instalado, **OAuth pendente** |
-| `VERCEL_TOKEN` | CLI no Cloud Agent (OAuth interativo não existe aqui) | Ausente |
-| CLI **Superdesign** | Canvas, extract-website, drafts | `auth: not authenticated` |
+| Plugin + MCP **Vercel** | `list_projects`, `deploy_to_vercel`, logs, URL | Cloud: token; Desktop: OAuth. Conferir `namespaceStatus` |
+| `VERCEL_TOKEN` | CLI no Cloud Agent (OAuth interativo não existe aqui) | Injetar no environment; nunca colar no chat |
+| CLI **Superdesign** | Canvas, extract-website, drafts | `npx @superdesign/cli@latest` — linha `auth:` |
 | Skills deste repo | `prospeccao-sp-sem-site`, `dossie-site-standby` | No git |
 | Skills do plugin Vercel | nextjs, vercel-cli, shadcn, deploy protegido | Já injetadas — só usar |
 | Busca web + fetch | Descoberta e dossiê sem Places | Já disponível |

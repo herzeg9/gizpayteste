@@ -10,9 +10,9 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 ## Cursor Cloud specific instructions
 
-Cloud agents install dependencies with `npm ci` (see `.cursor/environment.json`). There are no environment variables, databases, or external services: student progress lives in `localStorage`, and forms confirm locally.
+Cloud agents install dependencies with `npm ci` (see `.cursor/environment.json`). The **Giz Pay / curso** app has no env vars, databases, or external services: student progress lives in `localStorage`, and forms confirm locally.
 
-The Next.js dev server listens on **http://localhost:43117**. Verify UI work there, not only with a screenshot:
+The Next.js dev server of the **curso** listens on **http://localhost:43117**. Verify UI work there, not only with a screenshot:
 
 | URL | What it is |
 | --- | --- |
@@ -22,4 +22,13 @@ The Next.js dev server listens on **http://localhost:43117**. Verify UI work the
 | `/auditoria` | Site audit |
 | `/wireframes` | Figma frame spec |
 
-Before finishing, run `npm run typecheck`. `npm run lint` currently fails on pre-existing `react-hooks/set-state-in-effect` issues in checklist, calculator, reveal, and progress hooks — do not treat those as blockers unless you edited those files. If `next-env.d.ts` is missing (it is gitignored), generate it by starting `npm run dev` once.
+Before finishing work on the curso, run `npm run typecheck` (root `tsconfig` excludes `sites/`). If `next-env.d.ts` is missing (it is gitignored), generate it by starting `npm run dev` once.
+
+## Central de operações (padrão)
+
+Automação de **criação de sites para PME** (prospecção SP → dossiê → Superdesign → standby `{slug}-product`) opera **neste repositório**, pela skill `central-operacoes` e o quadro `prospeccao/CENTRAL.md`. Não desviar para outro Cloud Agent.
+
+- Curso Giz Pay = raiz, porta 43117, projeto Vercel `gizpayteste`.
+- Site de cliente = `sites/<slug>/`, projeto Vercel **novo** `{slug}-product`. Nunca `vercel --prod` na raiz.
+- Segredo de Cloud: `VERCEL_TOKEN`. Superdesign: login CLI neste VM. Amplemarket: não conectar.
+- Teste ouro: https://joya-boulangerie-product.vercel.app/ — próximo teste padrão: Kio Bakehouse.
