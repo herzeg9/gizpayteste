@@ -67,7 +67,7 @@ Teste:
 |---|---|---|
 | Feito (ouro) | Joya Boulangerie | Primeira pseudo-automação completa |
 | Feito | Kio Bakehouse | Segunda rodada; Superdesign + Vercel neste chat |
-| 1 | Padoca Vegan | Etapa 2 pronta (dossiê + roteiro); canvas quando pedir |
+| 1 | Padoca Vegan | Canvas Superdesign pronto; falta Next + Vercel |
 | 2 | Iza / Villa Grano / De Lá do Pão / Rodésia | Mesma rodada Vila Madalena |
 | Novo recorte | Só se o usuário nomear nicho+bairro (ex. salões Pinheiros) | Skill de prospecção do zero |
 

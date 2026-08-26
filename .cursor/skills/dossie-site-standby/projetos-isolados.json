@@ -15,6 +15,11 @@
       "projectId": "42842e66-d50c-40fe-927c-834e27c15431",
       "draftId": "f4bed154-58a1-4ebe-840d-8024a7d99246",
       "hex": ["#E4B04A", "#8B5A2B", "#C45C26", "#F3EDE2"]
+    },
+    "padoca-vegan-vila-madalena": {
+      "projectId": "eba8a21f-8310-4f95-84af-146af989db68",
+      "draftId": "86b0609d-dc85-4c80-b286-2a1ed2887d9b",
+      "hex": ["#F4EFE4", "#C9A36A", "#4A7C59", "#1A1A18", "#9B3D4A"]
     }
   },
   "waMeOutrosLeads": ["5511910389816"]

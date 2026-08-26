@@ -17,7 +17,7 @@ nicho + bairro
 
 Outreach (WhatsApp, e-mail, Amplemarket) **não entra**.
 
-Etapa 3 (Superdesign): [superdesign-rodada.md](../.cursor/skills/dossie-site-standby/superdesign-rodada.md). `plan --slug` imprime o CLI e **não** gera. Padoca: `rodada-plan.json` pronto; canvas quando pedir.
+Etapa 3 (Superdesign): Padoca Vegan **canvas no ar** — projeto `eba8a21f-…`, draft `86b0609d-…`, audit PASS, 3 créditos. Preview: https://p.superdesign.dev/draft/86b0609d-dc85-4c80-b286-2a1ed2887d9b
 
 ## Fundação (atualizar a cada sessão)
 
@@ -47,13 +47,13 @@ Kio: preflight OK → dossiê/inputs → Superdesign (5 créditos) → `sites/ki
 
 Ver tabela completa em [`leads/index.md`](leads/index.md).
 
-1. **Padoca Vegan** — etapa 2 pronta (`dossie.md` + `inputs.md` + `design-system.md` + `roteiro-iteracao.md`). Canvas/Vercel quando pedir.
+1. **Padoca Vegan** — canvas pronto (audit PASS). Next + Vercel `padoca-vegan-product` quando pedir.
 2. Iza / Villa Grano / De Lá do Pão / Rodésia
 3. Recorte novo se o usuário nomear
 
 ## Como pedir nesta conversa
 
-- `teste` / `próxima rodada` → Padoca Vegan: `superdesign-rodada.mjs` já tem o `plan`; gasta crédito de canvas só nesse pedido.
+- `teste` / `próxima rodada` → Padoca Vegan: implementar `sites/` + Vercel `{slug}-product`.
 - `rodada {nicho} {bairro}` → prospecção nova, depois um standby.
 - `só dossiê {nome}` → para no `inputs.md`.
 
