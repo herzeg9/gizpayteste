@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, type RefObject } from "react";
+import { useEffect, useState, type RefObject } from "react";
 
 export function clamp(value: number, min: number, max: number) {
   return Math.min(max, Math.max(min, value));

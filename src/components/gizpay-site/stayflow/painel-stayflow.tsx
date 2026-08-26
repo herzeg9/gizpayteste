@@ -14,13 +14,17 @@ const FAKE_PAYMENTS = [
 
 type Toast = (typeof FAKE_PAYMENTS)[number] & { id: number };
 
+// Contador monotônico compartilhado: garante keys únicas mesmo com o duplo
+// mount do StrictMode em desenvolvimento e entre instâncias do painel.
+let uidSeq = 0;
+const nextUid = () => (uidSeq += 1);
+
 export function PainelStayflow({ embedded = false }: { embedded?: boolean }) {
   const [revenue, setRevenue] = useState(428910);
   const [toasts, setToasts] = useState<Toast[]>([]);
   const [pulse, setPulse] = useState(false);
   const [flashes, setFlashes] = useState<{ id: number; value: number }[]>([]);
   const indexRef = useRef(0);
-  const toastIdRef = useRef(0);
 
   useEffect(() => {
     if (!pulse) return;
@@ -39,14 +43,14 @@ export function PainelStayflow({ embedded = false }: { embedded?: boolean }) {
       setRevenue((v) => v + p.value);
       setPulse(true);
 
-      const flashId = Date.now();
+      const flashId = nextUid();
       setFlashes((f) => [...f, { id: flashId, value: p.value }]);
       window.setTimeout(() => {
         setFlashes((f) => f.filter((x) => x.id !== flashId));
       }, 1000);
 
-      toastIdRef.current += 1;
-      setToasts((prev) => [{ ...p, id: toastIdRef.current }, ...prev].slice(0, 4));
+      const toastId = nextUid();
+      setToasts((prev) => [{ ...p, id: toastId }, ...prev].slice(0, 4));
     }
 
     addPayment();
