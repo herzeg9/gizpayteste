@@ -1,14 +1,47 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useSyncExternalStore } from "react";
 import { Check, RotateCcw } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { useHydrated } from "@/lib/client-hooks";
 
 export type ChecklistGroup = {
   title: string;
   items: string[];
 };
+
+const EMPTY: string[] = [];
+const EVENT = "estudio-giz:checklist-alterado";
+
+// Snapshot memoizado por chave: useSyncExternalStore exige referência estável
+// enquanto o valor não muda.
+const cache = new Map<string, { raw: string | null; value: string[] }>();
+
+function readChecklist(key: string): string[] {
+  if (typeof window === "undefined") return EMPTY;
+  const raw = window.localStorage.getItem(key);
+  const entry = cache.get(key);
+  if (entry && entry.raw === raw) return entry.value;
+  let value: string[];
+  try {
+    const parsed: unknown = raw ? JSON.parse(raw) : [];
+    value = Array.isArray(parsed) ? (parsed as string[]) : EMPTY;
+  } catch {
+    value = EMPTY;
+  }
+  cache.set(key, { raw, value });
+  return value;
+}
+
+function subscribe(callback: () => void) {
+  window.addEventListener(EVENT, callback);
+  window.addEventListener("storage", callback);
+  return () => {
+    window.removeEventListener(EVENT, callback);
+    window.removeEventListener("storage", callback);
+  };
+}
 
 /** Checklist marcável, guardada no navegador por chave. */
 export function Checklist({
@@ -19,24 +52,20 @@ export function Checklist({
   groups: ChecklistGroup[];
 }) {
   const key = `estudio-giz:checklist:${storageKey}`;
-  const [checked, setChecked] = useState<string[]>([]);
-  const [ready, setReady] = useState(false);
+  const ready = useHydrated();
+  const checked = useSyncExternalStore(
+    subscribe,
+    useCallback(() => readChecklist(key), [key]),
+    () => EMPTY,
+  );
 
-  useEffect(() => {
-    try {
-      const raw = window.localStorage.getItem(key);
-      const parsed: unknown = raw ? JSON.parse(raw) : [];
-      if (Array.isArray(parsed)) setChecked(parsed as string[]);
-    } catch {
-      setChecked([]);
-    }
-    setReady(true);
-  }, [key]);
-
-  const persist = (next: string[]) => {
-    setChecked(next);
-    window.localStorage.setItem(key, JSON.stringify(next));
-  };
+  const persist = useCallback(
+    (next: string[]) => {
+      window.localStorage.setItem(key, JSON.stringify(next));
+      window.dispatchEvent(new Event(EVENT));
+    },
+    [key],
+  );
 
   const toggle = (item: string) =>
     persist(
