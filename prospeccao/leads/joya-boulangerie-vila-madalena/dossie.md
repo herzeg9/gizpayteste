@@ -27,7 +27,10 @@
 ## Site atual como modelo (se houver)
 - O que reaproveitar: nada de domínio próprio; Instagram/imprensa como referência de atmosfera (verde oliva, vitrine, terraço)
 - O que descartar: Linktree como “site”
-- Extração Superdesign: não rodada — CLI `not authenticated` neste Cloud Agent
+- Extração Superdesign: não rodada (sem site próprio)
+- Canvas Superdesign (projeto isolado, não a Giz Pay): https://superdesign.dev/teams/5124f0ee-9951-49d0-8be1-7eb466f29d30/projects/d6e705fe-871b-45b0-a8d7-ee6b6c5ae487
+- Draft home: https://p.superdesign.dev/draft/ed0a2f9e-c31e-4476-9540-a376541c9104
+- IDs: project `d6e705fe-871b-45b0-a8d7-ee6b6c5ae487` · draft `ed0a2f9e-c31e-4476-9540-a376541c9104`
 
 ## Inferências (rotular)
 - Público: (inferência) Vila/Pinheiros, brunch e jantar com vinho, ticket médio acima da padoca
