@@ -61,10 +61,21 @@
 - Promessa: URL que carrega, com 24h, telefone e as duas lojas
 - Não falar: “modernize sua padaria”
 
-## 9. Fontes
+## 9. Evidências
+| Campo | Valor | Fonte (URL) | Data |
+|---|---|---|---|
+| Endereço | Rua Wisard, 500 — Vila Madalena / Pinheiros | https://vejasp.abril.com.br/estabelecimento/villa-grano/ | 2026-08-26 |
+| Telefone | (11) 3031-6636 | https://vejasp.abril.com.br/estabelecimento/villa-grano/ | 2026-08-26 |
+| Instagram | @villagranopaes | https://www.instagram.com/villagranopaes/ | 2026-08-26 |
+| Horário | Vila Madalena 24h (VEJA) | https://vejasp.abril.com.br/estabelecimento/villa-grano/ | 2026-08-26 |
+| Site / ausência | WordPress com erro de servidor | https://villagrano.com.br/ | 2026-08-26 |
+| Google | 4,3 · ~7.670 avaliações | https://restaurantguru.com.br/Villa-Grano-Sao-Paulo | 2026-08-26 |
+
+## 10. Fontes
 - https://villagrano.com.br/
 - https://villagrano.com.br/vila-madalena/
 - https://vejasp.abril.com.br/estabelecimento/villa-grano/
 - https://restaurantguru.com.br/Villa-Grano-Sao-Paulo
 - Data da coleta: 2026-08-26
+- Arquivo máquina: `coleta.json`
 - Lacunas: cardápio atual, se 24h ainda vale, CNPJ

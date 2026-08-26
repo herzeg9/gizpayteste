@@ -25,6 +25,16 @@ Se o usuário não definir nicho/bairro/quantidade, usar os padrões em [nichos-
 
 Antes da rodada, se a fundação nunca foi checada nesta sessão: skill `fundacao-pipeline` (Places se houver chave; senão busca web).
 
+Protocolo de evidência: [coleta-protocolo.md](coleta-protocolo.md). Coletor:
+
+```bash
+node .cursor/skills/prospeccao-sp-sem-site/scripts/coletar.mjs search --nicho "padaria artesanal" --bairro "Vila Madalena"
+node .cursor/skills/prospeccao-sp-sem-site/scripts/coletar.mjs init --slug <slug> --nome "Nome da Casa" --bairro "Vila Madalena"
+node .cursor/skills/prospeccao-sp-sem-site/scripts/coletar.mjs fetch --url "https://…" --out prospeccao/leads/<slug>/coleta.json
+node .cursor/skills/prospeccao-sp-sem-site/scripts/coletar.mjs evidencia --out prospeccao/leads/<slug>/coleta.json --campo endereco --valor "…" --url "https://…"
+node .cursor/skills/prospeccao-sp-sem-site/scripts/coletar.mjs report --in prospeccao/leads/<slug>/coleta.json
+```
+
 ## Fluxo
 
 Copie e marque:
@@ -32,11 +42,11 @@ Copie e marque:
 ```
 Rodada:
 - [ ] 1. Recorte (nicho + 1–3 bairros + N leads)
-- [ ] 2. Descoberta (candidatos brutos)
-- [ ] 3. Qualificação de site (sem site / básico / fora)
-- [ ] 4. Coleta profunda (só os que passaram)
+- [ ] 2. Descoberta (coletar.mjs search + queriesWeb)
+- [ ] 3. Qualificação de site (classify --url + rubrica)
+- [ ] 4. Coleta profunda (lead + imprensa + evidências)
 - [ ] 5. Briefs + ranking
-- [ ] 6. Persistir em prospeccao/leads/
+- [ ] 6. Persistir brief.md + coleta.json em prospeccao/leads/
 ```
 
 ### 1. Recorte
@@ -54,13 +64,18 @@ Ler [nichos-e-fontes.md](nichos-e-fontes.md) para queries, bairros e fontes.
 
 Montar um pool de **12–20 candidatos brutos** para sobrar 5–8 no fim.
 
-Fontes, nesta ordem:
+**Primeiro** rodar o coletor (`search`). Se Places responder, a lista `candidatos` é o pool inicial (`sem_site` entra; `tem_dominio` fica para a rubrica). Se Places faltar, usar `queriesWeb` na busca — não inventar nomes que a busca não mostrou.
 
-1. **Google Search** — queries do recorte; priorizar resultados cujo destino **não** é domínio próprio (Maps, Instagram, iFood, Facebook, Doctoralia, GetNinjas, Linktree).
-2. **Google Maps** — listagem do nicho no bairro. Abrir a ficha: site vazio, `instagram.com`, `linktr.ee`, `ifood.com.br` ou página do Facebook conta como ausência de site próprio.
-3. **Instagram / Facebook** — busca por nome do bairro + nicho; bio com WhatsApp e sem URL própria.
-4. **Marketplaces** — iFood, Rappi, Doctoralia, GetNinjas, Enjoei, OLX: presença lá **não** é site.
-5. **Complemento** — Reclame Aqui, notícias de bairro, listas “melhores de [bairro]”.
+Fontes, nesta ordem (detalhe em [coleta-protocolo.md](coleta-protocolo.md)):
+
+1. Places (`websiteUri`) se houver chave
+2. **Google Search** — queries do recorte; priorizar destino que **não** é domínio próprio (Maps, Instagram, iFood, Facebook, Doctoralia, GetNinjas, Linktree)
+3. **Google Maps** — ficha: site vazio, Instagram, Linktree, iFood ou Facebook = sem site próprio
+4. **Instagram / Facebook** — bio com WhatsApp e sem URL própria
+5. **Marketplaces** — iFood, Rappi, Doctoralia, GetNinjas: presença lá **não** é site
+6. **Complemento** — Reclame Aqui, notícias de bairro, “melhores de [bairro]”
+
+`classify` devolve `sem_site` (aggregator), `site_basico` (Wix/Blogspot/Google Sites), `fonte_terceiro` (VEJA/Estadão/Folha — **não** é o site do negócio), ou `tem_dominio` (qualificar na rubrica).
 
 Para cada candidato bruto, anotar só: nome, bairro, fonte da descoberta, URL da evidência.
 
@@ -88,7 +103,9 @@ Para **cada** candidato, buscar `"Nome exato" São Paulo` e abrir o que parecer 
 
 ### 4. Coleta profunda
 
-Só para quem passou. Preencher o template em [brief-template.md](brief-template.md). Campos sem fonte ficam `não encontrado` — nunca chute.
+Só para quem passou. `init` (scaffold), `lead` (Places se houver chave), `classify` + `fetch` em cada URL, `dns` nos hosts candidatos, `cnpj` só se o número já for público, `evidencia` para cada fato. `report` precisa sair `prontoParaDossie: true` antes de gravar o brief como qualificado.
+
+Preencher [brief-template.md](brief-template.md) **incluindo a tabela Evidências**. Campos sem fonte ficam `não encontrado` — nunca chute. Horários que divergem entre VEJA/CNN/Estadão: os dois valores + lacuna, não a média.
 
 Prioridade do que falta para **fazer o site**:
 
@@ -128,6 +145,7 @@ Para cada lead qualificado, gravar:
 
 ```
 prospeccao/leads/<slug-bairro-nome>/brief.md
+prospeccao/leads/<slug-bairro-nome>/coleta.json   # se o coletor rodou
 ```
 
 `slug` em minúsculas com hífen, estável (`padaria-vila-madalena-pao-da-esquina`).

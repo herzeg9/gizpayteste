@@ -2,7 +2,7 @@
 
 Quadro da central: [`../CENTRAL.md`](../CENTRAL.md). Orquestração: skill `central-operacoes`.
 
-1. `brief.md` — skill `prospeccao-sp-sem-site`
+1. `brief.md` + `coleta.json` — skill `prospeccao-sp-sem-site` (evidências com URL + data)
 2. `dossie.md` + `inputs.md` — skill `dossie-site-standby`
 3. Superdesign (canvas) → `sites/<slug>/` → Vercel `https://<slug>-product.vercel.app`
 

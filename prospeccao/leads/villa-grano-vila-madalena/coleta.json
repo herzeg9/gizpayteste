@@ -1,0 +1,139 @@
+{
+  "versao": 1,
+  "coletadoEm": "2026-08-26T21:58:52.274Z",
+  "slug": "villa-grano-vila-madalena",
+  "nome": "Villa Grano",
+  "nicho": "padaria artesanal",
+  "bairro": "Vila Madalena",
+  "comando": "init",
+  "query": "Villa Grano Vila Madalena São Paulo",
+  "placesKey": false,
+  "places": {
+    "ok": false,
+    "reason": "sem_GOOGLE_PLACES_API_KEY",
+    "places": []
+  },
+  "queriesWeb": [
+    "padaria artesanal Vila Madalena São Paulo",
+    "padaria artesanal Vila Madalena São Paulo Instagram",
+    "padaria artesanal Vila Madalena São Paulo WhatsApp",
+    "\"padaria artesanal\" \"Vila Madalena\" site:instagram.com",
+    "padaria artesanal Vila Madalena São Paulo iFood",
+    "melhores padaria artesanal Vila Madalena São Paulo",
+    "padaria artesanal Vila Madalena São Paulo \"linktr.ee\"",
+    "padaria artesanal Vila Madalena São Paulo \"em construção\""
+  ],
+  "nota": "Scaffold. Preencher evidencias[] com fonte. Sem Places, não inventar nomes.",
+  "candidatos": [],
+  "paginas": [
+    {
+      "ok": true,
+      "url": "https://villagrano.com.br/",
+      "finalUrl": "https://villagrano.com.br/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "title": "HOME - Villa Grano",
+      "snippet": "HOME - Villa Grano Pular para o conteúdo (Pressione Enter) Villa Grano Padaria e Confeitaria Pesquisar por: VILA CLEMENTINO VILA MADALENA VILA CLEMENTINO VILA MADALENA Pesquisar por: Villa Grano Padaria e Confeitaria Menu principal VILA CLEMENTINO VILA MADALENA VILA CLEMENTINO VILA MADALENA Siga nosso Instagram This message is only visible to admins. Problem displaying Facebook posts. Click to sho",
+      "site": {
+        "veredito": "tem_dominio",
+        "motivo": "dominio_proprio_a_qualificar",
+        "url": "https://villagrano.com.br/",
+        "host": "villagrano.com.br"
+      }
+    },
+    {
+      "ok": true,
+      "url": "https://vejasp.abril.com.br/estabelecimento/villa-grano/",
+      "finalUrl": "https://vejasp.abril.com.br/estabelecimento/villa-grano/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "title": "Villa Grano | VEJA SÃO PAULO",
+      "snippet": "Villa Grano | VEJA SÃO PAULO Menu ENTRAR ENTRAR SAIR Usuário Assine Ir para a página de busca Cultura Cidades Comer &#038; Beber Colunistas &times; Assine Já sou assinante Sair Colunas 3&#215;4 Arte ao Redor Blog do Lorençato Bolos On! Faça Comigo Cidade das Crianças Delícia de Conta Desbravando com Monique EntreNós Faro Fino Filmes e Séries &#8211; Por Mattheus Goto Futuros: de dentro pra fora Li",
+      "site": {
+        "veredito": "fonte_terceiro",
+        "motivo": "imprensa_ou_guia:vejasp.abril.com.br",
+        "url": "https://vejasp.abril.com.br/estabelecimento/villa-grano/",
+        "host": "vejasp.abril.com.br"
+      }
+    },
+    {
+      "ok": true,
+      "url": "https://www.instagram.com/villagranopaes/",
+      "finalUrl": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fvillagranopaes%2F&is_from_rle",
+      "status": 200,
+      "contentType": "text/html; charset=\"utf-8\"",
+      "title": "Instagram",
+      "snippet": "Instagram Veja momentos do dia a dia dos seus amigos próximos . Entrar no Instagram Número de celular, nome de usuário ou email Senha Entrar Esqueceu a senha? Entrar com o Facebook Criar nova conta Meta Sobre Blog Carreiras Ajuda API Privacidade Privacidade da Saúde do Consumidor Termos Localizações Popular Instagram Lite Meta AI Threads Upload de contatos e não usuários Meta Verified Português (B",
+      "site": {
+        "veredito": "sem_site",
+        "motivo": "aggregator:instagram.com",
+        "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fvillagranopaes%2F&is_from_rle",
+        "host": "instagram.com"
+      }
+    }
+  ],
+  "dns": [
+    {
+      "ok": true,
+      "host": "villagrano.com.br",
+      "address": "187.45.195.176"
+    }
+  ],
+  "cnpj": null,
+  "evidencias": [
+    {
+      "campo": "nome",
+      "valor": "Villa Grano",
+      "url": "https://vejasp.abril.com.br/estabelecimento/villa-grano/",
+      "data": "2026-08-26"
+    },
+    {
+      "campo": "endereco",
+      "valor": "Rua Wisard, 500 — Vila Madalena / Pinheiros, São Paulo, SP, 05434-000",
+      "url": "https://vejasp.abril.com.br/estabelecimento/villa-grano/",
+      "data": "2026-08-26"
+    },
+    {
+      "campo": "telefone",
+      "valor": "(11) 3031-6636",
+      "url": "https://vejasp.abril.com.br/estabelecimento/villa-grano/",
+      "data": "2026-08-26"
+    },
+    {
+      "campo": "contato_publico",
+      "valor": "(11) 3031-6636",
+      "url": "https://vejasp.abril.com.br/estabelecimento/villa-grano/",
+      "data": "2026-08-26"
+    },
+    {
+      "campo": "instagram",
+      "valor": "https://www.instagram.com/villagranopaes/",
+      "url": "https://www.instagram.com/villagranopaes/",
+      "data": "2026-08-26"
+    },
+    {
+      "campo": "horario",
+      "valor": "Vila Madalena 24h (VEJA)",
+      "url": "https://vejasp.abril.com.br/estabelecimento/villa-grano/",
+      "data": "2026-08-26"
+    },
+    {
+      "campo": "site_ou_ausencia",
+      "valor": "site básico: villagrano.com.br WordPress com erro de servidor",
+      "url": "https://villagrano.com.br/",
+      "data": "2026-08-26"
+    },
+    {
+      "campo": "google_nota",
+      "valor": "4,3 · ~7.670 avaliações",
+      "url": "https://restaurantguru.com.br/Villa-Grano-Sao-Paulo",
+      "data": "2026-08-26"
+    }
+  ],
+  "lacunas": [
+    "cardápio atual",
+    "24h ainda vale?",
+    "CNPJ"
+  ],
+  "atualizadoEm": "2026-08-26T21:59:37.512Z"
+}

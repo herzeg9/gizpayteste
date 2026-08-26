@@ -1,0 +1,139 @@
+{
+  "versao": 1,
+  "coletadoEm": "2026-08-26T21:58:52.230Z",
+  "slug": "padoca-vegan-vila-madalena",
+  "nome": "Padoca Vegan",
+  "nicho": "padaria artesanal",
+  "bairro": "Vila Madalena",
+  "comando": "init",
+  "query": "Padoca Vegan Vila Madalena São Paulo",
+  "placesKey": false,
+  "places": {
+    "ok": false,
+    "reason": "sem_GOOGLE_PLACES_API_KEY",
+    "places": []
+  },
+  "queriesWeb": [
+    "padaria artesanal Vila Madalena São Paulo",
+    "padaria artesanal Vila Madalena São Paulo Instagram",
+    "padaria artesanal Vila Madalena São Paulo WhatsApp",
+    "\"padaria artesanal\" \"Vila Madalena\" site:instagram.com",
+    "padaria artesanal Vila Madalena São Paulo iFood",
+    "melhores padaria artesanal Vila Madalena São Paulo",
+    "padaria artesanal Vila Madalena São Paulo \"linktr.ee\"",
+    "padaria artesanal Vila Madalena São Paulo \"em construção\""
+  ],
+  "nota": "Scaffold. Preencher evidencias[] com fonte. Sem Places, não inventar nomes.",
+  "candidatos": [],
+  "paginas": [
+    {
+      "ok": true,
+      "url": "https://linktr.ee/padocavegan",
+      "finalUrl": "https://linktr.ee/padocavegan",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "title": "padocavegan Official: Instagram, Facebook | Linktree",
+      "snippet": "padocavegan Official: Instagram, Facebook | Linktree @padocavegan Padaria Artesanal Vegana WhatsApp WhatsApp Business Account Cardápio - Delivery e Retirada Cardápio - Delivery e Retirada Faça pedidos online no delivery OFICIAL Padoca Vegan, Sumarezinho, São Paulo. Veja preços dos pratos no cardápio virtual do Padoca Vegan para entrega. Cestas de Presente Cestas de Presente iFood iFood O jeito mai",
+      "site": {
+        "veredito": "sem_site",
+        "motivo": "aggregator:linktr.ee",
+        "url": "https://linktr.ee/padocavegan",
+        "host": "linktr.ee"
+      }
+    },
+    {
+      "ok": true,
+      "url": "https://delivery.padocavegan.com/padocavegan/padocavegan",
+      "finalUrl": "https://delivery.padocavegan.com/padocavegan/padocavegan",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "title": "Padoca Vegan - Delivery OFICIAL - Sumarezinho, São Paulo - SP",
+      "snippet": "Padoca Vegan - Delivery OFICIAL - Sumarezinho, São Paulo - SP --> search menu account_circle Entre ou cadastre-se keyboard_arrow_right Área de entrega Área de entrega Contato Contato Sobre nós Sobre nós Termos e Políticas search arrow_back search cancel Categorias Categorias expand_more search search cancel account_circle Entre ou cadastre-se keyboard_arrow_right Área de entrega Área de entrega Co",
+      "site": {
+        "veredito": "tem_dominio",
+        "motivo": "dominio_proprio_a_qualificar",
+        "url": "https://delivery.padocavegan.com/padocavegan/padocavegan",
+        "host": "delivery.padocavegan.com"
+      }
+    },
+    {
+      "ok": true,
+      "url": "https://www.happycow.net/reviews/padoca-vegan-sao-paulo-91756",
+      "finalUrl": "https://www.happycow.net/reviews/padoca-vegan-sao-paulo-91756",
+      "status": 200,
+      "contentType": "text/html",
+      "title": "",
+      "snippet": "",
+      "site": {
+        "veredito": "sem_site",
+        "motivo": "aggregator:happycow.net",
+        "url": "https://www.happycow.net/reviews/padoca-vegan-sao-paulo-91756",
+        "host": "happycow.net"
+      }
+    }
+  ],
+  "dns": [
+    {
+      "ok": true,
+      "host": "padocavegan.com",
+      "address": "3.33.251.168"
+    }
+  ],
+  "cnpj": null,
+  "evidencias": [
+    {
+      "campo": "nome",
+      "valor": "Padoca Vegan",
+      "url": "https://linktr.ee/padocavegan",
+      "data": "2026-08-26"
+    },
+    {
+      "campo": "endereco",
+      "valor": "Rua Harmonia, 1275 — Sumarezinho / Vila Madalena, São Paulo, SP, 05435-001",
+      "url": "https://www.happycow.net/reviews/padoca-vegan-sao-paulo-91756",
+      "data": "2026-08-26"
+    },
+    {
+      "campo": "instagram",
+      "valor": "@padocavegan",
+      "url": "https://linktr.ee/padocavegan",
+      "data": "2026-08-26"
+    },
+    {
+      "campo": "contato_publico",
+      "valor": "@padocavegan + delivery oficial",
+      "url": "https://linktr.ee/padocavegan",
+      "data": "2026-08-26"
+    },
+    {
+      "campo": "telefone",
+      "valor": "(11) 2503-5930",
+      "url": "https://www.happycow.net/reviews/padoca-vegan-sao-paulo-91756",
+      "data": "2026-08-26"
+    },
+    {
+      "campo": "horario",
+      "valor": "7h–20h todos os dias (Restaurant Guru); HappyCow diz fecha segunda — lacuna",
+      "url": "https://www.happycow.net/reviews/padoca-vegan-sao-paulo-91756",
+      "data": "2026-08-26"
+    },
+    {
+      "campo": "site_ou_ausencia",
+      "valor": "site básico: Linktree + app delivery.padocavegan.com",
+      "url": "https://linktr.ee/padocavegan",
+      "data": "2026-08-26"
+    },
+    {
+      "campo": "google_nota",
+      "valor": "4,6 · 1.313 avaliações",
+      "url": "https://www.happycow.net/reviews/padoca-vegan-sao-paulo-91756",
+      "data": "2026-08-26"
+    }
+  ],
+  "lacunas": [
+    "abre na segunda?",
+    "cardápio salão vs delivery",
+    "fotos oficiais"
+  ],
+  "atualizadoEm": "2026-08-26T21:59:37.144Z"
+}

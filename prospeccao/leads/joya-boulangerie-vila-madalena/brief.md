@@ -64,7 +64,17 @@
 - Promessa do site em uma frase: uma página no nome deles com brunch, jantar, horário e WhatsApp de reserva — não um Linktree
 - Não falar: discurso genérico de “presença digital”
 
-## 9. Fontes
+## 9. Evidências
+| Campo | Valor | Fonte (URL) | Data |
+|---|---|---|---|
+| Endereço | Rua Fradique Coutinho, 1406 — Vila Madalena, SP | https://gastronominho.com.br/comidas/2026/08/joya-boulangerie-dia-do-pao-de-queijo-vulari/ | 2026-08-26 |
+| Instagram | @joyaboulangerie | https://www.instagram.com/joyaboulangerie/ | 2026-08-26 |
+| WhatsApp | (11) 91038-9816 | https://gastronominho.com.br/comidas/2026/08/joya-boulangerie-dia-do-pao-de-queijo-vulari/ | 2026-08-26 |
+| Horário | ter–sáb 8h–22h; dom 8h–15h; fecha segunda | https://gastronominho.com.br/comidas/2026/08/joya-boulangerie-dia-do-pao-de-queijo-vulari/ | 2026-08-26 |
+| Google | 4,5 · 385 avaliações | https://restaurantguru.com/Joya-Boulangerie-Sao-Paulo | 2026-08-26 |
+| Site / ausência | nenhum; “site” público = Linktree | https://linktr.ee/joyaboulangerie | 2026-08-26 |
+
+## 10. Fontes
 - https://www.estadao.com.br/paladar/por-ai/jantar-na-padaria/
 - https://vejasp.abril.com.br/coluna/delicia-de-conta/comer-e-beber-joya-boulangerie-vila-madalena-critica/
 - https://gastronominho.com.br/comidas/2026/08/joya-boulangerie-dia-do-pao-de-queijo-vulari/
@@ -72,4 +82,5 @@
 - https://linktr.ee/joyaboulangerie
 - https://restaurantguru.com/Joya-Boulangerie-Sao-Paulo
 - Data da coleta: 2026-08-26
+- Arquivo máquina: `coleta.json`
 - Lacunas: cardápio completo atual, fotos oficiais autorizadas, CNPJ, se o Linktree aponta para cardápio digital de terceiro

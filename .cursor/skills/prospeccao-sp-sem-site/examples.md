@@ -72,7 +72,15 @@ Arquivo: `prospeccao/leads/padaria-vila-madalena-pao-da-esquina/brief.md`
 - Dor: quem pesquisa no Google não acha cardápio nem encomenda; o iFood come a margem
 - Promessa: uma página com pão do dia, bolo de encomenda e WhatsApp, no nome deles — não no do app
 
-## 9. Fontes
+## 9. Evidências
+| Campo | Valor | Fonte (URL) | Data |
+|---|---|---|---|
+| Endereço | Rua Exemplo, 100 | https://maps.exemplo | 2026-08-26 |
+| Instagram | @paodaesquina | https://instagram.com/exemplo | 2026-08-26 |
+| Site / ausência | nenhum (só Instagram) | https://instagram.com/exemplo | 2026-08-26 |
+
+## 10. Fontes
 - Maps, Instagram, iFood (URLs reais da coleta)
+- Arquivo máquina: `coleta.json`
 - Lacunas: lista de preços, fotos autorizadas da equipe, se fazem delivery próprio
 ```

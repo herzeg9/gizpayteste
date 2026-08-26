@@ -67,8 +67,19 @@ Preencher um arquivo por lead em `prospeccao/leads/<slug>/brief.md`. Copiar este
 - Promessa do site em uma frase:
 - Não falar: discurso genérico de “presença digital”
 
-## 9. Fontes
-- Lista de URLs usadas
+## 9. Evidências (obrigatório — um fato sem URL não entra como fato)
+| Campo | Valor | Fonte (URL) | Data |
+|---|---|---|---|
+| Endereço |  |  |  |
+| Telefone / WhatsApp |  |  |  |
+| Instagram |  |  |  |
+| Horário |  |  |  |
+| Google nota / n |  |  |  |
+| Site / ausência |  |  |  |
+
+## 10. Fontes
+- Lista de URLs usadas (além da tabela)
 - Data da coleta
+- Arquivo máquina: `coleta.json` se o `coletar.mjs` rodou
 - Lacunas para confirmar com o cliente (preços, fotos oficiais, convênios, etc.)
 ```

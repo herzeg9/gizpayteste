@@ -63,10 +63,21 @@
 - Promessa: uma página com ciabatta, horário e o mesmo WhatsApp da Harmonia
 - Não falar: “apareça no Google”
 
-## 9. Fontes
+## 9. Evidências
+| Campo | Valor | Fonte (URL) | Data |
+|---|---|---|---|
+| Endereço | Rua Harmonia, 1323 (O Globo / BaresSP); listagens antigas 1158 — lacuna | https://www.baressp.com.br/restaurantes/padarias/de-la-do-pao | 2026-08-26 |
+| WhatsApp | (11) 99693-1212 | https://www.baressp.com.br/restaurantes/padarias/de-la-do-pao | 2026-08-26 |
+| Instagram | @deladopao | https://www.instagram.com/deladopao/ | 2026-08-26 |
+| Horário | O Globo 7h–19h30 vs. BaresSP 7h–18h — lacuna | https://oglobo.globo.com/gastronomia/sp-gastronomia/guia/as-melhores-padarias-de-sao-paulo-de-2025.ghtml | 2026-08-26 |
+| Site / ausência | nenhum; deladopao.com.br ENOTFOUND; Linktree vazio | https://linktr.ee/deladopao | 2026-08-26 |
+| Prêmio | bronze SP Gastronomia 2025 | https://oglobo.globo.com/gastronomia/sp-gastronomia/guia/as-melhores-padarias-de-sao-paulo-de-2025.ghtml | 2026-08-26 |
+
+## 10. Fontes
 - https://oglobo.globo.com/gastronomia/sp-gastronomia/guia/as-melhores-padarias-de-sao-paulo-de-2025.ghtml
 - https://www.baressp.com.br/restaurantes/padarias/de-la-do-pao
 - https://linktr.ee/deladopao
 - https://www.instagram.com/deladopao/
 - Data da coleta: 2026-08-26
+- Arquivo máquina: `coleta.json`
 - Lacunas: nota Google oficial, número da rua (1158 vs 1323), horário de fechamento em dia útil

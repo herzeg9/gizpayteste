@@ -64,11 +64,22 @@
 - Promessa: uma URL com o que tem no balcão, horário e mapa, no nome Kio — não no do app
 - Não falar: “você precisa de um site”
 
-## 9. Fontes
+## 9. Evidências
+| Campo | Valor | Fonte (URL) | Data |
+|---|---|---|---|
+| Endereço | Rua Aspicuelta, 300 — Vila Madalena, SP | https://vejasp.abril.com.br/estabelecimento/kio-bakehouse/ | 2026-08-26 |
+| Instagram | @kio.bakehouse | https://www.instagram.com/kio.bakehouse/ | 2026-08-26 |
+| Telefone | (11) 94556-6894 (VEJA; canal oficial não confirmado) | https://vejasp.abril.com.br/estabelecimento/kio-bakehouse/ | 2026-08-26 |
+| Horário | ter–sex ~8h/10h–18h; sáb–dom 10h–17h — lacuna na abertura | https://vejasp.abril.com.br/estabelecimento/kio-bakehouse/ | 2026-08-26 |
+| Google | 4,4 · 274 avaliações | https://restaurantguru.com.br/Kio-Bakehouse-Sao-Paulo | 2026-08-26 |
+| Site / ausência | nenhum; kiobakehouse.com.br ENOTFOUND | DNS `kiobakehouse.com.br` | 2026-08-26 |
+
+## 10. Fontes
 - https://vejasp.abril.com.br/estabelecimento/kio-bakehouse/
 - https://www1.folha.uol.com.br/o-melhor-de-sao-paulo/2026/restaurantes-bares-e-cozinha/2026/08/crocancia-e-criatividade-fazem-de-folhados-do-kio-os-melhores-de-sao-paulo.shtml
 - https://www.estadao.com.br/paladar/na-mesa-com-fred/kio-bakehouse-pequena-no-tamanho-grande-na-tecnica/
 - https://www.cnnbrasil.com.br/viagemegastronomia/gastronomia/na-vila-madalena-kio-bakehouse-faz-dos-croissants-verdadeiros-reis/
 - https://restaurantguru.com.br/Kio-Bakehouse-Sao-Paulo
 - Data da coleta: 2026-08-26
+- Arquivo máquina: `coleta.json`
 - Lacunas: WhatsApp oficial, horário de abertura (8h vs 10h), cardápio atual, se iFood é canal querido ou só inevitável

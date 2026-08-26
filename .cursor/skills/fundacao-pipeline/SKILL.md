@@ -24,6 +24,7 @@ Mapa completo: [stack.md](stack.md).
 | CLI **Superdesign** | Canvas, extract-website, drafts | `npx @superdesign/cli@latest` — linha `auth:` |
 | Skills deste repo | `prospeccao-sp-sem-site`, `dossie-site-standby` | No git |
 | Skills do plugin Vercel | nextjs, vercel-cli, shadcn, deploy protegido | Já injetadas — só usar |
+| Coletor `coletar.mjs` | Busca + classify/fetch/DNS/CNPJ + `coleta.json` | Já no git; Places opcional |
 | Busca web + fetch | Descoberta e dossiê sem Places | Já disponível |
 | `computerUse` | Abrir Maps/Instagram quando a busca for ambígua | Já disponível |
 

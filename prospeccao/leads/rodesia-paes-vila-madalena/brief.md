@@ -60,9 +60,20 @@
 - Promessa: uma página com endereço, telefone e o pão de sempre
 - Não falar: “transforme-se em boulangerie”
 
-## 9. Fontes
+## 9. Evidências
+| Campo | Valor | Fonte (URL) | Data |
+|---|---|---|---|
+| Endereço | Rua Rodésia, 106 — Vila Madalena, SP | https://www.restaurantguru.com.br/Rodesia-Sao-Paulo | 2026-08-26 |
+| Telefone | (11) 3031-6993 (diretórios; confirmar) | https://www.restaurantguru.com.br/Rodesia-Sao-Paulo | 2026-08-26 |
+| Horário | ficha seg–sáb 10h–21h, fecha domingo — pode estar desatualizado | https://www.restaurantguru.com.br/Rodesia-Sao-Paulo | 2026-08-26 |
+| Google | 4,1 (abaixo do corte 4,3) | https://www.restaurantguru.com.br/Rodesia-Sao-Paulo | 2026-08-26 |
+| Site / ausência | domínio antigo ENOTFOUND; rodesiapaes.shop não confirmado como oficial | https://www.restaurantguru.com.br/Rodesia-Sao-Paulo | 2026-08-26 |
+| Desde | 25 de maio de 1982 | https://www.baladacerta.com.br/lbalada.asp?idCasa=11596 | 2026-08-26 |
+
+## 10. Fontes
 - https://www.restaurantguru.com.br/Rodesia-Sao-Paulo
 - https://www.baladacerta.com.br/lbalada.asp?idCasa=11596
 - https://www.minube.com.br/sitio-preferido/padaria-rodesia-a3627080
 - Data da coleta: 2026-08-26
+- Arquivo máquina: `coleta.json`
 - Lacunas: se rodesiapaes.shop é oficial; horário real; Instagram; CNPJ

@@ -63,11 +63,22 @@
 - Promessa: o mesmo nome, com pães, pizza de sexta e como chegar — sem login Wix
 - Não falar: “seu Wix está feio”
 
-## 9. Fontes
+## 9. Evidências
+| Campo | Valor | Fonte (URL) | Data |
+|---|---|---|---|
+| Endereço | Rua Wisard, 602 — Vila Madalena, SP | https://vejasp.abril.com.br/estabelecimento/iza-padaria-artesanal/ | 2026-08-26 |
+| Telefone | (11) 3819-1757 | https://www.izapadariaartesanal.com.br/ | 2026-08-26 |
+| Horário | fecha seg–ter; qua–qui e sáb 10h–19h; sex 10h–22h | https://vejasp.abril.com.br/estabelecimento/iza-padaria-artesanal/ | 2026-08-26 |
+| Site / ausência | site básico Wix | https://www.izapadariaartesanal.com.br/ | 2026-08-26 |
+| Google | 4,5 · 171–208 avaliações | https://restaurantguru.com.br/Iza-Padaria-Artesanal-Sao-Paulo | 2026-08-26 |
+| Instagram | @iza_padariaartesanal (listagens; não aberto ao vivo) | https://vejasp.abril.com.br/estabelecimento/iza-padaria-artesanal/ | 2026-08-26 |
+
+## 10. Fontes
 - https://www.izapadariaartesanal.com.br/
 - https://www.izapadariaartesanal.com.br/contato
 - https://vejasp.abril.com.br/estabelecimento/iza-padaria-artesanal/
 - https://oglobo.globo.com/gastronomia/sp-gastronomia/guia/as-melhores-padarias-de-sao-paulo-de-2025.ghtml
 - https://restaurantguru.com.br/Iza-Padaria-Artesanal-Sao-Paulo
 - Data da coleta: 2026-08-26
+- Arquivo máquina: `coleta.json`
 - Lacunas: Instagram confirmado ao vivo, cardápio atual, CNPJ, se a unidade Vila São Francisco ainda existe (VEJA 2023)

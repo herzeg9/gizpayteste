@@ -29,7 +29,7 @@ Uma rodada conta como teste quando **um** lead sai com URL pública e passa o ch
 Teste:
 - [ ] Preflight rodado (colar o bloco na resposta)
 - [ ] Recorte declarado (nicho + 1–3 bairros)
-- [ ] 5–8 briefs em prospeccao/leads/ + index.md
+- [ ] 5–8 briefs em prospeccao/leads/ + `coleta.json` (evidências) + index.md
 - [ ] Um lead escolhido (maior score, ou o nome do usuário)
 - [ ] dossie.md + inputs.md (temos|placeholder|falta)
 - [ ] Canvas Superdesign isolado (ou dossiê→código se auth faltar — declarar)

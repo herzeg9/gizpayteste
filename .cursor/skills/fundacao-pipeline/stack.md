@@ -1,5 +1,34 @@
 # Stack — o que usar em cada passo
 
+## Plugin / MCP nesta sessão (o que ajuda de verdade)
+
+Nenhum MCP extra nesta VM acha padaria. Catálogo atual: **Vercel** (ready), **Amplemarket** (`needsAuth` — **não conectar**), cursor-cloud, cursor-subscriptions, Cursor nativo.
+
+| Peça | Etapa | Usar? |
+|---|---|---|
+| **`GOOGLE_PLACES_API_KEY`** (segredo, não é MCP) | **1. Busca + coleta** — `websiteUri` vazio = sem site | Principal gap. Ausente → `coletar.mjs` + WebSearch/WebFetch/Computer Use |
+| **`coletar.mjs`** | 1 — classify, fetch, DNS, CNPJ, evidências | Sim |
+| WebSearch + WebFetch + Computer Use | 1 — Maps/IG/imprensa quando Places falta | Sim, já na sessão |
+| BrasilAPI HTTP | 1 — CNPJ só se o número já for público | Sim, sem MCP |
+| Plugin **Superdesign** (CLI, não MCP) | 3 — canvas / iterate | Sim; autenticado |
+| **Vercel MCP** | 5 — `{slug}-product`, logs | Sim; **não** prospecta |
+| Amplemarket | Outreach B2B | **Não conectar** |
+| Firecrawl / Maps não oficial | — | Não adicionar |
+
+Places não substitui evidência: mesmo com a chave, cada fato vai para `coleta.json` + tabela §9 do brief.
+
+### Superdesign: passar um roteiro completo à IA
+
+Sim, **por rodadas de CLI**, não por chat contínuo com a IA do canvas:
+
+1. Escrever `prospeccao/leads/<slug>/roteiro-iteracao.md` (objetivo, paleta, CTA, lacunas, o que **não** inventar).
+2. Em `create-design-draft` / `iterate-design-draft` / `execute-flow-pages`: `--context-file` nesse roteiro **e** no `design-system.md` **do lead** (nunca o da Giz Pay). Teto ~900 linhas por arquivo; cortar com `path:start:end`.
+3. `--user-request` = pedido humano **literal** da rodada (teto 16 KB). `-p` = instrução de design que o agente escreve. Em `create-design-draft` **só um** `-p` (extras são ignorados).
+4. `iterate-design-draft --mode replace` = refinar o mesmo draft; `--mode branch` = alternativas (vários `-p`).
+5. HTML determinístico: `get-design` + `import-design-draft` (sem crédito de geração).
+
+Não há MCP de Superdesign nesta sessão. O canal é o CLI.
+
 ## Skills (já no repo)
 
 | Skill | Quando |

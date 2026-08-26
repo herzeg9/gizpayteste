@@ -1,0 +1,139 @@
+{
+  "versao": 1,
+  "coletadoEm": "2026-08-26T21:58:52.295Z",
+  "slug": "de-la-do-pao-vila-madalena",
+  "nome": "De Lá do Pão",
+  "nicho": "padaria artesanal",
+  "bairro": "Vila Madalena",
+  "comando": "init",
+  "query": "De Lá do Pão Vila Madalena São Paulo",
+  "placesKey": false,
+  "places": {
+    "ok": false,
+    "reason": "sem_GOOGLE_PLACES_API_KEY",
+    "places": []
+  },
+  "queriesWeb": [
+    "padaria artesanal Vila Madalena São Paulo",
+    "padaria artesanal Vila Madalena São Paulo Instagram",
+    "padaria artesanal Vila Madalena São Paulo WhatsApp",
+    "\"padaria artesanal\" \"Vila Madalena\" site:instagram.com",
+    "padaria artesanal Vila Madalena São Paulo iFood",
+    "melhores padaria artesanal Vila Madalena São Paulo",
+    "padaria artesanal Vila Madalena São Paulo \"linktr.ee\"",
+    "padaria artesanal Vila Madalena São Paulo \"em construção\""
+  ],
+  "nota": "Scaffold. Preencher evidencias[] com fonte. Sem Places, não inventar nomes.",
+  "candidatos": [],
+  "paginas": [
+    {
+      "ok": true,
+      "url": "https://linktr.ee/deladopao",
+      "finalUrl": "https://linktr.ee/deladopao",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "title": "Deladopao | Linktree",
+      "snippet": "Deladopao | Linktree @Deladopao Saiba mais Saiba mais Join Deladopao on Linktree Cookie Preferences • Report • Privacy • About this account • More from Linktree About this account Deladopao To help keep our community authentic, we&#x27;re showing information about accounts on Linktree. Joined April 2021 Deladopao has been a member of Linktree for 5 years and joined in April 2021. Resources Deladop",
+      "site": {
+        "veredito": "sem_site",
+        "motivo": "aggregator:linktr.ee",
+        "url": "https://linktr.ee/deladopao",
+        "host": "linktr.ee"
+      }
+    },
+    {
+      "ok": true,
+      "url": "https://www.baressp.com.br/restaurantes/padarias/de-la-do-pao",
+      "finalUrl": "https://www.baressp.com.br/restaurantes/padarias/de-la-do-pao",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "title": "De Lá do Pão - Restaurantes - Vila Madalena, São Paulo | BaresSP",
+      "snippet": "De Lá do Pão - Restaurantes - Vila Madalena, São Paulo | BaresSP Acompanhe o BaresSP Buscar Especiais BaresSP Cursos BaresSP BaresSP Collabs Agenda Shows Bares Restaurantes Baladas Notícias Fotos Eventos BaresSP Fornecedores Especiais BaresSP Primeira Página 2026 Dia dos Pais Equipotel São Paulo Oktoberfest Dia do Bartender Confraternização Agenda Primeira Página Busca Avançada Eventos do dia Agen",
+      "site": {
+        "veredito": "sem_site",
+        "motivo": "aggregator:baressp.com.br",
+        "url": "https://www.baressp.com.br/restaurantes/padarias/de-la-do-pao",
+        "host": "baressp.com.br"
+      }
+    },
+    {
+      "ok": true,
+      "url": "https://www.instagram.com/deladopao/",
+      "finalUrl": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fdeladopao%2F&is_from_rle",
+      "status": 200,
+      "contentType": "text/html; charset=\"utf-8\"",
+      "title": "Instagram",
+      "snippet": "Instagram Veja momentos do dia a dia dos seus amigos próximos . Entrar no Instagram Número de celular, nome de usuário ou email Senha Entrar Esqueceu a senha? Entrar com o Facebook Criar nova conta Meta Sobre Blog Carreiras Ajuda API Privacidade Privacidade da Saúde do Consumidor Termos Localizações Popular Instagram Lite Meta AI Threads Upload de contatos e não usuários Meta Verified Português (B",
+      "site": {
+        "veredito": "sem_site",
+        "motivo": "aggregator:instagram.com",
+        "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fdeladopao%2F&is_from_rle",
+        "host": "instagram.com"
+      }
+    }
+  ],
+  "dns": [
+    {
+      "ok": false,
+      "host": "deladopao.com.br",
+      "reason": "ENOTFOUND"
+    }
+  ],
+  "cnpj": null,
+  "evidencias": [
+    {
+      "campo": "nome",
+      "valor": "De Lá do Pão",
+      "url": "https://www.baressp.com.br/restaurantes/padarias/de-la-do-pao",
+      "data": "2026-08-26"
+    },
+    {
+      "campo": "endereco",
+      "valor": "Rua Harmonia, 1323 — Vila Madalena (O Globo / BaresSP); listagens antigas 1158 — confirmar",
+      "url": "https://oglobo.globo.com/gastronomia/sp-gastronomia/guia/as-melhores-padarias-de-sao-paulo-de-2025.ghtml",
+      "data": "2026-08-26"
+    },
+    {
+      "campo": "telefone",
+      "valor": "(11) 99693-1212",
+      "url": "https://www.baressp.com.br/restaurantes/padarias/de-la-do-pao",
+      "data": "2026-08-26"
+    },
+    {
+      "campo": "whatsapp",
+      "valor": "(11) 99693-1212",
+      "url": "https://www.baressp.com.br/restaurantes/padarias/de-la-do-pao",
+      "data": "2026-08-26"
+    },
+    {
+      "campo": "contato_publico",
+      "valor": "(11) 99693-1212",
+      "url": "https://www.baressp.com.br/restaurantes/padarias/de-la-do-pao",
+      "data": "2026-08-26"
+    },
+    {
+      "campo": "instagram",
+      "valor": "https://www.instagram.com/deladopao/",
+      "url": "https://www.instagram.com/deladopao/",
+      "data": "2026-08-26"
+    },
+    {
+      "campo": "horario",
+      "valor": "seg–sex 7h–19h30; sáb–dom 8h–13h (O Globo); BaresSP 7h–18h dia útil — lacuna",
+      "url": "https://oglobo.globo.com/gastronomia/sp-gastronomia/guia/as-melhores-padarias-de-sao-paulo-de-2025.ghtml",
+      "data": "2026-08-26"
+    },
+    {
+      "campo": "site_ou_ausencia",
+      "valor": "sem site próprio; deladopao.com.br ENOTFOUND; Linktree vazio",
+      "url": "https://linktr.ee/deladopao",
+      "data": "2026-08-26"
+    }
+  ],
+  "lacunas": [
+    "nota Google oficial",
+    "Harmonia 1158 vs 1323",
+    "horário dia útil"
+  ],
+  "atualizadoEm": "2026-08-26T21:59:37.691Z"
+}

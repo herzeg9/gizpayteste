@@ -17,16 +17,19 @@ nicho + bairro
 
 Outreach (WhatsApp, e-mail, Amplemarket) **não entra**.
 
+Etapa 1 (busca + coleta): protocolo em `.cursor/skills/prospeccao-sp-sem-site/coleta-protocolo.md`. Sem Places, o coletor só imprime `queriesWeb` — nomes vêm da busca, não do script. Cada lead precisa de `coleta.json` + tabela Evidências no `brief.md`.
+
 ## Fundação (atualizar a cada sessão)
 
 Rodar: `bash .cursor/skills/fundacao-pipeline/scripts/preflight.sh`
 
-| Peça | Papel | Última checagem (unificação, 2026-08-26 21:30 UTC) |
+| Peça | Papel | Última checagem (unificação, 2026-08-26) |
 |---|---|---|
 | `VERCEL_TOKEN` | CLI no Cloud Agent | OK, `whoami=herzeg9`, time HHP |
-| MCP Vercel | `deploy_to_vercel`, projetos, logs | Pronto neste run |
-| Superdesign CLI | Canvas isolado | OK, team Personal |
-| Places API | `websiteUri` vazio | Opcional, ausente → busca web |
+| MCP Vercel | `deploy_to_vercel`, projetos, logs | Pronto neste run (etapa 5, não busca) |
+| Superdesign CLI | Canvas isolado; roteiro via `--context-file` | OK, team Personal |
+| Coletor etapa 1 | `coletar.mjs` + `coleta.json` + evidências | Em uso; Places **ausente** |
+| Places API | `websiteUri` vazio | Opcional, ausente → queriesWeb (não inventar nomes) |
 | Amplemarket | — | Não conectar |
 
 Environment Cloud: `.cursor/environment.json` (`npm ci` + terminal Next da **Giz Pay**). Standby não usa essa porta. Draft testado: [bld-20260826-6a6c6ba7-7c3b-4ed1-abd7-677b39b47b9b](https://cursor.com/dashboard/cloud-agents/builds/bld-20260826-6a6c6ba7-7c3b-4ed1-abd7-677b39b47b9b).

@@ -1,0 +1,184 @@
+{
+  "versao": 1,
+  "coletadoEm": "2026-08-26T21:58:52.209Z",
+  "slug": "joya-boulangerie-vila-madalena",
+  "nome": "Joya Boulangerie",
+  "nicho": "padaria artesanal",
+  "bairro": "Vila Madalena",
+  "comando": "init",
+  "query": "Joya Boulangerie Vila Madalena São Paulo",
+  "placesKey": false,
+  "places": {
+    "ok": false,
+    "reason": "sem_GOOGLE_PLACES_API_KEY",
+    "places": []
+  },
+  "queriesWeb": [
+    "padaria artesanal Vila Madalena São Paulo",
+    "padaria artesanal Vila Madalena São Paulo Instagram",
+    "padaria artesanal Vila Madalena São Paulo WhatsApp",
+    "\"padaria artesanal\" \"Vila Madalena\" site:instagram.com",
+    "padaria artesanal Vila Madalena São Paulo iFood",
+    "melhores padaria artesanal Vila Madalena São Paulo",
+    "padaria artesanal Vila Madalena São Paulo \"linktr.ee\"",
+    "padaria artesanal Vila Madalena São Paulo \"em construção\""
+  ],
+  "nota": "Scaffold. Preencher evidencias[] com fonte. Sem Places, não inventar nomes.",
+  "candidatos": [],
+  "paginas": [
+    {
+      "ok": true,
+      "url": "https://linktr.ee/joyaboulangerie",
+      "finalUrl": "https://linktr.ee/joyaboulangerie",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "title": "Joya Boulangerie Official: Instagram | Linktree",
+      "snippet": "Joya Boulangerie Official: Instagram | Linktree Joya Boulangerie Menu Menu Get In - Cardápio Digital Instagram Instagram Reservas Reservas WhatsApp WhatsApp Business Account Eventos Eventos Business Account Join joyaboulangerie on Linktree Cookie Preferences • Report • Privacy • Explore • About this account • More from Linktree Explore other Linktrees elan.media @elan.media OrelSanTour2026 @OrelSa",
+      "site": {
+        "veredito": "sem_site",
+        "motivo": "aggregator:linktr.ee",
+        "url": "https://linktr.ee/joyaboulangerie",
+        "host": "linktr.ee"
+      }
+    },
+    {
+      "ok": true,
+      "url": "https://www.estadao.com.br/paladar/por-ai/jantar-na-padaria/",
+      "finalUrl": "https://www.estadao.com.br/paladar/por-ai/jantar-na-padaria/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "title": "Joya Boulangerie lança jantar e transforma padaria em destino gastronômico - Estadão",
+      "snippet": "Joya Boulangerie lança jantar e transforma padaria em destino gastronômico - Estadão Eleições E-Investidor Pulsa Paladar Jornal do Carro Descubra Assine Entrar Hoje Eleições E-Investidor Pulsa Paladar JC Descubra Assine PUBLICIDADE Colunas Patrícia Ferraz traz dicas para deixar a sua experiência gastronômica mais saborosa EXCLUSIVO PARA ASSINANTES Por aí Veja quem faz Jantar na padaria Na Vila Mad",
+      "site": {
+        "veredito": "fonte_terceiro",
+        "motivo": "imprensa_ou_guia:estadao.com.br",
+        "url": "https://www.estadao.com.br/paladar/por-ai/jantar-na-padaria/",
+        "host": "estadao.com.br"
+      }
+    },
+    {
+      "ok": true,
+      "url": "https://vejasp.abril.com.br/coluna/delicia-de-conta/comer-e-beber-joya-boulangerie-vila-madalena-critica/",
+      "finalUrl": "https://vejasp.abril.com.br/coluna/delicia-de-conta/comer-e-beber-joya-boulangerie-vila-madalena-critica/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "title": "Joya Boulangerie é um misto de doceria e padaria na Vila Madalena | VEJA SÃO PAULO",
+      "snippet": "Joya Boulangerie é um misto de doceria e padaria na Vila Madalena | VEJA SÃO PAULO Menu ENTRAR ENTRAR SAIR Usuário Assine Ir para a página de busca Cultura Cidades Comer &#038; Beber Colunistas &times; Assine Já sou assinante Sair Colunas 3&#215;4 Arte ao Redor Blog do Lorençato Bolos On! Faça Comigo Cidade das Crianças Delícia de Conta Desbravando com Monique EntreNós Faro Fino Filmes e Séries &#",
+      "site": {
+        "veredito": "fonte_terceiro",
+        "motivo": "imprensa_ou_guia:vejasp.abril.com.br",
+        "url": "https://vejasp.abril.com.br/coluna/delicia-de-conta/comer-e-beber-joya-boulangerie-vila-madalena-critica/",
+        "host": "vejasp.abril.com.br"
+      }
+    },
+    {
+      "ok": true,
+      "url": "https://gastronominho.com.br/comidas/2026/08/joya-boulangerie-dia-do-pao-de-queijo-vulari/",
+      "finalUrl": "https://gastronominho.com.br/comidas/2026/08/joya-boulangerie-dia-do-pao-de-queijo-vulari/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "title": "Joya Boulangerie harmoniza pão de queijo e Vulari por R$ 40",
+      "snippet": "Joya Boulangerie harmoniza pão de queijo e Vulari por R$ 40 facebook twitter instagram linkedin pinterest Menu INÍCIO COLUNISTAS BORA COMER E BEBER TRAGOS LARGOS PAGO OU NÃO PAGO? BREJA COM ESTILO QUERÊNCIA CERVEJEIRA COMIDAS RECEITAS BEBIDAS ESTABELECIMENTOS SOBRE Pesquisar por: Search Menu facebook twitter instagram linkedin pinterest Pesquisar Pesquisar por: Search in COMIDAS , SÃO PAULO Joya B",
+      "site": {
+        "veredito": "fonte_terceiro",
+        "motivo": "imprensa_ou_guia:gastronominho.com.br",
+        "url": "https://gastronominho.com.br/comidas/2026/08/joya-boulangerie-dia-do-pao-de-queijo-vulari/",
+        "host": "gastronominho.com.br"
+      }
+    },
+    {
+      "ok": true,
+      "url": "https://restaurantguru.com/Joya-Boulangerie-Sao-Paulo",
+      "finalUrl": "https://restaurantguru.com.br/Joya-Boulangerie-Sao-Paulo",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "title": "Joya Boulangerie, São Paulo - Menu do restaurante, preços e opiniões",
+      "snippet": "Joya Boulangerie, São Paulo - Menu do restaurante, preços e opiniões Para negócios Pesquisar São Paulo Onde: Encontrar: pt English Español Русский Entrar Brasil / São Paulo / Joya Boulangerie Joya Boulangerie Adicionar a lista de desejos Adicionar para comparar Compartilhar 385 votos #650 de 79751 restaurantes em São Paulo Em funcionamento 08:00 - 22:00 Atualizado há 1 mês Todas as fotos Comida In",
+      "site": {
+        "veredito": "sem_site",
+        "motivo": "aggregator:restaurantguru.com.br",
+        "url": "https://restaurantguru.com.br/Joya-Boulangerie-Sao-Paulo",
+        "host": "restaurantguru.com.br"
+      }
+    },
+    {
+      "ok": true,
+      "url": "https://www.instagram.com/joyaboulangerie/",
+      "finalUrl": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fjoyaboulangerie%2F&is_from_rle",
+      "status": 200,
+      "contentType": "text/html; charset=\"utf-8\"",
+      "title": "Instagram",
+      "snippet": "Instagram Veja momentos do dia a dia dos seus amigos próximos . Entrar no Instagram Número de celular, nome de usuário ou email Senha Entrar Esqueceu a senha? Entrar com o Facebook Criar nova conta Meta Sobre Blog Carreiras Ajuda API Privacidade Privacidade da Saúde do Consumidor Termos Localizações Popular Instagram Lite Meta AI Threads Upload de contatos e não usuários Meta Verified Português (B",
+      "site": {
+        "veredito": "sem_site",
+        "motivo": "aggregator:instagram.com",
+        "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fjoyaboulangerie%2F&is_from_rle",
+        "host": "instagram.com"
+      }
+    }
+  ],
+  "dns": [
+    {
+      "ok": true,
+      "host": "joyaboulangerie.com.br",
+      "address": "185.230.63.107"
+    }
+  ],
+  "cnpj": null,
+  "evidencias": [
+    {
+      "campo": "nome",
+      "valor": "Joya Boulangerie",
+      "url": "https://gastronominho.com.br/comidas/2026/08/joya-boulangerie-dia-do-pao-de-queijo-vulari/",
+      "data": "2026-08-26"
+    },
+    {
+      "campo": "endereco",
+      "valor": "Rua Fradique Coutinho, 1406 — Vila Madalena, São Paulo, SP, 05416-001",
+      "url": "https://gastronominho.com.br/comidas/2026/08/joya-boulangerie-dia-do-pao-de-queijo-vulari/",
+      "data": "2026-08-26"
+    },
+    {
+      "campo": "instagram",
+      "valor": "https://www.instagram.com/joyaboulangerie/",
+      "url": "https://www.instagram.com/joyaboulangerie/",
+      "data": "2026-08-26"
+    },
+    {
+      "campo": "telefone",
+      "valor": "(11) 91038-9816",
+      "url": "https://gastronominho.com.br/comidas/2026/08/joya-boulangerie-dia-do-pao-de-queijo-vulari/",
+      "data": "2026-08-26"
+    },
+    {
+      "campo": "contato_publico",
+      "valor": "(11) 91038-9816",
+      "url": "https://gastronominho.com.br/comidas/2026/08/joya-boulangerie-dia-do-pao-de-queijo-vulari/",
+      "data": "2026-08-26"
+    },
+    {
+      "campo": "horario",
+      "valor": "ter–sáb 8h–22h; dom 8h–15h; fecha segunda",
+      "url": "https://gastronominho.com.br/comidas/2026/08/joya-boulangerie-dia-do-pao-de-queijo-vulari/",
+      "data": "2026-08-26"
+    },
+    {
+      "campo": "site_ou_ausencia",
+      "valor": "sem site próprio; listagens apontam Linktree",
+      "url": "https://linktr.ee/joyaboulangerie",
+      "data": "2026-08-26"
+    },
+    {
+      "campo": "google_nota",
+      "valor": "4,5 · 385 avaliações",
+      "url": "https://restaurantguru.com/Joya-Boulangerie-Sao-Paulo",
+      "data": "2026-08-26"
+    }
+  ],
+  "lacunas": [
+    "cardápio completo atual",
+    "fotos oficiais",
+    "CNPJ"
+  ],
+  "atualizadoEm": "2026-08-26T21:59:36.956Z"
+}

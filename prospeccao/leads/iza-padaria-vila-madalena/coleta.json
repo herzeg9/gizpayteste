@@ -1,0 +1,154 @@
+{
+  "versao": 1,
+  "coletadoEm": "2026-08-26T21:58:52.252Z",
+  "slug": "iza-padaria-vila-madalena",
+  "nome": "Iza Padaria Artesanal",
+  "nicho": "padaria artesanal",
+  "bairro": "Vila Madalena",
+  "comando": "init",
+  "query": "Iza Padaria Artesanal Vila Madalena São Paulo",
+  "placesKey": false,
+  "places": {
+    "ok": false,
+    "reason": "sem_GOOGLE_PLACES_API_KEY",
+    "places": []
+  },
+  "queriesWeb": [
+    "padaria artesanal Vila Madalena São Paulo",
+    "padaria artesanal Vila Madalena São Paulo Instagram",
+    "padaria artesanal Vila Madalena São Paulo WhatsApp",
+    "\"padaria artesanal\" \"Vila Madalena\" site:instagram.com",
+    "padaria artesanal Vila Madalena São Paulo iFood",
+    "melhores padaria artesanal Vila Madalena São Paulo",
+    "padaria artesanal Vila Madalena São Paulo \"linktr.ee\"",
+    "padaria artesanal Vila Madalena São Paulo \"em construção\""
+  ],
+  "nota": "Scaffold. Preencher evidencias[] com fonte. Sem Places, não inventar nomes.",
+  "candidatos": [],
+  "paginas": [
+    {
+      "ok": true,
+      "url": "https://www.izapadariaartesanal.com.br/",
+      "finalUrl": "https://www.izapadariaartesanal.com.br/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "title": "IZA.",
+      "snippet": "--> IZA. top of page HOME ENCOMENDAS Vale-presente PRONTA ENTREGA ASSINATURAS ÁREAS DE ENTREGA CURSOS E CONSULTORIA CONTATO More Use tab to navigate through the menu items. Login Anchor 1 FERMENTA&Ccedil;&Atilde;O NATURAL - SEM ADITIVOS QU&Iacute;MICOS - SEM CONSERVANTES Enviar se inscreva para receber nosso card&aacute;pio semanal Iza Artisan Bread - 23.987.224.0001/34 bottom of page",
+      "site": {
+        "veredito": "tem_dominio",
+        "motivo": "dominio_proprio_a_qualificar",
+        "url": "https://www.izapadariaartesanal.com.br/",
+        "host": "izapadariaartesanal.com.br"
+      }
+    },
+    {
+      "ok": true,
+      "url": "https://www.izapadariaartesanal.com.br/contato",
+      "finalUrl": "https://www.izapadariaartesanal.com.br/contato",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "title": "CONTATO | IZA",
+      "snippet": "--> CONTATO | IZA top of page HOME ENCOMENDAS Vale-presente PRONTA ENTREGA ASSINATURAS ÁREAS DE ENTREGA CURSOS E CONSULTORIA CONTATO More Use tab to navigate through the menu items. Login Contato ​ ​ Unidade Vila Madalena Loja/Caf&eacute; R. Wisard 602 - Vila Madalena (11)38191757 Enviar Enviar se inscreva para receber nosso card&aacute;pio semanal Iza Artisan Bread - 23.987.224.0001/34 bottom of ",
+      "site": {
+        "veredito": "tem_dominio",
+        "motivo": "dominio_proprio_a_qualificar",
+        "url": "https://www.izapadariaartesanal.com.br/contato",
+        "host": "izapadariaartesanal.com.br"
+      }
+    },
+    {
+      "ok": true,
+      "url": "https://vejasp.abril.com.br/estabelecimento/iza-padaria-artesanal/",
+      "finalUrl": "https://vejasp.abril.com.br/estabelecimento/iza-padaria-artesanal/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "title": "Iza Padaria Artesanal | VEJA SÃO PAULO",
+      "snippet": "Iza Padaria Artesanal | VEJA SÃO PAULO Menu ENTRAR ENTRAR SAIR Usuário Assine Ir para a página de busca Cultura Cidades Comer &#038; Beber Colunistas &times; Assine Já sou assinante Sair Colunas 3&#215;4 Arte ao Redor Blog do Lorençato Bolos On! Faça Comigo Cidade das Crianças Delícia de Conta Desbravando com Monique EntreNós Faro Fino Filmes e Séries &#8211; Por Mattheus Goto Futuros: de dentro p",
+      "site": {
+        "veredito": "fonte_terceiro",
+        "motivo": "imprensa_ou_guia:vejasp.abril.com.br",
+        "url": "https://vejasp.abril.com.br/estabelecimento/iza-padaria-artesanal/",
+        "host": "vejasp.abril.com.br"
+      }
+    },
+    {
+      "ok": true,
+      "url": "https://restaurantguru.com.br/Iza-Padaria-Artesanal-Sao-Paulo",
+      "finalUrl": "https://restaurantguru.com.br/Iza-Padaria-Artesanal-Sao-Paulo",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "title": "Iza Padaria Artesanal, São Paulo - Menu do restaurante, preços e opiniões",
+      "snippet": "Iza Padaria Artesanal, São Paulo - Menu do restaurante, preços e opiniões Para negócios Pesquisar São Paulo Onde: Encontrar: pt English Español Русский Entrar Brasil / São Paulo / Iza Padaria Artesanal Iza Padaria Artesanal Adicionar a lista de desejos Adicionar para comparar Compartilhar 222 votos #16275 de 142036 lugar para comer em São Paulo Encerrado Abre às 10:00 amanhã Atualizado há 14 dias ",
+      "site": {
+        "veredito": "sem_site",
+        "motivo": "aggregator:restaurantguru.com.br",
+        "url": "https://restaurantguru.com.br/Iza-Padaria-Artesanal-Sao-Paulo",
+        "host": "restaurantguru.com.br"
+      }
+    }
+  ],
+  "dns": [
+    {
+      "ok": true,
+      "host": "izapadariaartesanal.com.br",
+      "address": "185.230.63.186"
+    }
+  ],
+  "cnpj": null,
+  "evidencias": [
+    {
+      "campo": "nome",
+      "valor": "Iza Padaria Artesanal",
+      "url": "https://www.izapadariaartesanal.com.br/",
+      "data": "2026-08-26"
+    },
+    {
+      "campo": "endereco",
+      "valor": "Rua Wisard, 602 — Vila Madalena, São Paulo, SP, 05417-012",
+      "url": "https://vejasp.abril.com.br/estabelecimento/iza-padaria-artesanal/",
+      "data": "2026-08-26"
+    },
+    {
+      "campo": "telefone",
+      "valor": "(11) 3819-1757",
+      "url": "https://www.izapadariaartesanal.com.br/",
+      "data": "2026-08-26"
+    },
+    {
+      "campo": "contato_publico",
+      "valor": "(11) 3819-1757",
+      "url": "https://www.izapadariaartesanal.com.br/",
+      "data": "2026-08-26"
+    },
+    {
+      "campo": "instagram",
+      "valor": "@iza_padariaartesanal (citado em listagens; não aberto ao vivo)",
+      "url": "https://vejasp.abril.com.br/estabelecimento/iza-padaria-artesanal/",
+      "data": "2026-08-26"
+    },
+    {
+      "campo": "horario",
+      "valor": "fecha seg–ter; qua–qui e sáb 10h–19h; sex 10h–22h (VEJA)",
+      "url": "https://vejasp.abril.com.br/estabelecimento/iza-padaria-artesanal/",
+      "data": "2026-08-26"
+    },
+    {
+      "campo": "site_ou_ausencia",
+      "valor": "site básico Wix https://www.izapadariaartesanal.com.br/",
+      "url": "https://www.izapadariaartesanal.com.br/",
+      "data": "2026-08-26"
+    },
+    {
+      "campo": "google_nota",
+      "valor": "4,5 · 171–208 avaliações",
+      "url": "https://restaurantguru.com.br/Iza-Padaria-Artesanal-Sao-Paulo",
+      "data": "2026-08-26"
+    }
+  ],
+  "lacunas": [
+    "Instagram ao vivo",
+    "cardápio atual",
+    "CNPJ"
+  ],
+  "atualizadoEm": "2026-08-26T21:59:37.329Z"
+}
