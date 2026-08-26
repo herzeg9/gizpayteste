@@ -21,44 +21,38 @@ Outreach (WhatsApp, e-mail, Amplemarket) **não entra**.
 
 Rodar: `bash .cursor/skills/fundacao-pipeline/scripts/preflight.sh`
 
-| Peça | Papel | Última checagem (unificação, 2026-08-26) |
+| Peça | Papel | Última checagem (unificação, 2026-08-26 21:30 UTC) |
 |---|---|---|
 | `VERCEL_TOKEN` | CLI no Cloud Agent | OK, `whoami=herzeg9`, time HHP |
-| MCP Vercel | `deploy_to_vercel`, projetos, logs | Pronto neste run (nos agents antigos estava `needsAuth`) |
-| Superdesign CLI | Canvas isolado | **FALTA login** neste VM — `npx @superdesign/cli@latest login --no-browser` |
+| MCP Vercel | `deploy_to_vercel`, projetos, logs | Pronto neste run |
+| Superdesign CLI | Canvas isolado | OK, team Personal |
 | Places API | `websiteUri` vazio | Opcional, ausente → busca web |
 | Amplemarket | — | Não conectar |
 
 Environment Cloud: `.cursor/environment.json` (`npm ci` + terminal Next da **Giz Pay**). Standby não usa essa porta. Draft testado: [bld-20260826-6a6c6ba7-7c3b-4ed1-abd7-677b39b47b9b](https://cursor.com/dashboard/cloud-agents/builds/bld-20260826-6a6c6ba7-7c3b-4ed1-abd7-677b39b47b9b).
 
-## Teste ouro (não repetir)
+## Testes que passaram
 
-| Campo | Valor |
-|---|---|
-| Recorte | padaria artesanal · Vila Madalena |
-| Lead | Joya Boulangerie (score 9, sem site — Linktree) |
-| Pasta | `prospeccao/leads/joya-boulangerie-vila-madalena/` |
-| App | `sites/joya-boulangerie-vila-madalena/` |
-| Vercel | `joya-boulangerie-product` (não ligado ao GitHub da Giz Pay) |
-| URL | https://joya-boulangerie-product.vercel.app/ |
-| Canvas | projeto `d6e705fe-871b-45b0-a8d7-ee6b6c5ae487` (isolado do canvas Giz Pay) |
+| Lead | URL | Canvas | Browser |
+|---|---|---|---|
+| Joya Boulangerie | https://joya-boulangerie-product.vercel.app/ | `d6e705fe-…` isolado | desktop + 390px PASS |
+| Kio Bakehouse | https://kio-bakehouse-product.vercel.app/ | `42842e66-…` isolado | desktop + 390px PASS (2026-08-26) |
 
-Browser (agents internos): faixa charcoal, wordmark Joya, WhatsApp `wa.me/5511910389816`, desktop + 390px — PASS.
+Kio: preflight OK → dossiê/inputs → Superdesign (5 créditos) → `sites/kio-bakehouse-vila-madalena/` → projeto Vercel **novo** `kio-bakehouse-product` (não o gizpayteste). CTA Instagram, não WhatsApp. Paleta papel/manteiga (não oliva da Joya).
 
 ## Fila de testes
 
 Ver tabela completa em [`leads/index.md`](leads/index.md).
 
-1. **Kio Bakehouse** — próximo teste (brief pronto, sem dossiê/standby).
-2. **Padoca Vegan** — primeiro teste de *site básico* (não ausência total).
-3. Demais da mesma rodada, ou recorte novo se o usuário nomear.
+1. **Padoca Vegan** — próximo: primeiro teste de *site básico* (não ausência total).
+2. Iza / Villa Grano / De Lá do Pão / Rodésia
+3. Recorte novo se o usuário nomear
 
 ## Como pedir nesta conversa
 
-- `teste` / `próxima rodada` → Kio, linha completa até URL (Superdesign se login; senão dossiê + código + Vercel, declarar o pulo do canvas).
+- `teste` / `próxima rodada` → Padoca Vegan, linha completa até URL.
 - `rodada {nicho} {bairro}` → prospecção nova, depois um standby.
 - `só dossiê {nome}` → para no `inputs.md`.
-- `login Superdesign` → CLI `--no-browser` e esperar o usuário.
 
 ## Não fazer
 

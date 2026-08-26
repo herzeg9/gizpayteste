@@ -58,7 +58,7 @@ Teste:
 1. Ler `prospeccao/CENTRAL.md` e `prospeccao/leads/index.md`.
 2. Rodar `bash .cursor/skills/fundacao-pipeline/scripts/preflight.sh`.
 3. Responder com: estado da fundação, fila de testes, pergunta de recorte **só se** o usuário não trouxe nicho/bairro/nome.
-4. Se o usuário disser só “teste” / “próxima rodada” sem recorte: **Kio Bakehouse** (score 9, brief pronto, sem standby) — não repetir Joya.
+4. Se o usuário disser só “teste” / “próxima rodada” sem recorte: **Padoca Vegan** (site básico, brief pronto) — não repetir Joya nem Kio.
 5. Atualizar `CENTRAL.md` + `index.md` no fim da rodada.
 
 ## Fila (não inventar outra sem o usuário)
@@ -66,9 +66,9 @@ Teste:
 | Prioridade | Lead | Por quê |
 |---|---|---|
 | Feito (ouro) | Joya Boulangerie | Primeira pseudo-automação completa |
-| 1 | Kio Bakehouse | Empate 9; menos reviews que Joya |
-| 2 | Padoca Vegan | Site básico; testa o ramo “melhorar o que existe” |
-| 3 | Iza / Villa Grano / De Lá do Pão / Rodésia | Mesma rodada Vila Madalena |
+| Feito | Kio Bakehouse | Segunda rodada; Superdesign + Vercel neste chat |
+| 1 | Padoca Vegan | Site básico; testa o ramo “melhorar o que existe” |
+| 2 | Iza / Villa Grano / De Lá do Pão / Rodésia | Mesma rodada Vila Madalena |
 | Novo recorte | Só se o usuário nomear nicho+bairro (ex. salões Pinheiros) | Skill de prospecção do zero |
 
 ## Onde está o código
