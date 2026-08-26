@@ -2,7 +2,7 @@
 
 - **Slug:** `joya-boulangerie-vila-madalena`
 - **Vertical:** padaria / boulangerie (ganha-pão) com brunch e jantar como seções
-- **Standby:** (preencher depois do deploy)
+- **Standby:** https://joya-boulangerie-product.vercel.app
 - **Brief:** `prospeccao/leads/joya-boulangerie-vila-madalena/brief.md`
 
 ## Essência

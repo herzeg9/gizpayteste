@@ -8,7 +8,7 @@ Recorte da rodada 2026-08-26: **padaria artesanal · Vila Madalena** (padrão da
 
 | Data | Nicho | Bairros | Lead | Veredito | Score | Pasta | Standby |
 |---|---|---|---|---|---|---|---|
-| 2026-08-26 | padaria artesanal | Vila Madalena | Joya Boulangerie | sem site | 9 | [joya-boulangerie-vila-madalena](joya-boulangerie-vila-madalena/) | (em andamento) |
+| 2026-08-26 | padaria artesanal | Vila Madalena | Joya Boulangerie | sem site | 9 | [joya-boulangerie-vila-madalena](joya-boulangerie-vila-madalena/) | https://joya-boulangerie-product.vercel.app |
 | 2026-08-26 | padaria artesanal | Vila Madalena | Kio Bakehouse | sem site | 9 | [kio-bakehouse-vila-madalena](kio-bakehouse-vila-madalena/) | — |
 | 2026-08-26 | padaria artesanal | Vila Madalena / Sumarezinho | Padoca Vegan | site básico | 8 | [padoca-vegan-vila-madalena](padoca-vegan-vila-madalena/) | — |
 | 2026-08-26 | padaria artesanal | Vila Madalena | Iza Padaria Artesanal | site básico | 8 | [iza-padaria-vila-madalena](iza-padaria-vila-madalena/) | — |
