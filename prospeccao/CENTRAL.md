@@ -17,7 +17,7 @@ nicho + bairro
 
 Outreach (WhatsApp, e-mail, Amplemarket) **não entra**.
 
-Etapa 2 (dossiê + inputs + roteiro Superdesign): protocolo em `.cursor/skills/dossie-site-standby/dossie-protocolo.md`. Gate: `montar-dossie.mjs`. Sem `roteiro-iteracao.md` + `design-system.md` do lead, não gerar canvas.
+Etapa 3 (Superdesign): [superdesign-rodada.md](../.cursor/skills/dossie-site-standby/superdesign-rodada.md). `plan --slug` imprime o CLI e **não** gera. Padoca: `rodada-plan.json` pronto; canvas quando pedir.
 
 ## Fundação (atualizar a cada sessão)
 
@@ -53,7 +53,7 @@ Ver tabela completa em [`leads/index.md`](leads/index.md).
 
 ## Como pedir nesta conversa
 
-- `teste` / `próxima rodada` → Padoca Vegan, Superdesign (roteiro já escrito) até URL.
+- `teste` / `próxima rodada` → Padoca Vegan: `superdesign-rodada.mjs` já tem o `plan`; gasta crédito de canvas só nesse pedido.
 - `rodada {nicho} {bairro}` → prospecção nova, depois um standby.
 - `só dossiê {nome}` → para no `inputs.md`.
 

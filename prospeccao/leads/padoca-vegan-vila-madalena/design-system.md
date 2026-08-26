@@ -7,7 +7,8 @@ Standby de proposta Estúdio Giz para a Padoca Vegan, Sumarezinho / Vila Madalen
 
 ## Brand & styling
 - Wordmark **“Padoca Vegan”** em serifada de leitura (Literata ou equivalente), não Fraunces da Joya/Kio. Sem folha genérica de “eco” clip-art, sem croissant de ouro.
-- Paleta: fundo papel `#F4EFE4`, trigo `#C9A36A`, erva `#4A7C59`, texto carvão `#1A1A18`, beterraba `#9B3D4A` só em detalhe (CTA ou doce). **Proibido** oliva Joya `#3F4F3A` e manteiga/crosta Kio `#E4B04A` / `#8B5A2B`.
+- Paleta: fundo papel `#F4EFE4`, trigo `#C9A36A`, erva `#4A7C59`, texto carvão `#1A1A18`, beterraba `#9B3D4A` só em detalhe (CTA ou doce).
+- **Proibido:** oliva Joya `#3F4F3A` e manteiga/crosta Kio `#E4B04A` / `#8B5A2B`.
 - UI: cantos 8–16px, ar um pouco mais “padoca de rua” que boulangerie; cards leves; muito espaço no hero.
 - Faixa fixa no topo: “Proposta Estúdio Giz — não é o site oficial” (contraste AA) em carvão sobre papel.
 - Badge “placeholder” em itálico em toda copy/foto que não for fato `temos`.

@@ -32,7 +32,7 @@ Teste:
 - [ ] 5–8 briefs em prospeccao/leads/ + `coleta.json` (evidências) + index.md
 - [ ] Um lead escolhido (maior score, ou o nome do usuário)
 - [ ] dossie.md + inputs.md (temos|placeholder|falta) + design-system.md + roteiro-iteracao.md
-- [ ] Canvas Superdesign isolado (ou dossiê→código se auth faltar — declarar)
+- [ ] Canvas Superdesign isolado — só depois de `superdesign-rodada.mjs plan`; audit do HTML
 - [ ] App em sites/<slug>/ (não na raiz)
 - [ ] https://{slug}-product.vercel.app no ar
 - [ ] Faixa “Proposta Estúdio Giz — não é o site oficial”

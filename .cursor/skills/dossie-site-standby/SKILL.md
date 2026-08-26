@@ -100,15 +100,18 @@ Gravar no lead, nesta ordem:
 
 ### 5. Superdesign
 
-Seguir a skill Superdesign, com estes cortes (este repo **é** o curso Giz Pay — não desenhar isso):
+Seguir [superdesign-rodada.md](superdesign-rodada.md). Este repo **é** o curso Giz Pay — não desenhar isso.
 
-- Alvo = **produto novo do cliente**, SOP Brand New Project.
-- **Não** usar `.superdesign/init/` nem `.superdesign/design-system.md` do Giz Pay.
-- Escrever `prospeccao/leads/<slug>/design-system.md` e `roteiro-iteracao.md`. Passar **os dois** em `--context-file`. `--user-request` = pedido humano literal.
-- `create-project --title "{Nome fantasia}" --no-open` no Cloud.
-- Um `-p` só no `create-design-draft`: essência + páginas da vertical + CTA + faixa “Proposta Estúdio Giz — não é o site oficial”.
-- Se houver site extraído: DNA no design-system (inspired-by). Fotos públicas: upload `--purpose reference` ou `content` e `--reference-id`.
-- Mostrar o `canvas:` ao usuário.
+```bash
+node .cursor/skills/dossie-site-standby/scripts/superdesign-rodada.mjs plan --slug <slug>
+```
+
+- `plan` grava `prompt-p.md` + `rodada-plan.json` e **não** gasta crédito.
+- Alvo = produto novo. **Não** `superdesign init`. **Não** `.superdesign/design-system.md`.
+- Contexto: só `design-system.md` + `roteiro-iteracao.md` do lead. Um `-p`. `--device mobile`. `--no-open`.
+- Recusar projectIds da Giz Pay / Joya / Kio ([projetos-isolados.json](projetos-isolados.json)).
+- Depois do draft: `get-design --output` + `audit`. Faixa/CTA/hex falhou → `import-design-draft`, não branch.
+- Canvas só quando o usuário pedir. Sem `execute-flow-pages` na 1ª geração.
 
 Implementar código só depois do canvas **ou** se o pedido desta mensagem já incluir site/standby/Vercel.
 

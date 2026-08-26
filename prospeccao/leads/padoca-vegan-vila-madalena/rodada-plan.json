@@ -1,0 +1,73 @@
+{
+  "versao": 1,
+  "slug": "padoca-vegan-vila-madalena",
+  "geradoEm": "2026-08-26T22:21:19.738Z",
+  "nome": "Padoca Vegan",
+  "bairro": "Vila Madalena",
+  "exec": false,
+  "orcamento": {
+    "createProject": 1,
+    "createDesignDraft": 1,
+    "iterateReplace": "somente se auditoria falhar em faixa/CTA/hex",
+    "branch": false,
+    "executeFlowPages": false,
+    "extractWebsite": false,
+    "passarDossieOuInputs": false,
+    "passarDesignSystemGizPay": false
+  },
+  "isolamento": {
+    "recusarProjectIds": [
+      "b8b47841-984c-4075-b56c-d4ea69ec73f8",
+      "d6e705fe-871b-45b0-a8d7-ee6b6c5ae487",
+      "42842e66-d50c-40fe-927c-834e27c15431"
+    ],
+    "recusarContext": [
+      ".superdesign/design-system.md",
+      ".superdesign/init/"
+    ],
+    "naoRodarInit": true
+  },
+  "contextFiles": [
+    "prospeccao/leads/padoca-vegan-vila-madalena/design-system.md",
+    "prospeccao/leads/padoca-vegan-vila-madalena/roteiro-iteracao.md"
+  ],
+  "linhas": {
+    "designSystem": 27,
+    "roteiro": 63
+  },
+  "paletaLead": [
+    "#F4EFE4",
+    "#C9A36A",
+    "#4A7C59",
+    "#1A1A18",
+    "#9B3D4A"
+  ],
+  "hexProibidosOutrosLeads": [
+    "#3F4F3A",
+    "#E8C547",
+    "#F6F1E7",
+    "#C4A574",
+    "#E4B04A",
+    "#8B5A2B",
+    "#C45C26",
+    "#F3EDE2"
+  ],
+  "ctas": {
+    "urls": [
+      "https://delivery.padocavegan.com/padocavegan/padocavegan",
+      "https://www.instagram.com/padocavegan/"
+    ],
+    "instagram": "@padocavegan"
+  },
+  "faixa": "Proposta Estúdio Giz — não é o site oficial",
+  "device": "mobile",
+  "promptFile": "prospeccao/leads/padoca-vegan-vila-madalena/prompt-p.md",
+  "userRequest": "Gerar a home de proposta Estúdio Giz deste lead, seguindo o roteiro e o design system do lead — não o da Giz Pay.",
+  "comandos": {
+    "createProject": "npx --yes @superdesign/cli@latest create-project --title 'Padoca Vegan' --no-open --json",
+    "createDraft": "npx --yes @superdesign/cli@latest create-design-draft --project-id <PROJECT_ID> --title 'Home Padoca Vegan' --device mobile -p 'Home de proposta Estúdio Giz para Padoca Vegan (Vila Madalena). Uma página longa, mobile first, com âncoras do roteiro. Faixa fixa no topo: “Proposta Estúdio Giz — não é o site oficial”. Seguir 100% o design-system.md e o roteiro-iteracao.md passados em --context-file. Use ONLY the fonts, colors, spacing, and component styles defined in the design system. Do not introduce any fonts, colors, or visual styles not in the design system. Não inventar telefone, horário, WhatsApp ou preço. Lacunas do roteiro ficam visíveis ou omitidas — nunca resolvidas. Copy/foto que não for fato temos leva badge visível placeholder. Não clonar app de delivery, Wix, Joya, Kio nem a Giz Pay.' --user-request 'Gerar a home de proposta Estúdio Giz deste lead, seguindo o roteiro e o design system do lead — não o da Giz Pay.' --context-file prospeccao/leads/padoca-vegan-vila-madalena/design-system.md --context-file prospeccao/leads/padoca-vegan-vila-madalena/roteiro-iteracao.md --json",
+    "getDesign": "npx --yes @superdesign/cli@latest get-design --draft-id <DRAFT_ID> --output prospeccao/leads/padoca-vegan-vila-madalena/draft-home.html",
+    "audit": "node .cursor/skills/dossie-site-standby/scripts/superdesign-rodada.mjs audit --slug padoca-vegan-vila-madalena --html prospeccao/leads/padoca-vegan-vila-madalena/draft-home.html"
+  },
+  "nota": "plan não chama o CLI de geração. --exec só com pedido explícito de canvas."
+}

@@ -23,7 +23,7 @@ Bloqueantes para Superdesign: nome, vertical, bairro, **um** contato público (I
 4. Escrever `inputs.md` — cada linha `temos` | `placeholder` | `falta`.
 5. Escrever `design-system.md` **do lead** (nunca copiar Giz Pay, Joya ou Kio).
 6. Escrever `roteiro-iteracao.md` — o script que a IA do Superdesign vai ler via `--context-file`.
-7. Só então Superdesign (etapa 3). Site básico (Linktree, Wix, app de delivery) = **inspired-by a marca**, não clonar o app/template.
+7. Superdesign (etapa 3): `superdesign-rodada.mjs plan` → canvas só com pedido. Site básico = inspired-by a marca, não clonar o app.
 
 ## Site atual
 

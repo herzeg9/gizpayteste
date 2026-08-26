@@ -4,21 +4,15 @@ Este repositório é o curso **Estúdio Giz / Giz Pay**. Site de cliente é outr
 
 ## Superdesign (isolado)
 
-1. Preflight: `npx --yes @superdesign/cli@latest` — ler a linha `auth:`. Se não autenticado: `npx --yes @superdesign/cli@latest login` e parar se falhar.
-2. **Não** rodar init nem geração contra a UI deste repo. **Não** sobrescrever `.superdesign/design-system.md`.
-3. Design system do cliente: `prospeccao/leads/<slug>/design-system.md` (essência, paleta, páginas, CTA, faixa de proposta, fidelidade de fonte/cor).
-4. Se houver site atual:
-   ```bash
-   npx --yes @superdesign/cli@latest extract-website \
-     --url "<url>" --design-md --brand --content-structure
-   ```
-   Ler `.superdesign/website/<domínio>/`. Dobrar o DNA **só** no `design-system.md` do lead (modo inspired-by). A extração na pasta `.superdesign/website/` pode ficar; o `design-system.md` da raiz não.
-5. Projeto: `npx --yes @superdesign/cli@latest create-project --title "<Nome fantasia>"`  
-   Headless/CI: acrescentar `--no-open`.
-6. Draft (um `-p` só). Sempre `--context-file prospeccao/leads/<slug>/design-system.md` **e** `--context-file prospeccao/leads/<slug>/roteiro-iteracao.md`, mais o fecho de fidelidade (“Use ONLY the fonts, colors…”). `--user-request` = pedido humano literal (teto 16 KB). Sem esses dois arquivos, **não** gerar. `iterate-design-draft --mode replace` para refinar; `--mode branch` para alternativas. Headless: `create-project --no-open`.
-7. Fotos: `upload-asset` no projeto; `--reference-id` nos drafts. Logo real → `--purpose brand`. Prints do site/Instagram → `--purpose reference`. Foto que deve aparecer no layout → `--purpose content`.
-8. Passar o `canvas:` ao usuário. Mais páginas: `execute-flow-pages` a partir do draft da home, lista da vertical.
-9. Implementar no código depois do canvas **ou** se o pedido já pediu standby/Vercel.
+Ritual: [superdesign-rodada.md](superdesign-rodada.md). `plan` primeiro (0 crédito). Plugin Superdesign: **não** rodar `init` neste repo e **não** passar `.superdesign/design-system.md`.
+
+1. Preflight: `npx --yes @superdesign/cli@latest` — linha `auth:`.
+2. `node …/superdesign-rodada.mjs plan --slug <slug>` — recusa gate, contexto Giz Pay, arquivos >900 linhas.
+3. `create-project --title "<Nome>" --no-open`. Recusar IDs em [projetos-isolados.json](projetos-isolados.json).
+4. Um `create-design-draft`: `--device mobile`, um `-p` (`prompt-p.md`), `--context-file` só design-system + roteiro do lead, `--user-request` literal.
+5. `get-design --output` + `audit`. Falha de faixa/CTA → `import-design-draft` (sem crédito de geração).
+6. Sem `branch` / `execute-flow-pages` / `extract-website` de checkout na 1ª geração.
+7. Log em `superdesign.md`. Implementar código depois do canvas **ou** se o pedido já pediu standby.
 
 Se `create-design-draft` falhar duas vezes: implementar a partir do dossiê + inputs (skill Superdesign: *design-with-your-model*), e dizer isso.
 
