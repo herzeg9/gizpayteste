@@ -20,6 +20,8 @@ Se `create-design-draft` falhar duas vezes: implementar a partir do dossiê + in
 
 Padrão obrigatório: [arquitetura.md](arquitetura.md). **Não** usar `create-next-app` direto — o scaffold já entrega o padrão inteiro.
 
+> Rodar o scaffold para um lead novo: liberado. Editar o `template/` ou o scaffold: congelado até os cinco escopos fecharem ([`parametros.md`](../central-operacoes/parametros.md)).
+
 ```bash
 node .cursor/skills/dossie-site-standby/scripts/scaffold-site.mjs \
   --slug <slug> --nome "<Nome>" --tipo-schema Bakery \

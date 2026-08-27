@@ -8,7 +8,19 @@ Programa de melhoria do site gerado. **Qualidade acima de quantidade.**
 
 O usuário passa a especificação de um parâmetro por vez. Enquanto faltar escopo, o trabalho é **especificar**: entender o pedido, mapear o que ele exige, achar as tensões com os outros parâmetros e decidir no papel. Implementar cedo, um parâmetro de cada vez, produz retrabalho — porque as decisões se contradizem entre parâmetros e a última a chegar desmancha as anteriores.
 
-Exceção: defeito já publicado, com risco real, só se o usuário autorizar explicitamente.
+### O que a regra congela, e o que não congela
+
+O congelamento é sobre **mudar o padrão**, não sobre operar com ele.
+
+| Ação | Pode agora? |
+|---|---|
+| Gerar um standby novo para um lead, com o padrão v1 como está | **sim** — é o produto funcionando |
+| Rodar coleta, dossiê, canvas, verificador | **sim** |
+| Alterar o `template/`, o `schema.ts`, o scaffold ou os verificadores | **não** — é mexer no padrão |
+| Implementar item do baseline do parâmetro 2 (CTA no rodapé, `og:image`, `oferta`) | **não** — espera os cinco escopos |
+| Corrigir defeito já publicado com risco real (ex.: `openingHours` inválido) | **só com autorização explícita do usuário** |
+
+Esta leitura vem de "toda a estrutura que iremos desenvolver": o que está em suspenso é o programa de melhoria, não a linha de produção. Se a intenção do usuário for congelamento total, ele corrige e este quadro muda.
 
 | # | Parâmetro | Escopo | Implementado |
 |---|---|---|---|

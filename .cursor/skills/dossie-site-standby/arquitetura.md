@@ -2,6 +2,8 @@
 
 Parâmetro **1 de 5** da linha de operações (estrutura/arquitetura). Vale para **todo** site em `sites/<slug>/`.
 
+> Este documento está **congelado** enquanto os cinco escopos não fecharem — ver [`parametros.md`](../central-operacoes/parametros.md). Usar o padrão está liberado; mudá-lo, não.
+
 A tese: um standby genérico não vale nada. O que dá valor é a arquitetura — e neste produto a arquitetura se prova em **procedência do dado** e **segurança**. Site de proposta não tem login nem carrinho, então a superfície de ataque é escolha nossa: mantemos em zero e provamos isso no header.
 
 ## As quatro camadas (não inverter)

@@ -6,6 +6,8 @@ Criado pela skill `dossie-site-standby`, orquestrado pela `central-operacoes`. Q
 
 Todos seguem o **padrão de arquitetura v1** — [`arquitetura.md`](../.cursor/skills/dossie-site-standby/arquitetura.md).
 
+> O padrão está congelado enquanto os cinco parâmetros da linha não fecharem ([`parametros.md`](../.cursor/skills/central-operacoes/parametros.md)). Criar site novo com ele: liberado. Alterá-lo: espera o escopo.
+
 | Pasta | Projeto Vercel | URL | Arquitetura |
 |---|---|---|---|
 | `joya-boulangerie-vila-madalena/` | `joya-boulangerie-product` | https://joya-boulangerie-product.vercel.app | v1 |

@@ -22,6 +22,8 @@ Função (verbatim):
 
 Se não houver lead escolhido, pegar o de maior score em `prospeccao/leads/index.md` ou o nome que o usuário passou. Sem `brief.md` + `coleta.json` com `prontoParaDossie`, rodar antes a skill de prospecção **nesse nome**.
 
+> **Antes de alterar o padrão, leia [`parametros.md`](../central-operacoes/parametros.md).** A linha está sendo melhorada em 5 parâmetros e há uma regra do usuário: **nada concreto antes de os cinco escopos estarem fechados**. Gerar um standby novo com o padrão v1 como está continua liberado — o que espera é mexer no `template/`, no `schema.ts`, no scaffold, nos verificadores ou nos itens do baseline do parâmetro 2.
+
 Protocolo: [dossie-protocolo.md](dossie-protocolo.md). Templates: [dossie-template.md](dossie-template.md), [inputs-template.md](inputs-template.md), [design-system-template.md](design-system-template.md), [roteiro-iteracao-template.md](roteiro-iteracao-template.md). Verticais: [verticais.md](verticais.md). Deploy: [superdesign-e-vercel.md](superdesign-e-vercel.md).
 
 ```bash
