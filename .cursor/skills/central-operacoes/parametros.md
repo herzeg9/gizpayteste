@@ -234,23 +234,26 @@ O que sobra é peso e trepidação, não arquitetura.
 
 | Medida | Joya | Kio | Padoca | Leitura |
 |---|---|---|---|---|
-| Hero (placeholder) | 320 KB | 320 KB | 320 KB | **maior asset da página, e é imagem provisória** |
+| Hero — arquivo em disco | 320 KB | 320 KB | 320 KB | **não** é o que o navegador baixa (ver abaixo) |
+| Hero — servido de fato | ~73 KB (w=640) · ~114 KB (w=828) · ~206 KB (w=1920) | idem | idem | `next/image` reduz para WebP conforme o `sizes` |
 | Fontes servidas | 340 KB | **528 KB** | 216 KB | Kio carrega **três** famílias; as outras, duas |
-| Chunks JS em disco | ~620 KB | ~624 KB | ~616 KB | total no disco, **não** é o que o visitante baixa — medir no navegador |
-| Âncoras / links para elas | 4 / 4 | 4 / 5 | **4 / 1** | Padoca tem os checkpoints, mas quase nenhum caminho até eles |
+| Chunks JS em disco | ~620 KB | ~624 KB | ~616 KB | total no disco, **não** o que o visitante baixa — medir no navegador |
+| Checkpoints com caminho até eles | 4 / 4 | 4 / 4 | **1 / 4** | Padoca: só `#topo` tem link; cardápio, sobre e visitar não têm nenhum |
 | `prefers-reduced-motion` | não | não | não | os três têm `scroll-behavior: smooth` sem escape |
 
-Três achados que atingem direto as funções vitais do pedido:
+> **Correção de um número meu.** A primeira versão desta seção dizia "hero de 320 KB é o gargalo". Está **errado**: 320 KB é o arquivo em disco; o `next/image` serve WebP redimensionado, e num celular o download real fica entre **73 e 114 KB**. Medido com `curl` contra o servidor. A imagem continua sendo o maior asset da página, mas por uma margem bem menor do que eu afirmei — e a lição é a de sempre: peso de disco não é peso de rede.
 
-1. **Hero de 320 KB é o gargalo, e é placeholder.** Estamos pagando o maior custo da página por uma imagem que nem é do cliente.
-2. **Padoca tem checkpoints sem navegação** — 4 âncoras e 1 link. O template só põe o CTA na nav; as seções não têm como ser alcançadas. Isso é falha de "checkpoints na página", não de estética.
-3. **Nenhum site respeita `prefers-reduced-motion`.** `scroll-behavior: smooth` sem escape é desconforto real para quem tem sensibilidade vestibular, e é o item mais barato de todos.
+Achados que atingem direto as funções vitais do pedido:
+
+1. **Padoca tem checkpoints sem navegação.** As seções `#cardapio`, `#sobre` e `#visitar` existem, e **nenhum link leva a elas** — só `#topo` tem link. Joya e Kio têm os quatro ligados. É o template genérico que só põe o CTA na nav. Falha de função, não de estética, e o pedido nomeia "checkpoints na página" explicitamente.
+2. **Nenhum site respeita `prefers-reduced-motion`.** `scroll-behavior: smooth` sem escape é desconforto real para quem tem sensibilidade vestibular, e é o item mais barato da lista.
+3. **O otimizador entrega WebP, não AVIF**, mesmo quando o cliente aceita AVIF (`Content-Type: image/webp` com `Accept: image/avif,...`). AVIF costuma ser sensivelmente menor. Oportunidade barata via `images.formats`, a confirmar na implementação.
 
 ### Requisitos derivados
 
 1. **Orçamento por página**, medido no que o navegador baixa — não em bytes de disco. O número exato se define na implementação, com medição; fixar meta antes de medir seria chute.
 2. **Toda imagem com dimensão reservada** (`fill` + `sizes`, ou `width`/`height`), para o scroll não saltar.
-3. **Hero enxuto**: formato moderno e dimensão coerente com o uso. Placeholder pesado é desperdício puro.
+3. **Hero enxuto**: avaliar AVIF (hoje sai WebP) e conferir se o `sizes` declarado corresponde ao espaço real que a imagem ocupa — `sizes` errado faz o navegador baixar uma variante maior que o necessário.
 4. **Teto de famílias tipográficas** — duas por site. Kio está em três.
 5. **`prefers-reduced-motion: reduce` desliga o scroll suave.** Acessibilidade e desempenho percebido no mesmo item.
 6. **Todo checkpoint precisa de caminho até ele**: âncora sem link que a alcance não é checkpoint.
