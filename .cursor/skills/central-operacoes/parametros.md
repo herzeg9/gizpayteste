@@ -26,7 +26,16 @@ Pedido do usuário:
 
 > Todo site profissional e com um alto fluxo tem uma arquitetura consistente e com uma equipe de database para respaldar a arquitetura. A arquitetura é o passo essencial para não se tornar algo genérico e sem valor. Utilizando como exemplo diversos sites de big Techs, fica claro que precisamos gerar valor a partir de segurança. Após modelarmos um padrão de Arquitetura, será simples repetir a fórmula para todos os futuros projetos.
 
-Entregue em [arquitetura.md](../dossie-site-standby/arquitetura.md): camada de dados com procedência obrigatória (`fato`/`placeholder`/`lacuna`), CSP estrita sem nonce (rotas seguem estáticas), headers de segurança, JSON-LD derivado, scaffold e verificador com exit code.
+Detalhe em [arquitetura.md](../dossie-site-standby/arquitetura.md). Requisitos derivados, para este documento se sustentar sozinho:
+
+1. **Quatro camadas, não invertíveis:** `coleta.json` (evidência) → `src/data/negocio.ts` (dado tipado) → `src/lib/` (derivação: SEO, segurança) → `src/app/` + componentes (apresentação). A apresentação não decide o que é fato.
+2. **Procedência obrigatória:** todo dado é `fato(valor, fonte)`, `placeholder(valor, motivo)` ou `lacuna(motivo, fontes)`. `Fonte` = URL + veículo + data. Nenhum fato compila sem os três.
+3. **Fato com fonte concorrente** (`ressalva`) vai para a página, **não** para o dado estruturado.
+4. **Nove headers de segurança** aplicados em `/(.*)`, com CSP estrita sem `nonce` — porque nonce forçaria render dinâmico e mataria o cache de CDN.
+5. **Arquivos obrigatórios por site:** `robots.ts` (noindex), `sitemap.ts`, `not-found.tsx`, `src/data/{schema,negocio}.ts`, `src/lib/{seo,seguranca}.ts`.
+6. **JSON-LD sempre derivado** de `negocio.ts`; escrever à mão no layout é falha de verificação.
+7. **A fórmula se repete por ferramenta, não por memória:** `scaffold-site.mjs` cria o site já no padrão; `verificar-arquitetura.mjs` é portão com exit code, em modo estático e contra a URL viva.
+8. **O verificador precisa provar que reprova** — a tabela de mutações está na `arquitetura.md`.
 
 ---
 
@@ -125,6 +134,30 @@ Só revisão humana: se a oferta representa o negócio; se a headline placeholde
 **O verificador prova presença e consistência, nunca adequação.** Portão verde é licença para a revisão humana começar, não substituto dela.
 
 ---
+
+### Estado atual dos três standbys contra o baseline
+
+Auditado em 2026-08-27 por leitura de código e resposta do servidor. Serve para dimensionar o parâmetro 2 antes de implementar — não é lista de tarefas ainda.
+
+| Item | Joya | Kio | Padoca | Veredito |
+|---|---|---|---|---|
+| B1 identificação | ok | ok | ok | `nome` é `string` cru, **sem procedência** — decidir |
+| B2 CTA em 3 posições | nav + hero | nav + hero | nav + hero | **falta o rodapé nos três** |
+| B3 ficha do local | ok | ok | ok | `openingHours` inválido nos três |
+| B4 oferta ≥3 itens | 8 | 5 | 4 | passa; falta renomear e tornar `preco` opcional |
+| B5 prova com fonte | 2 | 3 | 2 | passa |
+| B6 FAQ 3–6 | 3 | 3 | 3 | passa |
+| B7 esqueleto | 404 real, fontes no rodapé | idem | idem | **`og:image` ausente nos três** |
+| B8 celular | `width=device-width, initial-scale=1` | idem | idem | viewport ok; alvo de toque **não medido** |
+
+Evidências: `curl` de rota inexistente devolve HTTP 404 com a faixa; o HTML servido traz `og:title`, `og:description`, `og:locale` e `og:type`, e **nenhum `og:image`**; nenhum site sobrescreve viewport nem usa `user-scalable=no`.
+
+O saldo é melhor do que eu esperava: **cinco dos oito itens já passam**. O parâmetro 2 é, na prática, três correções (CTA no rodapé, `og:image`, `openingHours`) mais a generalização de `cardapio` para `oferta`. Isso muda o tamanho da fase de implementação e é exatamente o tipo de coisa que só aparece quando se especifica antes de codar.
+
+Duas decisões ficaram em aberto e precisam ser tomadas na implementação:
+
+- **`nome` sem procedência.** Hoje é `string`. É a identidade do registro (não existe lead sem nome) mas também é afirmação sobre terceiro. A evidência já existe em `coleta.json`; a pergunta é se ela precisa aparecer no site.
+- **Alvo de toque de 24 px** exige geometria computada. Ou entra numa auditoria de layout, ou fica para o parâmetro 3 — não dá para provar com leitura de código, e fingir que dá seria pior que não checar.
 
 ## Restrições já fixas que 3, 4 e 5 herdam
 
