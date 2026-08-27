@@ -2,6 +2,8 @@
 
 Programa de melhoria do site gerado. **Qualidade acima de quantidade.**
 
+> **Estado verificado em 2026-08-27, commit `3e064fd`.** Build dos três standbys ok; `verificar-arquitetura.mjs --url` devolve `exit=0` com 25 checagens em cada; typecheck e lint limpos na raiz e nos três sites. Quem retomar o trabalho parte daqui — se a data estiver velha, reverificar antes de confiar.
+
 ## Regra de trabalho (vale para todo agente)
 
 > Não realizar nada concreto — código, template, scaffold, deploy — antes de os **cinco** escopos estarem registrados aqui.
