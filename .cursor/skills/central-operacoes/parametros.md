@@ -232,16 +232,31 @@ O que sobra é peso e trepidação, não arquitetura.
 
 ### Estado atual medido (2026-08-27)
 
-| Medida | Joya | Kio | Padoca | Leitura |
-|---|---|---|---|---|
-| Hero — arquivo em disco | 320 KB | 320 KB | 320 KB | **não** é o que o navegador baixa (ver abaixo) |
-| Hero — servido de fato | ~73 KB (w=640) · ~114 KB (w=828) · ~206 KB (w=1920) | idem | idem | `next/image` reduz para WebP conforme o `sizes` |
-| Fontes — baixadas de fato | 83 KB (2 arq.) | **132 KB (3 arq.)** | 71 KB (2 arq.) | Kio carrega **três** famílias; disco seria 318/495/201 KB |
-| Chunks JS em disco | ~620 KB | ~624 KB | ~616 KB | total no disco, **não** o que o visitante baixa — só o navegador mede |
-| Checkpoints com caminho até eles | 4 / 4 | 4 / 4 | **1 / 4** | Padoca: só `#topo` tem link; cardápio, sobre e visitar não têm nenhum |
-| `prefers-reduced-motion` | não | não | não | os três têm `scroll-behavior: smooth` sem escape |
+Tudo abaixo é **o que a rede entrega** (medido com `curl`, comprimido onde o servidor comprime), não arquivo em disco.
 
-> **Correção de um número meu.** A primeira versão desta seção dizia "hero de 320 KB é o gargalo". Está **errado**: 320 KB é o arquivo em disco; o `next/image` serve WebP redimensionado, e num celular o download real fica entre **73 e 114 KB**. Medido com `curl` contra o servidor. A imagem continua sendo o maior asset da página, mas por uma margem bem menor do que eu afirmei — e a lição é a de sempre: peso de disco não é peso de rede.
+| Peso do primeiro carregamento | Joya | Kio | Padoca |
+|---|---|---|---|
+| **JavaScript** (9 arquivos, comprimido) | **178 KB** | **178 KB** | **178 KB** |
+| Hero no celular (WebP, w=828) | ~114 KB | ~114 KB | ~114 KB |
+| Fontes (`woff2` de fato baixados) | 83 KB (2) | **132 KB (3)** | 71 KB (2) |
+| HTML (comprimido) | 7 KB | 7 KB | 6 KB |
+| **Total aproximado no celular** | **~382 KB** | **~431 KB** | **~369 KB** |
+
+| Outros sinais | Joya | Kio | Padoca |
+|---|---|---|---|
+| Checkpoints com caminho até eles | 4 / 4 | 4 / 4 | **1 / 4** |
+| `prefers-reduced-motion` respeitado | não | não | não |
+
+> **Correção de três números meus — o mesmo erro, repetido.** As primeiras versões desta seção mediam **arquivo em disco** e chamavam aquilo de peso da página. Hero: 320 KB em disco, 73–114 KB na rede. Fontes: 318/495/201 KB em disco, 83/132/71 KB na rede. E eu havia dito que o JS "só o navegador mede" — não é verdade, basta somar os `<script src>` do HTML servido: **576 KB brutos, 178 KB comprimidos**.
+>
+> Corrigidos os três, **a conclusão original se inverte**: o maior peso da página não é a imagem, é o **JavaScript** — 178 KB comprimidos numa página que não tem um único client component. Eu tinha apontado o gargalo errado.
+
+Achados que atingem direto as funções vitais do pedido:
+
+1. **O JS é o maior item, e a página não usa interatividade.** Nenhum dos três tem `"use client"`; o que é enviado é o runtime de hidratação. Se dá para reduzir sem quebrar nada é questão da implementação — mas o alvo do parâmetro 3 é aqui, não na imagem.
+2. **Padoca tem checkpoints sem navegação.** As seções `#cardapio`, `#sobre` e `#visitar` existem e **nenhum link leva a elas** — só `#topo` tem link. Joya e Kio têm os quatro ligados. É o template genérico, que só põe o CTA na nav. O pedido nomeia "checkpoints na página" explicitamente.
+3. **Nenhum site respeita `prefers-reduced-motion`**, apesar dos três usarem `scroll-behavior: smooth`. Item mais barato da lista.
+4. **O otimizador entrega WebP, não AVIF**, mesmo com `Accept: image/avif` (confirmado no `Content-Type`). Ajuste de configuração, ganho provável na maior imagem.
 
 Achados que atingem direto as funções vitais do pedido:
 
