@@ -20,17 +20,19 @@ O congelamento é sobre **mudar o padrão**, não sobre operar com ele.
 | Rodar coleta, dossiê, canvas, verificador | **sim** |
 | Alterar o `template/`, o `schema.ts`, o scaffold ou os verificadores | **não** — é mexer no padrão |
 | Implementar item do baseline do parâmetro 2 (CTA no rodapé, `og:image`, `oferta`) | **não** — espera os cinco escopos |
-| Corrigir defeito já publicado com risco real (ex.: `openingHours` inválido) | **só com autorização explícita do usuário** |
+| Corrigir defeito já publicado, inclusive o `openingHours` inválido | **não** — o usuário pôs reparo em standby em 2026-08-27 |
 
 Esta leitura vem de "toda a estrutura que iremos desenvolver": o que está em suspenso é o programa de melhoria, não a linha de produção. Se a intenção do usuário for congelamento total, ele corrige e este quadro muda.
 
 | # | Parâmetro | Escopo | Implementado |
 |---|---|---|---|
 | 1 | Estrutura / Arquitetura | fechado | sim — padrão v1 |
-| 2 | Funcionalidade | **fechado** | não — aguarda 3, 4 e 5 |
-| 3 | Desempenho | aguardando | — |
+| 2 | Funcionalidade | **fechado** | não — aguarda 4 e 5 |
+| 3 | Desempenho | **fechado** | não — aguarda 4 e 5 |
 | 4 | Especificidade | aguardando | — |
 | 5 | Entrega | aguardando | — |
+
+Reparo dos defeitos já publicados segue **em standby** por decisão do usuário (2026-08-27), mesmo os que têm risco — inclusive o `openingHours` inválido.
 
 ---
 
@@ -191,15 +193,76 @@ Decidido nos parâmetros 1 e 2. Um parâmetro novo pode **contrariar** qualquer 
 | Rotas 100% estáticas, cacheáveis em CDN | 1 — foi o motivo de recusar `nonce` na CSP | render dinâmico, custo por requisição, e a CSP precisa de nonce ou hash |
 | `script-src 'self'`, zero script de terceiro | 1 | qualquer pixel, captcha, chat ou mapa embutido reabre a diretiva |
 | Sem cookie, sem coleta de dado pessoal | 1 e 2 | a nota de privacidade da página deixa de ser verdadeira |
+| CTA funciona sem JavaScript (`<a href>`, zero client component) | 3 | quebra a função vital nº 1 do parâmetro 3 |
+| Sem métrica de campo — medição só em laboratório | consequência de 2 | é o preço já aceito de não ter analytics |
 | Sem formulário (`form-action 'none'`) | 2 | rota POST, destino da mensagem, antispam e a questão do controlador LGPD |
 | `robots` noindex | 1 | a proposta passa a competir com o cliente na busca |
 | Página única com âncoras | 2 | multi-página exige conteúdo oficial que a proposta não tem |
 | Todo fato carrega URL e data | 1 | perde-se o que separa este produto de um template |
 | Nada de dado inventado como fato | 1 e 2 | risco reputacional direto com o dono |
 
-## 3. Desempenho — aguardando
+## 3. Desempenho — fechado
 
-Para especificar bem quando o escopo chegar, o que preciso entender: **o que conta como rápido o suficiente** (métrica de campo tipo Core Web Vitals, ou nota de Lighthouse, ou orçamento de bytes?), **em que rede e aparelho** (a proposta é aberta no celular do dono, dentro do WhatsApp), e **se a meta é o standby ou o site final do cliente** — são regimes diferentes. Já sei que colide com: imagem de hero e mapa estático (peso), `next/font` (bloqueio de render), e a decisão de manter tudo estático (que ajuda aqui).
+Pedido do usuário:
+
+> Mesmo em sites básicos, devemos manter o mínimo de desempenho para funcionamentos vitais: Entrar em contato, Scrolls rápidos e checkpoints na página, entre outros. Responsividade é uma das principais chaves neste tópico. O objetivo é manter o desempenho sempre o melhor possível.
+
+### A régua é a função vital, não a nota
+
+O pedido define desempenho pelo que o visitante precisa **fazer**, não por um número de ferramenta. Isso é mais rigoroso do que perseguir Lighthouse: uma página pode marcar 100 e ainda ter o botão de contato inalcançável no celular. Então o critério é:
+
+| Função vital | O que "rápido" significa aqui | Como falha |
+|---|---|---|
+| **Entrar em contato** | o CTA funciona **antes** do JavaScript carregar e responde ao primeiro toque | virar botão que depende de hidratação; ficar fora de alcance no celular |
+| **Scroll rápido** | rolagem sem travão e **sem salto de layout** | imagem sem dimensão reservada empurrando o conteúdo; efeito preso ao scroll |
+| **Checkpoints na página** | pular para cardápio/sobre/como chegar em um toque, de qualquer ponto | âncora que existe no HTML mas não tem link que leve até ela |
+| **Responsividade** | ver ambiguidade abaixo | conteúdo estourando a tela; interação lenta |
+
+**Ambiguidade a confirmar:** "responsividade" em português costuma significar *layout que se adapta à tela*, mas dentro de um tópico de desempenho também pode significar *responder rápido ao toque* (o que a indústria mede como INP). Estou tratando **as duas** como em escopo, porque nenhuma é cara e ambas afetam função vital. Se o usuário quis só uma, corrige e o escopo encolhe.
+
+### O que o parâmetro 1 já pagou
+
+Vale registrar antes de propor trabalho: as decisões de arquitetura já entregaram a maior parte do desempenho, e não por acaso.
+
+- **Rotas 100% estáticas e cacheáveis em CDN** — sem render por requisição.
+- **Zero script de terceiro** — a CSP estrita eliminou a causa nº 1 de lentidão em site de PME (pixel, chat, tag manager).
+- **CTA é `<a href>` puro e nenhuma página é client component** — verificado: `0` ocorrências de `"use client"` nos três. Ou seja, **entrar em contato já funciona sem JavaScript**, que é a função vital nº 1 do pedido.
+
+O que sobra é peso e trepidação, não arquitetura.
+
+### Estado atual medido (2026-08-27)
+
+| Medida | Joya | Kio | Padoca | Leitura |
+|---|---|---|---|---|
+| Hero (placeholder) | 320 KB | 320 KB | 320 KB | **maior asset da página, e é imagem provisória** |
+| Fontes servidas | 340 KB | **528 KB** | 216 KB | Kio carrega **três** famílias; as outras, duas |
+| Chunks JS em disco | ~620 KB | ~624 KB | ~616 KB | total no disco, **não** é o que o visitante baixa — medir no navegador |
+| Âncoras / links para elas | 4 / 4 | 4 / 5 | **4 / 1** | Padoca tem os checkpoints, mas quase nenhum caminho até eles |
+| `prefers-reduced-motion` | não | não | não | os três têm `scroll-behavior: smooth` sem escape |
+
+Três achados que atingem direto as funções vitais do pedido:
+
+1. **Hero de 320 KB é o gargalo, e é placeholder.** Estamos pagando o maior custo da página por uma imagem que nem é do cliente.
+2. **Padoca tem checkpoints sem navegação** — 4 âncoras e 1 link. O template só põe o CTA na nav; as seções não têm como ser alcançadas. Isso é falha de "checkpoints na página", não de estética.
+3. **Nenhum site respeita `prefers-reduced-motion`.** `scroll-behavior: smooth` sem escape é desconforto real para quem tem sensibilidade vestibular, e é o item mais barato de todos.
+
+### Requisitos derivados
+
+1. **Orçamento por página**, medido no que o navegador baixa — não em bytes de disco. O número exato se define na implementação, com medição; fixar meta antes de medir seria chute.
+2. **Toda imagem com dimensão reservada** (`fill` + `sizes`, ou `width`/`height`), para o scroll não saltar.
+3. **Hero enxuto**: formato moderno e dimensão coerente com o uso. Placeholder pesado é desperdício puro.
+4. **Teto de famílias tipográficas** — duas por site. Kio está em três.
+5. **`prefers-reduced-motion: reduce` desliga o scroll suave.** Acessibilidade e desempenho percebido no mesmo item.
+6. **Todo checkpoint precisa de caminho até ele**: âncora sem link que a alcance não é checkpoint.
+7. **O CTA continua sem depender de JS.** É invariante, não meta — se algum dia virar componente client, quebrou a função vital nº 1.
+8. **Medir no aparelho certo**: a proposta é aberta no celular, dentro do WhatsApp. Medição em desktop com rede boa não vale como prova.
+
+### Tensões
+
+- **Mapa estático (parâmetro 2, opcional)** agora tem preço explícito: mais uma imagem no maior gargalo da página. Só entra se couber no orçamento.
+- **`og:image` (parâmetro 2)** não afeta o desempenho da página — é card de compartilhamento, carrega fora dela.
+- **`next/font`** já serve do próprio domínio, o que é bom para CSP e para latência; o custo é peso de arquivo, endereçado pelo teto de famílias.
+- **Sem analytics (parâmetro 2)** significa que **não teremos métrica de campo**. Só dá para medir em laboratório. É consequência aceita da decisão de privacidade, e precisa ficar dita: não vamos saber o LCP real do celular do dono.
 
 ## 4. Especificidade — aguardando
 

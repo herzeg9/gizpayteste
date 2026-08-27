@@ -29,7 +29,7 @@ Escopos e decisões: [`parametros.md`](../.cursor/skills/central-operacoes/param
 |---|---|---|---|
 | 1 | Estrutura / arquitetura | fechado | sim — [padrão v1](../.cursor/skills/dossie-site-standby/arquitetura.md) nos três standbys |
 | 2 | Funcionalidade | fechado — baseline de 8 itens, fronteira e tensões decididas | não |
-| 3 | Desempenho | aguardando | — |
+| 3 | Desempenho | fechado — régua por função vital (contato, scroll, checkpoints, responsividade) | não |
 | 4 | Especificidade | aguardando | — |
 | 5 | Entrega | aguardando | — |
 
