@@ -255,10 +255,12 @@ O pedido chama responsividade de "principal chave", e ela não se verifica com `
 
 | Largura | Joya | Kio | Padoca |
 |---|---|---|---|
-| 390 px | **0** | **+37 px** | **+15 px** |
-| 320 px | **+38 px** | **+107 px** | **+85 px** |
+| 390 px | **0** | estoura | estoura |
+| 320 px | **estoura** | estoura | estoura |
 
 **Cinco das seis combinações têm rolagem horizontal.** Em celular isso quebra função vital: o visitante precisa arrastar de lado para ler.
+
+> **Sobre a magnitude:** duas sessões de medição deram valores bem diferentes para o mesmo caso (Kio a 320 px: 107 px numa, 426 px na outra). O **fato** do estouro se reproduziu nas duas; o **tamanho** não. Não registro número exato aqui porque não se sustenta — a implementação remede antes de definir qualquer meta. Registrar precisão que não se reproduz é o mesmo erro dos pesos em disco, com outra roupa.
 
 Alvo de toque: os três passam o mínimo de 24 px do WCAG 2.5.8 (nível AA), que é a régua deste documento. Joya e Kio ficam em 40 px de altura, abaixo dos 44 px do critério 2.5.5 (nível AAA) — não é falha contra o que definimos, é margem menor.
 
@@ -275,7 +277,15 @@ O estouro **não** vem da faixa de proposta. Vem daqui:
 
 O `shrink-0` foi escrito supondo que ali cabe um preço curto — "R$ 19". Mas quando o preço é uma **`lacuna`**, o que entra é a frase inteira do motivo: *"Preço no balcão — sem valor público estável."* Uma frase que não pode encolher empurra a linha inteira para fora da tela.
 
-A correlação com o comprimento confirma: a Joya, cuja maior lacuna é a mais curta, é a única que sobrevive a 390 px; a 320 px estoura também.
+**Causa provada, não inferida.** Removendo apenas a classe `shrink-0` em tempo de execução, sem tocar em arquivo, e remedindo:
+
+| Site | Estouro antes | Depois de tirar `shrink-0` |
+|---|---|---|
+| Joya | estoura | **0** |
+| Padoca | estoura | **0** |
+| Kio | estoura | **~16 px restantes** |
+
+Em dois dos três o estouro **zera**; na Kio some quase todo e sobra um resíduo de outra origem, ainda não identificada. Isso é intervenção experimental, não correlação — e é o padrão de prova que quero na implementação.
 
 Isto é exatamente o tipo de colisão que a regra de fechar todos os escopos antes existe para pegar. A honestidade do dado (parâmetro 1: mostrar a lacuna por extenso) atropelou o layout (parâmetro 3: caber na tela), e **nenhum dos dois parâmetros, sozinho, revelaria o problema**. Na implementação, a decisão é de projeto: encurtar o texto de lacuna no lugar do preço e mandar a explicação para outro elemento, ou deixar o span encolher e quebrar linha. Não decidir agora — decidir com os cinco escopos na mesa.
 
