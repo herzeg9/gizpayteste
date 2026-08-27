@@ -1,15 +1,15 @@
-import { Fraunces, Inter } from "next/font/google";
+import { Figtree, Literata } from "next/font/google";
 import { negocio } from "@/data/negocio";
 import { jsonLdNegocio, metadataNegocio } from "@/lib/seo";
 import "./globals.css";
 
-const display = Fraunces({
+const display = Literata({
   subsets: ["latin"],
   variable: "--font-display",
   display: "swap",
 });
 
-const sans = Inter({
+const sans = Figtree({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
@@ -23,7 +23,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="pt-BR"
       className={`${display.variable} ${sans.variable} h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col bg-cream text-charcoal">
+      <body className="flex min-h-full flex-col">
         <script
           type="application/ld+json"
           // Derivado de `negocio`: só entra fato sem ressalva.

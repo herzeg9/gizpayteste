@@ -246,7 +246,6 @@ async function cmdPlan(slug) {
 }
 
 function auditHtml(html, plan, isolados, slug) {
-  const lower = html.toLowerCase();
   const foundHex = hexes(html);
   const checks = [];
   const fail = (id, detalhe) => checks.push({ id, ok: false, detalhe });

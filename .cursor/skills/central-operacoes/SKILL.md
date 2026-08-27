@@ -33,7 +33,8 @@ Teste:
 - [ ] Um lead escolhido (maior score, ou o nome do usuário)
 - [ ] dossie.md + inputs.md (temos|placeholder|falta) + design-system.md + roteiro-iteracao.md
 - [ ] Canvas Superdesign isolado — só depois de `superdesign-rodada.mjs plan`; audit do HTML
-- [ ] App em sites/<slug>/ (não na raiz)
+- [ ] App em sites/<slug>/ pelo scaffold (padrão de arquitetura v1)
+- [ ] verificar-arquitetura.mjs --slug <slug> --url … com exit 0
 - [ ] https://{slug}-product.vercel.app no ar
 - [ ] Faixa “Proposta Estúdio Giz — não é o site oficial”
 - [ ] Browser: desktop + ~390px; WhatsApp se temos; NAP no rodapé
@@ -52,6 +53,7 @@ Teste:
 - Token só em `VERCEL_TOKEN`, nunca na conversa nem `--token`.
 - Site atual = base/inspired-by, não clone. Sem copiar copy de concorrente.
 - Giz Pay canvas / `.superdesign/design-system.md` da raiz = curso. Cliente = `prospeccao/leads/<slug>/design-system.md`.
+- Standby sem headers de segurança ou sem camada de dados tipada não publica: rodar `verificar-arquitetura.mjs`.
 
 ## Como começar uma sessão
 

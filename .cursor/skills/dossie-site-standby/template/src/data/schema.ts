@@ -93,6 +93,8 @@ export type ItemCardapio = {
   nome: string;
   descricao: string;
   preco: Campo<string>;
+  /** Agrupa o cardápio quando a casa tem frentes distintas (padaria, jantar…). */
+  secao?: string;
 };
 
 export type Depoimento = {

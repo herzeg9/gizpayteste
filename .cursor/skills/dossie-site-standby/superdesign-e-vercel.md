@@ -18,20 +18,31 @@ Se `create-design-draft` falhar duas vezes: implementar a partir do dossiê + in
 
 ## Implementação (`sites/<slug>/`)
 
-- Next.js App Router + TypeScript + Tailwind, pasta **própria**. Não editar `src/app` da Giz Pay.
-- Antes de gerar código, ler o guia em `node_modules/next/dist/docs/` (deste repo ou do app novo).
-- `content.ts` (ou equivalente) gerado a partir de `inputs.md`. Placeholders no conteúdo com um flag `placeholder: true`.
-- Faixa fixa no topo: “Proposta Estúdio Giz — não é o site oficial”.
-- CTA WhatsApp `https://wa.me/55…` se o número for `temos`.
-- Rodapé: nome, endereço, horário, Instagram; CNPJ só se `temos`.
-- Mobile primeiro. Sem auth, sem form que grave dado pessoal (standby não é CRM).
-- JSON-LD `LocalBusiness` só com fatos `temos`.
-
-Scaffold sugerido (ajuste flags ao `create-next-app --help` da versão):
+Padrão obrigatório: [arquitetura.md](arquitetura.md). **Não** usar `create-next-app` direto — o scaffold já entrega o padrão inteiro.
 
 ```bash
-npx create-next-app@latest sites/<slug> --typescript --tailwind --app --eslint --yes
+node .cursor/skills/dossie-site-standby/scripts/scaffold-site.mjs \
+  --slug <slug> --nome "<Nome>" --tipo-schema Bakery \
+  --base-url https://<slug-curto>-product.vercel.app
+cd sites/<slug> && npm install && npm run build
 ```
+
+- Next.js App Router + TypeScript + Tailwind, pasta **própria**. Não editar `src/app` da Giz Pay.
+- Antes de mexer em código, ler o guia em `node_modules/next/dist/docs/`.
+- Dados em `src/data/negocio.ts` (`fato` / `placeholder` / `lacuna`), nunca um `content.ts` solto.
+- Faixa fixa no topo: “Proposta Estúdio Giz — não é o site oficial”.
+- CTA precisa de `fonte`: o tipo `Cta` não compila sem.
+- Mobile primeiro. Sem auth, sem form que grave dado pessoal (standby não é CRM).
+- JSON-LD sai de `jsonLdNegocio()`; nunca escrever à mão no layout.
+
+Antes de publicar, com o servidor no ar:
+
+```bash
+node .cursor/skills/dossie-site-standby/scripts/verificar-arquitetura.mjs \
+  --slug <slug> --url http://localhost:4310/
+```
+
+Exit 1 = não publica.
 
 ## Vercel — projeto `{slug}-product`
 

@@ -40,8 +40,9 @@ Preflight: skill `fundacao-pipeline`. Sem Superdesign auth, parar no dossiê+inp
 - [ ] 3. Lista de inputs (temos|placeholder|falta)
 - [ ] 4. design-system.md + roteiro-iteracao.md
 - [ ] 5. Superdesign (projeto isolado do Giz Pay) — só com roteiro no --context-file
-- [ ] 6. Implementar sites/<slug>/ (só se o pedido incluir site/deploy, ou o usuário aprovar o canvas)
-- [ ] 7. Vercel projeto {slug}-product
+- [ ] 6. Implementar sites/<slug>/ pelo scaffold (padrão de arquitetura v1)
+- [ ] 7. verificar-arquitetura.mjs (estático + --url) antes de publicar
+- [ ] 8. Vercel projeto {slug}-product
 ```
 
 Parar cedo conforme o pedido:
@@ -117,10 +118,24 @@ Implementar código só depois do canvas **ou** se o pedido desta mensagem já i
 
 ### 6–7. Código e Vercel
 
-Ler [superdesign-e-vercel.md](superdesign-e-vercel.md). Resumo:
+Arquitetura obrigatória: [arquitetura.md](arquitetura.md). Não montar app à mão.
+
+```bash
+node .cursor/skills/dossie-site-standby/scripts/scaffold-site.mjs \
+  --slug <slug> --nome "<Nome>" --tipo-schema Bakery \
+  --base-url https://<slug-curto>-product.vercel.app
+
+cd sites/<slug> && npm install && npm run build
+
+node .cursor/skills/dossie-site-standby/scripts/verificar-arquitetura.mjs --slug <slug>
+```
+
+O scaffold lê `coleta.json` e escreve `src/data/negocio.ts` com as fontes. Revisar todo `PREENCHER` — o scaffold não inventa fato. Fonte que diverge vira `fato(..., fonte, ressalva)`; dado que falta vira `lacuna`.
+
+Ler [superdesign-e-vercel.md](superdesign-e-vercel.md) para o deploy. Resumo:
 
 - App Next.js **em** `sites/<slug>/` (não na raiz).
-- Conteúdo a partir de `inputs.md` (um `content.ts`).
+- Conteúdo vem de `src/data/negocio.ts`, tipado — não de um `content.ts` solto.
 - Faixa fixa de proposta; placeholders visíveis; WhatsApp se existir; NAP no rodapé.
 - `vercel project add {slug}-product` + link **dentro** de `sites/<slug>` + `vercel deploy --prod --yes`.
 - Confirmar `vercel whoami` antes. Sem login → parar e dizer.

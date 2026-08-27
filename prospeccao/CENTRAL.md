@@ -19,6 +19,18 @@ Outreach (WhatsApp, e-mail, Amplemarket) **não entra**.
 
 Etapa 3 (Superdesign): Padoca Vegan **canvas no ar** — projeto `eba8a21f-…`, draft `86b0609d-…`, audit PASS, 3 créditos. Preview: https://p.superdesign.dev/draft/86b0609d-dc85-4c80-b286-2a1ed2887d9b
 
+## Melhoria da linha em 5 parâmetros
+
+O usuário passa a especificação de um parâmetro por vez. Não antecipar os seguintes.
+
+| # | Parâmetro | Estado |
+|---|---|---|
+| 1 | Estrutura / arquitetura | **Feito** — [arquitetura.md](../.cursor/skills/dossie-site-standby/arquitetura.md). Camada de dados com procedência, CSP estrita, verificador. Joya, Kio e Padoca no padrão v1. |
+| 2 | Funcionalidade | aguardando especificação |
+| 3 | Desempenho | aguardando especificação |
+| 4 | Especificidade | aguardando especificação |
+| 5 | Entrega | aguardando especificação |
+
 ## Fundação (atualizar a cada sessão)
 
 Rodar: `bash .cursor/skills/fundacao-pipeline/scripts/preflight.sh`
