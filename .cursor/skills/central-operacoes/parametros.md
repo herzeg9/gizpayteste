@@ -244,8 +244,40 @@ Tudo abaixo é **o que a rede entrega** (medido com `curl`, comprimido onde o se
 
 | Outros sinais | Joya | Kio | Padoca |
 |---|---|---|---|
-| Checkpoints com caminho até eles | 4 / 4 | 4 / 4 | **1 / 4** |
+| Checkpoints com caminho até eles (desktop) | 4 / 4 | 4 / 4 | **1 / 4** |
+| Navegação por âncora no **celular** | some | some | não existe |
 | `prefers-reduced-motion` respeitado | não | não | não |
+| Alvo de toque do CTA | 112×40 | 132×40 | 188×60 |
+
+### Responsividade — medida no navegador
+
+O pedido chama responsividade de "principal chave", e ela não se verifica com `curl`. Medido com navegador, viewport confirmado por `window.innerWidth`, e `scrollWidth − clientWidth` como prova de estouro:
+
+| Largura | Joya | Kio | Padoca |
+|---|---|---|---|
+| 390 px | **0** | **+37 px** | **+15 px** |
+| 320 px | **+38 px** | **+107 px** | **+85 px** |
+
+**Cinco das seis combinações têm rolagem horizontal.** Em celular isso quebra função vital: o visitante precisa arrastar de lado para ler.
+
+Alvo de toque: os três passam o mínimo de 24 px do WCAG 2.5.8 (nível AA), que é a régua deste documento. Joya e Kio ficam em 40 px de altura, abaixo dos 44 px do critério 2.5.5 (nível AAA) — não é falha contra o que definimos, é margem menor.
+
+### A causa: o parâmetro 1 quebrando o parâmetro 3
+
+O estouro **não** vem da faixa de proposta. Vem daqui:
+
+```tsx
+<div className="mb-2 flex items-baseline justify-between gap-3">
+  <h3>{item.nome}</h3>
+  <span className="shrink-0 text-sm">      {/* proíbe encolher */}
+    <Dado campo={item.preco} aoFaltar={(motivo) => <Lacuna motivo={motivo} />}>
+```
+
+O `shrink-0` foi escrito supondo que ali cabe um preço curto — "R$ 19". Mas quando o preço é uma **`lacuna`**, o que entra é a frase inteira do motivo: *"Preço no balcão — sem valor público estável."* Uma frase que não pode encolher empurra a linha inteira para fora da tela.
+
+A correlação com o comprimento confirma: a Joya, cuja maior lacuna é a mais curta, é a única que sobrevive a 390 px; a 320 px estoura também.
+
+Isto é exatamente o tipo de colisão que a regra de fechar todos os escopos antes existe para pegar. A honestidade do dado (parâmetro 1: mostrar a lacuna por extenso) atropelou o layout (parâmetro 3: caber na tela), e **nenhum dos dois parâmetros, sozinho, revelaria o problema**. Na implementação, a decisão é de projeto: encurtar o texto de lacuna no lugar do preço e mandar a explicação para outro elemento, ou deixar o span encolher e quebrar linha. Não decidir agora — decidir com os cinco escopos na mesa.
 
 > **Correção de três números meus — o mesmo erro, repetido.** As primeiras versões desta seção mediam **arquivo em disco** e chamavam aquilo de peso da página. Hero: 320 KB em disco, 73–114 KB na rede. Fontes: 318/495/201 KB em disco, 83/132/71 KB na rede. E eu havia dito que o JS "só o navegador mede" — não é verdade, basta somar os `<script src>` do HTML servido: **576 KB brutos, 178 KB comprimidos**.
 >
@@ -254,7 +286,7 @@ Tudo abaixo é **o que a rede entrega** (medido com `curl`, comprimido onde o se
 Achados que atingem direto as funções vitais do pedido:
 
 1. **O JS é o maior item, e a página não usa interatividade.** Nenhum dos três tem `"use client"`; o que é enviado é o runtime de hidratação. Se dá para reduzir sem quebrar nada é questão da implementação — mas o alvo do parâmetro 3 é aqui, não na imagem.
-2. **Padoca tem checkpoints sem navegação.** As seções `#cardapio`, `#sobre` e `#visitar` existem e **nenhum link leva a elas** — só `#topo` tem link. Joya e Kio têm os quatro ligados. É o template genérico, que só põe o CTA na nav. O pedido nomeia "checkpoints na página" explicitamente.
+2. **Checkpoints somem justamente no celular.** Na Padoca eles nunca existiram — as seções `#cardapio`, `#sobre` e `#visitar` não têm nenhum link. Na Joya e na Kio existem no desktop, mas o menu está em `hidden … md:flex`: **no celular desaparecem**, e é no celular que a proposta é aberta. Ou seja, os três falham "checkpoints na página" no aparelho que importa.
 3. **Nenhum site respeita `prefers-reduced-motion`**, apesar dos três usarem `scroll-behavior: smooth`. Item mais barato da lista.
 4. **O otimizador entrega WebP, não AVIF**, mesmo com `Accept: image/avif` (confirmado no `Content-Type`). Ajuste de configuração, ganho provável na maior imagem.
 
