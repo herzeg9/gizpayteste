@@ -90,7 +90,7 @@ A fronteira é o que protege a economia do produto: cada standby que ganha featu
 
 ### Tensões com o parâmetro 1 — decididas
 
-**Formulário de contato — não entra.** `form-action 'none'` restringe destino de submissão; **não afeta link de saída**, então `wa.me`, `tel:` e `mailto:` funcionam com a política intacta. Aceitar formulário custaria: `form-action 'self'`, rota POST (adeus 100% estático), destino da mensagem, e captcha de terceiro — que reabre `script-src`, exatamente o que estamos vendendo. E há o problema maior: num standby, **quem é o controlador LGPD?** A pessoa acha que fala com a padaria; a padaria não é nossa cliente. Compensação: `wa.me` com mensagem pré-preenchida tem atrito menor que formulário e é o padrão do mercado brasileiro.
+**Formulário de contato — não entra.** `form-action 'none'` restringe destino de submissão; **não afeta link de saída**, então `wa.me`, `tel:` e `mailto:` funcionam com a política intacta. Verificado na [MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy/form-action): a diretiva é de navegação e restringe "the URLs which can be used as the target of form submissions". A ressalva conhecida — navegadores divergem sobre bloquear o *redirect posterior à submissão* — não nos alcança justamente porque não há submissão. Aceitar formulário custaria: `form-action 'self'`, rota POST (adeus 100% estático), destino da mensagem, e captcha de terceiro — que reabre `script-src`, exatamente o que estamos vendendo. E há o problema maior: num standby, **quem é o controlador LGPD?** A pessoa acha que fala com a padaria; a padaria não é nossa cliente. Compensação: `wa.me` com mensagem pré-preenchida tem atrito menor que formulário e é o padrão do mercado brasileiro.
 
 **Mapa — imagem estática self-hosted, ou nada.** Nível 0 (endereço + link "abrir rotas") é o baseline: custo zero, e no celular abre o app nativo, que é o que o usuário quer. Nível 1 (imagem renderizada no build, servida do nosso domínio, provedor OSM com atribuição) é upgrade autorizado quando `endereco` é fato — `img-src 'self'` fica intacto. **Iframe do Google nunca:** fura `default-src`, traz cookie de terceiro (tornando falsa a nossa nota de privacidade) e troca o argumento inteiro de segurança por um mapa que ninguém arrasta.
 
@@ -104,7 +104,7 @@ O baseline inteiro cabe dentro do parâmetro 1 **sem afrouxar uma diretiva da CS
 
 1. `cardapio` → `oferta`, agnóstico de vertical; `preco` passa a **opcional** (serviço sem tabela é legítimo).
 2. Seções saem do `page.tsx` e voltam para o dado — hoje `const secoes = ["Padaria","Brunch","Jantar"]` está hardcoded na Joya, ou seja, o layout sabe que o negócio é padaria.
-3. `Horario` ganha `iso` opcional; `seo.ts` só emite `openingHoursSpecification` quando existir.
+3. `Horario` ganha `iso` opcional; `seo.ts` só emite `openingHoursSpecification` quando existir. Formato conferido na [doc do Google](https://developers.google.com/search/docs/appearance/structured-data/local-business): `dayOfWeek` com nomes por extenso em inglês, `opens`/`closes` em `hh:mm`; **dia fechado é `opens` e `closes` ambos `"00:00"`** (não omitir o dia); 24 horas é `"00:00"`–`"23:59"`.
 4. `copy.previa?: Campo<Imagem>` para a `og:image`.
 5. `mapaEstatico?: Campo<Imagem>` — só quando `endereco` é fato.
 6. O WhatsApp do Estúdio Giz **não** entra em `Negocio`: `Negocio` é ficha do lead, e todo campo dela carrega procedência porque é afirmação sobre terceiro. Nosso canal é configuração, vai em `estudio.ts` sem `Campo`.
@@ -126,11 +126,32 @@ Só revisão humana: se a oferta representa o negócio; se a headline placeholde
 
 ---
 
+## Restrições já fixas que 3, 4 e 5 herdam
+
+Decidido nos parâmetros 1 e 2. Um parâmetro novo pode **contrariar** qualquer uma destas — mas aí a mudança é explícita, com o preço dito em voz alta, e o verificador muda junto. O que não pode é uma decisão nova revogar outra em silêncio.
+
+| Restrição | De onde vem | O que ela custa se for revogada |
+|---|---|---|
+| Rotas 100% estáticas, cacheáveis em CDN | 1 — foi o motivo de recusar `nonce` na CSP | render dinâmico, custo por requisição, e a CSP precisa de nonce ou hash |
+| `script-src 'self'`, zero script de terceiro | 1 | qualquer pixel, captcha, chat ou mapa embutido reabre a diretiva |
+| Sem cookie, sem coleta de dado pessoal | 1 e 2 | a nota de privacidade da página deixa de ser verdadeira |
+| Sem formulário (`form-action 'none'`) | 2 | rota POST, destino da mensagem, antispam e a questão do controlador LGPD |
+| `robots` noindex | 1 | a proposta passa a competir com o cliente na busca |
+| Página única com âncoras | 2 | multi-página exige conteúdo oficial que a proposta não tem |
+| Todo fato carrega URL e data | 1 | perde-se o que separa este produto de um template |
+| Nada de dado inventado como fato | 1 e 2 | risco reputacional direto com o dono |
+
 ## 3. Desempenho — aguardando
+
+Para especificar bem quando o escopo chegar, o que preciso entender: **o que conta como rápido o suficiente** (métrica de campo tipo Core Web Vitals, ou nota de Lighthouse, ou orçamento de bytes?), **em que rede e aparelho** (a proposta é aberta no celular do dono, dentro do WhatsApp), e **se a meta é o standby ou o site final do cliente** — são regimes diferentes. Já sei que colide com: imagem de hero e mapa estático (peso), `next/font` (bloqueio de render), e a decisão de manter tudo estático (que ajuda aqui).
 
 ## 4. Especificidade — aguardando
 
+O que preciso entender: se "especificidade" é sobre o **visual** ficar com cara daquele negócio e não de template, sobre o **conteúdo** ser específico do vertical, ou sobre a **proposta comercial** ser específica daquele dono. Colide diretamente com o baseline do parâmetro 2 — quanto mais específico, menos repetível — e é aí que a fronteira do que fica para a fase de projeto único vai ser testada.
+
 ## 5. Entrega — aguardando
+
+O que preciso entender: se entrega é o **deploy** (projeto Vercel, URL, proteção), o **envio ao dono** (como a proposta chega, o que acompanha), ou o **handoff** se ele aceitar (quem passa a manter, o que vira do domínio e dos dados). Colide com: `robots` noindex, a medição por `wa.me` com o slug decidida no parâmetro 2, e a regra de nunca publicar na raiz nem no projeto `gizpayteste`.
 
 ---
 
@@ -140,7 +161,7 @@ Não corrigidos: a regra manda fechar o escopo antes. Ficam na fila da fase de i
 
 | Defeito | Onde | Gravidade |
 |---|---|---|
-| `openingHours` em formato inválido para schema.org — emite `"Terça a sábado 8h – 22h"`, o canônico é `"Tu-Sa 08:00-22:00"`. O Google descarta ou interpreta errado. | `src/lib/seo.ts` dos três sites | dado estruturado errado no ar |
+| `openingHours` em formato inválido — emitimos `"Terça a sábado 8h – 22h"`. O schema.org exige código de dois dígitos (`Mo Tu We Th Fr Sa Su`) e hora em 24h: `"Tu-Sa 08:00-22:00"`. Confirmado em [schema.org/openingHours](https://schema.org/openingHours); o Google prefere `openingHoursSpecification`. | `src/lib/seo.ts` dos três sites | dado estruturado errado no ar |
 | `openGraph.images` ausente: a proposta compartilhada no WhatsApp chega sem card | `src/lib/seo.ts` | perda direta no funil |
 | Seções do cardápio hardcoded no layout | `sites/joya-…/src/app/page.tsx` | vertical vazando para apresentação |
 | Rótulo do CTA no nav divergente do dado (`"Reservar"` fixo vs. `ctaPrimario.rotulo`) | `sites/joya-…/src/app/page.tsx` | inconsistência pequena |
