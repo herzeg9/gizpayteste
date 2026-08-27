@@ -236,8 +236,8 @@ O que sobra é peso e trepidação, não arquitetura.
 |---|---|---|---|---|
 | Hero — arquivo em disco | 320 KB | 320 KB | 320 KB | **não** é o que o navegador baixa (ver abaixo) |
 | Hero — servido de fato | ~73 KB (w=640) · ~114 KB (w=828) · ~206 KB (w=1920) | idem | idem | `next/image` reduz para WebP conforme o `sizes` |
-| Fontes servidas | 340 KB | **528 KB** | 216 KB | Kio carrega **três** famílias; as outras, duas |
-| Chunks JS em disco | ~620 KB | ~624 KB | ~616 KB | total no disco, **não** o que o visitante baixa — medir no navegador |
+| Fontes — baixadas de fato | 83 KB (2 arq.) | **132 KB (3 arq.)** | 71 KB (2 arq.) | Kio carrega **três** famílias; disco seria 318/495/201 KB |
+| Chunks JS em disco | ~620 KB | ~624 KB | ~616 KB | total no disco, **não** o que o visitante baixa — só o navegador mede |
 | Checkpoints com caminho até eles | 4 / 4 | 4 / 4 | **1 / 4** | Padoca: só `#topo` tem link; cardápio, sobre e visitar não têm nenhum |
 | `prefers-reduced-motion` | não | não | não | os três têm `scroll-behavior: smooth` sem escape |
 
