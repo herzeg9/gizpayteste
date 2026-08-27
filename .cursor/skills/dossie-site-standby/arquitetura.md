@@ -90,6 +90,20 @@ node .cursor/skills/dossie-site-standby/scripts/verificar-arquitetura.mjs --slug
 
 Falha (exit 1) se: faltar header da tabela, CSP com `unsafe-eval`/`script-src` frouxo, faltar `robots.ts`/`sitemap.ts`/`not-found.tsx`, faltar a faixa de proposta, o JSON-LD sair de dado que não é `fato`, houver `.env*` rastreado no git, ou a camada de dados não existir.
 
+Com `--url` ele lê os headers da resposta real. Sem `--url` é só leitura de arquivo — útil no CI, mas não prova o runtime.
+
+**Ao mexer no verificador, refaça o teste negativo.** Um portão que só sabe dizer “ok” não é portão. As mutações que precisam reprovar:
+
+| Mutação | Deve falhar em |
+|---|---|
+| tirar `headers()` do `next.config.ts` | `next.config`, `x-powered-by` |
+| `script-src 'self' 'unsafe-inline'` | `csp-script` |
+| remover `frame-ancestors 'none'` | `csp` |
+| `unsafe-eval` fora do ramo de dev | `csp-eval` |
+| JSON-LD literal no `layout.tsx` | `json-ld-inline` |
+
+A checagem de CSP ignora comentários de propósito: numa versão anterior, a diretiva citada no cabeçalho do arquivo satisfazia o teste e a diretiva real passava sem ser lida.
+
 ## O que este padrão não cobre
 
 Funcionalidade, desempenho, especificidade e entrega são os parâmetros 2 a 5 — cada um entra depois, com a especificação do usuário. Não antecipar aqui.

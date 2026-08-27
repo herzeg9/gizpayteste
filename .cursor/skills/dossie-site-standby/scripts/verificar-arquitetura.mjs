@@ -62,6 +62,18 @@ async function ler(caminho) {
   }
 }
 
+/**
+ * Remove comentários antes de auditar CSP. Sem isto, uma diretiva citada num
+ * comentário satisfaz a checagem e a diretiva real passa sem ser lida.
+ */
+function semComentarios(fonte) {
+  return fonte
+    .replace(/\/\*[\s\S]*?\*\//g, "")
+    .split("\n")
+    .filter((linha) => !/^\s*(\/\/|\*)/.test(linha))
+    .join("\n");
+}
+
 const checks = [];
 const ok = (id, detalhe) => checks.push({ id, ok: true, detalhe });
 const falha = (id, detalhe) => checks.push({ id, ok: false, detalhe });
@@ -83,20 +95,23 @@ async function auditarEstatico(dir, slug) {
   if (/poweredByHeader:\s*false/.test(config)) ok("x-powered-by", "desligado");
   else falha("x-powered-by", "faltou poweredByHeader: false");
 
-  const seguranca = (await ler(join(dir, "src/lib/seguranca.ts"))) ?? "";
+  const seguranca = semComentarios(
+    (await ler(join(dir, "src/lib/seguranca.ts"))) ?? "",
+  );
   const semDiretiva = DIRETIVAS_CSP.filter((d) => !seguranca.includes(d));
   if (semDiretiva.length) falha("csp", `diretivas ausentes: ${semDiretiva.join("; ")}`);
   else ok("csp", "diretivas estritas presentes");
 
-  // Uma diretiva por linha no fonte: comparar linha a linha evita casar o
-  // 'unsafe-inline' legítimo de style-src com a diretiva de script.
-  const linhaScript = seguranca
+  // Toda linha de código com script-src precisa passar: basta uma frouxa para
+  // a política inteira ficar frouxa.
+  const linhasScript = seguranca
     .split("\n")
-    .find((linha) => linha.includes("script-src"));
-  if (!linhaScript) {
+    .filter((linha) => linha.includes("script-src"));
+  const frouxas = linhasScript.filter((linha) => linha.includes("unsafe-inline"));
+  if (!linhasScript.length) {
     falha("csp-script", "sem diretiva script-src");
-  } else if (linhaScript.includes("unsafe-inline")) {
-    falha("csp-script", "script-src com 'unsafe-inline'");
+  } else if (frouxas.length) {
+    falha("csp-script", `script-src com 'unsafe-inline': ${frouxas[0].trim()}`);
   } else {
     ok("csp-script", "script-src sem unsafe-inline");
   }
