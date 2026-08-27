@@ -21,15 +21,17 @@ Etapa 3 (Superdesign): Padoca Vegan **canvas no ar** — projeto `eba8a21f-…`,
 
 ## Melhoria da linha em 5 parâmetros
 
-O usuário passa a especificação de um parâmetro por vez. Não antecipar os seguintes.
+Escopos e decisões: [`parametros.md`](../.cursor/skills/central-operacoes/parametros.md).
 
-| # | Parâmetro | Estado |
-|---|---|---|
-| 1 | Estrutura / arquitetura | **Feito** — [arquitetura.md](../.cursor/skills/dossie-site-standby/arquitetura.md). Camada de dados com procedência, CSP estrita, verificador. Joya, Kio e Padoca no padrão v1. |
-| 2 | Funcionalidade | aguardando especificação |
-| 3 | Desempenho | aguardando especificação |
-| 4 | Especificidade | aguardando especificação |
-| 5 | Entrega | aguardando especificação |
+**Regra:** qualidade acima de quantidade, e **nada concreto antes de os cinco escopos estarem fechados**. Enquanto faltar escopo, o trabalho é especificar.
+
+| # | Parâmetro | Escopo | Implementado |
+|---|---|---|---|
+| 1 | Estrutura / arquitetura | fechado | sim — [padrão v1](../.cursor/skills/dossie-site-standby/arquitetura.md) nos três standbys |
+| 2 | Funcionalidade | fechado — baseline de 8 itens, fronteira e tensões decididas | não |
+| 3 | Desempenho | aguardando | — |
+| 4 | Especificidade | aguardando | — |
+| 5 | Entrega | aguardando | — |
 
 ## Fundação (atualizar a cada sessão)
 

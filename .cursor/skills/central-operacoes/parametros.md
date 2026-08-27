@@ -1,0 +1,146 @@
+# Os 5 parâmetros da linha de operações
+
+Programa de melhoria do site gerado. **Qualidade acima de quantidade.**
+
+## Regra de trabalho (vale para todo agente)
+
+> Não realizar nada concreto — código, template, scaffold, deploy — antes de os **cinco** escopos estarem registrados aqui.
+
+O usuário passa a especificação de um parâmetro por vez. Enquanto faltar escopo, o trabalho é **especificar**: entender o pedido, mapear o que ele exige, achar as tensões com os outros parâmetros e decidir no papel. Implementar cedo, um parâmetro de cada vez, produz retrabalho — porque as decisões se contradizem entre parâmetros e a última a chegar desmancha as anteriores.
+
+Exceção: defeito já publicado, com risco real, só se o usuário autorizar explicitamente.
+
+| # | Parâmetro | Escopo | Implementado |
+|---|---|---|---|
+| 1 | Estrutura / Arquitetura | fechado | sim — padrão v1 |
+| 2 | Funcionalidade | **fechado** | não — aguarda 3, 4 e 5 |
+| 3 | Desempenho | aguardando | — |
+| 4 | Especificidade | aguardando | — |
+| 5 | Entrega | aguardando | — |
+
+---
+
+## 1. Estrutura / Arquitetura — fechado
+
+Pedido do usuário:
+
+> Todo site profissional e com um alto fluxo tem uma arquitetura consistente e com uma equipe de database para respaldar a arquitetura. A arquitetura é o passo essencial para não se tornar algo genérico e sem valor. Utilizando como exemplo diversos sites de big Techs, fica claro que precisamos gerar valor a partir de segurança. Após modelarmos um padrão de Arquitetura, será simples repetir a fórmula para todos os futuros projetos.
+
+Entregue em [arquitetura.md](../dossie-site-standby/arquitetura.md): camada de dados com procedência obrigatória (`fato`/`placeholder`/`lacuna`), CSP estrita sem nonce (rotas seguem estáticas), headers de segurança, JSON-LD derivado, scaffold e verificador com exit code.
+
+---
+
+## 2. Funcionalidade — fechado
+
+Pedido do usuário:
+
+> Muitas vezes não há um padrão que podemos copiar para que cada projeto tenha e atenda funções mínimas para seu objetivo. Cada projeto de site pode ser de uma área completamente diferente, mas todos precisam de funcionalidades básicas. Assim, cada funcionalidade específica deve ficar para quando formos trabalhar apenas em um projeto. Não vamos realizar um trabalho do 0 a 100% com todas as funcionalidades possíveis, causará lentidão e problema. Assim nosso objetivo é realizar um padrão mínimo de funcionalidade para cada projeto, desde que seja bem feito e condizente com os sites do mercado atualmente, sem divergências absurdas.
+
+### Critério de corte
+
+Um item só é baseline se as três forem verdade:
+
+1. a falta dele quebra uma das cinco perguntas que todo visitante de PME faz — *é aqui mesmo? o que vocês fazem? onde ficam e quando abrem? dá pra confiar? como falo com vocês agora?*
+2. praticamente todo site de PME de mercado tem;
+3. funciona **sem nenhum dado que só o dono tem**.
+
+O critério 3 é o que mais elimina candidato, e é o que separa este produto de um site comum: o standby é feito antes de o cliente existir.
+
+### Baseline (8 itens)
+
+| # | Item | O que quebra sem ele |
+|---|---|---|
+| B1 | Identificação acima da dobra: nome, uma linha, bairro | o visitante não confirma que chegou no lugar certo |
+| B2 | Um CTA acionável (WhatsApp / telefone), repetido em 3 posições | o site vira panfleto; é a única "função" real de site de PME |
+| B3 | Ficha do local: NAP, horários, link de rotas | perde para a própria ficha do Google |
+| B4 | Oferta nomeada, 4–12 itens, preço opcional | "salão de beleza" não converte; "corte, coloração, mechas" converte |
+| B5 | Prova pública com procedência (nota + 1–3 citações com link) | nenhuma razão externa para acreditar |
+| B6 | FAQ, 3–6 pares, incluindo o que não sabemos | as lacunas ficam sem endereço fixo e somem na próxima iteração |
+| B7 | Esqueleto: âncoras, rodapé com fontes, 404 com marca, **prévia de compartilhamento** | a proposta chega no WhatsApp do dono como texto cru |
+| B8 | Funcionar no celular: responsivo, viewport sem `user-scalable=no`, alvo de toque ≥24px | a proposta é aberta no celular, dentro do WhatsApp |
+
+Regras de estado por item, que a camada de dados já sabe expressar:
+
+- **Nunca placeholder:** nome, bairro, CTA, nome de item da oferta, depoimento. Link ou serviço inventado é afirmação falsa sobre terceiro.
+- **B3 nunca some**, os campos é que mudam de estado. Horário divergente aparece como lacuna com as duas fontes — comunica método.
+- **B5 some inteiro** se não houver avaliação pública. Bloco de prova vazio é pior que nenhum.
+- **B6 é o escoadouro das lacunas.** É o único item que aceito divergir do "todo site tem", e a justificativa é a camada de dados, não estética.
+
+Sobre B7: hoje o `seo.ts` define `openGraph.title` e `description` mas **não define `images`**. O primeiro contato do dono com o trabalho não é a página — é o card de prévia no chat. É o defeito de funcionalidade mais barato de corrigir e o de maior impacto no funil.
+
+### Fronteira — o que NÃO entra
+
+Critério de saída (os três): o cliente **assinou**, o dado é **oficial e dele**, e existe **um dono do dado** que mantém aquilo atualizado.
+
+Funcionalidade transacional não entra num site que o dono não autorizou: um standby que aceita agendamento promete, em nome de terceiro, um compromisso que ninguém assumiu. Isso não é escopo, é responsabilidade.
+
+| Vertical | Fica para projeto único |
+|---|---|
+| Salão / barbearia / pet | agendamento com agenda real, profissional, duração |
+| Oficina | orçamento com placa/modelo, upload de foto, tabela de mão de obra |
+| Restaurante / padaria | cardápio completo com pedido, carrinho, iFood |
+| Clínica | convênios, agendamento de avaliação — dado de saúde é sensível (LGPD art. 5º, II) |
+| Marcenaria / móveis | configurador sob medida, simulação de ambiente |
+| Loja / ateliê | catálogo com estoque, grade, checkout |
+| Qualquer | blog, newsletter, área do cliente, busca interna, chat, cupons, multi-idioma |
+
+**Página única com âncoras é o baseline.** Multi-página exige volume de conteúdo oficial que, por definição, não temos.
+
+A fronteira é o que protege a economia do produto: cada standby que ganha feature de vertical vira projeto artesanal, e a escala desaparece. A recusa é a arquitetura.
+
+### Tensões com o parâmetro 1 — decididas
+
+**Formulário de contato — não entra.** `form-action 'none'` restringe destino de submissão; **não afeta link de saída**, então `wa.me`, `tel:` e `mailto:` funcionam com a política intacta. Aceitar formulário custaria: `form-action 'self'`, rota POST (adeus 100% estático), destino da mensagem, e captcha de terceiro — que reabre `script-src`, exatamente o que estamos vendendo. E há o problema maior: num standby, **quem é o controlador LGPD?** A pessoa acha que fala com a padaria; a padaria não é nossa cliente. Compensação: `wa.me` com mensagem pré-preenchida tem atrito menor que formulário e é o padrão do mercado brasileiro.
+
+**Mapa — imagem estática self-hosted, ou nada.** Nível 0 (endereço + link "abrir rotas") é o baseline: custo zero, e no celular abre o app nativo, que é o que o usuário quer. Nível 1 (imagem renderizada no build, servida do nosso domínio, provedor OSM com atribuição) é upgrade autorizado quando `endereco` é fato — `img-src 'self'` fica intacto. **Iframe do Google nunca:** fura `default-src`, traz cookie de terceiro (tornando falsa a nossa nota de privacidade) e troca o argumento inteiro de segurança por um mapa que ninguém arrasta.
+
+**Analytics — zero, e medir a entrega em vez da audiência.** O standby não é campanha: é um link enviado a uma pessoa. O sinal que importa não é pageview, é resposta. Baseline: um CTA discreto "Falar com o Estúdio Giz" apontando para o nosso `wa.me` com o **slug da proposta na mensagem** — atribuição perfeita da única conversão que paga a conta, sem uma linha de JavaScript. Vercel Web Analytics fica desligado por decisão: o stub inline exigiria `'unsafe-inline'` ou um hash que quebra em silêncio a cada atualização do pacote, e a frase "não coleta dados" deixaria de ser literal.
+
+**Fontes e ícones — confirmado.** `next/font` serve do próprio domínio; SVG inline não gera requisição. Proibido: ícone via CDN, icon font, e `<link>` para `fonts.googleapis.com` (a tentação aparece quando alguém cola um snippet de design).
+
+O baseline inteiro cabe dentro do parâmetro 1 **sem afrouxar uma diretiva da CSP**. É a melhor validação de que os dois foram desenhados de forma coerente.
+
+### Mudanças no contrato de dados (a implementar depois)
+
+1. `cardapio` → `oferta`, agnóstico de vertical; `preco` passa a **opcional** (serviço sem tabela é legítimo).
+2. Seções saem do `page.tsx` e voltam para o dado — hoje `const secoes = ["Padaria","Brunch","Jantar"]` está hardcoded na Joya, ou seja, o layout sabe que o negócio é padaria.
+3. `Horario` ganha `iso` opcional; `seo.ts` só emite `openingHoursSpecification` quando existir.
+4. `copy.previa?: Campo<Imagem>` para a `og:image`.
+5. `mapaEstatico?: Campo<Imagem>` — só quando `endereco` é fato.
+6. O WhatsApp do Estúdio Giz **não** entra em `Negocio`: `Negocio` é ficha do lead, e todo campo dela carrega procedência porque é afirmação sobre terceiro. Nosso canal é configuração, vai em `estudio.ts` sem `Campo`.
+7. **Gate de mínimo publicável:** nome fato, endereço fato, um contato fato, ≥3 itens de oferta com nome fato. Abaixo disso não sabemos o suficiente para propor — e proposta ruim queima o lead.
+
+Nenhum campo novo para formulário, analytics, agendamento ou pedido. O contrato quase não cresce, o que é bom indício de baseline calibrado.
+
+### Verificação
+
+Script separado `verificar-funcionalidade.mjs`, mesmo contrato de exit code, com a mesma tabela de teste negativo. Separado do de arquitetura de propósito: parâmetros falham por razões diferentes, e um portão que mistura "sem CTA" com "sem frame-ancestors" fica ilegível.
+
+Prova por máquina: CTA presente e batendo com `telefone` em E.164; endereço no HTML; `openingHoursSpecification` válido; ≥3 itens de oferta; depoimento com fonte; `og:image` respondendo 200 na mesma origem; 404 com status 404 de verdade; viewport sem `user-scalable=no`; **zero `<form>`**; **zero `<iframe>`**; **nenhum host de terceiro em recurso carregado** (distinguindo de link de saída, que é permitido).
+
+Só aproximação, e a saída precisa dizer isso: "CTA acima da dobra" (posição no documento correlaciona, não equivale), "toda lacuna tem eco na página" (casamento de string não pega redação ruim), alvo de toque (exige geometria computada).
+
+Só revisão humana: se a oferta representa o negócio; se a headline placeholder promete o que o negócio não entrega; se a FAQ responde a dúvida daquele vertical; se o mapa mostra o lugar certo; se a página parece o site oficial apesar da faixa; se há pessoa identificável numa imagem.
+
+**O verificador prova presença e consistência, nunca adequação.** Portão verde é licença para a revisão humana começar, não substituto dela.
+
+---
+
+## 3. Desempenho — aguardando
+
+## 4. Especificidade — aguardando
+
+## 5. Entrega — aguardando
+
+---
+
+## Defeitos achados durante a especificação
+
+Não corrigidos: a regra manda fechar o escopo antes. Ficam na fila da fase de implementação.
+
+| Defeito | Onde | Gravidade |
+|---|---|---|
+| `openingHours` em formato inválido para schema.org — emite `"Terça a sábado 8h – 22h"`, o canônico é `"Tu-Sa 08:00-22:00"`. O Google descarta ou interpreta errado. | `src/lib/seo.ts` dos três sites | dado estruturado errado no ar |
+| `openGraph.images` ausente: a proposta compartilhada no WhatsApp chega sem card | `src/lib/seo.ts` | perda direta no funil |
+| Seções do cardápio hardcoded no layout | `sites/joya-…/src/app/page.tsx` | vertical vazando para apresentação |
+| Rótulo do CTA no nav divergente do dado (`"Reservar"` fixo vs. `ctaPrimario.rotulo`) | `sites/joya-…/src/app/page.tsx` | inconsistência pequena |

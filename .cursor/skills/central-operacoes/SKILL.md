@@ -9,6 +9,10 @@ Este arquivo é o **hub**. As skills de execução continuam sendo as três abai
 
 Quadro vivo: [`prospeccao/CENTRAL.md`](../../../prospeccao/CENTRAL.md). Leia-o no início de **toda** sessão de pipeline.
 
+## Antes de implementar qualquer melhoria
+
+Ler [`parametros.md`](parametros.md). A linha está sendo melhorada em 5 parâmetros e a regra do usuário é **não realizar nada concreto antes de os cinco escopos estarem fechados** — qualidade acima de quantidade. Enquanto faltar escopo, o trabalho é especificar, não codar.
+
 ## Este chat é o padrão
 
 Não mandar o usuário para outro Cloud Agent para “seguir o pipeline”. Este branch / esta conversa (unificação) é a mesa. Outros agents (environment, lint, mapeamento, Joya testers) são histórico — puxar o que falta deles e operar aqui.
