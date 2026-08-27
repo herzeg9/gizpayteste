@@ -61,7 +61,7 @@ Kio: preflight OK → dossiê/inputs → Superdesign (5 créditos) → `sites/ki
 
 Ver tabela completa em [`leads/index.md`](leads/index.md).
 
-1. **Padoca Vegan** — canvas pronto (audit PASS). Next + Vercel `padoca-vegan-product` quando pedir.
+1. **Padoca Vegan** — canvas (audit PASS) **e** site em `sites/padoca-vegan-vila-madalena/` no padrão v1, verificador `exit=0`. Falta só publicar em `padoca-vegan-product`, que é o parâmetro 5 (entrega).
 2. Iza / Villa Grano / De Lá do Pão / Rodésia
 3. Recorte novo se o usuário nomear
 

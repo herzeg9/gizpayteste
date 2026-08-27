@@ -151,8 +151,6 @@ Só revisão humana: se a oferta representa o negócio; se a headline placeholde
 
 **O verificador prova presença e consistência, nunca adequação.** Portão verde é licença para a revisão humana começar, não substituto dela.
 
----
-
 ### Estado atual dos três standbys contra o baseline
 
 Auditado em 2026-08-27 por leitura de código e resposta do servidor. Serve para dimensionar o parâmetro 2 antes de implementar — não é lista de tarefas ainda.
