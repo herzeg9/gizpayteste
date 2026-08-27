@@ -82,6 +82,27 @@ src/app/
 
 `src/lib/seo.ts` monta o JSON-LD a partir de `negocio.ts` e **descarta** o que não for `fato`. Nunca escrever JSON-LD à mão no layout: telefone duplicado no `layout.tsx` e no `content.ts` diverge no primeiro ajuste, e dado estruturado errado é penalização.
 
+## Acessibilidade
+
+O que o tipo garante, o revisor não precisa lembrar:
+
+- `Imagem = { src, alt }` — **`alt` é obrigatório**. Não existe imagem sem alternativo na camada de dados.
+- `<html lang="pt-BR">` no layout: leitor de tela e tradução dependem disso.
+- A faixa de proposta é `role="note"`: é um aviso sobre a página, não conteúdo dela.
+- Estrutura semântica: `nav`, `main`, `footer`, `section`, títulos em ordem; FAQ em `dl`/`dt`/`dd`.
+- Placeholder e lacuna aparecem como **texto**, nunca só como cor — quem não distingue cor continua entendendo o que é proposta e o que é fato.
+
+O verificador confere `lang` e o `role` da faixa. Contraste e navegação por teclado são revisão de layout (parâmetro 4), não de arquitetura.
+
+## Observabilidade
+
+Standby não recebe analytics, e isso é decisão, não esquecimento: métrica de terceiro significa script de terceiro, cookie e um `connect-src` aberto — o oposto do que estamos vendendo. O que fica:
+
+- Logs de build e de runtime no projeto Vercel do próprio standby (`get_runtime_logs`), isolado do `gizpayteste`.
+- `verificar-arquitetura.mjs --url` como sonda: roda contra a URL publicada e falha se um header sumiu depois do deploy.
+
+Medição de audiência, se um dia entrar, é conversa do parâmetro 5 (entrega) — e aí a CSP muda junto, de propósito.
+
 ## Verificação (roda no CI e antes do deploy)
 
 ```bash

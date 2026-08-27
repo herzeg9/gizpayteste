@@ -139,7 +139,15 @@ async function auditarEstatico(dir, slug) {
   if (/index:\s*false/.test(seo)) ok("noindex", "metadata robots.index = false");
   else falha("noindex", "seo.ts não marca index: false");
 
+  if (/<html\s+lang="pt-BR"/.test(layout) || /lang="pt-BR"/.test(layout)) {
+    ok("a11y-lang", 'html lang="pt-BR"');
+  } else {
+    falha("a11y-lang", 'layout.tsx sem lang="pt-BR"');
+  }
+
   const faixa = (await ler(join(dir, "src/components/faixa-proposta.tsx"))) ?? "";
+  if (/role="note"/.test(faixa)) ok("a11y-faixa", 'faixa com role="note"');
+  else falha("a11y-faixa", 'faixa-proposta.tsx sem role="note"');
   const page = (await ler(join(dir, "src/app/page.tsx"))) ?? "";
   const negocio = (await ler(join(dir, "src/data/negocio.ts"))) ?? "";
   const temFaixa =
@@ -209,6 +217,15 @@ async function auditarAoVivo(url) {
   const corpo = await res.text();
   if (/não é o site oficial/i.test(corpo)) ok("live-faixa", "faixa no HTML servido");
   else falha("live-faixa", "faixa de proposta não apareceu no HTML");
+
+  if (/<html[^>]+lang="pt-BR"/.test(corpo)) ok("live-lang", 'lang="pt-BR" no HTML servido');
+  else falha("live-lang", "HTML servido sem lang=pt-BR");
+
+  const imgsSemAlt = [...corpo.matchAll(/<img\b[^>]*>/g)].filter(
+    (m) => !/\balt=/.test(m[0]),
+  );
+  if (imgsSemAlt.length) falha("live-alt", `${imgsSemAlt.length} <img> sem alt`);
+  else ok("live-alt", "toda <img> com alt");
 
   const blocos = [...corpo.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)];
   if (!blocos.length) {
