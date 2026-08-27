@@ -31,4 +31,6 @@ Automação de **criação de sites para PME** (prospecção SP → dossiê → 
 - Curso Giz Pay = raiz, porta 43117, projeto Vercel `gizpayteste`.
 - Site de cliente = `sites/<slug>/`, projeto Vercel **novo** `{slug}-product`. Nunca `vercel --prod` na raiz.
 - Segredo de Cloud: `VERCEL_TOKEN`. Superdesign: login CLI neste VM. Amplemarket: não conectar.
-- Teste ouro: https://joya-boulangerie-product.vercel.app/ — próximo teste padrão: Kio Bakehouse.
+- No ar: Joya e Kio. A Padoca Vegan já tem site em `sites/`, ainda não publicado.
+
+**O padrão dos standbys está congelado.** A linha está sendo melhorada em 5 parâmetros e a regra do usuário é não implementar antes de os cinco escopos fecharem — ler [`.cursor/skills/central-operacoes/parametros.md`](.cursor/skills/central-operacoes/parametros.md) antes de mexer em `template/`, `schema.ts`, scaffold ou verificadores. Gerar standby novo com o padrão v1 como está segue liberado.
