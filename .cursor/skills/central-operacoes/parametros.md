@@ -72,9 +72,9 @@ O critério 3 é o que mais elimina candidato, e é o que separa este produto de
 | # | Item | O que quebra sem ele |
 |---|---|---|
 | B1 | Identificação acima da dobra: nome, uma linha, bairro | o visitante não confirma que chegou no lugar certo |
-| B2 | Um CTA acionável (WhatsApp / telefone), repetido em 3 posições | o site vira panfleto; é a única "função" real de site de PME |
+| B2 | Um CTA acionável (WhatsApp / telefone): **persistente** e **no fim do conteúdo** | o site vira panfleto; é a única "função" real de site de PME |
 | B3 | Ficha do local: NAP, horários, link de rotas | perde para a própria ficha do Google |
-| B4 | Oferta nomeada, 4–12 itens, preço opcional | "salão de beleza" não converte; "corte, coloração, mechas" converte |
+| B4 | Oferta nomeada, preço opcional. **Piso de 3** (portão); faixa saudável 4–12 (design) | "salão de beleza" não converte; "corte, coloração, mechas" converte |
 | B5 | Prova pública com procedência (nota + 1–3 citações com link) | nenhuma razão externa para acreditar |
 | B6 | FAQ, 3–6 pares, incluindo o que não sabemos | as lacunas ficam sem endereço fixo e somem na próxima iteração |
 | B7 | Esqueleto: âncoras, rodapé com fontes, 404 com marca, **prévia de compartilhamento** | a proposta chega no WhatsApp do dono como texto cru |
@@ -86,6 +86,11 @@ Regras de estado por item, que a camada de dados já sabe expressar:
 - **B3 nunca some**, os campos é que mudam de estado. Horário divergente aparece como lacuna com as duas fontes — comunica método.
 - **B5 some inteiro** se não houver avaliação pública. Bloco de prova vazio é pior que nenhum.
 - **B6 é o escoadouro das lacunas.** É o único item que aceito divergir do "todo site tem", e a justificativa é a camada de dados, não estética.
+
+Duas precisões que a revisão do documento forçou, porque a redação anterior seria implementada errada:
+
+- **B2 não é "3 posições".** Eu tinha escrito um número que não sei defender como padrão de mercado. O que dá para sustentar por raciocínio: o CTA precisa estar **sempre alcançável** (nav persistente) **e no fim do conteúdo** — quem leu a página inteira não deve ter de rolar de volta para agir. Onde mais aparecer é decisão de layout, não regra.
+- **B4 tem dois números com papéis diferentes.** **3 é o piso do portão** (abaixo disso não sabemos o suficiente sobre o negócio e a proposta não sai). **4–12 é faixa de design** — orientação de como uma boa página se parece. Antes o documento dizia "4–12" na tabela e "≥3" no portão, o que viraria duas checagens conflitantes.
 
 Sobre B7: hoje o `seo.ts` define `openGraph.title` e `description` mas **não define `images`**. O primeiro contato do dono com o trabalho não é a página — é o card de prévia no chat. É o defeito de funcionalidade mais barato de corrigir e o de maior impacto no funil.
 
@@ -135,7 +140,7 @@ O baseline inteiro cabe dentro do parâmetro 1 **sem afrouxar uma diretiva da CS
 4. `copy.previa?: Campo<Imagem>` para a `og:image`.
 5. `mapaEstatico?: Campo<Imagem>` — só quando `endereco` é fato.
 6. O WhatsApp do Estúdio Giz **não** entra em `Negocio`: `Negocio` é ficha do lead, e todo campo dela carrega procedência porque é afirmação sobre terceiro. Nosso canal é configuração, vai em `estudio.ts` sem `Campo`.
-7. **Gate de mínimo publicável:** nome fato, endereço fato, um contato fato, ≥3 itens de oferta com nome fato. Abaixo disso não sabemos o suficiente para propor — e proposta ruim queima o lead.
+7. **Gate de mínimo publicável:** nome fato, endereço fato, um contato fato, **≥3** itens de oferta com nome fato (o piso; a faixa de design é 4–12). Abaixo disso não sabemos o suficiente para propor — e proposta ruim queima o lead.
 
 Nenhum campo novo para formulário, analytics, agendamento ou pedido. O contrato quase não cresce, o que é bom indício de baseline calibrado.
 
@@ -158,7 +163,7 @@ Auditado em 2026-08-27 por leitura de código e resposta do servidor. Serve para
 | Item | Joya | Kio | Padoca | Veredito |
 |---|---|---|---|---|
 | B1 identificação | ok | ok | ok | `nome` é `string` cru, **sem procedência** — decidir |
-| B2 CTA em 3 posições | nav + hero | nav + hero | nav + hero | **falta o rodapé nos três** |
+| B2 CTA persistente + no fim | nav (persistente) + hero | idem | idem | **falta o CTA no fim do conteúdo nos três** |
 | B3 ficha do local | ok | ok | ok | `openingHours` inválido nos três |
 | B4 oferta ≥3 itens | 8 | 5 | 4 | passa; falta renomear e tornar `preco` opcional |
 | B5 prova com fonte | 2 | 3 | 2 | passa |
