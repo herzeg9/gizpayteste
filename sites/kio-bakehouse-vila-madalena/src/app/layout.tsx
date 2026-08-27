@@ -1,6 +1,6 @@
-import type { Metadata } from "next";
 import { Fraunces, Inter, Source_Serif_4 } from "next/font/google";
-import { site } from "@/content";
+import { negocio } from "@/data/negocio";
+import { jsonLdNegocio, metadataNegocio } from "@/lib/seo";
 import "./globals.css";
 
 const display = Fraunces({
@@ -21,28 +21,7 @@ const serif = Source_Serif_4({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: `${site.name} · proposta Estúdio Giz`,
-  description:
-    "Proposta de site para a Kio Bakehouse, Vila Madalena. Não é o site oficial.",
-  robots: { index: false, follow: false },
-};
-
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Bakery",
-  name: site.name,
-  telephone: "+55-11-94556-6894",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: site.address.street,
-    addressLocality: site.address.city,
-    addressRegion: site.address.region,
-    postalCode: site.address.postalCode,
-    addressCountry: "BR",
-  },
-  sameAs: [site.instagram],
-};
+export const metadata = metadataNegocio(negocio);
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
@@ -53,7 +32,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="flex min-h-full flex-col bg-paper text-charcoal">
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          // Derivado de `negocio`: só entra fato sem ressalva.
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLdNegocio(negocio)),
+          }}
         />
         {children}
       </body>
