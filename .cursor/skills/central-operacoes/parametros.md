@@ -1,0 +1,424 @@
+# Os 5 parâmetros da linha de operações
+
+Programa de melhoria do site gerado. **Qualidade acima de quantidade.**
+
+> **Estado verificado em 2026-08-27, commit `3e064fd`.** Build dos três standbys ok; `verificar-arquitetura.mjs --url` devolve `exit=0` com 25 checagens em cada; typecheck e lint limpos na raiz e nos três sites. Quem retomar o trabalho parte daqui — se a data estiver velha, reverificar antes de confiar.
+
+## Regra de trabalho (vale para todo agente)
+
+> Não realizar nada concreto — código, template, scaffold, deploy — antes de os **cinco** escopos estarem registrados aqui.
+
+O usuário passa a especificação de um parâmetro por vez. Enquanto faltar escopo, o trabalho é **especificar**: entender o pedido, mapear o que ele exige, achar as tensões com os outros parâmetros e decidir no papel. Implementar cedo, um parâmetro de cada vez, produz retrabalho — porque as decisões se contradizem entre parâmetros e a última a chegar desmancha as anteriores.
+
+### O que a regra congela, e o que não congela
+
+O congelamento é sobre **mudar o padrão**, não sobre operar com ele.
+
+| Ação | Pode agora? |
+|---|---|
+| Gerar um standby novo para um lead, com o padrão v1 como está | **sim** — é o produto funcionando |
+| Rodar coleta, dossiê, canvas, verificador | **sim** |
+| Alterar o `template/`, o `schema.ts`, o scaffold ou os verificadores | **não** — é mexer no padrão |
+| Implementar item do baseline do parâmetro 2 (CTA no rodapé, `og:image`, `oferta`) | **não** — espera os cinco escopos |
+| Corrigir defeito já publicado, inclusive o `openingHours` inválido | **não** — o usuário pôs reparo em standby em 2026-08-27 |
+
+Esta leitura vem de "toda a estrutura que iremos desenvolver": o que está em suspenso é o programa de melhoria, não a linha de produção. Se a intenção do usuário for congelamento total, ele corrige e este quadro muda.
+
+| # | Parâmetro | Escopo | Implementado |
+|---|---|---|---|
+| 1 | Estrutura / Arquitetura | fechado | sim — padrão v1 |
+| 2 | Funcionalidade | fechado | não |
+| 3 | Desempenho | fechado | não |
+| 4 | Especificidade | fechado | não |
+| 5 | Entrega | fechado | não |
+
+**Os cinco escopos estão fechados (2026-08-28).** O congelamento de implementação cumpriu a função e pode ser levantado quando o usuário mandar. Reparo dos defeitos deixa de ser pendência solta: é trabalho do parâmetro 5.
+
+---
+
+## 1. Estrutura / Arquitetura — fechado
+
+Pedido do usuário:
+
+> Todo site profissional e com um alto fluxo tem uma arquitetura consistente e com uma equipe de database para respaldar a arquitetura. A arquitetura é o passo essencial para não se tornar algo genérico e sem valor. Utilizando como exemplo diversos sites de big Techs, fica claro que precisamos gerar valor a partir de segurança. Após modelarmos um padrão de Arquitetura, será simples repetir a fórmula para todos os futuros projetos.
+
+Detalhe em [arquitetura.md](../dossie-site-standby/arquitetura.md). Requisitos derivados, para este documento se sustentar sozinho:
+
+1. **Quatro camadas, não invertíveis:** `coleta.json` (evidência) → `src/data/negocio.ts` (dado tipado) → `src/lib/` (derivação: SEO, segurança) → `src/app/` + componentes (apresentação). A apresentação não decide o que é fato.
+2. **Procedência obrigatória:** todo dado é `fato(valor, fonte)`, `placeholder(valor, motivo)` ou `lacuna(motivo, fontes)`. `Fonte` = URL + veículo + data. Nenhum fato compila sem os três.
+3. **Fato com fonte concorrente** (`ressalva`) vai para a página, **não** para o dado estruturado.
+4. **Nove headers de segurança** aplicados em `/(.*)`, com CSP estrita sem `nonce` — porque nonce forçaria render dinâmico e mataria o cache de CDN.
+5. **Arquivos obrigatórios por site:** `robots.ts` (noindex), `sitemap.ts`, `not-found.tsx`, `src/data/{schema,negocio}.ts`, `src/lib/{seo,seguranca}.ts`.
+6. **JSON-LD sempre derivado** de `negocio.ts`; escrever à mão no layout é falha de verificação.
+7. **A fórmula se repete por ferramenta, não por memória:** `scaffold-site.mjs` cria o site já no padrão; `verificar-arquitetura.mjs` é portão com exit code, em modo estático e contra a URL viva.
+8. **O verificador precisa provar que reprova** — a tabela de mutações está na `arquitetura.md`.
+
+---
+
+## 2. Funcionalidade — fechado
+
+Pedido do usuário:
+
+> Muitas vezes não há um padrão que podemos copiar para que cada projeto tenha e atenda funções mínimas para seu objetivo. Cada projeto de site pode ser de uma área completamente diferente, mas todos precisam de funcionalidades básicas. Assim, cada funcionalidade específica deve ficar para quando formos trabalhar apenas em um projeto. Não vamos realizar um trabalho do 0 a 100% com todas as funcionalidades possíveis, causará lentidão e problema. Assim nosso objetivo é realizar um padrão mínimo de funcionalidade para cada projeto, desde que seja bem feito e condizente com os sites do mercado atualmente, sem divergências absurdas.
+
+### Critério de corte
+
+Um item só é baseline se as três forem verdade:
+
+1. a falta dele quebra uma das cinco perguntas que todo visitante de PME faz — *é aqui mesmo? o que vocês fazem? onde ficam e quando abrem? dá pra confiar? como falo com vocês agora?*
+2. praticamente todo site de PME de mercado tem;
+3. funciona **sem nenhum dado que só o dono tem**.
+
+O critério 3 é o que mais elimina candidato, e é o que separa este produto de um site comum: o standby é feito antes de o cliente existir.
+
+### Baseline (8 itens)
+
+| # | Item | O que quebra sem ele |
+|---|---|---|
+| B1 | Identificação acima da dobra: nome, uma linha, bairro | o visitante não confirma que chegou no lugar certo |
+| B2 | Um CTA acionável (WhatsApp / telefone): **persistente** e **no fim do conteúdo** | o site vira panfleto; é a única "função" real de site de PME |
+| B3 | Ficha do local: NAP, horários, link de rotas | perde para a própria ficha do Google |
+| B4 | Oferta nomeada, preço opcional. **Piso de 3** (portão); faixa saudável 4–12 (design) | "salão de beleza" não converte; "corte, coloração, mechas" converte |
+| B5 | Prova pública com procedência (nota + 1–3 citações com link) | nenhuma razão externa para acreditar |
+| B6 | FAQ, 3–6 pares, incluindo o que não sabemos | as lacunas ficam sem endereço fixo e somem na próxima iteração |
+| B7 | Esqueleto: âncoras, rodapé com fontes, 404 com marca, **prévia de compartilhamento** | a proposta chega no WhatsApp do dono como texto cru |
+| B8 | Funcionar no celular: responsivo, viewport sem `user-scalable=no`, alvo de toque ≥24px | a proposta é aberta no celular, dentro do WhatsApp |
+
+Regras de estado por item, que a camada de dados já sabe expressar:
+
+- **Nunca placeholder:** nome, bairro, CTA, nome de item da oferta, depoimento. Link ou serviço inventado é afirmação falsa sobre terceiro.
+- **B3 nunca some**, os campos é que mudam de estado. Horário divergente aparece como lacuna com as duas fontes — comunica método.
+- **B5 some inteiro** se não houver avaliação pública. Bloco de prova vazio é pior que nenhum.
+- **B6 é o escoadouro das lacunas.** É o único item que aceito divergir do "todo site tem", e a justificativa é a camada de dados, não estética.
+
+Duas precisões que a revisão do documento forçou, porque a redação anterior seria implementada errada:
+
+- **B2 não é "3 posições".** Eu tinha escrito um número que não sei defender como padrão de mercado. O que dá para sustentar por raciocínio: o CTA precisa estar **sempre alcançável** (nav persistente) **e no fim do conteúdo** — quem leu a página inteira não deve ter de rolar de volta para agir. Onde mais aparecer é decisão de layout, não regra.
+- **B4 tem dois números com papéis diferentes.** **3 é o piso do portão** (abaixo disso não sabemos o suficiente sobre o negócio e a proposta não sai). **4–12 é faixa de design** — orientação de como uma boa página se parece. Antes o documento dizia "4–12" na tabela e "≥3" no portão, o que viraria duas checagens conflitantes.
+
+Sobre B7: hoje o `seo.ts` define `openGraph.title` e `description` mas **não define `images`**. O primeiro contato do dono com o trabalho não é a página — é o card de prévia no chat. É o defeito de funcionalidade mais barato de corrigir e o de maior impacto no funil.
+
+### Fronteira — o que NÃO entra
+
+Critério de saída (os três): o cliente **assinou**, o dado é **oficial e dele**, e existe **um dono do dado** que mantém aquilo atualizado.
+
+Funcionalidade transacional não entra num site que o dono não autorizou: um standby que aceita agendamento promete, em nome de terceiro, um compromisso que ninguém assumiu. Isso não é escopo, é responsabilidade.
+
+| Vertical | Fica para projeto único |
+|---|---|
+| Salão / barbearia / pet | agendamento com agenda real, profissional, duração |
+| Oficina | orçamento com placa/modelo, upload de foto, tabela de mão de obra |
+| Restaurante / padaria | cardápio completo com pedido, carrinho, iFood |
+| Clínica | convênios, agendamento de avaliação — dado de saúde é sensível (LGPD art. 5º, II) |
+| Marcenaria / móveis | configurador sob medida, simulação de ambiente |
+| Loja / ateliê | catálogo com estoque, grade, checkout |
+| Qualquer | blog, newsletter, área do cliente, busca interna, chat, cupons, multi-idioma |
+
+**Página única com âncoras é o baseline.** Multi-página exige volume de conteúdo oficial que, por definição, não temos.
+
+A fronteira é o que protege a economia do produto: cada standby que ganha feature de vertical vira projeto artesanal, e a escala desaparece. A recusa é a arquitetura.
+
+### Tensões com o parâmetro 1 — decididas
+
+**Formulário de contato — não entra.** `form-action 'none'` restringe destino de submissão; **não afeta link de saída**, então `wa.me`, `tel:` e `mailto:` funcionam com a política intacta. Verificado na [MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy/form-action): a diretiva é de navegação e restringe "the URLs which can be used as the target of form submissions". A ressalva conhecida — navegadores divergem sobre bloquear o *redirect posterior à submissão* — não nos alcança justamente porque não há submissão. Aceitar formulário custaria: `form-action 'self'`, rota POST (adeus 100% estático), destino da mensagem, e captcha de terceiro — que reabre `script-src`, exatamente o que estamos vendendo. E há o problema maior: num standby, **quem é o controlador LGPD?** A pessoa acha que fala com a padaria; a padaria não é nossa cliente. Compensação: `wa.me` com mensagem pré-preenchida tem atrito menor que formulário e é o padrão do mercado brasileiro.
+
+**Mapa — imagem estática self-hosted, ou nada.** Nível 0 (endereço + link "abrir rotas") é o baseline: custo zero, e no celular abre o app nativo, que é o que o usuário quer. Nível 1 (imagem renderizada no build, servida do nosso domínio, provedor OSM com atribuição) é upgrade autorizado quando `endereco` é fato — `img-src 'self'` fica intacto. **Iframe do Google nunca:** fura `default-src`, traz cookie de terceiro (tornando falsa a nossa nota de privacidade) e troca o argumento inteiro de segurança por um mapa que ninguém arrasta.
+
+**Analytics — zero, e medir a entrega em vez da audiência.** O standby não é campanha: é um link enviado a uma pessoa. O sinal que importa não é pageview, é resposta. Baseline: um CTA discreto "Falar com o Estúdio Giz" apontando para o nosso `wa.me` com o **slug da proposta na mensagem** — atribuição da única conversão que paga a conta, sem uma linha de JavaScript.
+
+> **Correção de uma justificativa errada.** A primeira versão deste documento dizia que o Vercel Web Analytics exigiria `'unsafe-inline'` ou um hash frágil. Isso está **errado** e a verificação desmentiu: o componente cria um `<script src>` externo apontando para `/_vercel/insights/script.js`, mesma origem — ou seja, `script-src 'self'` e `connect-src 'self'` já permitiriam, sem tocar na CSP. O problema real documentado ([vercel/analytics#122](https://github.com/vercel/analytics/issues/122)) é que ele não aceita `nonce`, e nós não usamos nonce.
+>
+> Então a decisão continua a mesma, mas o motivo muda de **impossível** para **escolhido**: ligar analytics tornaria falsa a frase "este standby não coleta dados", que é justamente o argumento da página, em troca de um número que não decide nada. Fica desligado por princípio, não por limitação técnica — e quem quiser reabrir a discussão tem o custo real à vista.
+
+Nota de implementação para o CTA: `https://wa.me/<numero>?text=<urlencoded>` é o formato [oficial do WhatsApp](https://faq.whatsapp.com/5913398998672934) (número em formato internacional, sem `+`, zeros ou traços). Cuidado conhecido: o redirect do `wa.me` corrompe emoji (caractere de 4 bytes vira `�`); se a mensagem pré-preenchida tiver emoji, usar `https://api.whatsapp.com/send?phone=…&text=…`, que pula o redirect. Como a nossa mensagem carrega o slug, o mais simples é **não usar emoji**.
+
+**Fontes e ícones — confirmado.** `next/font` serve do próprio domínio; SVG inline não gera requisição. Proibido: ícone via CDN, icon font, e `<link>` para `fonts.googleapis.com` (a tentação aparece quando alguém cola um snippet de design).
+
+O baseline inteiro cabe dentro do parâmetro 1 **sem afrouxar uma diretiva da CSP**. É a melhor validação de que os dois foram desenhados de forma coerente.
+
+### Mudanças no contrato de dados (a implementar depois)
+
+1. `cardapio` → `oferta`, agnóstico de vertical; `preco` passa a **opcional** (serviço sem tabela é legítimo).
+2. Seções saem do `page.tsx` e voltam para o dado — hoje `const secoes = ["Padaria","Brunch","Jantar"]` está hardcoded na Joya, ou seja, o layout sabe que o negócio é padaria.
+3. `Horario` ganha `iso` opcional; `seo.ts` só emite `openingHoursSpecification` quando existir. Formato conferido na [doc do Google](https://developers.google.com/search/docs/appearance/structured-data/local-business): `dayOfWeek` com nomes por extenso em inglês, `opens`/`closes` em `hh:mm`; **dia fechado é `opens` e `closes` ambos `"00:00"`** (não omitir o dia); 24 horas é `"00:00"`–`"23:59"`.
+4. `copy.previa?: Campo<Imagem>` para a `og:image`.
+5. `mapaEstatico?: Campo<Imagem>` — só quando `endereco` é fato.
+6. O WhatsApp do Estúdio Giz **não** entra em `Negocio`: `Negocio` é ficha do lead, e todo campo dela carrega procedência porque é afirmação sobre terceiro. Nosso canal é configuração, vai em `estudio.ts` sem `Campo`.
+7. **Gate de mínimo publicável:** nome fato, endereço fato, um contato fato, **≥3** itens de oferta com nome fato (o piso; a faixa de design é 4–12). Abaixo disso não sabemos o suficiente para propor — e proposta ruim queima o lead.
+
+Nenhum campo novo para formulário, analytics, agendamento ou pedido. O contrato quase não cresce, o que é bom indício de baseline calibrado.
+
+### Verificação
+
+Script separado `verificar-funcionalidade.mjs`, mesmo contrato de exit code, com a mesma tabela de teste negativo. Separado do de arquitetura de propósito: parâmetros falham por razões diferentes, e um portão que mistura "sem CTA" com "sem frame-ancestors" fica ilegível.
+
+Prova por máquina: CTA presente e batendo com `telefone` em E.164; endereço no HTML; `openingHoursSpecification` válido; ≥3 itens de oferta; depoimento com fonte; `og:image` respondendo 200 na mesma origem; 404 com status 404 de verdade; viewport sem `user-scalable=no`; **zero `<form>`**; **zero `<iframe>`**; **nenhum host de terceiro em recurso carregado** (distinguindo de link de saída, que é permitido).
+
+Só aproximação, e a saída precisa dizer isso: "CTA acima da dobra" (posição no documento correlaciona, não equivale), "toda lacuna tem eco na página" (casamento de string não pega redação ruim), alvo de toque (exige geometria computada).
+
+Só revisão humana: se a oferta representa o negócio; se a headline placeholder promete o que o negócio não entrega; se a FAQ responde a dúvida daquele vertical; se o mapa mostra o lugar certo; se a página parece o site oficial apesar da faixa; se há pessoa identificável numa imagem.
+
+**O verificador prova presença e consistência, nunca adequação.** Portão verde é licença para a revisão humana começar, não substituto dela.
+
+### Estado atual dos três standbys contra o baseline
+
+Auditado em 2026-08-27 por leitura de código e resposta do servidor. Serve para dimensionar o parâmetro 2 antes de implementar — não é lista de tarefas ainda.
+
+| Item | Joya | Kio | Padoca | Veredito |
+|---|---|---|---|---|
+| B1 identificação | ok | ok | ok | `nome` é `string` cru, **sem procedência** — decidir |
+| B2 CTA persistente + no fim | nav (persistente) + hero | idem | idem | **falta o CTA no fim do conteúdo nos três** |
+| B3 ficha do local | ok | ok | ok | `openingHours` inválido nos três |
+| B4 oferta ≥3 itens | 8 | 5 | 4 | passa; falta renomear e tornar `preco` opcional |
+| B5 prova com fonte | 2 | 3 | 2 | passa |
+| B6 FAQ 3–6 | 3 | 3 | 3 | passa |
+| B7 esqueleto | 404 real, fontes no rodapé | idem | idem | **`og:image` ausente nos três** |
+| B8 celular | `width=device-width, initial-scale=1` | idem | idem | viewport ok; alvo de toque **não medido** |
+
+Evidências: `curl` de rota inexistente devolve HTTP 404 com a faixa; o HTML servido traz `og:title`, `og:description`, `og:locale` e `og:type`, e **nenhum `og:image`**; nenhum site sobrescreve viewport nem usa `user-scalable=no`.
+
+O saldo é melhor do que eu esperava: **cinco dos oito itens já passam**. O parâmetro 2 é, na prática, três correções (CTA no rodapé, `og:image`, `openingHours`) mais a generalização de `cardapio` para `oferta`. Isso muda o tamanho da fase de implementação e é exatamente o tipo de coisa que só aparece quando se especifica antes de codar.
+
+Duas decisões ficaram em aberto e precisam ser tomadas na implementação:
+
+- **`nome` sem procedência.** Hoje é `string`. É a identidade do registro (não existe lead sem nome) mas também é afirmação sobre terceiro. A evidência já existe em `coleta.json`; a pergunta é se ela precisa aparecer no site.
+- **Alvo de toque de 24 px** exige geometria computada. Ou entra numa auditoria de layout, ou fica para o parâmetro 3 — não dá para provar com leitura de código, e fingir que dá seria pior que não checar.
+
+## Restrições já fixas que 3, 4 e 5 herdam
+
+Decidido nos parâmetros 1 e 2. Um parâmetro novo pode **contrariar** qualquer uma destas — mas aí a mudança é explícita, com o preço dito em voz alta, e o verificador muda junto. O que não pode é uma decisão nova revogar outra em silêncio.
+
+| Restrição | De onde vem | O que ela custa se for revogada |
+|---|---|---|
+| Rotas 100% estáticas, cacheáveis em CDN | 1 — foi o motivo de recusar `nonce` na CSP | render dinâmico, custo por requisição, e a CSP precisa de nonce ou hash |
+| `script-src 'self'`, zero script de terceiro | 1 | qualquer pixel, captcha, chat ou mapa embutido reabre a diretiva |
+| Sem cookie, sem coleta de dado pessoal | 1 e 2 | a nota de privacidade da página deixa de ser verdadeira |
+| CTA funciona sem JavaScript (`<a href>`, zero client component) | 3 | quebra a função vital nº 1 do parâmetro 3 |
+| Sem métrica de campo — medição só em laboratório | consequência de 2 | é o preço já aceito de não ter analytics |
+| Sem formulário (`form-action 'none'`) | 2 | rota POST, destino da mensagem, antispam e a questão do controlador LGPD |
+| `robots` noindex | 1 | a proposta passa a competir com o cliente na busca |
+| Página única com âncoras | 2 | multi-página exige conteúdo oficial que a proposta não tem |
+| Todo fato carrega URL e data | 1 | perde-se o que separa este produto de um template |
+| Nada de dado inventado como fato | 1 e 2 | risco reputacional direto com o dono |
+
+## 3. Desempenho — fechado
+
+Pedido do usuário:
+
+> Mesmo em sites básicos, devemos manter o mínimo de desempenho para funcionamentos vitais: Entrar em contato, Scrolls rápidos e checkpoints na página, entre outros. Responsividade é uma das principais chaves neste tópico. O objetivo é manter o desempenho sempre o melhor possível.
+
+### A régua é a função vital, não a nota
+
+O pedido define desempenho pelo que o visitante precisa **fazer**, não por um número de ferramenta. Isso é mais rigoroso do que perseguir Lighthouse: uma página pode marcar 100 e ainda ter o botão de contato inalcançável no celular. Então o critério é:
+
+| Função vital | O que "rápido" significa aqui | Como falha |
+|---|---|---|
+| **Entrar em contato** | o CTA funciona **antes** do JavaScript carregar e responde ao primeiro toque | virar botão que depende de hidratação; ficar fora de alcance no celular |
+| **Scroll rápido** | rolagem sem travão e **sem salto de layout** | imagem sem dimensão reservada empurrando o conteúdo; efeito preso ao scroll |
+| **Checkpoints na página** | pular para cardápio/sobre/como chegar em um toque, de qualquer ponto | âncora que existe no HTML mas não tem link que leve até ela |
+| **Responsividade** | ver ambiguidade abaixo | conteúdo estourando a tela; interação lenta |
+
+**Ambiguidade a confirmar:** "responsividade" em português costuma significar *layout que se adapta à tela*, mas dentro de um tópico de desempenho também pode significar *responder rápido ao toque* (o que a indústria mede como INP). Estou tratando **as duas** como em escopo, porque nenhuma é cara e ambas afetam função vital. Se o usuário quis só uma, corrige e o escopo encolhe.
+
+### O que o parâmetro 1 já pagou
+
+Vale registrar antes de propor trabalho: as decisões de arquitetura já entregaram a maior parte do desempenho, e não por acaso.
+
+- **Rotas 100% estáticas e cacheáveis em CDN** — sem render por requisição.
+- **Zero script de terceiro** — a CSP estrita eliminou a causa nº 1 de lentidão em site de PME (pixel, chat, tag manager).
+- **CTA é `<a href>` puro e nenhuma página é client component** — verificado: `0` ocorrências de `"use client"` nos três. Ou seja, **entrar em contato já funciona sem JavaScript**, que é a função vital nº 1 do pedido.
+
+O que sobra é peso e trepidação, não arquitetura.
+
+### Estado atual medido (2026-08-27)
+
+Tudo abaixo é **o que a rede entrega** (medido com `curl`, comprimido onde o servidor comprime), não arquivo em disco.
+
+| Peso do primeiro carregamento | Joya | Kio | Padoca |
+|---|---|---|---|
+| **JavaScript** (9 arquivos, comprimido) | **178 KB** | **178 KB** | **178 KB** |
+| Hero no celular (WebP, w=828) | ~114 KB | ~114 KB | ~114 KB |
+| Fontes (`woff2` de fato baixados) | 83 KB (2) | **132 KB (3)** | 71 KB (2) |
+| HTML (comprimido) | 7 KB | 7 KB | 6 KB |
+| **Total aproximado no celular** | **~382 KB** | **~431 KB** | **~369 KB** |
+
+| Outros sinais | Joya | Kio | Padoca |
+|---|---|---|---|
+| Checkpoints com caminho até eles (desktop) | 4 / 4 | 4 / 4 | **1 / 4** |
+| Navegação por âncora no **celular** | some | some | não existe |
+| `prefers-reduced-motion` respeitado | não | não | não |
+| Alvo de toque do CTA | 112×40 | 132×40 | 188×60 |
+
+### Responsividade — medida no navegador
+
+O pedido chama responsividade de "principal chave", e ela não se verifica com `curl`. Medido com navegador, viewport confirmado por `window.innerWidth`, e `scrollWidth − clientWidth` como prova de estouro:
+
+| Largura | Joya | Kio | Padoca |
+|---|---|---|---|
+| 390 px | **0** | estoura | estoura |
+| 320 px | **estoura** | estoura | estoura |
+
+**Cinco das seis combinações têm rolagem horizontal.** Em celular isso quebra função vital: o visitante precisa arrastar de lado para ler.
+
+> **Sobre a magnitude:** duas sessões de medição deram valores bem diferentes para o mesmo caso (Kio a 320 px: 107 px numa, 426 px na outra). O **fato** do estouro se reproduziu nas duas; o **tamanho** não. Não registro número exato aqui porque não se sustenta — a implementação remede antes de definir qualquer meta. Registrar precisão que não se reproduz é o mesmo erro dos pesos em disco, com outra roupa.
+
+Alvo de toque: os três passam o mínimo de 24 px do WCAG 2.5.8 (nível AA), que é a régua deste documento. Joya e Kio ficam em 40 px de altura, abaixo dos 44 px do critério 2.5.5 (nível AAA) — não é falha contra o que definimos, é margem menor.
+
+### A causa: o parâmetro 1 quebrando o parâmetro 3
+
+O estouro **não** vem da faixa de proposta. Vem daqui:
+
+```tsx
+<div className="mb-2 flex items-baseline justify-between gap-3">
+  <h3>{item.nome}</h3>
+  <span className="shrink-0 text-sm">      {/* proíbe encolher */}
+    <Dado campo={item.preco} aoFaltar={(motivo) => <Lacuna motivo={motivo} />}>
+```
+
+O `shrink-0` foi escrito supondo que ali cabe um preço curto — "R$ 19". Mas quando o preço é uma **`lacuna`**, o que entra é a frase inteira do motivo: *"Preço no balcão — sem valor público estável."* Uma frase que não pode encolher empurra a linha inteira para fora da tela.
+
+**Causa provada, não inferida.** Removendo apenas a classe `shrink-0` em tempo de execução, sem tocar em arquivo, e remedindo:
+
+| Site | Estouro antes | Depois de tirar `shrink-0` |
+|---|---|---|
+| Joya | estoura | **0** |
+| Padoca | estoura | **0** |
+| Kio | estoura | **~16 px restantes** |
+
+Em dois dos três o estouro **zera**; na Kio some quase todo e sobra um resíduo de outra origem, ainda não identificada. Isso é intervenção experimental, não correlação — e é o padrão de prova que quero na implementação.
+
+Isto é exatamente o tipo de colisão que a regra de fechar todos os escopos antes existe para pegar. A honestidade do dado (parâmetro 1: mostrar a lacuna por extenso) atropelou o layout (parâmetro 3: caber na tela), e **nenhum dos dois parâmetros, sozinho, revelaria o problema**. Na implementação, a decisão é de projeto: encurtar o texto de lacuna no lugar do preço e mandar a explicação para outro elemento, ou deixar o span encolher e quebrar linha. Não decidir agora — decidir com os cinco escopos na mesa.
+
+> **Correção de três números meus — o mesmo erro, repetido.** As primeiras versões desta seção mediam **arquivo em disco** e chamavam aquilo de peso da página. Hero: 320 KB em disco, 73–114 KB na rede. Fontes: 318/495/201 KB em disco, 83/132/71 KB na rede. E eu havia dito que o JS "só o navegador mede" — não é verdade, basta somar os `<script src>` do HTML servido: **576 KB brutos, 178 KB comprimidos**.
+>
+> Corrigidos os três, **a conclusão original se inverte**: o maior peso da página não é a imagem, é o **JavaScript** — 178 KB comprimidos numa página que não tem um único client component. Eu tinha apontado o gargalo errado.
+
+Achados que atingem direto as funções vitais do pedido:
+
+1. **O JS é o maior item, e a página não usa interatividade.** Nenhum dos três tem `"use client"`; o que é enviado é o runtime de hidratação. Se dá para reduzir sem quebrar nada é questão da implementação — mas o alvo do parâmetro 3 é aqui, não na imagem.
+2. **Checkpoints somem justamente no celular.** Na Padoca eles nunca existiram — as seções `#cardapio`, `#sobre` e `#visitar` não têm nenhum link. Na Joya e na Kio existem no desktop, mas o menu está em `hidden … md:flex`: **no celular desaparecem**, e é no celular que a proposta é aberta. Ou seja, os três falham "checkpoints na página" no aparelho que importa.
+3. **Nenhum site respeita `prefers-reduced-motion`**, apesar dos três usarem `scroll-behavior: smooth`. Item mais barato da lista.
+4. **O otimizador entrega WebP, não AVIF**, mesmo com `Accept: image/avif` (confirmado no `Content-Type`). Ajuste de configuração, ganho provável na maior imagem.
+
+Achados que atingem direto as funções vitais do pedido:
+
+1. **Padoca tem checkpoints sem navegação.** As seções `#cardapio`, `#sobre` e `#visitar` existem, e **nenhum link leva a elas** — só `#topo` tem link. Joya e Kio têm os quatro ligados. É o template genérico que só põe o CTA na nav. Falha de função, não de estética, e o pedido nomeia "checkpoints na página" explicitamente.
+2. **Nenhum site respeita `prefers-reduced-motion`.** `scroll-behavior: smooth` sem escape é desconforto real para quem tem sensibilidade vestibular, e é o item mais barato da lista.
+3. **O otimizador entrega WebP, não AVIF**, mesmo quando o cliente aceita AVIF (`Content-Type: image/webp` com `Accept: image/avif,...`). AVIF costuma ser sensivelmente menor. Oportunidade barata via `images.formats`, a confirmar na implementação.
+
+### Requisitos derivados
+
+1. **Orçamento por página**, medido no que o navegador baixa — não em bytes de disco. O número exato se define na implementação, com medição; fixar meta antes de medir seria chute.
+2. **Toda imagem com dimensão reservada** (`fill` + `sizes`, ou `width`/`height`), para o scroll não saltar.
+3. **Hero enxuto**: avaliar AVIF (hoje sai WebP) e conferir se o `sizes` declarado corresponde ao espaço real que a imagem ocupa — `sizes` errado faz o navegador baixar uma variante maior que o necessário.
+4. **Teto de famílias tipográficas** — duas por site. Kio está em três.
+5. **`prefers-reduced-motion: reduce` desliga o scroll suave.** Acessibilidade e desempenho percebido no mesmo item.
+6. **Todo checkpoint precisa de caminho até ele**: âncora sem link que a alcance não é checkpoint.
+7. **O CTA continua sem depender de JS.** É invariante, não meta — se algum dia virar componente client, quebrou a função vital nº 1.
+8. **Medir no aparelho certo**: a proposta é aberta no celular, dentro do WhatsApp. Medição em desktop com rede boa não vale como prova.
+
+### Tensões
+
+- **Mapa estático (parâmetro 2, opcional)** agora tem preço explícito: mais uma imagem no maior gargalo da página. Só entra se couber no orçamento.
+- **`og:image` (parâmetro 2)** não afeta o desempenho da página — é card de compartilhamento, carrega fora dela.
+- **`next/font`** já serve do próprio domínio, o que é bom para CSP e para latência; o custo é peso de arquivo, endereçado pelo teto de famílias.
+- **Sem analytics (parâmetro 2)** significa que **não teremos métrica de campo**. Só dá para medir em laboratório. É consequência aceita da decisão de privacidade, e precisa ficar dita: não vamos saber o LCP real do celular do dono.
+
+## 4. Especificidade — fechado
+
+Pedido do usuário:
+
+> Cada projeto deve ter uma identidade, sejam imagens, cores e layouts que representam o negócio. O usuário deve ser capaz de sentir autenticidade ao olhar para o site e não algo genérico. Isso se complementa com o último parâmetro — entrega — que é a finalização e o polimento final. Configurações diferentes, cores, imagens, layouts, interação com o usuário que vai acessar (seja um estudante, um lojista, um engenheiro). Todas essas informações devem ser levadas em consideração quando o projeto estiver sendo desenvolvido.
+
+### Como isto conversa com o baseline do parâmetro 2
+
+Parecem opostos — o 2 quer fórmula repetível, o 4 quer que cada site pareça único. Não são. **O esqueleto é fixo, a pele é variável.**
+
+Os 8 itens do baseline dizem *o que a página responde*; a especificidade diz *como ela se parece e com quem fala*. É exatamente como funciona um design system: mesmos componentes, tokens diferentes. Nenhum dos dois cede.
+
+| Camada | Fixa (parâmetro 2) | Variável (parâmetro 4) |
+|---|---|---|
+| Estrutura | os 8 itens do baseline | ordem e peso das seções |
+| Cor | — | paleta do lead |
+| Tipografia | teto de 2 famílias (parâmetro 3) | quais famílias |
+| Imagem | precisa existir e ter `alt` | qual imagem |
+| Tom | precisa ser fato ou placeholder marcado | voz, densidade, vocabulário |
+| CTA | precisa ser acionável e ter fonte | rótulo e canal |
+
+### O eixo novo: quem acessa
+
+O pedido nomeia algo que ainda não existe em nenhuma camada: **o público do site do cliente** — "um estudante, um lojista, um engenheiro". Isso não é o vertical do negócio, é quem lê a página, e muda decisões concretas: densidade de informação, formalidade, o que vem primeiro e como o CTA é redigido. Uma padaria fala com o vizinho; uma metalúrgica fala com um comprador técnico. Hoje o `Negocio` não tem esse campo.
+
+### Estado atual — o que já é específico e o que é genérico
+
+| Sinal | Situação |
+|---|---|
+| Paleta por lead | **funciona.** Joya oliva `#3F4F3A`, Kio manteiga `#E4B04A`, Padoca erva `#4A7C59` — distintas, e o verificador já reprova vazamento de uma para outra |
+| Tipografia por lead | **funciona.** Joya/Kio em Fraunces, Padoca em Literata |
+| Imagem do hero | **quebrado** — `md5 caefb2be…` **idêntico nos três**. O maior elemento visual de cada proposta é o mesmo arquivo |
+| Layout | **quase genérico** — Joya e Kio são variações da mesma estrutura; a Padoca usa o template cru |
+| Público-alvo | **não existe** como conceito em nenhum arquivo |
+
+O hero é o achado central. Enquanto o elemento mais proeminente da página for o mesmo JPEG em todo standby, "sentir autenticidade" não acontece — e nenhuma paleta compensa isso.
+
+### A restrição honesta: autenticidade sem ativo oficial
+
+O standby é feito **antes** de o cliente existir. Não temos foto dele, nem logo, nem permissão. Então a autenticidade tem de vir do que podemos legitimamente possuir:
+
+- **Cor, tipografia, layout e tom** — inferidos da coleta, e nossos.
+- **Os fatos** — endereço, horário, prêmio, avaliação. Nada é mais específico do que a verdade sobre aquele negócio.
+- **Imagem que não seja roubada nem genérica.** Três caminhos, a decidir na implementação: (a) hero tipográfico, sem foto, na paleta do lead — honesto e específico; (b) ilustração gerada, que entra como `placeholder` com motivo, porque é nossa arte e não fato sobre o negócio; (c) foto pública com licença e atribuição. O que **não** pode continuar é um JPEG de padaria servindo para todos.
+
+### Requisitos derivados
+
+1. **Nenhum ativo visual compartilhado entre leads.** Verificável por checksum: dois standbys com a mesma imagem reprovam.
+2. **`Negocio` ganha o público-alvo** — quem lê a página, com uma linha de por quê. Influencia tom, densidade e rótulo de CTA.
+3. **Layout varia de propósito**, não por acidente: ordem das seções e ênfase derivam do vertical e do público, não de qual template foi copiado.
+4. **Imagem gerada é `placeholder` com motivo**, nunca `fato` — arte nossa não é afirmação sobre o negócio. O contrato do parâmetro 1 já cobre isso sem mudança.
+5. **Teto de 2 famílias tipográficas** continua valendo (parâmetro 3). Especificidade não compra peso extra.
+6. **O `design-system.md` do lead é a fonte da pele** — já existe e já funciona para cor e tipo; passa a carregar também público e intenção de layout.
+
+### Tensões
+
+- **Com o parâmetro 3:** identidade mais rica pesa mais. O orçamento não muda por causa dela; a medição do 3 mostrou que a folga está no JS, não na imagem — mas folga não é licença.
+- **Com o parâmetro 2:** a fronteira se mantém. Especificidade é pele, não função. Um layout específico **não** autoriza agendamento numa oficina.
+- **Com o parâmetro 1:** nada a mudar no contrato. `placeholder` com motivo já é o lugar certo da arte que inventamos.
+
+---
+
+## 5. Entrega — fechado
+
+Pedido do usuário:
+
+> Assim, o último parâmetro serve apenas como um controle de qualidade: Realizar um check final / debug.
+
+### O que isso muda no que eu havia suposto
+
+Eu tinha registrado, em vários arquivos, que "publicar é o parâmetro 5". **Estava errado.** Entrega não é logística de deploy: é o **portão de qualidade** antes de entregar. Publicar continua sendo operação normal da linha, e o que o parâmetro 5 faz é decidir se aquilo está pronto para sair.
+
+Isso também resolve os defeitos que ficaram em standby: eles são trabalho do parâmetro 5, não pendência solta.
+
+### Requisitos derivados
+
+1. **Um portão único**, que consolide os quatro anteriores numa só passada com um só veredito: arquitetura (v1, já existe), funcionalidade (o baseline de 8), desempenho (função vital) e especificidade (nada compartilhado entre leads).
+2. **Separar o que a máquina prova do que só o humano julga.** Isso já está escrito nos parâmetros 2 e 4 e passa a ser a espinha do checklist. Máquina prova presença e consistência; humano julga adequação.
+3. **A lista de defeitos em standby entra aqui** — `openingHours` inválido, `og:image` ausente, seções hardcoded, o `shrink-0` que estoura a tela, o hero compartilhado.
+4. **Exit code manda.** Portão vermelho não entrega, como já vale para o verificador de arquitetura.
+5. **O portão precisa provar que reprova** — a mesma tabela de mutações que a `arquitetura.md` institucionalizou, agora para os quatro parâmetros.
+
+### Tensão
+
+Com o parâmetro 3: parte do que o 5 precisa checar (estouro horizontal, alvo de toque, salto de layout) **exige navegador**, não `curl`. Isso torna o portão do 5 mais caro e mais frágil que o da arquitetura. Decidir na implementação se navegador entra no portão ou fica em auditoria separada — e dizer qual, porque um portão que finge medir o que não mede é pior que não ter portão.
+
+---
+
+## Defeitos achados durante a especificação
+
+Não corrigidos: a regra manda fechar o escopo antes. Ficam na fila da fase de implementação.
+
+| Defeito | Onde | Gravidade |
+|---|---|---|
+| `openingHours` em formato inválido — emitimos `"Terça a sábado 8h – 22h"`. O schema.org exige código de dois dígitos (`Mo Tu We Th Fr Sa Su`) e hora em 24h: `"Tu-Sa 08:00-22:00"`. Confirmado em [schema.org/openingHours](https://schema.org/openingHours); o Google prefere `openingHoursSpecification`. | `src/lib/seo.ts` dos três sites | dado estruturado errado no ar |
+| `openGraph.images` ausente: a proposta compartilhada no WhatsApp chega sem card | `src/lib/seo.ts` | perda direta no funil |
+| Seções do cardápio hardcoded no layout | `sites/joya-…/src/app/page.tsx` | vertical vazando para apresentação |
+| Rótulo do CTA no nav divergente do dado (`"Reservar"` fixo vs. `ctaPrimario.rotulo`) | `sites/joya-…/src/app/page.tsx` | inconsistência pequena |

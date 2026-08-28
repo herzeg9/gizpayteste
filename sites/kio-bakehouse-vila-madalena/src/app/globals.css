@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+:root {
+  --paper: #f3ede2;
+  --butter: #e4b04a;
+  --crust: #8b5a2b;
+  --charcoal: #1a1612;
+  --rust: #c45c26;
+  --paper-deep: #eae4d9;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-butter: var(--butter);
+  --color-crust: var(--crust);
+  --color-charcoal: var(--charcoal);
+  --color-rust: var(--rust);
+  --color-paper-deep: var(--paper-deep);
+  --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Rolagem suave sem escape é desconforto real para quem tem sensibilidade
+   vestibular. Quem pediu menos movimento no sistema recebe salto direto. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  background: var(--paper);
+  color: var(--charcoal);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+.font-display {
+  font-family: var(--font-display), ui-serif, Georgia, serif;
+}
+
+/* Corpo serifado passa a usar a Fraunces em peso normal, em vez de carregar
+   uma terceira família só para isto. */
+.font-serif-body {
+  font-family: var(--font-display), ui-serif, Georgia, serif;
+  font-weight: 400;
+}

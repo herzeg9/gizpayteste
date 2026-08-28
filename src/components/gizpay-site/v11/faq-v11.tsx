@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { MessageCircle, Plus, Search, SearchX } from "lucide-react";
+import { Plus, Search, SearchX } from "lucide-react";
 import { giz } from "@/components/prototipo/tokens";
 
 const FAQ_ITEMS = [

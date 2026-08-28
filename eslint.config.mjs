@@ -12,6 +12,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Cada standby é um projeto Next próprio, com o seu eslint.config.mjs.
+    // O tsconfig da raiz já exclui `sites` pelo mesmo motivo.
+    "sites/**",
   ]),
 ]);
 

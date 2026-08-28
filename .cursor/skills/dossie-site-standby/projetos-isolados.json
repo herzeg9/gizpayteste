@@ -1,0 +1,26 @@
+{
+  "gizPayProjectId": "b8b47841-984c-4075-b56c-d4ea69ec73f8",
+  "designSystemRaiz": ".superdesign/design-system.md",
+  "projetos": {
+    "giz-pay": {
+      "projectId": "b8b47841-984c-4075-b56c-d4ea69ec73f8",
+      "proibidoReusar": true
+    },
+    "joya-boulangerie-vila-madalena": {
+      "projectId": "d6e705fe-871b-45b0-a8d7-ee6b6c5ae487",
+      "draftId": "ed0a2f9e-c31e-4476-9540-a376541c9104",
+      "hex": ["#3F4F3A", "#E8C547", "#F6F1E7", "#C4A574"]
+    },
+    "kio-bakehouse-vila-madalena": {
+      "projectId": "42842e66-d50c-40fe-927c-834e27c15431",
+      "draftId": "f4bed154-58a1-4ebe-840d-8024a7d99246",
+      "hex": ["#E4B04A", "#8B5A2B", "#C45C26", "#F3EDE2"]
+    },
+    "padoca-vegan-vila-madalena": {
+      "projectId": "eba8a21f-8310-4f95-84af-146af989db68",
+      "draftId": "86b0609d-dc85-4c80-b286-2a1ed2887d9b",
+      "hex": ["#F4EFE4", "#C9A36A", "#4A7C59", "#1A1A18", "#9B3D4A"]
+    }
+  },
+  "waMeOutrosLeads": ["5511910389816"]
+}

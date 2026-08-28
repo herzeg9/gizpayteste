@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+/* Trocar pelos tokens do design-system.md do lead. */
+:root {
+  --fundo: #f4efe4;
+  --destaque: #c9a36a;
+  --acento: #4a7c59;
+  --texto: #1a1a18;
+  --realce: #9b3d4a;
+  --fundo-fundo: #eae3d3;
+}
+
+@theme inline {
+  --color-fundo: var(--fundo);
+  --color-destaque: var(--destaque);
+  --color-acento: var(--acento);
+  --color-texto: var(--texto);
+  --color-realce: var(--realce);
+  --color-fundo-fundo: var(--fundo-fundo);
+  --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Rolagem suave sem escape é desconforto real para quem tem sensibilidade
+   vestibular. Quem pediu menos movimento no sistema recebe salto direto. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+.font-display {
+  font-family: var(--font-display), ui-serif, Georgia, serif;
+}

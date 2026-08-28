@@ -1,0 +1,134 @@
+{
+  "versao": 1,
+  "coletadoEm": "2026-08-26T21:58:52.321Z",
+  "slug": "rodesia-paes-vila-madalena",
+  "nome": "Rodésia Pães e Doces",
+  "nicho": "padaria artesanal",
+  "bairro": "Vila Madalena",
+  "comando": "init",
+  "query": "Rodésia Pães e Doces Vila Madalena São Paulo",
+  "placesKey": false,
+  "places": {
+    "ok": false,
+    "reason": "sem_GOOGLE_PLACES_API_KEY",
+    "places": []
+  },
+  "queriesWeb": [
+    "padaria artesanal Vila Madalena São Paulo",
+    "padaria artesanal Vila Madalena São Paulo Instagram",
+    "padaria artesanal Vila Madalena São Paulo WhatsApp",
+    "\"padaria artesanal\" \"Vila Madalena\" site:instagram.com",
+    "padaria artesanal Vila Madalena São Paulo iFood",
+    "melhores padaria artesanal Vila Madalena São Paulo",
+    "padaria artesanal Vila Madalena São Paulo \"linktr.ee\"",
+    "padaria artesanal Vila Madalena São Paulo \"em construção\""
+  ],
+  "nota": "Scaffold. Preencher evidencias[] com fonte. Sem Places, não inventar nomes.",
+  "candidatos": [],
+  "paginas": [
+    {
+      "ok": true,
+      "url": "https://www.restaurantguru.com.br/Rodesia-Sao-Paulo",
+      "finalUrl": "https://www.restaurantguru.com.br/Rodesia-Sao-Paulo",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "title": "Padaria Rodésia Pães e Doces, São Paulo - Menu do restaurante, preços e opiniões",
+      "snippet": "Padaria Rodésia Pães e Doces, São Paulo - Menu do restaurante, preços e opiniões Para negócios Pesquisar São Paulo Onde: Encontrar: pt English Español Русский Entrar Brasil / São Paulo / Padaria Rodésia Pães e Doces Padaria Rodésia Pães e Doces Adicionar a lista de desejos Adicionar para comparar Compartilhar 1441 votos #26647 de 79751 restaurantes em São Paulo Em funcionamento 06:00 - 22:00 Atual",
+      "site": {
+        "veredito": "sem_site",
+        "motivo": "aggregator:restaurantguru.com.br",
+        "url": "https://www.restaurantguru.com.br/Rodesia-Sao-Paulo",
+        "host": "restaurantguru.com.br"
+      }
+    },
+    {
+      "ok": true,
+      "url": "https://www.minube.com.br/sitio-preferido/padaria-rodesia-a3627080",
+      "finalUrl": "https://www.minube.com.br/sitio-preferido/padaria-rodesia-a3627080",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "title": "Padaria Rodésia em São Paulo: 1 opiniões e 3 fotos",
+      "snippet": "Padaria Rodésia em São Paulo: 1 opiniões e 3 fotos Aonde você quer ir? Entrar com Google + Entrar Meu perfil Edite o seu perfil Sair Compartilhar Deixa a tua opinião Menu Filtros São Paulo Turismo Hotéis O que ver Restaurantes Fotos _São Paulo_ \"> Guias de viagem Publicar Padaria Rodésia Avalie este Lugar Restaurantes Onde comer em Brasil Onde comer em Estado de São Paulo Onde comer em São Paulo P",
+      "site": {
+        "veredito": "sem_site",
+        "motivo": "aggregator:minube.com.br",
+        "url": "https://www.minube.com.br/sitio-preferido/padaria-rodesia-a3627080",
+        "host": "minube.com.br"
+      }
+    },
+    {
+      "ok": true,
+      "url": "https://rodesiapaes.shop/",
+      "finalUrl": "https://rodesiapaes.shop/",
+      "status": 200,
+      "contentType": "text/html",
+      "title": "Rodésia Pães | Padaria & E-commerce Vila Madalena",
+      "snippet": "Rodésia Pães | Padaria & E-commerce Vila Madalena RODÉSIA PÃES Loja Online Categorias Nossa História Contato O Sabor da Vila Madalena na Sua Mesa De pães artesanais a rotisseria completa. Peça agora. VER CARDÁPIO COMPLETO Pães Confeitaria Frios Adega Destaques da Rodésia Pão Italiano Artesanal R$ 28,90 Adicionar Croissant Francês Manteiga R$ 12,50 Adicionar Bolo de Cenoura com Chocolate R$ 35,00 A",
+      "site": {
+        "veredito": "tem_dominio",
+        "motivo": "dominio_proprio_a_qualificar",
+        "url": "https://rodesiapaes.shop/",
+        "host": "rodesiapaes.shop"
+      }
+    }
+  ],
+  "dns": [
+    {
+      "ok": false,
+      "host": "rodesiapaesedoces.com.br",
+      "reason": "ENOTFOUND"
+    }
+  ],
+  "cnpj": null,
+  "evidencias": [
+    {
+      "campo": "nome",
+      "valor": "Rodésia Pães e Doces",
+      "url": "https://www.restaurantguru.com.br/Rodesia-Sao-Paulo",
+      "data": "2026-08-26"
+    },
+    {
+      "campo": "endereco",
+      "valor": "Rua Rodésia, 106 — Vila Madalena, São Paulo, SP, 05435-020",
+      "url": "https://www.restaurantguru.com.br/Rodesia-Sao-Paulo",
+      "data": "2026-08-26"
+    },
+    {
+      "campo": "telefone",
+      "valor": "(11) 3031-6993 (diretórios; confirmar)",
+      "url": "https://www.restaurantguru.com.br/Rodesia-Sao-Paulo",
+      "data": "2026-08-26"
+    },
+    {
+      "campo": "contato_publico",
+      "valor": "(11) 3031-6993 (diretórios; confirmar)",
+      "url": "https://www.restaurantguru.com.br/Rodesia-Sao-Paulo",
+      "data": "2026-08-26"
+    },
+    {
+      "campo": "horario",
+      "valor": "uma ficha lista seg–sáb 10h–21h, fecha domingo — pode estar desatualizado",
+      "url": "https://www.restaurantguru.com.br/Rodesia-Sao-Paulo",
+      "data": "2026-08-26"
+    },
+    {
+      "campo": "site_ou_ausencia",
+      "valor": "sem site oficial confirmado; rodesiapaesedoces.com.br ENOTFOUND; rodesiapaes.shop não confirmado como oficial",
+      "url": "https://www.restaurantguru.com.br/Rodesia-Sao-Paulo",
+      "data": "2026-08-26"
+    },
+    {
+      "campo": "google_nota",
+      "valor": "4,1 (abaixo do corte 4,3)",
+      "url": "https://www.restaurantguru.com.br/Rodesia-Sao-Paulo",
+      "data": "2026-08-26"
+    }
+  ],
+  "lacunas": [
+    "rodesiapaes.shop oficial?",
+    "horário real",
+    "Instagram",
+    "CNPJ"
+  ],
+  "atualizadoEm": "2026-08-26T21:59:37.854Z"
+}

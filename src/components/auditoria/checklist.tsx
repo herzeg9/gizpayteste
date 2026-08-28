@@ -1,54 +1,57 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useSyncExternalStore } from "react";
 import { cn } from "@/lib/utils";
+import { useHydrated } from "@/lib/client-hooks";
 
 const STORAGE_KEY = "gizpay-audit-checklist";
+const EVENT = "audit-checklist-update";
+
+function readMap(): Record<string, boolean> {
+  if (typeof window === "undefined") return {};
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    return raw ? (JSON.parse(raw) as Record<string, boolean>) : {};
+  } catch {
+    return {};
+  }
+}
+
+function readChecked(id: string): boolean {
+  return !!readMap()[id];
+}
+
+function readDone(): number {
+  return Object.values(readMap()).filter(Boolean).length;
+}
+
+function subscribe(callback: () => void) {
+  window.addEventListener(EVENT, callback);
+  window.addEventListener("storage", callback);
+  return () => {
+    window.removeEventListener(EVENT, callback);
+    window.removeEventListener("storage", callback);
+  };
+}
 
 function useAuditStorage(id: string) {
-  const [checked, setChecked] = useState(false);
-  const [loaded, setLoaded] = useState(false);
+  const loaded = useHydrated();
+  const checked = useSyncExternalStore(
+    subscribe,
+    useCallback(() => readChecked(id), [id]),
+    () => false,
+  );
 
-  useEffect(() => {
+  const toggle = useCallback(() => {
     try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      if (raw) {
-        const map = JSON.parse(raw) as Record<string, boolean>;
-        setChecked(!!map[id]);
-      }
-    } catch {
-      /* ignore */
-    }
-    setLoaded(true);
-
-    const onUpdate = () => {
-      try {
-        const raw = localStorage.getItem(STORAGE_KEY);
-        if (raw) {
-          const map = JSON.parse(raw) as Record<string, boolean>;
-          setChecked(!!map[id]);
-        }
-      } catch {
-        /* ignore */
-      }
-    };
-    window.addEventListener("audit-checklist-update", onUpdate);
-    return () => window.removeEventListener("audit-checklist-update", onUpdate);
-  }, [id]);
-
-  const toggle = () => {
-    const next = !checked;
-    setChecked(next);
-    try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      const map = raw ? (JSON.parse(raw) as Record<string, boolean>) : {};
-      map[id] = next;
+      const map = readMap();
+      map[id] = !map[id];
       localStorage.setItem(STORAGE_KEY, JSON.stringify(map));
-      window.dispatchEvent(new Event("audit-checklist-update"));
+      window.dispatchEvent(new Event(EVENT));
     } catch {
       /* ignore */
     }
-  };
+  }, [id]);
 
   return { checked, loaded, toggle };
 }
@@ -81,23 +84,7 @@ export function AuditItemCheck({ id, label }: { id: string; label: string }) {
 }
 
 export function AuditProgress({ total }: { total: number }) {
-  const [done, setDone] = useState(0);
-
-  useEffect(() => {
-    const refresh = () => {
-      try {
-        const raw = localStorage.getItem(STORAGE_KEY);
-        if (!raw) return setDone(0);
-        const map = JSON.parse(raw) as Record<string, boolean>;
-        setDone(Object.values(map).filter(Boolean).length);
-      } catch {
-        setDone(0);
-      }
-    };
-    refresh();
-    window.addEventListener("audit-checklist-update", refresh);
-    return () => window.removeEventListener("audit-checklist-update", refresh);
-  }, []);
+  const done = useSyncExternalStore(subscribe, readDone, () => 0);
 
   return (
     <span className="font-mono text-xs text-muted-foreground">

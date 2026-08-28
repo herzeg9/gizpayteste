@@ -1,0 +1,17 @@
+{
+  "name": "estudio-giz",
+  "install": "npm ci",
+  "terminals": [
+    {
+      "name": "Next.js",
+      "command": "npm run dev",
+      "description": "Next.js 16 App Router on http://localhost:43117 (bound to 0.0.0.0). Homepage is the Giz Pay site; /curso is the course."
+    }
+  ],
+  "ports": [
+    {
+      "name": "Next.js",
+      "port": 43117
+    }
+  ]
+}
