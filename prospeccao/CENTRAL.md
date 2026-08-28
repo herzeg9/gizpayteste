@@ -30,10 +30,10 @@ Escopos e decisões: [`parametros.md`](../.cursor/skills/central-operacoes/param
 | 1 | Estrutura / arquitetura | fechado | sim — [padrão v1](../.cursor/skills/dossie-site-standby/arquitetura.md) nos três standbys |
 | 2 | Funcionalidade | fechado — baseline de 8 itens, fronteira e tensões decididas | não |
 | 3 | Desempenho | fechado — régua por função vital (contato, scroll, checkpoints, responsividade) | não |
-| 4 | Especificidade | fechado — esqueleto fixo, pele variável; público-alvo é eixo novo | não |
-| 5 | Entrega | fechado — portão de qualidade (check final / debug), não logística de deploy | não |
+| 4 | Especificidade | fechado — esqueleto fixo, pele variável; público-alvo é eixo novo | **sim, na Padoca** |
+| 5 | Entrega | fechado — portão de qualidade (check final / debug), não logística de deploy | **sim, na Padoca** |
 
-**Escopo completo em 2026-08-28.** A implementação está liberada quando o usuário mandar.
+**Implementação completa dos cinco parâmetros na Padoca Vegan (2026-08-28):** https://padoca-vegan-product.vercel.app — os dois portões passam contra a URL de produção. Joya e Kio seguem no parâmetro 1; migrar as duas é a dívida conhecida.
 
 ## Fundação (atualizar a cada sessão)
 
@@ -56,6 +56,7 @@ Environment Cloud: `.cursor/environment.json` (`npm ci` + terminal Next da **Giz
 |---|---|---|---|
 | Joya Boulangerie | https://joya-boulangerie-product.vercel.app/ | `d6e705fe-…` isolado | desktop + 390px PASS |
 | Kio Bakehouse | https://kio-bakehouse-product.vercel.app/ | `42842e66-…` isolado | desktop + 390px PASS (2026-08-26) |
+| Padoca Vegan | https://padoca-vegan-product.vercel.app/ | `eba8a21f-…` isolado | 320px, 390px e desktop PASS · overflow 0 · cinco parâmetros |
 
 Kio: preflight OK → dossiê/inputs → Superdesign (5 créditos) → `sites/kio-bakehouse-vila-madalena/` → projeto Vercel **novo** `kio-bakehouse-product` (não o gizpayteste). CTA Instagram, não WhatsApp. Paleta papel/manteiga (não oliva da Joya).
 

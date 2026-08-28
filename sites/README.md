@@ -8,11 +8,13 @@ Todos seguem o **padrão de arquitetura v1** — [`arquitetura.md`](../.cursor/s
 
 > O padrão está congelado enquanto os cinco parâmetros da linha não fecharem ([`parametros.md`](../.cursor/skills/central-operacoes/parametros.md)). Criar site novo com ele: liberado. Alterá-lo: espera o escopo.
 
-| Pasta | Projeto Vercel | URL | Arquitetura |
+| Pasta | Projeto Vercel | URL | Parâmetros |
 |---|---|---|---|
-| `joya-boulangerie-vila-madalena/` | `joya-boulangerie-product` | https://joya-boulangerie-product.vercel.app | v1 |
-| `kio-bakehouse-vila-madalena/` | `kio-bakehouse-product` | https://kio-bakehouse-product.vercel.app | v1 |
-| `padoca-vegan-vila-madalena/` | ainda não publicado | — | v1 |
+| `joya-boulangerie-vila-madalena/` | `joya-boulangerie-product` | https://joya-boulangerie-product.vercel.app | 1 |
+| `kio-bakehouse-vila-madalena/` | `kio-bakehouse-product` | https://kio-bakehouse-product.vercel.app | 1 |
+| `padoca-vegan-vila-madalena/` | `padoca-vegan-product` | https://padoca-vegan-product.vercel.app | **1 a 5** |
+
+A Padoca é a referência dos cinco parâmetros. Joya e Kio seguem só no parâmetro 1 e mantêm o contrato antigo (`cardapio`, sem `publico`, sem `iso`, hero compartilhado) — dívida de migração conhecida.
 
 ## Criar o próximo
 
