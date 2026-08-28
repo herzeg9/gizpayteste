@@ -17,6 +17,21 @@ Standby de proposta Estúdio Giz para a Padoca Vegan, Sumarezinho / Vila Madalen
 ## Pages
 Home (hero + CTA delivery oficial) · Cardápio · Sobre · Como chegar. CTA principal: `https://delivery.padocavegan.com/padocavegan/padocavegan`. Instagram `@padocavegan` secundário. Telefone (11) 2503-5930 no rodapé, não como único botão “pedir no WhatsApp”.
 
+## Público (parâmetro 4)
+Vizinho do Sumarezinho e público vegano da Vila Madalena, **no celular**. A casa vive de recorrência de bairro e de brunch de fim de semana; quem chega já sabe o que é comida vegana e decide por proximidade e horário, não por explicação de dieta.
+
+Consequências de layout, não de gosto:
+
+- Endereço, horário e como pedir vêm **antes** de discurso sobre veganismo — o leitor já é convertido.
+- Tom coloquial de padaria de rua, não linguagem de restaurante nem de causa.
+- CTA no delivery oficial, que é o canal que a própria casa empurra no Linktree.
+- Densidade baixa: página curta, seções alcançáveis em um toque.
+
+## Hero (parâmetro 4)
+Ilustração **própria** em `public/hero-padoca-vegan.webp`, na paleta da casa — vitrine com pães, donuts e cinnamon rolls, planta ao fundo, sem texto e sem pessoa. Registrada no canvas como conteúdo do projeto (`padoca-hero-vitrine`).
+
+Segue `placeholder` na camada de dados: é arte do Estúdio Giz, não afirmação sobre o negócio. Mas é **deste lead** — o JPEG genérico que servia aos três standbys foi removido. Nenhum ativo visual é compartilhado entre leads.
+
 ## Constraints
 - Use ONLY the fonts, colors, spacing, and component styles defined in this design system. Do not introduce any fonts, colors, or visual styles not in this design system.
 - Não copiar texto de Panadero, Tu És Pão, Joya, Kio ou do checkout `delivery.padocavegan.com`.

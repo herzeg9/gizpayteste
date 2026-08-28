@@ -306,6 +306,32 @@ export default function Home() {
           </div>
         </section>
 
+        {/* A proposta mostra para quem foi desenhada. O público não é enfeite
+            de documento: é o que decidiu tom, ordem das seções e o CTA. */}
+        <section className="mx-auto max-w-6xl px-4 pb-4 sm:px-6">
+          <div className="rounded-2xl border border-texto/15 p-6">
+            <p className="text-xs font-semibold tracking-[0.2em] text-acento uppercase">
+              Nota do Estúdio Giz
+            </p>
+            <h2 className="font-display mt-3 text-2xl">
+              Desenhado para {negocio.publico.quem.toLowerCase()}
+            </h2>
+            <p className="mt-3 max-w-2xl text-sm leading-relaxed opacity-80">
+              {negocio.publico.porque}
+            </p>
+            <ul className="mt-4 grid gap-2 text-sm opacity-75 sm:grid-cols-2">
+              {negocio.publico.implica.map((item) => (
+                <li key={item} className="flex gap-2">
+                  <span aria-hidden className="text-acento">
+                    —
+                  </span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
         {/* CTA de fechamento: quem leu a página inteira não deve ter de rolar
             de volta para agir. */}
         <section className="border-t border-texto/10 bg-acento py-14 text-fundo">

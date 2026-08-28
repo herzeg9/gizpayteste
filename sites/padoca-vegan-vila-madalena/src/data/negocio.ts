@@ -38,6 +38,18 @@ export const negocio: Negocio = {
   tipoSchema: "Bakery",
   baseUrl: "https://padoca-vegan-product.vercel.app",
 
+  publico: {
+    quem: "Vizinho do Sumarezinho e público vegano da Vila Madalena, no celular",
+    porque:
+      "A casa vive de recorrência de bairro e de brunch de fim de semana; quem chega já sabe o que é comida vegana e decide por proximidade e horário, não por explicação de dieta.",
+    implica: [
+      "Endereço, horário e como pedir vêm antes de discurso sobre veganismo — o leitor já é convertido.",
+      "Tom coloquial de padaria de rua, não linguagem de restaurante ou de causa.",
+      "CTA leva ao delivery oficial, que é o canal que a própria casa empurra no Linktree.",
+      "Densidade baixa: página curta, seções que se alcançam em um toque.",
+    ],
+  },
+
   proposta: {
     faixa: "Proposta Estúdio Giz — não é o site oficial",
     privacidade:
@@ -117,12 +129,22 @@ export const negocio: Negocio = {
       "Padaria artesanal vegana. “Começamos em 2017 e estamos crescendo desde então.” A casa é 100% plant-based e fica no Sumarezinho, perto da estação Vila Madalena.",
       linktree,
     ),
+    // Ilustração nossa, feita na paleta da Padoca. Continua `placeholder`
+    // porque é arte do Estúdio Giz, não afirmação sobre o negócio — mas é
+    // específica deste lead e não um JPEG genérico reaproveitado.
     heroImagem: placeholder(
       {
-        src: "/hero-placeholder.jpg",
-        alt: "Vitrine de padaria — imagem genérica, não é foto da casa",
+        src: "/hero-padoca-vegan.webp",
+        alt: "Ilustração de vitrine de padaria vegana: pães rústicos, donuts e cinnamon rolls sobre balcão de madeira, com planta ao fundo",
       },
-      "Fotos oficiais da Padoca Vegan não foram republicadas neste standby.",
+      "Ilustração do Estúdio Giz na paleta da casa. Não é foto da Padoca Vegan — fotos oficiais dependem de autorização.",
+    ),
+    previa: placeholder(
+      {
+        src: "/hero-padoca-vegan.webp",
+        alt: "Padoca Vegan — proposta Estúdio Giz",
+      },
+      "Card de compartilhamento usa a mesma ilustração do hero.",
     ),
     naoEh:
       "Isto não é um app de delivery, nem restaurante de jantar, nem padaria de rede.",

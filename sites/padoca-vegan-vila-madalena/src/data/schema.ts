@@ -170,11 +170,25 @@ export type Copy = {
  * Forma única de todo standby. Trocar o lead troca só este objeto —
  * layout, SEO e verificação continuam iguais.
  */
+/**
+ * Quem lê a página do cliente — não o vertical do negócio. Uma padaria fala
+ * com o vizinho; uma metalúrgica fala com um comprador técnico. Muda densidade
+ * de informação, formalidade, ordem das seções e redação do CTA.
+ */
+export type Publico = {
+  quem: string;
+  /** Por que este é o leitor, em uma linha. */
+  porque: string;
+  /** Como isso se traduz em decisão de layout e texto. */
+  implica: readonly string[];
+};
+
 export type Negocio = {
   slug: string;
   nome: string;
   /** Uma linha, sem promessa que a coleta não sustente. */
   resumo: string;
+  publico: Publico;
   /** Tipo schema.org: Bakery, Restaurant, BeautySalon, Dentist… */
   tipoSchema: string;
   baseUrl: string;
