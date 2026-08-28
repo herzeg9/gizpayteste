@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { FaixaProposta } from "@/components/faixa-proposta";
-import { Dado, Lacuna, Ressalva, Selo } from "@/components/dado";
+import { Dado, Ressalva, Selo } from "@/components/dado";
 import { fontesUsadas, negocio } from "@/data/negocio";
 import { apenasFato, ehFato } from "@/data/schema";
 import { enderecoEmLinha, handleInstagram, urlMaps } from "@/lib/formato";
@@ -9,37 +9,61 @@ const { copy, ctaPrimario } = negocio;
 const handle = handleInstagram(ctaPrimario.url);
 const endereco = apenasFato(negocio.endereco);
 
+/** Checkpoints: só entram os que têm seção de verdade na página. */
+const checkpoints = [
+  negocio.oferta.length ? { href: "#cardapio", rotulo: "Cardápio" } : null,
+  { href: "#sobre", rotulo: "Sobre" },
+  { href: "#visitar", rotulo: "Como chegar" },
+].filter((c): c is { href: string; rotulo: string } => c !== null);
+
+const secoesOferta = [...new Set(negocio.oferta.map((i) => i.secao ?? ""))];
+
 export default function Home() {
   return (
     <div className="relative flex min-h-screen w-full flex-col bg-paper">
       <FaixaProposta />
 
-      <nav className="sticky top-0 z-40 border-b border-charcoal/10 bg-paper">
-        <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
-          <a href="#topo" className="font-display text-4xl tracking-tighter">
+      <header className="sticky top-0 z-40 border-b border-charcoal/10 bg-paper">
+        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 px-4 sm:h-20 sm:px-6">
+          <a
+            href="#topo"
+            className="font-display truncate text-3xl tracking-tighter sm:text-4xl"
+          >
             {copy.wordmark}
           </a>
-          <div className="hidden items-center gap-10 text-sm font-medium tracking-wider uppercase md:flex">
-            <a href="#cardapio" className="hover:text-crust">
-              Cardápio
-            </a>
-            <a href="#sobre" className="hover:text-crust">
-              Sobre
-            </a>
-            <a href="#visitar" className="hover:text-crust">
-              Como chegar
-            </a>
-          </div>
           <a
             href={ctaPrimario.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-sm bg-charcoal px-6 py-3 text-xs font-bold tracking-widest text-paper uppercase transition-colors hover:bg-crust"
+            className="inline-flex min-h-11 shrink-0 items-center rounded-sm bg-charcoal px-4 text-xs font-bold tracking-widest text-paper uppercase transition-colors hover:bg-crust sm:px-6"
           >
-            Instagram
+            <span className="sm:hidden">
+              {ctaPrimario.rotuloCurto ?? ctaPrimario.rotulo}
+            </span>
+            <span className="hidden sm:inline">Instagram</span>
           </a>
         </div>
-      </nav>
+
+        {/* Checkpoints em TODA largura. Antes o menu estava em hidden md:flex
+            e desaparecia no celular — que é onde a proposta é aberta. */}
+        <nav
+          aria-label="Seções da página"
+          className="mx-auto max-w-7xl overflow-x-auto px-4 pb-2 sm:px-6"
+        >
+          <ul className="flex gap-5 text-sm font-medium tracking-wider whitespace-nowrap uppercase">
+            {checkpoints.map((c) => (
+              <li key={c.href}>
+                <a
+                  href={c.href}
+                  className="inline-flex min-h-11 items-center hover:text-crust"
+                >
+                  {c.rotulo}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </header>
 
       <main id="topo" className="flex-1">
         <section className="mx-auto max-w-7xl px-6 py-12 lg:py-24">
@@ -144,32 +168,44 @@ export default function Home() {
             Recorte de preços publicados na imprensa — não é o cardápio completo
             nem necessariamente o da semana.
           </p>
-          <ul className="grid gap-x-8 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
-            {negocio.cardapio.map((item) => (
-              <li key={item.nome}>
-                <div className="mb-4 flex items-baseline justify-between gap-3">
-                  <h3 className="font-display text-xl">{item.nome}</h3>
-                  <span className="shrink-0 text-sm">
-                    <Dado
-                      campo={item.preco}
-                      aoFaltar={(motivo) => <Lacuna motivo={motivo} />}
-                    >
-                      {(preco) => preco}
-                    </Dado>
-                  </span>
-                </div>
-                <p className="text-sm leading-relaxed text-charcoal/70">
-                  {item.descricao}
-                </p>
-                {ehFato(item.preco) ? (
-                  <p className="mt-2 text-xs text-charcoal/45">
-                    {item.preco.fonte.veiculo}
-                  </p>
+          <div className="grid gap-x-8 gap-y-12 md:grid-cols-3">
+            {secoesOferta.map((secao) => (
+              <div key={secao || "geral"}>
+                {secao ? (
+                  <h3 className="mb-6 text-[10px] font-bold tracking-[0.2em] text-crust uppercase">
+                    {secao}
+                  </h3>
                 ) : null}
-                <Ressalva campo={item.preco} />
-              </li>
+                <ul className="space-y-8">
+                  {negocio.oferta
+                    .filter((i) => (i.secao ?? "") === secao)
+                    .map((item) => (
+                      <li key={item.nome}>
+                        <p className="font-display text-xl">{item.nome}</p>
+                        <p className="mt-1 text-sm leading-relaxed text-charcoal/70">
+                          {item.descricao}
+                        </p>
+                        {item.preco ? (
+                          <>
+                            {/* Preço em linha própria: no flex com shrink-0 ele
+                                estourava a tela quando o valor era longo. */}
+                            <p className="mt-2 text-sm font-medium">
+                              <Dado campo={item.preco}>{(preco) => preco}</Dado>
+                              {ehFato(item.preco) ? (
+                                <span className="ml-2 text-xs text-charcoal/45">
+                                  {item.preco.fonte.veiculo}
+                                </span>
+                              ) : null}
+                            </p>
+                            <Ressalva campo={item.preco} />
+                          </>
+                        ) : null}
+                      </li>
+                    ))}
+                </ul>
+              </div>
             ))}
-          </ul>
+          </div>
           <div className="mt-16 flex flex-col items-center justify-between gap-8 bg-charcoal p-8 text-paper md:flex-row">
             <p className="font-serif-body text-lg">
               Consulte o balcão — e o Instagram — para o que saiu do forno hoje.
@@ -324,9 +360,62 @@ export default function Home() {
             </div>
           </div>
         </section>
+        {/* A proposta mostra para quem foi desenhada. O público decidiu tom,
+            ordem das seções e o CTA. */}
+        <section className="mx-auto max-w-7xl px-4 pb-4 sm:px-6">
+          <div className="border border-charcoal/15 p-6">
+            <p className="text-[10px] font-bold tracking-[0.2em] text-crust uppercase">
+              Nota do Estúdio Giz
+            </p>
+            <h2 className="font-display mt-3 text-2xl italic">
+              Desenhado para {negocio.publico.quem.toLowerCase()}
+            </h2>
+            <p className="font-serif-body mt-3 max-w-2xl text-charcoal/80">
+              {negocio.publico.porque}
+            </p>
+            <ul className="mt-4 grid gap-2 text-sm text-charcoal/70 sm:grid-cols-2">
+              {negocio.publico.implica.map((item) => (
+                <li key={item} className="flex gap-2">
+                  <span aria-hidden className="text-crust">
+                    —
+                  </span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        {/* CTA de fechamento: quem leu a página inteira não deve ter de rolar
+            de volta para agir. */}
+        <section className="border-t border-charcoal/10 bg-charcoal py-14 text-paper">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6">
+            <h2 className="font-display text-3xl">Saiu do forno hoje?</h2>
+            <p className="font-serif-body mt-2 max-w-xl text-paper/80">
+              A casa publica a fornada no Instagram. Salão pequeno — leve para
+              viagem se a fila estiver grande.
+            </p>
+            <div className="mt-6 flex flex-col gap-4 sm:flex-row">
+              <a
+                href={ctaPrimario.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-paper px-8 py-4 text-center text-sm font-bold tracking-widest text-charcoal uppercase"
+              >
+                {ctaPrimario.rotulo}
+              </a>
+              <a
+                href="#visitar"
+                className="border border-paper/60 px-8 py-4 text-center text-sm font-bold tracking-widest uppercase"
+              >
+                Ver horários
+              </a>
+            </div>
+          </div>
+        </section>
       </main>
 
-      <footer className="border-t border-charcoal/10 px-6 py-10 text-sm text-charcoal/70">
+      <footer className="border-t border-charcoal/10 px-4 py-10 text-sm text-charcoal/70 sm:px-6">
         <div className="mx-auto flex max-w-7xl flex-col gap-3 sm:flex-row sm:justify-between">
           <p>
             {negocio.nome}

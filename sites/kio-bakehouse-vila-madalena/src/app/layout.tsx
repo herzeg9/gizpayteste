@@ -1,8 +1,10 @@
-import { Fraunces, Inter, Source_Serif_4 } from "next/font/google";
+import { Fraunces, Inter } from "next/font/google";
 import { negocio } from "@/data/negocio";
 import { jsonLdNegocio, metadataNegocio } from "@/lib/seo";
 import "./globals.css";
 
+// Duas famílias, não três: o teto do parâmetro 3 existe porque cada família a
+// mais é peso de rede. A Fraunces cobre display e corpo serifado.
 const display = Fraunces({
   subsets: ["latin"],
   variable: "--font-display",
@@ -15,19 +17,13 @@ const sans = Inter({
   display: "swap",
 });
 
-const serif = Source_Serif_4({
-  subsets: ["latin"],
-  variable: "--font-serif",
-  display: "swap",
-});
-
 export const metadata = metadataNegocio(negocio);
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="pt-BR"
-      className={`${display.variable} ${sans.variable} ${serif.variable} h-full antialiased`}
+      className={`${display.variable} ${sans.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-paper text-charcoal">
         <script
