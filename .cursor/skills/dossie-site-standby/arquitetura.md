@@ -127,6 +127,28 @@ Com `--url` ele lê os headers da resposta real. Sem `--url` é só leitura de a
 
 A checagem de CSP ignora comentários de propósito: numa versão anterior, a diretiva citada no cabeçalho do arquivo satisfazia o teste e a diretiva real passava sem ser lida.
 
-## O que este padrão não cobre
+## Os outros quatro parâmetros
 
-Funcionalidade, desempenho, especificidade e entrega são os parâmetros 2 a 5 — cada um entra depois, com a especificação do usuário. Não antecipar aqui.
+Este documento é o parâmetro 1. Os demais estão especificados em [`parametros.md`](../central-operacoes/parametros.md) e têm portão próprio:
+
+```bash
+# parâmetro 1 — estrutura
+node .cursor/skills/dossie-site-standby/scripts/verificar-arquitetura.mjs --slug <slug> --url <url>
+
+# parâmetros 2, 3 e 4, consolidados no portão de entrega (parâmetro 5)
+node .cursor/skills/dossie-site-standby/scripts/verificar-entrega.mjs --slug <slug> --url <url>
+```
+
+Dois portões e não um, de propósito: falhas de razão diferente na mesma saída ficam ilegíveis para quem está com pressa.
+
+O portão de entrega também precisa provar que reprova. Mutações que devem falhar:
+
+| Mutação | Deve falhar em |
+|---|---|
+| `shrink-0` junto de campo de texto variável | `p3-shrink` |
+| remover `prefers-reduced-motion` | `p3-motion` |
+| desligar AVIF em `images.formats` | `p3-avif` |
+| deixar `publico` sem render (dado morto) | `p4-publico-usado` |
+| reusar um ativo visual de outro lead | `p4-ativo-unico` |
+
+Ambos provam **presença e consistência**, nunca **adequação**. Verde é licença para a revisão humana começar, não substituto dela.
