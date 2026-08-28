@@ -1,10 +1,4 @@
-import {
-  fato,
-  lacuna,
-  placeholder,
-  type Fonte,
-  type Negocio,
-} from "@/data/schema";
+import { fato, placeholder, type Fonte, type Negocio } from "@/data/schema";
 
 const restaurantGuru: Fonte = {
   url: "https://restaurantguru.com.br/Padoca-Vegan-Sao-Paulo",
@@ -67,14 +61,30 @@ export const negocio: Negocio = {
 
   // O Restaurant Guru (ficha verificada pelo proprietário) publica a grade
   // completa; o HappyCow diz que fecha segunda. Fato com ressalva: vai para a
-  // página com o conflito à vista e fica fora do JSON-LD.
+  // página com o conflito à vista e fica fora do JSON-LD — inclusive o `iso`,
+  // porque schema.org não sabe expressar "as fontes divergem".
   horarios: fato(
     [
-      { dias: "Segunda a sexta", horas: "7h – 20h" },
-      { dias: "Sábado e domingo", horas: "7h – 20h" },
+      {
+        dias: "Terça a domingo",
+        horas: "7h – 20h",
+        iso: {
+          dias: [
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday",
+          ],
+          abre: "07:00",
+          fecha: "20:00",
+        },
+      },
+      { dias: "Segunda", horas: "as fontes divergem" },
     ],
     restaurantGuru,
-    "O Restaurant Guru lista 7h–20h todos os dias; o HappyCow indica que fecha segunda. Confirme a segunda antes de ir.",
+    "O Restaurant Guru lista 7h–20h todos os dias, incluindo segunda; o HappyCow indica que fecha segunda. Confirme a segunda antes de ir.",
   ),
 
   avaliacao: fato({ nota: 4.6, total: 1313 }, restaurantGuru),
@@ -117,27 +127,31 @@ export const negocio: Negocio = {
       "Isto não é um app de delivery, nem restaurante de jantar, nem padaria de rede.",
   },
 
-  cardapio: [
+  // `preco` omitido onde a casa não publica valor: o campo é opcional de
+  // propósito, e forçar uma lacuna aqui enchia a linha de texto e estourava a
+  // tela no celular (achado do parâmetro 3).
+  oferta: [
     {
+      secao: "Padaria",
       nome: "Pães artesanais",
       descricao: "Produção da casa, 100% vegetal.",
-      preco: lacuna("Preço no balcão — a casa não publica tabela."),
     },
     {
+      secao: "Doces",
       nome: "Donuts",
       descricao: "Citados com frequência nas avaliações públicas.",
-      preco: lacuna("Preço no delivery oficial."),
     },
     {
+      secao: "Doces",
       nome: "Cinnamon roll",
       descricao: "Clássico da vitrine, plant-based.",
-      preco: lacuna("Preço no delivery oficial."),
     },
     {
+      secao: "Salão",
       nome: "Brunch",
-      descricao: "Servido no salão.",
+      descricao: "Servido no salão, com opções completas.",
       preco: fato(
-        "cerca de R$ 40–60 por pessoa",
+        "R$ 40–60 por pessoa",
         restaurantGuru,
         "Faixa por pessoa informada na ficha, não é preço de item.",
       ),

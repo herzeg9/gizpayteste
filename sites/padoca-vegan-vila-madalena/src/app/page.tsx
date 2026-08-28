@@ -95,26 +95,26 @@ export default function Home() {
           </div>
         </section>
 
-        {negocio.cardapio.length ? (
-          <section id="cardapio" className="border-y border-texto/10 bg-fundo-fundo/40 py-16">
+        {negocio.oferta.length ? (
+          <section
+            id="cardapio"
+            className="border-y border-texto/10 bg-fundo-fundo/40 py-16"
+          >
             <div className="mx-auto max-w-6xl px-6">
               <h2 className="font-display mb-10 text-3xl">Para comer e levar</h2>
               <ul className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                {negocio.cardapio.map((item) => (
+                {negocio.oferta.map((item) => (
                   <li key={item.nome}>
-                    <div className="mb-2 flex items-baseline justify-between gap-3">
-                      <h3 className="font-display text-lg">{item.nome}</h3>
-                      <span className="shrink-0 text-sm">
-                        <Dado
-                          campo={item.preco}
-                          aoFaltar={(motivo) => <Lacuna motivo={motivo} />}
-                        >
-                          {(preco) => preco}
-                        </Dado>
-                      </span>
-                    </div>
-                    <p className="text-sm opacity-70">{item.descricao}</p>
-                    <Ressalva campo={item.preco} />
+                    <h3 className="font-display text-lg">{item.nome}</h3>
+                    <p className="mt-1 text-sm opacity-70">{item.descricao}</p>
+                    {item.preco ? (
+                      <>
+                        <p className="mt-2 text-sm font-medium">
+                          <Dado campo={item.preco}>{(preco) => preco}</Dado>
+                        </p>
+                        <Ressalva campo={item.preco} />
+                      </>
+                    ) : null}
                   </li>
                 ))}
               </ul>
