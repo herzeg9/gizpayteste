@@ -103,7 +103,7 @@ Standby não recebe analytics, e isso é decisão, não esquecimento: métrica d
 - Logs de build e de runtime no projeto Vercel do próprio standby (`get_runtime_logs`), isolado do `gizpayteste`.
 - `verificar-arquitetura.mjs --url` como sonda: roda contra a URL publicada e falha se um header sumiu depois do deploy.
 
-Medição de audiência, se um dia entrar, é conversa do parâmetro 5 (entrega) — e aí a CSP muda junto, de propósito.
+Medição de audiência, se um dia entrar, muda a CSP junto, de propósito — e passa pelo portão de qualidade do parâmetro 5 antes de sair.
 
 ## Verificação (roda no CI e antes do deploy)
 

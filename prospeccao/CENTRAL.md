@@ -30,8 +30,10 @@ Escopos e decisões: [`parametros.md`](../.cursor/skills/central-operacoes/param
 | 1 | Estrutura / arquitetura | fechado | sim — [padrão v1](../.cursor/skills/dossie-site-standby/arquitetura.md) nos três standbys |
 | 2 | Funcionalidade | fechado — baseline de 8 itens, fronteira e tensões decididas | não |
 | 3 | Desempenho | fechado — régua por função vital (contato, scroll, checkpoints, responsividade) | não |
-| 4 | Especificidade | aguardando | — |
-| 5 | Entrega | aguardando | — |
+| 4 | Especificidade | fechado — esqueleto fixo, pele variável; público-alvo é eixo novo | não |
+| 5 | Entrega | fechado — portão de qualidade (check final / debug), não logística de deploy | não |
+
+**Escopo completo em 2026-08-28.** A implementação está liberada quando o usuário mandar.
 
 ## Fundação (atualizar a cada sessão)
 
@@ -61,7 +63,7 @@ Kio: preflight OK → dossiê/inputs → Superdesign (5 créditos) → `sites/ki
 
 Ver tabela completa em [`leads/index.md`](leads/index.md).
 
-1. **Padoca Vegan** — canvas (audit PASS) **e** site em `sites/padoca-vegan-vila-madalena/` no padrão v1, verificador `exit=0`. Falta só publicar em `padoca-vegan-product`, que é o parâmetro 5 (entrega).
+1. **Padoca Vegan** — canvas (audit PASS) **e** site em `sites/padoca-vegan-vila-madalena/` no padrão v1, verificador `exit=0`. Falta publicar em `padoca-vegan-product`. Publicar é operação normal; o parâmetro 5 é o portão de qualidade, não a logística de deploy.
 2. Iza / Villa Grano / De Lá do Pão / Rodésia
 3. Recorte novo se o usuário nomear
 

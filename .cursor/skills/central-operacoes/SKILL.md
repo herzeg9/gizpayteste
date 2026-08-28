@@ -64,7 +64,7 @@ Teste:
 1. Ler `prospeccao/CENTRAL.md` e `prospeccao/leads/index.md`.
 2. Rodar `bash .cursor/skills/fundacao-pipeline/scripts/preflight.sh`.
 3. Responder com: estado da fundação, fila de testes, pergunta de recorte **só se** o usuário não trouxe nicho/bairro/nome.
-4. Se o usuário disser só “teste” / “próxima rodada” sem recorte: **Padoca Vegan** — mas o site dela já existe e passa o verificador; o que falta é o deploy, que é o parâmetro 5. Para uma rodada nova de ponta a ponta, pedir recorte novo em vez de repetir Joya, Kio ou Padoca.
+4. Se o usuário disser só “teste” / “próxima rodada” sem recorte: **Padoca Vegan** — mas o site dela já existe e passa o verificador de arquitetura; falta publicar. Publicar é operação normal, **não** é o parâmetro 5 — o 5 é o portão de qualidade que decide se está pronto para sair. Para uma rodada nova de ponta a ponta, pedir recorte novo em vez de repetir Joya, Kio ou Padoca.
 5. Atualizar `CENTRAL.md` + `index.md` no fim da rodada.
 
 ## Fila (não inventar outra sem o usuário)
@@ -73,7 +73,7 @@ Teste:
 |---|---|---|
 | Feito (ouro) | Joya Boulangerie | Primeira pseudo-automação completa |
 | Feito | Kio Bakehouse | Segunda rodada; Superdesign + Vercel neste chat |
-| 1 | Padoca Vegan | Canvas + site em `sites/padoca-vegan-vila-madalena/` (padrão v1, verificador passa). Falta só o deploy — que é o parâmetro 5 |
+| 1 | Padoca Vegan | Canvas + site em `sites/padoca-vegan-vila-madalena/` (padrão v1, verificador passa). Falta publicar — operação normal, não gated pelo parâmetro 5 |
 | 2 | Iza / Villa Grano / De Lá do Pão / Rodésia | Mesma rodada Vila Madalena |
 | Novo recorte | Só se o usuário nomear nicho+bairro (ex. salões Pinheiros) | Skill de prospecção do zero |
 

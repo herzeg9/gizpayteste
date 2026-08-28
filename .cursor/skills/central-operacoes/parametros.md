@@ -27,12 +27,12 @@ Esta leitura vem de "toda a estrutura que iremos desenvolver": o que está em su
 | # | Parâmetro | Escopo | Implementado |
 |---|---|---|---|
 | 1 | Estrutura / Arquitetura | fechado | sim — padrão v1 |
-| 2 | Funcionalidade | **fechado** | não — aguarda 4 e 5 |
-| 3 | Desempenho | **fechado** | não — aguarda 4 e 5 |
-| 4 | Especificidade | aguardando | — |
-| 5 | Entrega | aguardando | — |
+| 2 | Funcionalidade | fechado | não |
+| 3 | Desempenho | fechado | não |
+| 4 | Especificidade | fechado | não |
+| 5 | Entrega | fechado | não |
 
-Reparo dos defeitos já publicados segue **em standby** por decisão do usuário (2026-08-27), mesmo os que têm risco — inclusive o `openingHours` inválido.
+**Os cinco escopos estão fechados (2026-08-28).** O congelamento de implementação cumpriu a função e pode ser levantado quando o usuário mandar. Reparo dos defeitos deixa de ser pendência solta: é trabalho do parâmetro 5.
 
 ---
 
@@ -324,13 +324,91 @@ Achados que atingem direto as funções vitais do pedido:
 - **`next/font`** já serve do próprio domínio, o que é bom para CSP e para latência; o custo é peso de arquivo, endereçado pelo teto de famílias.
 - **Sem analytics (parâmetro 2)** significa que **não teremos métrica de campo**. Só dá para medir em laboratório. É consequência aceita da decisão de privacidade, e precisa ficar dita: não vamos saber o LCP real do celular do dono.
 
-## 4. Especificidade — aguardando
+## 4. Especificidade — fechado
 
-O que preciso entender: se "especificidade" é sobre o **visual** ficar com cara daquele negócio e não de template, sobre o **conteúdo** ser específico do vertical, ou sobre a **proposta comercial** ser específica daquele dono. Colide diretamente com o baseline do parâmetro 2 — quanto mais específico, menos repetível — e é aí que a fronteira do que fica para a fase de projeto único vai ser testada.
+Pedido do usuário:
 
-## 5. Entrega — aguardando
+> Cada projeto deve ter uma identidade, sejam imagens, cores e layouts que representam o negócio. O usuário deve ser capaz de sentir autenticidade ao olhar para o site e não algo genérico. Isso se complementa com o último parâmetro — entrega — que é a finalização e o polimento final. Configurações diferentes, cores, imagens, layouts, interação com o usuário que vai acessar (seja um estudante, um lojista, um engenheiro). Todas essas informações devem ser levadas em consideração quando o projeto estiver sendo desenvolvido.
 
-O que preciso entender: se entrega é o **deploy** (projeto Vercel, URL, proteção), o **envio ao dono** (como a proposta chega, o que acompanha), ou o **handoff** se ele aceitar (quem passa a manter, o que vira do domínio e dos dados). Colide com: `robots` noindex, a medição por `wa.me` com o slug decidida no parâmetro 2, e a regra de nunca publicar na raiz nem no projeto `gizpayteste`.
+### Como isto conversa com o baseline do parâmetro 2
+
+Parecem opostos — o 2 quer fórmula repetível, o 4 quer que cada site pareça único. Não são. **O esqueleto é fixo, a pele é variável.**
+
+Os 8 itens do baseline dizem *o que a página responde*; a especificidade diz *como ela se parece e com quem fala*. É exatamente como funciona um design system: mesmos componentes, tokens diferentes. Nenhum dos dois cede.
+
+| Camada | Fixa (parâmetro 2) | Variável (parâmetro 4) |
+|---|---|---|
+| Estrutura | os 8 itens do baseline | ordem e peso das seções |
+| Cor | — | paleta do lead |
+| Tipografia | teto de 2 famílias (parâmetro 3) | quais famílias |
+| Imagem | precisa existir e ter `alt` | qual imagem |
+| Tom | precisa ser fato ou placeholder marcado | voz, densidade, vocabulário |
+| CTA | precisa ser acionável e ter fonte | rótulo e canal |
+
+### O eixo novo: quem acessa
+
+O pedido nomeia algo que ainda não existe em nenhuma camada: **o público do site do cliente** — "um estudante, um lojista, um engenheiro". Isso não é o vertical do negócio, é quem lê a página, e muda decisões concretas: densidade de informação, formalidade, o que vem primeiro e como o CTA é redigido. Uma padaria fala com o vizinho; uma metalúrgica fala com um comprador técnico. Hoje o `Negocio` não tem esse campo.
+
+### Estado atual — o que já é específico e o que é genérico
+
+| Sinal | Situação |
+|---|---|
+| Paleta por lead | **funciona.** Joya oliva `#3F4F3A`, Kio manteiga `#E4B04A`, Padoca erva `#4A7C59` — distintas, e o verificador já reprova vazamento de uma para outra |
+| Tipografia por lead | **funciona.** Joya/Kio em Fraunces, Padoca em Literata |
+| Imagem do hero | **quebrado** — `md5 caefb2be…` **idêntico nos três**. O maior elemento visual de cada proposta é o mesmo arquivo |
+| Layout | **quase genérico** — Joya e Kio são variações da mesma estrutura; a Padoca usa o template cru |
+| Público-alvo | **não existe** como conceito em nenhum arquivo |
+
+O hero é o achado central. Enquanto o elemento mais proeminente da página for o mesmo JPEG em todo standby, "sentir autenticidade" não acontece — e nenhuma paleta compensa isso.
+
+### A restrição honesta: autenticidade sem ativo oficial
+
+O standby é feito **antes** de o cliente existir. Não temos foto dele, nem logo, nem permissão. Então a autenticidade tem de vir do que podemos legitimamente possuir:
+
+- **Cor, tipografia, layout e tom** — inferidos da coleta, e nossos.
+- **Os fatos** — endereço, horário, prêmio, avaliação. Nada é mais específico do que a verdade sobre aquele negócio.
+- **Imagem que não seja roubada nem genérica.** Três caminhos, a decidir na implementação: (a) hero tipográfico, sem foto, na paleta do lead — honesto e específico; (b) ilustração gerada, que entra como `placeholder` com motivo, porque é nossa arte e não fato sobre o negócio; (c) foto pública com licença e atribuição. O que **não** pode continuar é um JPEG de padaria servindo para todos.
+
+### Requisitos derivados
+
+1. **Nenhum ativo visual compartilhado entre leads.** Verificável por checksum: dois standbys com a mesma imagem reprovam.
+2. **`Negocio` ganha o público-alvo** — quem lê a página, com uma linha de por quê. Influencia tom, densidade e rótulo de CTA.
+3. **Layout varia de propósito**, não por acidente: ordem das seções e ênfase derivam do vertical e do público, não de qual template foi copiado.
+4. **Imagem gerada é `placeholder` com motivo**, nunca `fato` — arte nossa não é afirmação sobre o negócio. O contrato do parâmetro 1 já cobre isso sem mudança.
+5. **Teto de 2 famílias tipográficas** continua valendo (parâmetro 3). Especificidade não compra peso extra.
+6. **O `design-system.md` do lead é a fonte da pele** — já existe e já funciona para cor e tipo; passa a carregar também público e intenção de layout.
+
+### Tensões
+
+- **Com o parâmetro 3:** identidade mais rica pesa mais. O orçamento não muda por causa dela; a medição do 3 mostrou que a folga está no JS, não na imagem — mas folga não é licença.
+- **Com o parâmetro 2:** a fronteira se mantém. Especificidade é pele, não função. Um layout específico **não** autoriza agendamento numa oficina.
+- **Com o parâmetro 1:** nada a mudar no contrato. `placeholder` com motivo já é o lugar certo da arte que inventamos.
+
+---
+
+## 5. Entrega — fechado
+
+Pedido do usuário:
+
+> Assim, o último parâmetro serve apenas como um controle de qualidade: Realizar um check final / debug.
+
+### O que isso muda no que eu havia suposto
+
+Eu tinha registrado, em vários arquivos, que "publicar é o parâmetro 5". **Estava errado.** Entrega não é logística de deploy: é o **portão de qualidade** antes de entregar. Publicar continua sendo operação normal da linha, e o que o parâmetro 5 faz é decidir se aquilo está pronto para sair.
+
+Isso também resolve os defeitos que ficaram em standby: eles são trabalho do parâmetro 5, não pendência solta.
+
+### Requisitos derivados
+
+1. **Um portão único**, que consolide os quatro anteriores numa só passada com um só veredito: arquitetura (v1, já existe), funcionalidade (o baseline de 8), desempenho (função vital) e especificidade (nada compartilhado entre leads).
+2. **Separar o que a máquina prova do que só o humano julga.** Isso já está escrito nos parâmetros 2 e 4 e passa a ser a espinha do checklist. Máquina prova presença e consistência; humano julga adequação.
+3. **A lista de defeitos em standby entra aqui** — `openingHours` inválido, `og:image` ausente, seções hardcoded, o `shrink-0` que estoura a tela, o hero compartilhado.
+4. **Exit code manda.** Portão vermelho não entrega, como já vale para o verificador de arquitetura.
+5. **O portão precisa provar que reprova** — a mesma tabela de mutações que a `arquitetura.md` institucionalizou, agora para os quatro parâmetros.
+
+### Tensão
+
+Com o parâmetro 3: parte do que o 5 precisa checar (estouro horizontal, alvo de toque, salto de layout) **exige navegador**, não `curl`. Isso torna o portão do 5 mais caro e mais frágil que o da arquitetura. Decidir na implementação se navegador entra no portão ou fica em auditoria separada — e dizer qual, porque um portão que finge medir o que não mede é pior que não ter portão.
 
 ---
 
