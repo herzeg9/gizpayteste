@@ -105,8 +105,17 @@ export type Horario = {
 
 export type Avaliacao = { nota: number; total: number };
 
-/** Um CTA sem fonte não vai ao ar: o canal precisa ser público e datado. */
-export type Cta = { rotulo: string; url: string; fonte: Fonte };
+/**
+ * Um CTA sem fonte não vai ao ar: o canal precisa ser público e datado.
+ * `rotuloCurto` é para a barra fixa em telas estreitas — rótulo longo ali
+ * empurra a linha e estoura a tela.
+ */
+export type Cta = {
+  rotulo: string;
+  rotuloCurto?: string;
+  url: string;
+  fonte: Fonte;
+};
 
 /**
  * Item da oferta — agnóstico de vertical: prato, serviço, peça, especialidade.

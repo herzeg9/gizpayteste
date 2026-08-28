@@ -91,6 +91,7 @@ export const negocio: Negocio = {
 
   ctaPrimario: {
     rotulo: "Pedir no delivery oficial",
+    rotuloCurto: "Pedir",
     url: "https://delivery.padocavegan.com/padocavegan/padocavegan",
     fonte: linktree,
   },
