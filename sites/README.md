@@ -11,10 +11,10 @@ Todos seguem o **padrão de arquitetura v1** — [`arquitetura.md`](../.cursor/s
 | Pasta | Projeto Vercel | URL | Parâmetros |
 |---|---|---|---|
 | `joya-boulangerie-vila-madalena/` | `joya-boulangerie-product` | https://joya-boulangerie-product.vercel.app | 1 |
-| `kio-bakehouse-vila-madalena/` | `kio-bakehouse-product` | https://kio-bakehouse-product.vercel.app | 1 |
+| `kio-bakehouse-vila-madalena/` | `kio-bakehouse-product` | https://kio-bakehouse-product.vercel.app | **1 a 5** |
 | `padoca-vegan-vila-madalena/` | `padoca-vegan-product` | https://padoca-vegan-product.vercel.app | **1 a 5** |
 
-A Padoca é a referência dos cinco parâmetros. Joya e Kio seguem só no parâmetro 1 e mantêm o contrato antigo (`cardapio`, sem `publico`, sem `iso`, hero compartilhado) — dívida de migração conhecida.
+Padoca e Kio estão nos cinco parâmetros. A Joya segue só no parâmetro 1, com o contrato antigo (`cardapio`, sem `publico`, sem `iso`) e o hero genérico — dívida de migração conhecida.
 
 ## Criar o próximo
 

@@ -152,3 +152,11 @@ O portão de entrega também precisa provar que reprova. Mutações que devem fa
 | reusar um ativo visual de outro lead | `p4-ativo-unico` |
 
 Ambos provam **presença e consistência**, nunca **adequação**. Verde é licença para a revisão humana começar, não substituto dela.
+
+### O ponto cego, com caso concreto
+
+O portão de entrega **não mede rolagem horizontal** — isso exige `scrollWidth − clientWidth` num viewport real, e ele lê HTML. Isso não é teoria: a Kio passou verde nos dois portões **com 15 px de estouro em 320 px**. Só apareceu quando abrimos no navegador.
+
+A causa era o `text-6xl` fixo no `h1`: em 320 px a palavra mais longa exigia largura mínima maior que a caixa e empurrava a página. A Padoca não tinha o problema porque começa em `text-4xl` e cresce por breakpoint.
+
+**Passo obrigatório antes de publicar:** abrir em 320 px e 390 px e medir o estouro no navegador. Escala de tipo fixa e `px-` sem passo responsivo são os suspeitos de sempre.

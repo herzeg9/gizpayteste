@@ -279,6 +279,13 @@ process.stdout.write(
       falhas: falhas.map((c) => c.id),
       aproximacoes: proxies.map((c) => c.id),
       nota: "Este portão prova presença e consistência, nunca adequação. Verde é licença para a revisão humana começar.",
+      naoCoberto: [
+        "Rolagem horizontal: exige medir scrollWidth − clientWidth num viewport real. Já passou verde aqui com 15px de estouro em 320px na Kio.",
+        "Alvo de toque e salto de layout: exigem geometria computada.",
+        "Se a oferta representa o negócio, e se a headline placeholder promete o que ele não entrega.",
+      ],
+      passoObrigatorio:
+        "Antes de publicar, abrir em 320px e 390px e medir o estouro no navegador. Este portão não substitui isso.",
       checks,
     },
     null,

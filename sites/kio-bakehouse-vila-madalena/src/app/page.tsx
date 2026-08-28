@@ -66,13 +66,16 @@ export default function Home() {
       </header>
 
       <main id="topo" className="flex-1">
-        <section className="mx-auto max-w-7xl px-6 py-12 lg:py-24">
+        <section className="mx-auto max-w-7xl px-4 sm:px-6 py-12 lg:py-24">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div className="order-2 lg:order-1">
               <span className="mb-4 block text-[10px] font-bold tracking-[0.2em] text-crust uppercase">
                 {copy.chapeu}
               </span>
-              <h1 className="font-display relative mb-8 text-6xl leading-[0.9] md:text-8xl">
+              {/* Escala começa menor: em 320px o `text-6xl` fixo dava à
+                  palavra mais longa uma largura mínima maior que a caixa, e o
+                  título empurrava a página inteira para fora da tela. */}
+              <h1 className="font-display relative mb-8 text-4xl leading-[0.95] sm:text-5xl sm:leading-[0.9] md:text-7xl lg:text-8xl">
                 <Dado campo={copy.headline}>
                   {(linhas) => (
                     <>
@@ -129,7 +132,7 @@ export default function Home() {
         </section>
 
         <section className="border-y border-charcoal/10 bg-paper-deep/30 py-12">
-          <div className="mx-auto grid max-w-7xl gap-8 px-6 md:grid-cols-3">
+          <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 md:grid-cols-3">
             {negocio.depoimentos.slice(0, 2).map((depoimento) => (
               <div key={depoimento.autor}>
                 <h3 className="font-display text-2xl italic">
@@ -157,7 +160,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="cardapio" className="mx-auto max-w-7xl px-6 py-24">
+        <section id="cardapio" className="mx-auto max-w-7xl px-4 sm:px-6 py-24">
           <span className="mb-4 block text-[10px] font-bold tracking-[0.2em] text-crust uppercase">
             Recorte publicado
           </span>
@@ -222,7 +225,7 @@ export default function Home() {
         </section>
 
         <section id="sobre" className="bg-charcoal py-24 text-paper">
-          <div className="mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-2">
+          <div className="mx-auto grid max-w-7xl gap-16 px-4 sm:px-6 lg:grid-cols-2">
             <div>
               <span className="text-[10px] font-bold tracking-[0.2em] text-butter uppercase">
                 A casa
@@ -287,7 +290,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="visitar" className="mx-auto max-w-7xl px-6 py-24">
+        <section id="visitar" className="mx-auto max-w-7xl px-4 sm:px-6 py-24">
           <div className="grid gap-16 lg:grid-cols-2">
             <div>
               <h2 className="font-display mb-12 text-5xl italic">
